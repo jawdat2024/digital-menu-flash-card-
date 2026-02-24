@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="https://vitejs.dev/logo.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CARTEL | Digital Menu</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              cartel: {
+                matte: '#000000', // Pure Black
+                paper: '#FFFFFF', // Pure White
+                dark: '#050505',
+                charcoal: '#0A0A0A',
+                gold: '#FFFFFF', // Remapped to White for monochrome theme
+                'gold-dark': '#E5E5E5',
+                'gold-light': '#F5F5F5', 
+                copper: '#333333', 
+              }
+            },
+            fontFamily: {
+              sans: ['Poppins', 'sans-serif'],
+              didone: ['"DM Serif Display"', 'serif'],
+            },
+            transitionTimingFunction: {
+              'luxury': 'cubic-bezier(0.4, -0.3, 0.25, 1.35)', 
+            },
+            borderRadius: {
+              'luxury': '4px', // Sharper corners for luxury feel
+            },
+            animation: {
+              'float': 'float 6s ease-in-out infinite',
+            },
+            keyframes: {
+              float: {
+                '0%, 100%': { transform: 'translateY(0)' },
+                '50%': { transform: 'translateY(-10px)' },
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      .no-scrollbar::-webkit-scrollbar { display: none; }
+      .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+      
+      body {
+        background-color: #000000;
+        color: #FFFFFF;
+        font-family: 'Poppins', sans-serif;
+      }
+
+      /* Custom Scrollbar for Chrome/Safari/Webkit - Monochrome Theme */
+      ::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #000000; 
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #333333; 
+        border-radius: 0px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #FFFFFF; 
+      }
+
+      .glass-card {
+        background: rgba(0, 0, 0, 0.8);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+      }
+      
+      .sticky-nav {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@18.2.0",
+    "react/": "https://esm.sh/react@18.2.0/",
+    "react-dom": "https://esm.sh/react-dom@18.2.0",
+    "react-dom/": "https://esm.sh/react-dom@18.2.0/",
+    "@google/genai": "https://esm.sh/@google/genai@^1.35.0",
+    "lucide-react": "https://esm.sh/lucide-react@0.263.1?external=react",
+    "three": "https://esm.sh/three@0.160.0",
+    "@react-three/fiber": "https://esm.sh/@react-three/fiber@8.15.16?external=three,react,react-dom",
+    "@react-three/drei": "https://esm.sh/@react-three/drei@9.99.0?external=three,react,react-dom,@react-three/fiber",
+    "framer-motion": "https://esm.sh/framer-motion@10.16.4?external=react,react-dom"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>

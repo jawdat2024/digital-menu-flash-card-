@@ -44,6 +44,7 @@ export interface MenuItem {
   elevation?: string;
   tastingNotes?: string;
   tags?: string[];
+  branch?: string;
 }
 
 export interface MenuCategory {

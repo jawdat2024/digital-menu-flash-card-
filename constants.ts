@@ -1387,8 +1387,144 @@ const createKhalifaMenu = (): MenuCategory[] => {
     return cat?.items.find(i => i.id === itemId);
   };
 
+  // Custom Espresso Category for Khalifa
+  const baseEspresso = BASE_MENU.find(c => c.id === 'espresso');
+  const khalifaEspresso = JSON.parse(JSON.stringify(baseEspresso));
+
+  // Update Description
+  khalifaEspresso.description = 'Our espresso selection features four distinct profiles:\n\n• Brazil Amazonic Soul: Dark chocolate, Roasted hazelnut, Caramel\n• Yemen Sharqi: Chestnut, Cola, Red grape\n• Coconuttella: Coconut cream, Milk chocolate, Toffee caramel\n• Colombia Sweet Dreams - Decaf: Molasses, Dried apricot, Pecan nuts';
+
+  // Define Custom Beans
+  const khalifaBeans = [
+    { 
+      id: 'bean_brazil', 
+      name: 'Brazil Amazonic Soul', 
+      price: 0, 
+      description: 'Dark chocolate, Roasted hazelnut, Caramel' 
+    },
+    { 
+      id: 'bean_yemen', 
+      name: 'Yemen Sharqi', 
+      price: 0, 
+      description: 'Chestnut, Cola, Red grape' 
+    },
+    { 
+      id: 'bean_coconuttella', 
+      name: 'Coconuttella', 
+      price: 5, 
+      description: 'Coconut cream, Milk chocolate, Toffee caramel' 
+    },
+    { 
+      id: 'bean_decaf', 
+      name: 'Colombia Sweet Dreams - Decaf', 
+      price: 0, 
+      description: 'Molasses, Dried apricot, Pecan nuts' 
+    }
+  ];
+
+  // Update all items to use these beans
+  khalifaEspresso.items.forEach((item: any) => {
+    const beanCustomization = item.customizations?.find((c: any) => c.id === 'bean_choice');
+    if (beanCustomization) {
+      beanCustomization.options = khalifaBeans;
+    }
+  });
+
   return [
-    BASE_MENU.find(c => c.id === 'espresso')!,
+    khalifaEspresso,
+    {
+      id: 'filter-coffee',
+      title: 'Filter Coffee',
+      items: [
+        { 
+          id: 'fil_eth_guji', 
+          name: 'Ethiopia Guji - Rojicha', 
+          tastingNotes: 'Apricot, Pear, Honey', 
+          price: '36', 
+          image: 'https://iili.io/qKeQ4ja.png', 
+          ingredients: 'Pour-over brewing method', 
+          calories: 5 
+        },
+        { 
+          id: 'fil_kenya_kiri', 
+          name: 'Kenya Kirimara', 
+          tastingNotes: 'Wild cherry, Brown sugar, Raisins', 
+          price: '46', 
+          image: 'https://iili.io/qKeQ4ja.png', 
+          ingredients: 'Pour-over brewing method', 
+          calories: 5 
+        },
+        { 
+          id: 'fil_col_mish', 
+          name: 'Colombia Mis-Mish', 
+          tastingNotes: 'Apricot jam, Raspberry, Lychee', 
+          price: '57', 
+          image: 'https://iili.io/qKeQ4ja.png', 
+          ingredients: 'Pour-over brewing method', 
+          calories: 5 
+        },
+        { 
+          id: 'fil_col_black', 
+          name: 'Colombia Blackberry', 
+          tastingNotes: 'Blackberry soda, Cacao nibs, Karkade', 
+          price: '57', 
+          image: 'https://iili.io/qKeQ4ja.png', 
+          ingredients: 'Pour-over brewing method', 
+          calories: 5 
+        },
+        { 
+          id: 'fil_gesha_lime', 
+          name: 'Gesha - Key Lime Pie', 
+          tastingNotes: 'Orange blossom, Lemongrass, Condensed milk', 
+          price: '65', 
+          image: 'https://iili.io/qKeQ4ja.png', 
+          ingredients: 'Pour-over brewing method', 
+          calories: 5 
+        },
+        { 
+          id: 'fil_decaf_sweet', 
+          name: 'Colombia Sweet Dreams - Decaf', 
+          tastingNotes: 'Molasses, Dried apricot, Pecan nuts', 
+          price: '38', 
+          image: 'https://iili.io/qKeQ4ja.png', 
+          ingredients: 'Pour-over brewing method', 
+          calories: 5 
+        }
+      ]
+    },
+    {
+      id: 'cold-brew',
+      title: 'Cold Brew',
+      items: [
+        { 
+          id: 'cb_col_plan', 
+          name: 'Colombia Planadas', 
+          tastingNotes: 'Hazelnut, Orange, Molasses', 
+          price: '38', 
+          image: 'https://iili.io/qKYaxff.png', 
+          ingredients: 'Slow-steeped cold water extraction', 
+          calories: 10 
+        },
+        { 
+          id: 'cb_kenya', 
+          name: 'Kenya Kirimara', 
+          tastingNotes: 'Wild cherry, Brown sugar, Raisins', 
+          price: '38', 
+          image: 'https://iili.io/f8yS6jj.jpg', 
+          ingredients: 'Slow-steeped cold water extraction', 
+          calories: 10 
+        },
+        { 
+          id: 'cb_eth_guji', 
+          name: 'Ethiopia Guji - Rogicha', 
+          tastingNotes: 'Apricot, Pear, Honey', 
+          price: '38', 
+          image: 'https://iili.io/fUAAQ07.png', 
+          ingredients: 'Slow-steeped cold water extraction', 
+          calories: 10 
+        }
+      ]
+    },
     {
       id: 'desserts',
       title: 'Desserts',
@@ -1532,6 +1668,7 @@ const createAlQanaMenu = (): MenuCategory[] => {
     if (beanCustomization) {
       beanCustomization.options = alQanaBeans;
     }
+    item.branch = 'Al Qana';
   });
 
   return [
@@ -1542,57 +1679,69 @@ const createAlQanaMenu = (): MenuCategory[] => {
       items: [
         {
           id: 'fil_eth_guji',
-          name: 'Ethiopia Guji Rogicha',
+          name: 'Guji Rogicha',
+          origin: 'Ethiopia',
           tastingNotes: 'Apricot, Pear, Honey',
           price: '36',
           image: 'https://iili.io/qKeQ4ja.png',
           ingredients: 'Pour-over brewing method',
-          calories: 5
+          calories: 5,
+          branch: 'Al Qana'
         },
         {
           id: 'fil_kenya_kiri',
-          name: 'Kenya Kirimara',
+          name: 'Kirimara',
+          origin: 'Kenya',
           tastingNotes: 'Wild Cherry, Brown Sugar, Raisins',
           price: '46',
           image: 'https://iili.io/qKeQ4ja.png',
           ingredients: 'Pour-over brewing method',
-          calories: 5
+          calories: 5,
+          branch: 'Al Qana'
         },
         {
           id: 'fil_col_mish',
-          name: 'Colombia Mish Mish',
+          name: 'Mish Mish',
+          origin: 'Colombia',
           tastingNotes: 'Apricot Jam, Raspberry, Lychee',
           price: '57',
           image: 'https://iili.io/qKeQ4ja.png',
           ingredients: 'Pour-over brewing method',
-          calories: 5
+          calories: 5,
+          branch: 'Al Qana'
         },
         {
           id: 'fil_col_black',
-          name: 'Colombia Blackberry',
+          name: 'Blackberry',
+          origin: 'Colombia',
           tastingNotes: 'Blackberry Soda, Cacao Nibs, Karkade',
           price: '57',
           image: 'https://iili.io/qKeQ4ja.png',
           ingredients: 'Pour-over brewing method',
-          calories: 5
+          calories: 5,
+          branch: 'Al Qana'
         },
         {
           id: 'fil_gesha_lime',
           name: 'Gesha Key Lime Pie',
+          origin: 'Colombia',
           tastingNotes: 'Orange Blossom, Lemongrass, Condensed Milk',
           price: '65',
           image: 'https://iili.io/qKeQ4ja.png',
           ingredients: 'Pour-over brewing method',
-          calories: 5
+          calories: 5,
+          branch: 'Al Qana'
         },
         {
           id: 'fil_decaf_sweet',
-          name: 'Colombia Sweet Dreams Decaf',
+          name: 'Sweet Dreams Decaf',
+          origin: 'Colombia',
           tastingNotes: 'Molasses, Dried Apricot, Pecan Nuts',
           price: '38',
           image: 'https://iili.io/qKeQ4ja.png',
           ingredients: 'Pour-over brewing method',
-          calories: 5
+          calories: 5,
+          branch: 'Al Qana'
         }
       ]
     },

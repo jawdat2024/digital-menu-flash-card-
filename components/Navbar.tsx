@@ -25,7 +25,14 @@ const Navbar: React.FC<NavbarProps> = ({
   const [isInstaModalOpen, setIsInstaModalOpen] = useState(false);
   const [isPhoneDropdownOpen, setIsPhoneDropdownOpen] = useState(false);
   const [activeCategoryId, setActiveCategoryId] = useState('filter-taps');
-  const [isDarkMode, setIsDarkMode] = useState(true);
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('theme');
+      if (saved) return saved === 'dark';
+      return window.matchMedia('(prefers-color-scheme: dark)').matches;
+    }
+    return true;
+  });
 
   // Phone numbers for locations (placeholders)
   const LOCATION_PHONES: Record<string, string> = {
@@ -37,18 +44,12 @@ const Navbar: React.FC<NavbarProps> = ({
   };
 
   useEffect(() => {
-    // Check localStorage or system preference
-    const savedTheme = localStorage.getItem('theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    
-    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
-      setIsDarkMode(true);
+    if (isDarkMode) {
       document.body.classList.add('dark-theme');
     } else {
-      setIsDarkMode(false);
       document.body.classList.remove('dark-theme');
     }
-  }, []);
+  }, [isDarkMode]);
 
   const toggleTheme = () => {
     if (isDarkMode) {
@@ -95,14 +96,14 @@ const Navbar: React.FC<NavbarProps> = ({
     <>
       <nav className="fixed top-0 left-0 w-full z-50 bg-[var(--bg-primary)] border-b border-[var(--border-color)] shadow-lg transition-colors duration-500">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-20">
+          <div className="flex items-center justify-between h-20 gap-2 sm:gap-4">
             
             {/* Left: Navigation Icons */}
-            <div className="w-1/3 flex items-center gap-4 sm:gap-6 relative z-20">
+            <div className="flex-1 flex items-center gap-2 sm:gap-4 min-w-0">
                {activeBranch && (
                 <>
-                   {/* Social & Contact Icons */}
-                   <div className="flex items-center gap-3 sm:gap-4 border-r border-[var(--border-color)] pr-3 sm:pr-4 mr-1 sm:mr-2">
+                   {/* Social & Contact Icons - Hidden on mobile to prevent overlap */}
+                   <div className="hidden md:flex items-center gap-3 border-r border-[var(--border-color)] pr-3">
                       <button 
                         onClick={() => setIsInstaModalOpen(true)}
                         className="text-[var(--text-primary)] hover:text-[var(--accent-color)] transition-colors p-1"
@@ -145,7 +146,7 @@ const Navbar: React.FC<NavbarProps> = ({
                    </div>
 
                    {/* Search & Location */}
-                   <div className="flex items-center gap-2 sm:gap-3">
+                   <div className="flex items-center gap-1 sm:gap-3 shrink-0">
                      <button 
                       onClick={() => setIsSearchOpen(!isSearchOpen)}
                       className="text-[var(--text-primary)] hover:text-[var(--text-secondary)] transition-colors p-1"
@@ -156,10 +157,10 @@ const Navbar: React.FC<NavbarProps> = ({
                     {!isSearchOpen && (
                       <button
                         onClick={onSwitchLocation}
-                        className="flex items-center gap-2 text-[var(--text-primary)] hover:text-[var(--text-secondary)] transition-colors group p-1"
+                        className="flex items-center gap-1 sm:gap-2 text-[var(--text-primary)] hover:text-[var(--text-secondary)] transition-colors group p-1"
                       >
                         <MapPin size={18} strokeWidth={1.5} />
-                        <span className="hidden sm:inline text-[10px] font-sans uppercase tracking-widest border-b border-transparent group-hover:border-[var(--border-color)] transition-all whitespace-nowrap">
+                        <span className="hidden lg:inline text-[10px] font-sans uppercase tracking-widest border-b border-transparent group-hover:border-[var(--border-color)] transition-all whitespace-nowrap">
                           {activeBranch.name.replace('CARTEL ', '')}
                         </span>
                       </button>
@@ -172,7 +173,7 @@ const Navbar: React.FC<NavbarProps> = ({
                       placeholder="Search..."
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
-                      className="bg-transparent border-b border-[var(--border-color)] text-[var(--text-primary)] text-sm focus:outline-none placeholder-[var(--text-secondary)] w-full max-w-[80px] sm:max-w-[160px] transition-all font-sans"
+                      className="bg-transparent border-b border-[var(--border-color)] text-[var(--text-primary)] text-sm focus:outline-none placeholder-[var(--text-secondary)] w-full max-w-[60px] sm:max-w-[120px] transition-all font-sans"
                       autoFocus
                       onBlur={() => !searchQuery && setIsSearchOpen(false)}
                     />
@@ -181,17 +182,17 @@ const Navbar: React.FC<NavbarProps> = ({
                )}
             </div>
 
-            {/* Center: Brand Logo (Minimal) */}
-            <div className="w-1/3 flex flex-col items-center justify-center cursor-pointer group relative z-10" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+            {/* Center: Brand Logo */}
+            <div className="flex-none flex flex-col items-center justify-center cursor-pointer group px-2" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
                <div className="flex items-center gap-2">
-                 <span className="text-xl sm:text-2xl font-didone text-[var(--text-primary)] tracking-[0.2em] group-hover:tracking-[0.25em] transition-all duration-500 whitespace-nowrap">
+                 <span className="text-lg sm:text-2xl menu-heading text-[var(--text-primary)] tracking-[0.15em] sm:tracking-[0.2em] group-hover:tracking-[0.25em] transition-all duration-500 whitespace-nowrap">
                    CARTEL
                  </span>
                </div>
             </div>
 
             {/* Right: Cart & Theme Toggle */}
-            <div className="w-1/3 flex justify-end items-center relative z-20 gap-4">
+            <div className="flex-1 flex justify-end items-center gap-2 sm:gap-4">
                {/* Theme Toggle */}
                <button
                  onClick={toggleTheme}
@@ -264,7 +265,7 @@ const Navbar: React.FC<NavbarProps> = ({
             </button>
             
             <div className="mb-6">
-              <h3 className="text-2xl font-didone text-[var(--text-primary)] tracking-widest mb-1">CARTEL</h3>
+              <h3 className="text-2xl menu-heading text-[var(--text-primary)] tracking-widest mb-1">CARTEL</h3>
               <p className="text-[10px] uppercase tracking-[0.3em] text-[var(--accent-color)]">@cartelcoffeeroasters</p>
             </div>
 

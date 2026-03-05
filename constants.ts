@@ -659,22 +659,8 @@ const BASE_MENU: MenuCategory[] = [
         image: 'https://iili.io/q2uPvaV.jpg',
         calories: 90
       },
-      {
-        id: 'esp_martini',
-        name: 'Espresso Martini',
-        ingredients: 'Double shot espresso, vanilla syrup, shaken with ice',
-        price: '35',
-        image: 'https://iili.io/qqX7BhF.jpg',
-        calories: 180
-      },
-      {
-        id: 'esp_freddo',
-        name: 'Cortado Freddo',
-        ingredients: 'Iced cortado, shaken',
-        price: '28',
-        image: 'https://iili.io/q2uiNDX.jpg',
-        calories: 80
-      }
+
+
     ]
   },
   {
@@ -1026,10 +1012,10 @@ const createMirdifMenu = (): MenuCategory[] => {
         findItem('eggs-more', 'egg_avo')!, // Avocado toast
         findItem('eggs-more', 'egg_truffle')!, // Truffle scrambled eggs
         findItem('eggs-more', 'egg_cro')!, // Egg and avocado croissant
-        { ...findItem('eggs-more', 'egg_turkish')!, name: 'Turkish Eggs' }, // Turkish eggs
+        { ...findItem('eggs-more', 'egg_turkish')!, name: 'Turkish Eggs', image: 'https://iili.io/qqGBwmB.jpg' }, // Turkish eggs
         findItem('eggs-more', 'egg_big')!, // Big breakfast
-        { ...findItem('eggs-more', 'egg_nduja')!, name: 'Tornado Chilli Eggs' }, // Tornado chilli eggs
-        { ...findItem('eggs-more', 'egg_aussie')!, name: 'Ausie Pulled Beef Benedict' }, // Ausie pulled beef Benedict
+        { ...findItem('eggs-more', 'egg_nduja')!, name: 'Tornado Chilli Eggs', image: 'https://iili.io/qqGClvR.jpg' }, // Tornado chilli eggs
+        { ...findItem('eggs-more', 'egg_aussie')!, name: 'Ausie Pulled Beef Benedict', image: 'https://iili.io/qqMpPzG.png' }, // Ausie pulled beef Benedict
       ].filter(Boolean)
     },
     {
@@ -1053,7 +1039,7 @@ const createMirdifMenu = (): MenuCategory[] => {
         findItem('desserts', 'd_aseeda')!, // Aseeda
         findItem('desserts', 'd_san_seb')!, // San Sebastián
         { id: 'd_honey', name: 'Honeycake', price: '39.20', image: 'https://iili.io/qqXWIea.png', ingredients: 'Layers of honey sponge and cream', calories: 450 }, // Honeycake
-        { id: 'd_tiramisu', name: 'Tiramisu', price: '39.20', image: '', ingredients: 'Classic Italian dessert with coffee', calories: 400 }, // Tiramisu
+        { id: 'd_tiramisu', name: 'Tiramisu', price: '39.20', image: 'https://iili.io/qnnTv0G.png', ingredients: 'Classic Italian dessert with coffee', calories: 400 }, // Tiramisu
 
         findItem('desserts', 'STICKY DATE')!, // Sticky dates
         findItem('desserts', 'd_banana_pud')!, // Banana pudding
@@ -1120,7 +1106,7 @@ const createMirdifMenu = (): MenuCategory[] => {
       id: 'healthy-bar',
       title: 'Healthy Bar',
       items: [
-        findItem('smoothies', 'sm_acai')!, // Acai smoothie
+        { ...findItem('smoothies', 'sm_acai')!, image: 'https://iili.io/qnBllxp.jpg' }, // Acai smoothie
         findItem('smoothies', 'sm_straw')!, // Strawberry glaze
         { ...findItem('smoothies', 'sm_coc')!, name: 'Coconut Doud' }, // Coconut doud
         findItem('smoothies', 'sm_pit')!, // Pitaya
@@ -1326,7 +1312,7 @@ const createAlBateenMenu = (): MenuCategory[] => {
         { id: 'd_honey', name: 'Honey Cake', price: '39.20', image: 'https://iili.io/qqXWIea.png', ingredients: 'Layers of honey sponge and cream', calories: 450 },
         { id: 'd_peanut', name: 'Peanut Choco Tart', price: '39.20', image: 'https://iili.io/qqXGUIR.png', ingredients: 'Rich chocolate tart with peanut butter', calories: 480 },
         findItem('desserts', 'd_san_seb')!,
-        { id: 'd_tiramisu', name: 'Tiramisu Bowl', price: '39.20', image: '', ingredients: 'Classic Italian dessert with coffee', calories: 400 },
+        { id: 'd_tiramisu', name: 'Tiramisu Bowl', price: '39.20', image: 'https://iili.io/qnnTv0G.png', ingredients: 'Classic Italian dessert with coffee', calories: 400 },
         findItem('desserts', 'd_vanilla_pud')!,
         findItem('desserts', 'd_banana_pud')!,
         findItem('desserts', 'STICKY DATE')!,
@@ -1354,9 +1340,9 @@ const createAlBateenMenu = (): MenuCategory[] => {
         { id: 'egg_ben', name: 'Eggs Benedict', price: '46', image: 'https://iili.io/qqGfw3x.jpg', ingredients: 'English muffins with cream cheese, tomato sauce, smoky bacon, poached eggs, miso hollandaise, chives.', calories: 450 },
         { id: 'egg_truffle', name: 'Scrambled Truffle Eggs', price: '54', image: 'https://iili.io/qqGqpDP.jpg', ingredients: 'Creamy scrambled eggs on brioche slice with truffle mayo, truffle oil, and shaved black truffle.', calories: 420 },
         { id: 'egg_turkish', name: 'Minted yogurt', price: '46', image: 'https://iili.io/qqGBwmB.jpg', ingredients: 'homemade tomato jam, poached eggs, mint pesto, chilly butter served with 2 slices of toasted zaatar sourdough.', calories: 400 },
-        { id: 'egg_aussie', name: 'Aussie Benedict', price: '58', image: 'https://iili.io/qqXTZoG.png', ingredients: 'brioche bun with white barbecue sauce, pulled beef, 2 poached eggs, miso hollandaise, crispy onions & spring roll, chives.', calories: 580 },
+        { id: 'egg_aussie', name: 'Aussie Benedict', price: '58', image: 'https://iili.io/qqMpPzG.png', ingredients: 'brioche bun with white barbecue sauce, pulled beef, 2 poached eggs, miso hollandaise, crispy onions & spring roll, chives.', calories: 580 },
         { id: 'egg_cro', name: 'EGG & AVO CROISSANT', price: '38', image: 'https://iili.io/qqXARp9.jpg', ingredients: 'Plain croissant, cream cheese mix, smashed avocado, tomato sauce, poached eggs sprinkled with pumpkin seeds and mix sesame seeds.', calories: 490 },
-        { id: 'egg_nduja', name: 'Nduja Chili Scrambled Tornado Eggs', price: '52', image: 'https://iili.io/qqGqpDP.jpg', ingredients: 'garlic and butter pita bread, creamy mayo, mama’s sauce, smoked yogurt, spicy beef nduja, microgreens, and a drizzle of smoked oil.', calories: 450 },
+        { id: 'egg_nduja', name: 'Nduja Chili Scrambled Tornado Eggs', price: '52', image: 'https://iili.io/qqGClvR.jpg', ingredients: 'garlic and butter pita bread, creamy mayo, mama’s sauce, smoked yogurt, spicy beef nduja, microgreens, and a drizzle of smoked oil.', calories: 450 },
       ]
     },
     {
@@ -1384,7 +1370,7 @@ const createAlBateenMenu = (): MenuCategory[] => {
       id: 'smoothies',
       title: 'Smoothies',
       items: [
-        { id: 'sm_acai', name: 'Açaí Smoothie', price: '42', image: 'https://images.unsplash.com/photo-1623065422902-30a2d299bbe4?auto=format&fit=crop&w=800&q=80', ingredients: 'Acai berry, banana, strawberry, peanut butter, coconut water, oat milk, and apple juice.', calories: 280 },
+        { id: 'sm_acai', name: 'Açaí Smoothie', price: '42', image: 'https://iili.io/qnBllxp.jpg', ingredients: 'Acai berry, banana, strawberry, peanut butter, coconut water, oat milk, and apple juice.', calories: 280 },
         { id: 'sm_straw', name: 'Strawberry Glaze Smoothie', price: '42', image: 'https://iili.io/qq1mS5b.jpg', ingredients: 'Almond milk, frozen strawberries, bananas, dates, maple syrup, collagen, vanilla stevia, sea moss gel, strawberry sauce, and coconut cloud cream.', calories: 260 },
         { id: 'sm_coc', name: 'Blue Cloud Smoothie', price: '42', image: 'https://iili.io/qqE9JUX.jpg', ingredients: 'Coconut milk, pineapple, banana, avocado, vanilla stevia, collagen, peanut butter, blue spirulina, and on top coconut cloud cream.', calories: 300 },
         { id: 'sm_pit', name: 'Pitaya Smoothie', price: '42', image: 'https://iili.io/qqEH3rP.jpg', ingredients: 'Apple juice, lemon juice, pitaya, frozen pineapple, banana, and lemon electrolytes.', calories: 270 },
@@ -1411,7 +1397,7 @@ const createKhalifaMenu = (): MenuCategory[] => {
         { id: 'd_honey', name: 'Honey Cake', price: '39.20', image: 'https://iili.io/qqXWIea.png', ingredients: 'Layers of honey sponge and cream', calories: 450 },
         { id: 'd_peanut', name: 'Peanut Choco Tart', price: '39.20', image: 'https://iili.io/qqXGUIR.png', ingredients: 'Rich chocolate tart with peanut butter', calories: 480 },
         findItem('desserts', 'd_san_seb')!,
-        { id: 'd_tiramisu', name: 'Tiramisu Bowl', price: '39.20', image: '', ingredients: 'Classic Italian dessert with coffee', calories: 400 },
+        { id: 'd_tiramisu', name: 'Tiramisu Bowl', price: '39.20', image: 'https://iili.io/qnnTv0G.png', ingredients: 'Classic Italian dessert with coffee', calories: 400 },
         findItem('desserts', 'd_vanilla_pud')!,
         findItem('desserts', 'd_banana_pud')!,
         findItem('desserts', 'STICKY DATE')!,
@@ -1462,9 +1448,9 @@ const createKhalifaMenu = (): MenuCategory[] => {
         { id: 'egg_avo', name: 'Avocado Toast', price: '45', image: 'https://iili.io/qqGqaMg.jpg', ingredients: 'Sourdough with smashed avocado, whipped feta, Pico de Gallo, pine nuts, parmesan, coriander, dill leaves, mix sesame seeds, lime wedges, chili flakes, dukka, and poached egg.', calories: 380 },
         { id: 'egg_ben', name: 'Eggs Benedict', price: '46', image: 'https://iili.io/qqGfw3x.jpg', ingredients: 'English muffins with cream cheese, tomato sauce, smoky bacon, poached eggs, miso hollandaise, chives.', calories: 450 },
         { id: 'egg_truffle', name: 'Scrambled Truffle Eggs', price: '54', image: 'https://iili.io/qqGqpDP.jpg', ingredients: 'Creamy scrambled eggs on brioche slice with truffle mayo, truffle oil, and shaved black truffle.', calories: 420 },
-        { id: 'egg_aussie', name: 'Aussie Benedict', price: '58', image: 'https://iili.io/qqXTZoG.png', ingredients: 'brioche bun with white barbecue sauce, pulled beef, 2 poached eggs, miso hollandaise, crispy onions & spring roll, chives.', calories: 580 },
+        { id: 'egg_aussie', name: 'Aussie Benedict', price: '58', image: 'https://iili.io/qqMpPzG.png', ingredients: 'brioche bun with white barbecue sauce, pulled beef, 2 poached eggs, miso hollandaise, crispy onions & spring roll, chives.', calories: 580 },
         { id: 'egg_cro', name: 'EGG & AVO CROISSANT', price: '38', image: 'https://iili.io/qqXARp9.jpg', ingredients: 'Plain croissant, cream cheese mix, smashed avocado, tomato sauce, poached eggs sprinkled with pumpkin seeds and mix sesame seeds.', calories: 490 },
-        { id: 'egg_nduja', name: 'Nduja Chili Scrambled Tornado Eggs', price: '52', image: 'https://iili.io/qqGqpDP.jpg', ingredients: 'garlic and butter pita bread, creamy mayo, mama’s sauce, smoked yogurt, spicy beef nduja, microgreens, and a drizzle of smoked oil.', calories: 450 },
+        { id: 'egg_nduja', name: 'Nduja Chili Scrambled Tornado Eggs', price: '52', image: 'https://iili.io/qqGClvR.jpg', ingredients: 'garlic and butter pita bread, creamy mayo, mama’s sauce, smoked yogurt, spicy beef nduja, microgreens, and a drizzle of smoked oil.', calories: 450 },
       ]
     },
     {
@@ -1488,7 +1474,7 @@ const createKhalifaMenu = (): MenuCategory[] => {
       id: 'smoothies',
       title: 'Smoothies',
       items: [
-        { id: 'sm_acai', name: 'Açaí Smoothie', price: '42', image: 'https://images.unsplash.com/photo-1623065422902-30a2d299bbe4?auto=format&fit=crop&w=800&q=80', ingredients: 'Acai berry, banana, strawberry, peanut butter, coconut water, oat milk, and apple juice.', calories: 280 },
+        { id: 'sm_acai', name: 'Açaí Smoothie', price: '42', image: 'https://iili.io/qnBllxp.jpg', ingredients: 'Acai berry, banana, strawberry, peanut butter, coconut water, oat milk, and apple juice.', calories: 280 },
         { id: 'sm_straw', name: 'Strawberry Glaze Smoothie', price: '42', image: 'https://iili.io/qq1mS5b.jpg', ingredients: 'Almond milk, frozen strawberries, bananas, dates, maple syrup, collagen, vanilla stevia, sea moss gel, strawberry sauce, and coconut cloud cream.', calories: 260 },
         { id: 'sm_coc', name: 'Blue Cloud Smoothie', price: '42', image: 'https://iili.io/qqE9JUX.jpg', ingredients: 'Coconut milk, pineapple, banana, avocado, vanilla stevia, collagen, peanut butter, blue spirulina, and on top coconut cloud cream.', calories: 300 },
         { id: 'sm_pit', name: 'Pitaya Smoothie', price: '42', image: 'https://iili.io/qqEH3rP.jpg', ingredients: 'Apple juice, lemon juice, pitaya, frozen pineapple, banana, and lemon electrolytes.', calories: 270 },
@@ -1505,8 +1491,111 @@ const createAlQanaMenu = (): MenuCategory[] => {
     return cat?.items.find(i => i.id === itemId);
   };
 
+  // Custom Espresso Category for Al Qana
+  const baseEspresso = BASE_MENU.find(c => c.id === 'espresso');
+  const alQanaEspresso = JSON.parse(JSON.stringify(baseEspresso));
+
+  // Update Description
+  alQanaEspresso.description = 'Our espresso selection features four distinct profiles:\n\n• 469 Blend: Apricot Jam, White Chocolate, Jaggery\n• Brazil Amazonic Soul: Dark Chocolate, Roasted Hazelnut, Caramel\n• Yemen Sharqi Haraaz: Chestnut, Cola, Red Grape\n• Colombia Sweet Dreams Decaf: Molasses, Dried Apricot, Pecan Nuts';
+
+  // Define Custom Beans
+  const alQanaBeans = [
+    {
+      id: 'bean_469',
+      name: '469 Blend',
+      price: 0,
+      description: 'Apricot Jam, White Chocolate, Jaggery'
+    },
+    {
+      id: 'bean_brazil',
+      name: 'Brazil Amazonic Soul',
+      price: 0,
+      description: 'Dark Chocolate, Roasted Hazelnut, Caramel'
+    },
+    {
+      id: 'bean_yemen',
+      name: 'Yemen Sharqi Haraaz',
+      price: 0,
+      description: 'Chestnut, Cola, Red Grape'
+    },
+    {
+      id: 'bean_decaf',
+      name: 'Colombia Sweet Dreams Decaf',
+      price: 0,
+      description: 'Molasses, Dried Apricot, Pecan Nuts'
+    }
+  ];
+
+  // Update all items to use these beans
+  alQanaEspresso.items.forEach((item: any) => {
+    const beanCustomization = item.customizations?.find((c: any) => c.id === 'bean_choice');
+    if (beanCustomization) {
+      beanCustomization.options = alQanaBeans;
+    }
+  });
+
   return [
-    BASE_MENU.find(c => c.id === 'espresso')!,
+    alQanaEspresso,
+    {
+      id: 'filter-coffee',
+      title: 'Filter Coffee',
+      items: [
+        {
+          id: 'fil_eth_guji',
+          name: 'Ethiopia Guji Rogicha',
+          tastingNotes: 'Apricot, Pear, Honey',
+          price: '36',
+          image: 'https://iili.io/qKeQ4ja.png',
+          ingredients: 'Pour-over brewing method',
+          calories: 5
+        },
+        {
+          id: 'fil_kenya_kiri',
+          name: 'Kenya Kirimara',
+          tastingNotes: 'Wild Cherry, Brown Sugar, Raisins',
+          price: '46',
+          image: 'https://iili.io/qKeQ4ja.png',
+          ingredients: 'Pour-over brewing method',
+          calories: 5
+        },
+        {
+          id: 'fil_col_mish',
+          name: 'Colombia Mish Mish',
+          tastingNotes: 'Apricot Jam, Raspberry, Lychee',
+          price: '57',
+          image: 'https://iili.io/qKeQ4ja.png',
+          ingredients: 'Pour-over brewing method',
+          calories: 5
+        },
+        {
+          id: 'fil_col_black',
+          name: 'Colombia Blackberry',
+          tastingNotes: 'Blackberry Soda, Cacao Nibs, Karkade',
+          price: '57',
+          image: 'https://iili.io/qKeQ4ja.png',
+          ingredients: 'Pour-over brewing method',
+          calories: 5
+        },
+        {
+          id: 'fil_gesha_lime',
+          name: 'Gesha Key Lime Pie',
+          tastingNotes: 'Orange Blossom, Lemongrass, Condensed Milk',
+          price: '65',
+          image: 'https://iili.io/qKeQ4ja.png',
+          ingredients: 'Pour-over brewing method',
+          calories: 5
+        },
+        {
+          id: 'fil_decaf_sweet',
+          name: 'Colombia Sweet Dreams Decaf',
+          tastingNotes: 'Molasses, Dried Apricot, Pecan Nuts',
+          price: '38',
+          image: 'https://iili.io/qKeQ4ja.png',
+          ingredients: 'Pour-over brewing method',
+          calories: 5
+        }
+      ]
+    },
     {
       id: 'sandwiches',
       title: 'Sandwiches',
@@ -1542,7 +1631,7 @@ const createAlQanaMenu = (): MenuCategory[] => {
         { id: 'd_honey', name: 'Honey Cake', price: '39.20', image: 'https://iili.io/qqXWIea.png', ingredients: 'Layers of honey sponge and cream', calories: 450 },
         findItem('desserts', 'd_san_seb')!,
         findItem('desserts', 'STICKY DATE')!,
-        { id: 'd_tiramisu', name: 'Tiramisu Bowl', price: '39.20', image: '', ingredients: 'Classic Italian dessert with coffee', calories: 400 },
+        { id: 'd_tiramisu', name: 'Tiramisu Bowl', price: '39.20', image: 'https://iili.io/qnnTv0G.png', ingredients: 'Classic Italian dessert with coffee', calories: 400 },
         findItem('desserts', 'd_vanilla_pud')!,
         findItem('desserts', 'd_choc_chip')!,
         findItem('desserts', 'MUHALABIYA')!,
@@ -1555,10 +1644,10 @@ const createAlQanaMenu = (): MenuCategory[] => {
         { id: 'egg_big', name: 'Big Breakfast Homemade', price: '65', image: 'https://iili.io/qqVHZ1R.png', ingredients: 'hash brown potatoes, red beans, sautéed portobello mushrooms, wagyu beef sausage, smoked veal bacon, roasted vine tomatoes, two sunny side up eggs on a slice of brioche bread, (eggs your way: scrambled, poached, sunny side up).', calories: 850 },
         { id: 'egg_avo', name: 'Avocado Toast', price: '45', image: 'https://iili.io/qqGqaMg.jpg', ingredients: 'Sourdough with smashed avocado, whipped feta, Pico de Gallo, pine nuts, parmesan, coriander, dill leaves, mix sesame seeds, lime wedges, chili flakes, dukka, and poached egg.', calories: 380 },
         { id: 'egg_cro', name: 'EGG & AVO CROISSANT', price: '48', image: 'https://iili.io/qqXARp9.jpg', ingredients: 'Plain croissant, cream cheese mix, smashed avocado, tomato sauce, poached eggs sprinkled with pumpkin seeds and mix sesame seeds.', calories: 490 },
-        { id: 'egg_aussie', name: 'Aussie Benedict', price: '58', image: 'https://iili.io/qqXTZoG.png', ingredients: 'brioche bun with white barbecue sauce, pulled beef, 2 poached eggs, miso hollandaise, crispy onions & spring roll, chives.', calories: 580 },
+        { id: 'egg_aussie', name: 'Aussie Benedict', price: '58', image: 'https://iili.io/qqMpPzG.png', ingredients: 'brioche bun with white barbecue sauce, pulled beef, 2 poached eggs, miso hollandaise, crispy onions & spring roll, chives.', calories: 580 },
         { id: 'egg_turkish', name: 'Minted yogurt', price: '46', image: 'https://iili.io/qqGBwmB.jpg', ingredients: 'homemade tomato jam, poached eggs, mint pesto, chilly butter served with 2 slices of toasted zaatar sourdough.', calories: 400 },
         { id: 'egg_truffle', name: 'Scrambled Truffle Eggs', price: '54', image: 'https://iili.io/qqGqpDP.jpg', ingredients: 'Creamy scrambled eggs on brioche slice with truffle mayo, truffle oil, and shaved black truffle.', calories: 420 },
-        { id: 'egg_nduja', name: 'Nduja Chili Scrambled Tornado Eggs', price: '52', image: 'https://iili.io/qqGqpDP.jpg', ingredients: 'garlic and butter pita bread, creamy mayo, mama’s sauce, smoked yogurt, spicy beef nduja, microgreens, and a drizzle of smoked oil.', calories: 450 },
+        { id: 'egg_nduja', name: 'Nduja Chili Scrambled Tornado Eggs', price: '52', image: 'https://iili.io/qqGClvR.jpg', ingredients: 'garlic and butter pita bread, creamy mayo, mama’s sauce, smoked yogurt, spicy beef nduja, microgreens, and a drizzle of smoked oil.', calories: 450 },
       ]
     },
     {
@@ -1580,7 +1669,7 @@ const createAlQanaMenu = (): MenuCategory[] => {
       items: [
         { id: 'sm_straw', name: 'Strawberry Glaze Smoothie', price: '42', image: 'https://iili.io/qq1mS5b.jpg', ingredients: 'Almond milk, frozen strawberries, bananas, dates, maple syrup, collagen, vanilla stevia, sea moss gel, strawberry sauce, and coconut cloud cream.', calories: 260 },
         { id: 'sm_pit', name: 'Pitaya Smoothie', price: '42', image: 'https://iili.io/qqEH3rP.jpg', ingredients: 'Apple juice, lemon juice, pitaya, frozen pineapple, banana, and lemon electrolytes.', calories: 270 },
-        { id: 'sm_acai', name: 'Açaí Smoothie', price: '42', image: 'https://images.unsplash.com/photo-1623065422902-30a2d299bbe4?auto=format&fit=crop&w=800&q=80', ingredients: 'Acai berry, banana, strawberry, peanut butter, coconut water, oat milk, and apple juice.', calories: 280 },
+        { id: 'sm_acai', name: 'Açaí Smoothie', price: '42', image: 'https://iili.io/qnBllxp.jpg', ingredients: 'Acai berry, banana, strawberry, peanut butter, coconut water, oat milk, and apple juice.', calories: 280 },
         { id: 'sm_coc', name: 'Blue Cloud Smoothie', price: '42', image: 'https://iili.io/qqE9JUX.jpg', ingredients: 'Coconut milk, pineapple, banana, avocado, vanilla stevia, collagen, peanut butter, blue spirulina, and on top coconut cloud cream.', calories: 300 },
       ]
     },

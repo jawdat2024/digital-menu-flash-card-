@@ -67,28 +67,22 @@ export const BRANCH_DATA: Branch[] = [
 // Standardized Espresso Bean Options
 const ESPRESSO_BEAN_OPTIONS = [
   { 
-    id: 'bean_classic', 
-    name: 'The Classic (Nicaragua)', 
+    id: 'bean_blind', 
+    name: 'BLIND 469', 
     price: 0, 
-    description: 'Velvety milk chocolate, sugar cane sweetness, and a finish of candied peanuts.' 
+    description: '' 
   },
   { 
-    id: 'bean_modern', 
-    name: 'The Modern (Coconutella)', 
-    price: 5, 
-    description: 'Vibrant coconut cream layered with milk chocolate and rich toffee caramel.' 
-  },
-  { 
-    id: 'bean_fruity', 
-    name: 'The Fruity (Kenya Gichatha)', 
+    id: 'bean_amazonic', 
+    name: 'Amazonic Soul', 
     price: 1, 
-    description: 'Blackcurrants, blackberries & raisins.' 
+    description: '' 
   },
   { 
-    id: 'bean_decaf', 
-    name: 'The Decaf (Sweet Dream)', 
-    price: 0, 
-    description: 'Indulgent passion fruit cheesecake notes with milk chocolate and deep molasses.' 
+    id: 'bean_yemen', 
+    name: 'Yemen - Sharki Haraz', 
+    price: 10, 
+    description: '' 
   }
 ];
 
@@ -140,7 +134,7 @@ const BASE_MENU: MenuCategory[] = [
       },
       {
         id: 'sig3',
-        name: 'CARTEL Matcha Cloud',
+        name: 'Matcha Cloud',
         ingredients: 'matcha cream , matcha dust. coconut water',
         price: '38',
         image: 'https://iili.io/q2ugtIa.png',
@@ -366,7 +360,7 @@ const BASE_MENU: MenuCategory[] = [
         name: 'Colombia Strawberry',
         ingredients: 'Filter coffee on tap',
         price: '36',
-        image: 'https://iili.io/qKka1vj.png',
+        image: 'https://iili.io/qKkcmJa.png',
         calories: 5
       },
       {
@@ -382,7 +376,7 @@ const BASE_MENU: MenuCategory[] = [
         name: 'Ethiopia Rogisha',
         ingredients: 'Filter coffee on tap',
         price: '36',
-        image: 'https://iili.io/qKkcmJa.png',
+        image: 'https://iili.io/qKka1vj.png',
         calories: 5
       }
     ]
@@ -390,7 +384,7 @@ const BASE_MENU: MenuCategory[] = [
   {
     id: 'espresso',
     title: 'Espresso',
-    description: 'Our espresso selection features four distinct profiles:\n\n• The Classic (Nicaragua): Velvety milk chocolate, sugar cane sweetness.\n• The Modern (Coconutella): Vibrant coconut cream, milk chocolate.\n• The Fruity (Kenya Gichatha): Blackcurrants, blackberries & raisins.\n• The Decaf (Sweet Dream): Passion fruit cheesecake notes.',
+    description: 'Our espresso selection features distinct profiles:\n\n• BLIND 469\n• Amazonic Soul\n• Yemen - Sharki Haraz',
     items: [
       {
         id: 'esp1',
@@ -758,7 +752,7 @@ const BASE_MENU: MenuCategory[] = [
       },
          {
         id: 'sig3',
-        name: 'CARTEL Matcha Cloud',
+        name: 'Matcha Cloud',
         ingredients: 'matcha cream , matcha dust. coconut water',
         price: '38',
         image: 'https://iili.io/q2ugtIa.png',
@@ -806,14 +800,6 @@ const BASE_MENU: MenuCategory[] = [
           }
         ]
       },
-      {
-        id: 'sig_hojicha',
-        name: 'Hojicha Matcha',
-        ingredients: 'Roasted green tea latte',
-        price: '32',
-        image: 'https://iili.io/q2utJ3J.jpg',
-        calories: 180
-      },
 
       {
         id: 'sig_baby_shark',
@@ -827,7 +813,7 @@ const BASE_MENU: MenuCategory[] = [
       },
       {
         id: 'sig_eg',
-        name: 'CARTEL Earl Grey Tea',
+        name: 'Earl Grey Tea',
         ingredients: '',
         price: '24',
         image: 'https://iili.io/qqMG13b.jpg',
@@ -867,7 +853,7 @@ const BASE_MENU: MenuCategory[] = [
       },
       {
         id: 'sig2',
-        name: 'CARTEL Matcha Latte',
+        name: 'Matcha Latte',
         ingredients: 'Premium Matcha green tea. choose your milk.',
         price: '28',
         image: 'https://iili.io/q2utJ3J.jpg',
@@ -1006,9 +992,21 @@ const createMirdifMenu = (): MenuCategory[] => {
     BASE_MENU.find(c => c.id === 'espresso')!,
     {
       id: 'breakfast',
-      title: 'Breakfast Items',
+      title: 'Breakfast & Mains',
       items: [
-        findItem('eggs-more', 'egg_ben')!, // Egg Benedict
+        { 
+          ...findItem('eggs-more', 'egg_ben')!, 
+          name: 'Egg Benedict', 
+          ingredients: 'English muffins with cream cheese, tomato sauce, smoky bacon, poached eggs, and miso hollandaise.' 
+        },
+        {
+          id: 'fr_toast',
+          name: 'French Toast',
+          price: '66',
+          image: 'https://iili.io/fUBoGzx.png',
+          ingredients: 'Caramelized and served with vanilla ice cream, almond streusel, whipped vanilla cream, and rhubarb compote. Options/Side: Salted caramel, mix berries compote on the side.',
+          calories: 0
+        },
         findItem('eggs-more', 'egg_avo')!, // Avocado toast
         findItem('eggs-more', 'egg_truffle')!, // Truffle scrambled eggs
         findItem('eggs-more', 'egg_cro')!, // Egg and avocado croissant
@@ -1020,15 +1018,17 @@ const createMirdifMenu = (): MenuCategory[] => {
     },
     {
       id: 'signature-drinks',
-      title: 'Signature Drinks',
+      title: 'Tea & Signature Drinks',
       items: [
         findItem('signature-drinks', 'sig3')!, // Matcha cloud
-        findItem('signature-drinks', 'sig_hojicha')!, // Hojicha matcha
         findItem('signature-drinks', 'sig_espresso_shake')!, // Espresso shake
         { ...findItem('espresso', 'esp11')!, name: 'Babycino' }, // Babycino
         findItem('signature-drinks', 'sig_baby_shark')!, // Baby shark
         findItem('signature-drinks', 'sig_matcha_shake')!, // Matcha shake
         findItem('signature-drinks', 'sig8')!, // Tanzanian hot chocolate
+        findItem('tea', 'tea_black')!, // Black tea
+        findItem('tea', 'tea_green')!, // Green tea
+        findItem('tea', 'tea_rush')!, // Rush hour berry
       ].filter(Boolean)
     },
     {
@@ -1040,7 +1040,6 @@ const createMirdifMenu = (): MenuCategory[] => {
         findItem('desserts', 'd_san_seb')!, // San Sebastián
         { id: 'd_honey', name: 'Honeycake', price: '39.20', image: 'https://iili.io/qqXWIea.png', ingredients: 'Layers of honey sponge and cream', calories: 450 }, // Honeycake
         { id: 'd_tiramisu', name: 'Tiramisu', price: '39.20', image: 'https://iili.io/qnnTv0G.png', ingredients: 'Classic Italian dessert with coffee', calories: 400 }, // Tiramisu
-
         findItem('desserts', 'STICKY DATE')!, // Sticky dates
         findItem('desserts', 'd_banana_pud')!, // Banana pudding
         { id: 'd_peanut', name: 'Peanut Butter Choco Tart', price: '39.20', image: 'https://iili.io/qqXGUIR.png', ingredients: 'Rich chocolate tart with peanut butter', calories: 480 }, // Peanut butter choco tart
@@ -1072,13 +1071,14 @@ const createMirdifMenu = (): MenuCategory[] => {
       id: 'sandwiches',
       title: 'Sandwiches',
       items: [
-        findItem('sandwiches', 'sw_bacon')!, // Bacon and cheese
-        findItem('sandwiches', 'sw_tuna')!, // Tunacado
-        findItem('sandwiches', 'sw_chick')!, // Chicken and avocado croissant
-        { ...findItem('sandwiches', 'sw_club')!, name: 'Cartel Dub Sandwich' }, // Cartel dub sandwich
-        findItem('sandwiches', 'sw_brisket')!, // Brisket blaze
-        { ...findItem('sandwiches', 'sw_italian')!, name: 'Cold Cut Salami' }, // Cold cut salami
-        findItem('sandwiches', 'sw_shrimp')!, // Shrimp toast
+        findItem('sandwiches', 'sw_shrimp')!,
+        findItem('sandwiches', 'sw_chick')!,
+        findItem('sandwiches', 'sw_tuna')!,
+        findItem('sandwiches', 'sw_club')!,
+        { ...findItem('sandwiches', 'sw_bacon')!, name: 'Bacon and Egg' },
+        findItem('sandwiches', 'sw_brisket')!,
+        findItem('sandwiches', 'sw_italian')!,
+        findItem('eggs-more', 'egg_cro')!,
       ].filter(Boolean)
     },
     {
@@ -1096,10 +1096,10 @@ const createMirdifMenu = (): MenuCategory[] => {
       id: 'juices',
       title: 'Juices',
       items: [
-        { ...findItem('juices', 'juice_green')!, image: '' }, // Green apple
-        { ...findItem('juices', 'juice_orange')!, image: '' }, // Orange
-        { ...findItem('juices', 'juice_carrot')!, image: '' }, // Carrot
-        { ...findItem('juices', 'juice_water')!, image: '' }, // Watermelon
+        { ...findItem('juices', 'juice_green')!, image: '', price: '24' }, // Green apple
+        { ...findItem('juices', 'juice_orange')!, image: '', price: '24' }, // Orange
+        { ...findItem('juices', 'juice_carrot')!, image: '', price: '24' }, // Carrot
+        { ...findItem('juices', 'juice_water')!, image: '', price: '24' }, // Watermelon
       ].filter(Boolean)
     },
     {
@@ -1110,15 +1110,6 @@ const createMirdifMenu = (): MenuCategory[] => {
         findItem('smoothies', 'sm_straw')!, // Strawberry glaze
         { ...findItem('smoothies', 'sm_coc')!, name: 'Coconut Doud' }, // Coconut doud
         findItem('smoothies', 'sm_pit')!, // Pitaya
-      ].filter(Boolean)
-    },
-    {
-      id: 'tea',
-      title: 'Tea',
-      items: [
-        findItem('tea', 'tea_black')!, // Black tea
-        findItem('tea', 'tea_green')!, // Green tea
-        findItem('tea', 'tea_rush')!, // Rush hour berry
       ].filter(Boolean)
     }
   ];
@@ -1132,51 +1123,8 @@ const createAlBateenMenu = (): MenuCategory[] => {
     return cat?.items.find(i => i.id === itemId);
   };
 
-  // Custom Espresso Category for Al Bateen
-  const baseEspresso = BASE_MENU.find(c => c.id === 'espresso');
-  const alBateenEspresso = JSON.parse(JSON.stringify(baseEspresso));
-
-  // Update Description
-  alBateenEspresso.description = 'Our espresso selection features four distinct profiles:\n\n• The Classic (Brazil Amazonic Soul): Dark Chocolate, Roasted Hazelnut, Caramel.\n• The Modern (Coconutella): Vibrant coconut cream, milk chocolate.\n• The Fruity (Kenya Gichatha): Blackcurrants, blackberries & raisins.\n• The Decaf (Colombia Sweet Dreams): Molasses, Dried Apricot, Pecan nuts';
-
-  // Define Custom Beans
-  const alBateenBeans = [
-    { 
-      id: 'bean_classic', 
-      name: 'The Classic (Brazil Amazonic Soul)', 
-      price: 0, 
-      description: 'Dark Chocolate, Roasted Hazelnut, Caramel.' 
-    },
-    { 
-      id: 'bean_modern', 
-      name: 'The Modern (Coconutella)', 
-      price: 5, 
-      description: 'Vibrant coconut cream layered with milk chocolate and rich toffee caramel.' 
-    },
-    { 
-      id: 'bean_fruity', 
-      name: 'The Fruity (Kenya Gichatha)', 
-      price: 1, 
-      description: 'Blackcurrants, blackberries & raisins.' 
-    },
-    { 
-      id: 'bean_decaf', 
-      name: 'The Decaf (Colombia Sweet Dreams)', 
-      price: 0, 
-      description: 'Molasses, Dried Apricot, Pecan nuts' 
-    }
-  ];
-
-  // Update all items to use these beans
-  alBateenEspresso.items.forEach((item: any) => {
-    const beanCustomization = item.customizations?.find((c: any) => c.id === 'bean_choice');
-    if (beanCustomization) {
-      beanCustomization.options = alBateenBeans;
-    }
-  });
-
   return [
-    alBateenEspresso,
+    BASE_MENU.find(c => c.id === 'espresso')!,
 
     {
       id: 'filter-coffee',
@@ -1387,51 +1335,8 @@ const createKhalifaMenu = (): MenuCategory[] => {
     return cat?.items.find(i => i.id === itemId);
   };
 
-  // Custom Espresso Category for Khalifa
-  const baseEspresso = BASE_MENU.find(c => c.id === 'espresso');
-  const khalifaEspresso = JSON.parse(JSON.stringify(baseEspresso));
-
-  // Update Description
-  khalifaEspresso.description = 'Our espresso selection features four distinct profiles:\n\n• Brazil Amazonic Soul: Dark chocolate, Roasted hazelnut, Caramel\n• Yemen Sharqi: Chestnut, Cola, Red grape\n• Coconuttella: Coconut cream, Milk chocolate, Toffee caramel\n• Colombia Sweet Dreams - Decaf: Molasses, Dried apricot, Pecan nuts';
-
-  // Define Custom Beans
-  const khalifaBeans = [
-    { 
-      id: 'bean_brazil', 
-      name: 'Brazil Amazonic Soul', 
-      price: 0, 
-      description: 'Dark chocolate, Roasted hazelnut, Caramel' 
-    },
-    { 
-      id: 'bean_yemen', 
-      name: 'Yemen Sharqi', 
-      price: 0, 
-      description: 'Chestnut, Cola, Red grape' 
-    },
-    { 
-      id: 'bean_coconuttella', 
-      name: 'Coconuttella', 
-      price: 5, 
-      description: 'Coconut cream, Milk chocolate, Toffee caramel' 
-    },
-    { 
-      id: 'bean_decaf', 
-      name: 'Colombia Sweet Dreams - Decaf', 
-      price: 0, 
-      description: 'Molasses, Dried apricot, Pecan nuts' 
-    }
-  ];
-
-  // Update all items to use these beans
-  khalifaEspresso.items.forEach((item: any) => {
-    const beanCustomization = item.customizations?.find((c: any) => c.id === 'bean_choice');
-    if (beanCustomization) {
-      beanCustomization.options = khalifaBeans;
-    }
-  });
-
   return [
-    khalifaEspresso,
+    BASE_MENU.find(c => c.id === 'espresso')!,
     {
       id: 'filter-coffee',
       title: 'Filter Coffee',
@@ -1753,7 +1658,7 @@ const createAlQanaMenu = (): MenuCategory[] => {
         { id: 'sw_tuna', name: 'Tunacado', price: '38', image: 'https://iili.io/qqEgPdN.jpg', ingredients: 'Toasted Brown slice bread with pesto oil, avocado, tuna mix, tomato, and jalapeños.', calories: 480 },
         { id: 'sw_club', name: 'Cartel Club Sandwich', price: '38', image: 'https://iili.io/qqEPTpS.jpg', ingredients: 'White sliced bread, chipotle mayo, cheddar, lettuce, gherkins, tomato, bacon, smoked turkey, and homemade chips.', calories: 600 },
         { id: 'sw_brisket', name: 'Brisket Blaze', price: '45', image: 'https://iili.io/qqERigt.jpg', ingredients: 'Toasted brown sliced bread stacked with smoked brisket, aged white cheddar, Dijon mayo, tangy relish, and finished with a perfectly burnt matured white cheddar cheese for added flavor.', calories: 650 },
-        { id: 'sw_chick', name: 'Chicken & Avocado Croissant', price: '42', image: 'https://iili.io/qqGn1cb.jpg', ingredients: 'Grilled chicken, fresh avocado, croissant', calories: 520 },
+        { id: 'sw_chick', name: 'Chicken Avocado Croissant', price: '35', image: 'https://iili.io/qqG2qR1.png', ingredients: 'A buttery, toasted kalonji-seed square croissant filled with tender grilled chicken and fresh avocado slices. Layered with crisp Lollo Bionda, sun-dried tomatoes, and shaved Grano Padano cheese. Finished with a house-made Caesar dressing and a fragrant drizzle of pesto oil.', calories: 520, branch: 'Al Qana' },
         { id: 'sw_shrimp', name: 'Shrimp Toast', price: '35', image: 'https://iili.io/qqEYw12.jpg', ingredients: 'Sautéed shrimp on brioche toast', calories: 420 },
         { id: 'sw_bacon', name: 'Bacon & Egg Cheese Bun', price: '44', image: 'https://iili.io/qqEAsNj.jpg', ingredients: 'Brioche bun with crispy bacon, scrambled egg, cheddar cheese, kimchi ketchup.', calories: 550 },
       ]
@@ -1776,6 +1681,7 @@ const createAlQanaMenu = (): MenuCategory[] => {
       title: 'Desserts',
       items: [
         findItem('desserts', 'd_aseeda')!,
+        { id: 'd_french_toast', name: 'French Toast', price: '66', image: 'https://iili.io/fUBoGzx.png', ingredients: 'Caramelized and served with vanilla ice cream, almond streusel, whipped vanilla cream, and rhubarb compote (option salted caramel, mix berries compote on the side)', branch: 'Al Qana' },
         { id: 'd_peanut', name: 'Peanut Choco Tart', price: '39.20', image: 'https://iili.io/qqXGUIR.png', ingredients: 'Rich chocolate tart with peanut butter', calories: 480 },
         { id: 'd_honey', name: 'Honey Cake', price: '39.20', image: 'https://iili.io/qqXWIea.png', ingredients: 'Layers of honey sponge and cream', calories: 450 },
         findItem('desserts', 'd_san_seb')!,
@@ -1791,6 +1697,7 @@ const createAlQanaMenu = (): MenuCategory[] => {
       title: 'Eggs & More',
       items: [
         { id: 'egg_big', name: 'Big Breakfast Homemade', price: '65', image: 'https://iili.io/qqVHZ1R.png', ingredients: 'hash brown potatoes, red beans, sautéed portobello mushrooms, wagyu beef sausage, smoked veal bacon, roasted vine tomatoes, two sunny side up eggs on a slice of brioche bread, (eggs your way: scrambled, poached, sunny side up).', calories: 850 },
+        { id: 'egg_benedict', name: 'Egg Benedict', price: '46', image: 'https://iili.io/qqGfw3x.jpg', ingredients: 'English muffins with cream cheese, tomato sauce, smoky bacon, poached eggs, miso hollandaise', branch: 'Al Qana' },
         { id: 'egg_avo', name: 'Avocado Toast', price: '45', image: 'https://iili.io/qqGqaMg.jpg', ingredients: 'Sourdough with smashed avocado, whipped feta, Pico de Gallo, pine nuts, parmesan, coriander, dill leaves, mix sesame seeds, lime wedges, chili flakes, dukka, and poached egg.', calories: 380 },
         { id: 'egg_cro', name: 'EGG & AVO CROISSANT', price: '48', image: 'https://iili.io/qqXARp9.jpg', ingredients: 'Plain croissant, cream cheese mix, smashed avocado, tomato sauce, poached eggs sprinkled with pumpkin seeds and mix sesame seeds.', calories: 490 },
         { id: 'egg_aussie', name: 'Aussie Benedict', price: '58', image: 'https://iili.io/qqMpPzG.png', ingredients: 'brioche bun with white barbecue sauce, pulled beef, 2 poached eggs, miso hollandaise, crispy onions & spring roll, chives.', calories: 580 },

@@ -86,26 +86,53 @@ const App: React.FC = () => {
   }, [isAdminMode, activeBranch]);
 
   const filteredCategories = useMemo(() => {
-    const mergedCategories = currentBranchMenu.map(cat => ({
-      ...cat,
-      items: cat.items.map(item => ({
+    const processCategory = (cat: MenuCategory): MenuCategory => {
+      const processedItems = cat.items.map(item => ({
         ...item,
         isSoldOut: inventoryStatus[item.id] !== undefined 
           ? inventoryStatus[item.id] 
           : item.isSoldOut
-      }))
-    }));
+      }));
+      
+      const processedSubCategories = cat.subCategories?.map(processCategory);
+      
+      return {
+        ...cat,
+        items: processedItems,
+        subCategories: processedSubCategories
+      };
+    };
+
+    const mergedCategories = currentBranchMenu.map(processCategory);
 
     if (!searchQuery.trim()) return mergedCategories;
 
     const query = searchQuery.toLowerCase();
-    return mergedCategories.map(cat => ({
-      ...cat,
-      items: cat.items.filter(item => 
+    
+    const filterCategory = (cat: MenuCategory): MenuCategory | null => {
+      const filteredItems = cat.items.filter(item => 
         item.name.toLowerCase().includes(query) || 
         item.ingredients.toLowerCase().includes(query)
-      )
-    })).filter(cat => cat.items.length > 0);
+      );
+      
+      const filteredSubCategories = cat.subCategories
+        ?.map(filterCategory)
+        .filter((c): c is MenuCategory => c !== null) || [];
+        
+      if (filteredItems.length === 0 && filteredSubCategories.length === 0) {
+        return null;
+      }
+      
+      return {
+        ...cat,
+        items: filteredItems,
+        subCategories: filteredSubCategories
+      };
+    };
+
+    return mergedCategories
+      .map(filterCategory)
+      .filter((c): c is MenuCategory => c !== null);
   }, [searchQuery, inventoryStatus, currentBranchMenu]);
 
   const handleCardAdd = (item: MenuItem) => {
@@ -141,16 +168,10 @@ const App: React.FC = () => {
   }
 
   return (
-    <div className={`min-h-screen font-sans selection:bg-white selection:text-black overflow-x-hidden relative text-white bg-black`}>
+    <div className={`min-h-screen font-sans selection:bg-[var(--text-primary)] selection:text-[var(--bg-primary)] overflow-x-hidden relative text-[var(--text-primary)] bg-[var(--bg-primary)] transition-colors duration-500`}>
       
-      {/* Background: Pure Black with very subtle grain if desired, but kept minimal for Luxury B&W */}
-      <div className="fixed inset-0 pointer-events-none opacity-[0.05]"
-           style={{
-             backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
-             zIndex: 0
-           }}
-      />
-
+      {/* Background: Pure Black (Noise removed as per request for Solid Hex #000000) */}
+      
       {/* 2. MAIN APP CONTENT */}
       {activeBranch && (
         <div className="animate-in fade-in slide-in-from-bottom-2 duration-700 relative z-10">
@@ -187,8 +208,8 @@ const App: React.FC = () => {
               
               {searchQuery && (
                 <div className="text-center mb-16 space-y-2">
-                  <p className="text-neutral-500 uppercase tracking-widest text-xs">Searching for</p>
-                  <h2 className="text-3xl font-didone text-white">"{searchQuery}"</h2>
+                  <p className="text-[var(--text-secondary)] uppercase tracking-widest text-xs">Searching for</p>
+                  <h2 className="text-3xl menu-heading text-[var(--text-primary)]">"{searchQuery}"</h2>
                 </div>
               )}
 
@@ -196,33 +217,53 @@ const App: React.FC = () => {
               <div className="space-y-32">
                 {filteredCategories.length === 0 ? (
                   <div className="text-center py-20">
-                    <p className="text-neutral-500 text-lg font-light">No items found.</p>
-                    <button onClick={() => setSearchQuery('')} className="mt-4 text-white underline underline-offset-4 hover:text-neutral-300">View Menu</button>
+                    <p className="text-[var(--text-secondary)] text-lg font-light">No items found.</p>
+                    <button onClick={() => setSearchQuery('')} className="mt-4 text-[var(--text-primary)] underline underline-offset-4 hover:text-[var(--text-secondary)]">View Menu</button>
                   </div>
                 ) : (
                   filteredCategories.map((category) => (
                     <section key={category.id} id={category.id} className="scroll-mt-48">
                       <div className="flex flex-col items-center mb-12">
-                        <h2 className="text-3xl md:text-4xl font-didone font-medium text-white tracking-widest border-b border-white/20 pb-4 px-8">
+                        <h2 className="text-3xl md:text-4xl menu-heading text-[var(--text-primary)] tracking-widest border-b border-[var(--border-color)] pb-4 px-8">
                           {category.title}
                         </h2>
                         {category.description && (
-                          <div className="mt-6 max-w-2xl text-center text-neutral-400 text-sm leading-relaxed whitespace-pre-wrap font-light tracking-wide">
+                          <div className="mt-6 max-w-2xl text-center text-[var(--text-secondary)] text-sm leading-relaxed whitespace-pre-wrap font-light tracking-wide">
                             {category.description}
                           </div>
                         )}
                       </div>
                     
-                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {category.items.map((item, index) => (
-                          <FlipCard 
-                            key={item.id} 
-                            item={item} 
-                            onAdd={handleCardAdd}
-                            index={index}
-                          />
-                        ))}
-                      </div>
+                      {category.items.length > 0 && (
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+                          {category.items.map((item, index) => (
+                            <FlipCard 
+                              key={item.id} 
+                              item={item} 
+                              onAdd={handleCardAdd}
+                              index={index}
+                            />
+                          ))}
+                        </div>
+                      )}
+
+                      {category.subCategories && category.subCategories.map(sub => (
+                         <div key={sub.id} className="mb-12">
+                           <h3 className="text-2xl menu-heading text-[var(--text-primary)] mb-8 text-center border-b border-[var(--border-color)] pb-2 inline-block px-8 opacity-80">
+                             {sub.title}
+                           </h3>
+                           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                             {sub.items.map((item, index) => (
+                               <FlipCard 
+                                 key={item.id} 
+                                 item={item} 
+                                 onAdd={handleCardAdd}
+                                 index={index}
+                               />
+                             ))}
+                           </div>
+                         </div>
+                      ))}
                     </section>
                   ))
                 )}
@@ -244,13 +285,13 @@ const App: React.FC = () => {
       {isLegalModalOpen && (
         <div className="fixed inset-0 z-[80] flex items-center justify-center p-4">
           <div className="absolute inset-0 bg-black/80 backdrop-blur-md" onClick={() => setIsLegalModalOpen(false)}></div>
-          <div className="relative bg-black border border-white/20 w-full max-w-lg p-8 rounded-luxury shadow-2xl animate-in fade-in zoom-in-95">
-            <button onClick={() => setIsLegalModalOpen(false)} className="absolute top-5 right-5 text-neutral-400 hover:text-white"><X size={24} /></button>
-            <h2 className="text-2xl font-didone font-bold uppercase tracking-wider mb-8 text-white text-center">Terms & Privacy</h2>
-            <div className="space-y-6 text-xs text-neutral-400 font-light leading-relaxed text-justify">
+          <div className="relative bg-[var(--bg-primary)] border border-[var(--border-color)] w-full max-w-lg p-8 rounded-luxury shadow-2xl animate-in fade-in zoom-in-95">
+            <button onClick={() => setIsLegalModalOpen(false)} className="absolute top-5 right-5 text-[var(--text-secondary)] hover:text-[var(--text-primary)]"><X size={24} /></button>
+            <h2 className="text-2xl font-didone font-bold uppercase tracking-wider mb-8 text-[var(--text-primary)] text-center">Terms & Privacy</h2>
+            <div className="space-y-6 text-xs text-[var(--text-secondary)] font-light leading-relaxed text-justify">
               <p>Your continued use of this platform constitutes an affirmation that you have read and agreed to be bound by these Terms.</p>
-              <div className="pt-6 border-t border-white/10 mt-6 text-center">
-                <p className="uppercase tracking-widest text-[9px] text-neutral-500 font-medium">Cartel Coffee Roasters © 2026</p>
+              <div className="pt-6 border-t border-[var(--border-color)] mt-6 text-center">
+                <p className="uppercase tracking-widest text-[9px] text-[var(--text-secondary)] font-medium">Cartel Coffee Roasters © 2026</p>
               </div>
             </div>
           </div>

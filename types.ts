@@ -51,6 +51,7 @@ export interface MenuCategory {
   title: string;
   description?: string;
   items: MenuItem[];
+  subCategories?: MenuCategory[];
 }
 
 // NEW: Dictionary type for multi-branch support

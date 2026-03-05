@@ -1,0 +1,50 @@
+:root {
+  /* Cartel Dark Mode (Default) */
+  --bg-primary: #000000;
+  --bg-secondary: #0A0A0A;
+  --text-primary: #D1D0D0;
+  --text-secondary: #A0A0A0;
+  --border-color: transparent;
+  --card-bg: #000000;
+  --accent-color: #D1D0D0;
+  --icon-color: #D1D0D0;
+  --hover-bg: rgba(209, 208, 208, 0.1);
+}
+
+body.dark-theme {
+  /* Redundant but kept for compatibility if toggled */
+  --bg-primary: #000000;
+  --bg-secondary: #0A0A0A;
+  --text-primary: #D1D0D0;
+  --text-secondary: #A0A0A0;
+  --border-color: transparent;
+  --card-bg: #000000;
+  --accent-color: #D1D0D0;
+  --icon-color: #D1D0D0;
+  --hover-bg: rgba(209, 208, 208, 0.1);
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+/* Utility classes using variables */
+.bg-theme-primary { background-color: var(--bg-primary); }
+.bg-theme-secondary { background-color: var(--bg-secondary); }
+.text-theme-primary { color: var(--text-primary); }
+.text-theme-secondary { color: var(--text-secondary); }
+.border-theme { border-color: var(--border-color); }
+.bg-theme-card { background-color: var(--card-bg); }
+.text-theme-accent { color: var(--accent-color); }
+
+/* Smooth transitions for all theme-affected properties */
+.theme-transition {
+  transition: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease, fill 0.5s ease, stroke 0.5s ease;
+}
+
+.menu-heading {
+  font-family: 'Carter One', system-ui;
+  font-weight: 400; /* Carter One only comes in 400 weight */
+}

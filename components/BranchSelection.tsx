@@ -7,16 +7,6 @@ interface BranchSelectionProps {
   onSelectBranch: (branch: Branch) => void;
 }
 
-// Manual positioning to mimic a map layout
-// These percentages are approximate to create a balanced "scattered" look
-const BRANCH_POSITIONS: Record<string, { top: string; left: string }> = {
-  'marina': { top: '35%', left: '20%' },   // Abu Dhabi - Marina (North West)
-  'albateen': { top: '48%', left: '35%' }, // Abu Dhabi - Central
-  'alqana': { top: '58%', left: '50%' },   // Abu Dhabi - South East
-  'khalifa': { top: '85%', left: '75%' },  // Abu Dhabi - Mainland
-  'mirdif': { top: '25%', left: '80%' },   // Dubai (North East)
-};
-
 const DISPLAY_NAMES: Record<string, string> = {
   'marina': 'MARINA',
   'albateen': 'AL BATEEN',
@@ -25,85 +15,192 @@ const DISPLAY_NAMES: Record<string, string> = {
   'mirdif': 'DUBAI MIRDIF',
 };
 
+// Define the order of branches for the navigation bar
+const BRANCH_ORDER = ['marina', 'albateen', 'alqana', 'khalifa', 'mirdif'];
+
 const BranchSelection: React.FC<BranchSelectionProps> = ({ onSelectBranch }) => {
   return (
-    <div className="min-h-screen bg-black text-white flex flex-col relative overflow-hidden">
+    <div className="landing-page-body">
       
-      {/* Background Texture - Subtle Noise */}
-      <div className="fixed inset-0 pointer-events-none opacity-[0.05]"
-           style={{
-             backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
-             zIndex: 0
-           }}
-      />
-
-      {/* Header */}
-      <div className="relative z-20 pt-16 pb-8 text-center space-y-3">
-        <h1 className="text-4xl md:text-6xl font-didone tracking-tight text-white">
-          CARTEL
-        </h1>
-        <p className="text-[10px] md:text-xs font-sans uppercase tracking-[0.3em] text-neutral-400">
-          we know our notes
-        </p>
-      </div>
-
-      {/* Map Area */}
-      <div className="flex-1 relative w-full max-w-5xl mx-auto">
-        {BRANCH_DATA.map((branch) => {
-          const position = BRANCH_POSITIONS[branch.id] || { top: '50%', left: '50%' };
-          const displayName = DISPLAY_NAMES[branch.id] || branch.name;
-
-          return (
-            <button
-              key={branch.id}
-              onClick={() => onSelectBranch(branch)}
-              className="absolute group flex flex-col items-center transform -translate-x-1/2 -translate-y-1/2 transition-all duration-500 hover:scale-110 hover:z-50"
-              style={{ top: position.top, left: position.left }}
-            >
-              {/* Glowing Pin Icon */}
-              <div className="relative mb-3">
-                {/* Glow Effect */}
-                <div className="absolute inset-0 bg-white rounded-full blur-md opacity-20 group-hover:opacity-50 animate-pulse"></div>
-                
-                {/* Pin Shape */}
-                <div className="relative z-10 text-white drop-shadow-[0_0_8px_rgba(255,255,255,0.6)]">
-                   <MapPin 
-                    size={32} 
-                    fill="currentColor" 
-                    fillOpacity={0.1}
-                    strokeWidth={1.5}
-                   />
-                </div>
-
-                {/* Concentric Ripples (CSS) */}
-                <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-8 h-2 bg-white/20 rounded-full blur-sm"></div>
-              </div>
-              
-              {/* Label */}
-              <div className="
-                bg-black/80 backdrop-blur-md 
-                border border-white/20 
-                px-4 py-1.5 
-                rounded-[20px]
-                shadow-[0_4px_20px_rgba(0,0,0,0.5)]
-                group-hover:border-white/50 group-hover:shadow-[0_0_15px_rgba(255,255,255,0.2)]
-                transition-all duration-300
-              ">
-                <span className="text-[10px] md:text-xs font-sans font-medium text-white tracking-widest whitespace-nowrap">
-                  {displayName}
-                </span>
-              </div>
-            </button>
-          );
-        })}
+      {/* Main Content Area */}
+      <div className="content-wrapper">
+        <h1 className="brand-title">CARTEL</h1>
+        <p className="brand-subtitle">WE KNOW OUR NOTES</p>
+        
+        {/* Branch Navigation Buttons */}
+        <div className="branch-nav-container">
+          {BRANCH_ORDER.map((branchId) => {
+            const branch = BRANCH_DATA.find(b => b.id === branchId);
+            if (!branch) return null;
+            
+            const displayName = DISPLAY_NAMES[branchId] || branch.name;
+            
+            return (
+              <button 
+                key={branchId}
+                onClick={() => onSelectBranch(branch)}
+                className="branch-pill-btn"
+              >
+                <MapPin className="btn-icon" strokeWidth={1.5} />
+                <span className="btn-text">{displayName}</span>
+              </button>
+            );
+          })}
+        </div>
       </div>
 
       {/* Footer */}
-      <div className="relative z-20 pb-8 text-center">
-        <p className="text-[9px] text-neutral-700 uppercase tracking-widest">
-          Est. 2024 • Abu Dhabi • Dubai
-        </p>
+      <div className="footer-container">
+        <p>EST. 2024 • ABU DHABI • DUBAI</p>
       </div>
+
+      <style>{`
+        /* 
+          ========================================
+          CSS STYLES
+          ========================================
+        */
+
+        /* Body Background */
+        .landing-page-body {
+          background-color: #000000;
+          background-image: radial-gradient(circle at center, #1a1a1a 0%, #000000 100%);
+          min-height: 100vh;
+          width: 100vw;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          overflow: hidden;
+          position: relative;
+          font-family: 'Inter', sans-serif;
+        }
+
+        .content-wrapper {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: 2rem;
+          z-index: 10;
+          width: 100%;
+          max-width: 1200px;
+          padding: 0 20px;
+        }
+
+        .brand-title {
+          font-family: 'Playfair Display', serif;
+          font-size: 5rem;
+          color: #FFFFFF;
+          letter-spacing: 0.1em;
+          margin: 0;
+          font-weight: 700;
+          line-height: 1;
+          text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+        }
+
+        .brand-subtitle {
+          font-family: 'Inter', sans-serif;
+          font-size: 1rem;
+          color: #FFFFFF;
+          letter-spacing: 0.4em;
+          text-transform: uppercase;
+          margin: 0;
+          font-weight: 400;
+          opacity: 0.9;
+        }
+
+        /* Branch Navigation */
+        .branch-nav-container {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 1.5rem;
+          margin-top: 3rem;
+          flex-wrap: wrap;
+        }
+
+        .branch-pill-btn {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: 0.5rem;
+          background: rgba(255, 255, 255, 0.05);
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          border-radius: 9999px; /* Pill shape */
+          padding: 1.5rem 2rem;
+          min-width: 160px;
+          cursor: pointer;
+          transition: all 0.4s ease;
+          box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+
+        .branch-pill-btn:hover {
+          background: rgba(255, 255, 255, 0.15);
+          box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+          transform: translateY(-5px);
+          border-color: rgba(255, 255, 255, 0.4);
+        }
+
+        .btn-icon {
+          color: #FFFFFF;
+          width: 24px;
+          height: 24px;
+          opacity: 0.9;
+        }
+
+        .btn-text {
+          font-family: 'Playfair Display', serif;
+          font-size: 0.9rem;
+          color: #FFFFFF;
+          letter-spacing: 0.1em;
+          text-transform: uppercase;
+          font-weight: 600;
+        }
+
+        /* Footer */
+        .footer-container {
+          position: absolute;
+          bottom: 30px;
+          z-index: 20;
+          text-align: center;
+          width: 100%;
+          color: #FFFFFF;
+          font-size: 0.7rem;
+          letter-spacing: 0.2em;
+          text-transform: uppercase;
+          font-weight: 400;
+          opacity: 0.4;
+        }
+
+        /* Responsiveness */
+        @media (max-width: 768px) {
+          .brand-title {
+            font-size: 3rem;
+          }
+          
+          .brand-subtitle {
+            font-size: 0.8rem;
+            letter-spacing: 0.2em;
+          }
+
+          .branch-nav-container {
+            flex-direction: column;
+            gap: 1rem;
+            width: 100%;
+          }
+
+          .branch-pill-btn {
+            width: 100%;
+            flex-direction: row; /* Horizontal on mobile for better space usage */
+            padding: 1rem;
+            min-width: auto;
+            justify-content: flex-start;
+            padding-left: 2rem;
+          }
+        }
+      `}</style>
     </div>
   );
 };

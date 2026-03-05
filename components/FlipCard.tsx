@@ -38,10 +38,10 @@ const FlipCard: React.FC<FlipCardProps> = ({ item, onAdd, index = 0 }) => {
         `}
       </style>
       <div 
-        className={`group relative w-full h-[450px] flex flex-col bg-black rounded-[30px] overflow-hidden transition-all duration-500 ease-luxury border border-white/20
+        className={`group relative w-full h-[450px] flex flex-col bg-[var(--card-bg)] rounded-[30px] overflow-hidden transition-all duration-500 ease-luxury border border-[var(--border-color)]
         ${item.isSoldOut 
             ? 'grayscale opacity-60 pointer-events-none' 
-            : 'hover:border-white hover:-translate-y-1'
+            : 'hover:border-[var(--text-primary)] hover:-translate-y-1'
         }`}
         style={{
           animation: `fadeUpIn 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards`,
@@ -51,7 +51,7 @@ const FlipCard: React.FC<FlipCardProps> = ({ item, onAdd, index = 0 }) => {
       >
           {/* Badge */}
           {item.badge && !item.isSoldOut && (
-             <div className="absolute top-4 left-4 z-20 bg-white text-black px-3 py-1 rounded-sm shadow-md">
+             <div className="absolute top-4 left-4 z-20 bg-[var(--text-primary)] text-[var(--bg-primary)] px-3 py-1 rounded-sm shadow-md">
                <span className="text-[9px] font-bold uppercase tracking-[0.2em] leading-none">{item.badge}</span>
              </div>
           )}
@@ -65,7 +65,7 @@ const FlipCard: React.FC<FlipCardProps> = ({ item, onAdd, index = 0 }) => {
           </button>
           
           {/* Image Container */}
-          <div className="h-[55%] w-full relative overflow-hidden bg-black">
+          <div className="h-[55%] w-full relative overflow-hidden bg-[var(--bg-secondary)]">
               {item.image ? (
                  <img 
                    src={item.image} 
@@ -79,16 +79,16 @@ const FlipCard: React.FC<FlipCardProps> = ({ item, onAdd, index = 0 }) => {
                   </div>
               )}
               {/* Subtle Gradient Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[var(--card-bg)] via-transparent to-transparent opacity-90" />
           </div>
 
           {/* Content */}
-          <div className="flex-1 flex flex-col p-6 relative -mt-8 bg-black rounded-t-2xl border-t border-white/10">
+          <div className="flex-1 flex flex-col p-6 relative -mt-8 bg-[var(--card-bg)] rounded-t-2xl border-t border-[var(--border-color)]">
               <div className="flex justify-between items-start mb-2">
-                 <h3 className="text-lg font-didone font-bold text-white tracking-wide leading-tight pr-2">
+                 <h3 className="text-lg font-didone font-bold text-[var(--text-primary)] tracking-wide leading-tight pr-2">
                    {item.name}
                  </h3>
-                 <div className="flex items-center gap-1 pt-1 shrink-0 text-white">
+                 <div className="flex items-center gap-1 pt-1 shrink-0 text-[var(--text-primary)]">
                     <CurrencySymbol className="w-3.5 h-3.5" strokeWidth={2.5} />
                     <span className="text-lg font-bold leading-none font-sans">{item.price}</span>
                  </div>
@@ -101,7 +101,7 @@ const FlipCard: React.FC<FlipCardProps> = ({ item, onAdd, index = 0 }) => {
                    {item.tags && item.tags.length > 0 && (
                       <div className="flex gap-2 mb-1">
                         {item.tags.map(tag => (
-                          <span key={tag} className="bg-[#FFD700] text-black text-[8px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-sm">
+                          <span key={tag} className="bg-[var(--accent-color)] text-[var(--bg-primary)] text-[8px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-sm">
                             {tag}
                           </span>
                         ))}
@@ -109,40 +109,40 @@ const FlipCard: React.FC<FlipCardProps> = ({ item, onAdd, index = 0 }) => {
                    )}
 
                    {/* Origin & Farm */}
-                   <div className="text-[10px] uppercase tracking-widest text-[#FFD700] font-bold">
-                      {item.origin} {item.farm && <span className="text-neutral-500">• {item.farm}</span>}
+                   <div className="text-[10px] uppercase tracking-widest text-[var(--accent-color)] font-bold">
+                      {item.origin} {item.farm && <span className="text-[var(--text-secondary)]">• {item.farm}</span>}
                    </div>
 
                    {/* Tasting Notes */}
                    {item.tastingNotes && (
-                     <p className="text-sm text-white font-didone italic leading-relaxed">
+                     <p className="text-sm text-[var(--text-primary)] font-didone italic leading-relaxed">
                        "{item.tastingNotes}"
                      </p>
                    )}
 
                    {/* Tech Specs */}
-                   <div className="flex flex-wrap gap-3 text-[9px] uppercase tracking-wider text-neutral-500 border-t border-white/10 pt-3 mt-auto mb-2">
-                      {item.process && <span>Process: <span className="text-neutral-300">{item.process}</span></span>}
-                      {item.elevation && <span className="border-l border-white/20 pl-3">Elev: <span className="text-neutral-300">{item.elevation}</span></span>}
+                   <div className="flex flex-wrap gap-3 text-[9px] uppercase tracking-wider text-[var(--text-secondary)] border-t border-[var(--border-color)] pt-3 mt-auto mb-2">
+                      {item.process && <span>Process: <span className="text-[var(--text-primary)] opacity-80">{item.process}</span></span>}
+                      {item.elevation && <span className="border-l border-[var(--border-color)] pl-3">Elev: <span className="text-[var(--text-primary)] opacity-80">{item.elevation}</span></span>}
                    </div>
 
                    {/* Brewing Method */}
-                   <p className="text-[9px] text-neutral-600 font-sans uppercase tracking-wider mb-4">
+                   <p className="text-[9px] text-[var(--text-secondary)] font-sans uppercase tracking-wider mb-4">
                       {item.ingredients}
                    </p>
                 </div>
               ) : (
                 /* Standard Description */
-                <p className="text-xs text-neutral-400 font-sans font-medium leading-relaxed line-clamp-3 mb-6">
+                <p className="text-xs text-[var(--text-secondary)] font-sans font-medium leading-relaxed line-clamp-3 mb-6">
                     {item.ingredients}
                 </p>
               )}
 
               {/* Footer Actions */}
-              <div className="mt-auto pt-4 border-t border-white/10 flex items-center justify-between min-h-[50px]">
+              <div className="mt-auto pt-4 border-t border-[var(--border-color)] flex items-center justify-between min-h-[50px]">
                   <div className="flex items-center gap-2">
                      {item.calories && (
-                       <div className="flex items-center gap-1.5 text-neutral-500">
+                       <div className="flex items-center gap-1.5 text-[var(--text-secondary)]">
                           <Flame size={12} />
                           <span className="text-[10px] font-medium uppercase tracking-widest font-sans">Est. {item.calories}</span>
                        </div>
@@ -154,7 +154,7 @@ const FlipCard: React.FC<FlipCardProps> = ({ item, onAdd, index = 0 }) => {
                         onClick={handleAddClick}
                         className={`
                         h-9 px-5 rounded-full flex items-center justify-center transition-all duration-300 
-                        bg-white text-black hover:bg-neutral-300 hover:scale-105 active:scale-95 cursor-pointer border border-transparent
+                        bg-[var(--text-primary)] text-[var(--bg-primary)] hover:opacity-80 hover:scale-105 active:scale-95 cursor-pointer border border-transparent
                         `}
                     >
                         {hasVariants ? <SlidersHorizontal size={14} /> : <Plus size={16} />}

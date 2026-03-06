@@ -48,10 +48,21 @@ export interface MenuItem {
   status?: 'Available' | 'Coming Soon' | 'Sold Out';
 }
 
+export interface BeanSelectionItem {
+  id: string;
+  name: string;
+  notes: string;
+  price?: number;
+  isNew?: boolean;
+  isDecaf?: boolean;
+}
+
 export interface MenuCategory {
   id: string;
   title: string;
   description?: string;
+  headerStyle?: { [key: string]: string | number };
+  beanSelection?: BeanSelectionItem[];
   items: MenuItem[];
   subCategories?: MenuCategory[];
 }

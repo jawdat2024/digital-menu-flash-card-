@@ -224,13 +224,67 @@ const App: React.FC = () => {
                   filteredCategories.map((category) => (
                     <section key={category.id} id={category.id} className="scroll-mt-48">
                       <div className="flex flex-col items-center mb-12">
-                        <h2 className="text-3xl md:text-4xl menu-heading text-[var(--text-primary)] tracking-widest border-b border-[var(--border-color)] pb-4 px-8">
+                        <h2 
+                          className="text-3xl md:text-4xl menu-heading text-[var(--text-primary)] tracking-widest border-b border-[var(--border-color)] pb-4 px-8"
+                          style={category.headerStyle as React.CSSProperties}
+                        >
                           {category.title}
                         </h2>
-                        {category.description && (
-                          <div className="mt-6 max-w-2xl text-center text-[var(--text-secondary)] text-sm leading-relaxed whitespace-pre-wrap font-light tracking-wide">
-                            {category.description}
+                        
+                        {category.beanSelection ? (
+                          <div className="mt-16 w-full max-w-7xl mx-auto px-4">
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                              {category.beanSelection.map((bean, index) => (
+                                <div 
+                                  key={bean.id}
+                                  className="relative group flex flex-col justify-between p-8 bg-[#1a1a1a] rounded-3xl border border-white/5 shadow-2xl hover:border-[#fbbf24]/20 transition-all duration-500 overflow-hidden min-h-[320px]"
+                                >
+                                  {/* Soft Studio Lighting Effect */}
+                                  <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+                                  
+                                  {/* Top Badge Area */}
+                                  <div className="flex justify-between items-start w-full mb-6 relative z-10 h-8">
+                                    {bean.isNew && (
+                                      <span className="px-3 py-1 bg-gradient-to-r from-[#fbbf24] to-[#d97706] text-slate-900 text-[10px] font-bold uppercase tracking-widest rounded-sm shadow-lg animate-pulse">
+                                        New
+                                      </span>
+                                    )}
+                                    {bean.price > 0 && (
+                                      <div className="absolute top-0 right-0 w-12 h-12 rounded-full border border-[#fbbf24] flex items-center justify-center bg-[#1a1a1a] shadow-[0_0_15px_rgba(251,191,36,0.1)]">
+                                        <span className="text-[#fbbf24] text-[10px] font-bold tracking-tighter leading-none text-center">
+                                          +{bean.price}<br/>AED
+                                        </span>
+                                      </div>
+                                    )}
+                                  </div>
+
+                                  {/* Content */}
+                                  <div className="flex flex-col items-center text-center space-y-4 relative z-10 flex-grow justify-center">
+                                    <h4 className="text-2xl font-sans font-medium text-white tracking-wide leading-tight">
+                                      {bean.name}
+                                    </h4>
+                                    
+                                    <div className="w-8 h-[1px] bg-[#fbbf24]/30 my-2" />
+
+                                    <p className="text-slate-400 text-sm font-light leading-relaxed tracking-wide max-w-[200px]">
+                                      {bean.notes}
+                                    </p>
+                                  </div>
+
+                                  {/* Bottom Indicator (Optional, adds to tablet feel) */}
+                                  <div className="mt-6 flex justify-center opacity-20 group-hover:opacity-100 transition-opacity duration-500">
+                                    <div className="w-12 h-1 rounded-full bg-white/10" />
+                                  </div>
+                                </div>
+                              ))}
+                            </div>
                           </div>
+                        ) : (
+                          category.description && (
+                            <div className="mt-6 max-w-2xl text-center text-[var(--text-secondary)] text-sm leading-relaxed whitespace-pre-wrap font-light tracking-wide">
+                              {category.description}
+                            </div>
+                          )
                         )}
                       </div>
                     

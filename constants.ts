@@ -997,8 +997,59 @@ const createMirdifMenu = (): MenuCategory[] => {
     return cat?.items.find(i => i.id === itemId);
   };
 
+  // Custom Espresso Category for Mirdif
+  const baseEspresso = BASE_MENU.find(c => c.id === 'espresso');
+  const mirdifEspresso = JSON.parse(JSON.stringify(baseEspresso));
+
+  mirdifEspresso.title = 'MIRDIF ESPRESSO SELECTION';
+  mirdifEspresso.headerStyle = {
+    backgroundColor: 'transparent',
+    color: '#fbbf24', // Gold
+    padding: '1rem 0',
+    textAlign: 'center',
+    fontFamily: 'serif',
+    letterSpacing: '0.2em',
+    fontSize: '2.5rem',
+    borderBottom: 'none'
+  };
+
+  const mirdifBeans = [
+    {
+      id: 'bean_blind',
+      name: 'BLIND 469',
+      notes: 'Apricot Jam, White Chocolate, Jaggery',
+      price: 0,
+      isNew: false
+    },
+    {
+      id: 'bean_amazonic',
+      name: 'Amazonic Soul',
+      notes: 'Dark Chocolate, Roasted Hazelnut, Caramel',
+      price: 1,
+      isNew: false
+    },
+    {
+      id: 'bean_yemen',
+      name: 'Yemen - Sharki Haraz',
+      notes: 'Chestnut, Cola, Red Grape',
+      price: 10,
+      isNew: false
+    },
+    {
+      id: 'bean_decaf',
+      name: 'Colombia Sweet Dreams (Decaf)',
+      notes: 'Molasses, Dried Apricot, Pecan Nuts',
+      price: 0,
+      isNew: false,
+      isDecaf: true
+    }
+  ];
+
+  mirdifEspresso.beanSelection = mirdifBeans;
+  mirdifEspresso.description = '';
+
   return [
-    BASE_MENU.find(c => c.id === 'espresso')!,
+    mirdifEspresso,
     {
       id: 'breakfast',
       title: 'Breakfast & Mains',
@@ -1047,7 +1098,7 @@ const createMirdifMenu = (): MenuCategory[] => {
         findItem('desserts', 'MUHALABIYA')!, // Muhalabiya
         findItem('desserts', 'd_aseeda')!, // Aseeda
         findItem('desserts', 'd_san_seb')!, // San Sebastián
-        { ...findItem('desserts', 'd_crepe_rolls')!, status: 'Coming Soon' }, // Crepe Rolls
+        { ...findItem('desserts', 'd_crepe_rolls')!, status: 'Coming Soon' as const }, // Crepe Rolls
         { id: 'd_honey', name: 'Honeycake', price: '39.20', image: 'https://iili.io/qqXWIea.png', ingredients: 'Layers of honey sponge and cream', calories: 450 }, // Honeycake
         { id: 'd_tiramisu', name: 'Tiramisu', price: '39.20', image: 'https://iili.io/qnnTv0G.png', ingredients: 'Classic Italian dessert with coffee', calories: 400 }, // Tiramisu
         findItem('desserts', 'STICKY DATE')!, // Sticky dates
@@ -1133,8 +1184,74 @@ const createAlBateenMenu = (): MenuCategory[] => {
     return cat?.items.find(i => i.id === itemId);
   };
 
+  // Custom Espresso Category for Al Bateen
+  const baseEspresso = BASE_MENU.find(c => c.id === 'espresso');
+  const alBateenEspresso = JSON.parse(JSON.stringify(baseEspresso));
+
+  alBateenEspresso.title = 'AL BATEEN ESPRESSO SELECTION';
+  alBateenEspresso.headerStyle = {
+    backgroundColor: 'transparent',
+    color: '#fbbf24', // Gold
+    padding: '1rem 0',
+    textAlign: 'center',
+    fontFamily: 'serif',
+    letterSpacing: '0.2em',
+    fontSize: '2.5rem',
+    borderBottom: 'none'
+  };
+
+  // Define Custom Beans
+  const alBateenBeans = [
+    {
+      id: 'bean_brazil_amazonic',
+      name: 'BRAZIL AMAZONIC SOUL',
+      notes: 'Dark Chocolate, Roasted Hazelnut, Caramel',
+      price: 1,
+      isNew: false
+    },
+    {
+      id: 'bean_kenya_gichatha',
+      name: 'KENYA GICHATHA',
+      notes: 'Caramel, Cacao Nibs, Black Cherry',
+      price: 1,
+      isNew: true
+    },
+    {
+      id: 'bean_coconutella',
+      name: 'COCONUTELLA',
+      notes: 'Coconut Cream, Milk Chocolate, Toffee Caramel',
+      price: 5,
+      isNew: false
+    },
+    {
+      id: 'bean_colombia_decaf',
+      name: 'COLOMBIA SWEET DREAMS (DECAF)',
+      notes: 'Molasses, Dried Apricot, Pecan Nuts',
+      price: 0,
+      isNew: false,
+      isDecaf: true
+    }
+  ];
+
+  alBateenEspresso.beanSelection = alBateenBeans;
+  alBateenEspresso.description = '';
+
+  // Update all items to use these beans
+  alBateenEspresso.items.forEach((item: any) => {
+    const beanCustomization = item.customizations?.find((c: any) => c.id === 'bean_choice');
+    if (beanCustomization) {
+      beanCustomization.options = alBateenBeans.map((b: any) => ({
+        id: b.id,
+        name: b.name,
+        price: b.price,
+        description: b.notes
+      }));
+    }
+    item.branch = 'Al Bateen';
+  });
+
   return [
-    BASE_MENU.find(c => c.id === 'espresso')!,
+    alBateenEspresso,
 
     {
       id: 'filter-coffee',
@@ -1266,7 +1383,7 @@ const createAlBateenMenu = (): MenuCategory[] => {
       id: 'desserts',
       title: 'Desserts',
       items: [
-        { ...findItem('desserts', 'd_crepe_rolls')!, status: 'Coming Soon' },
+        { ...findItem('desserts', 'd_crepe_rolls')!, status: 'Coming Soon' as const },
         findItem('desserts', 'd_aseeda')!,
         { id: 'd_honey', name: 'Honey Cake', price: '39.20', image: 'https://iili.io/qqXWIea.png', ingredients: 'Layers of honey sponge and cream', calories: 450 },
         { id: 'd_peanut', name: 'Peanut Choco Tart', price: '39.20', image: 'https://iili.io/qqXGUIR.png', ingredients: 'Rich chocolate tart with peanut butter', calories: 480 },
@@ -1346,8 +1463,72 @@ const createKhalifaMenu = (): MenuCategory[] => {
     return cat?.items.find(i => i.id === itemId);
   };
 
+  // Custom Espresso Category for Khalifa
+  const baseEspresso = BASE_MENU.find(c => c.id === 'espresso');
+  const khalifaEspresso = JSON.parse(JSON.stringify(baseEspresso));
+
+  khalifaEspresso.title = 'KHALIFA ESPRESSO SELECTION';
+  khalifaEspresso.headerStyle = {
+    backgroundColor: 'transparent',
+    color: '#fbbf24', // Gold
+    padding: '1rem 0',
+    textAlign: 'center',
+    fontFamily: 'serif',
+    letterSpacing: '0.2em',
+    fontSize: '2.5rem',
+    borderBottom: 'none'
+  };
+
+  const khalifaBeans = [
+    {
+      id: 'bean_brazil_amazonic',
+      name: 'BRAZIL AMAZONIC SOUL',
+      notes: 'Dark chocolate, Roasted hazelnut, Caramel',
+      price: 1,
+      isNew: false
+    },
+    {
+      id: 'bean_yemen_sharqi',
+      name: 'YEMEN SHARQI',
+      notes: 'Chestnut, Cola, Red grape',
+      price: 10,
+      isNew: false
+    },
+    {
+      id: 'bean_coconutella',
+      name: 'COCONUTELLA',
+      notes: 'Coconut cream, Milk chocolate, Toffee caramel',
+      price: 5,
+      isNew: false
+    },
+    {
+      id: 'bean_colombia_decaf',
+      name: 'COLOMBIA SWEET DREAMS – DECAF',
+      notes: 'Molasses, Dried apricot, Pecan nuts',
+      price: 0,
+      isNew: false,
+      isDecaf: true
+    }
+  ];
+
+  khalifaEspresso.beanSelection = khalifaBeans;
+  khalifaEspresso.description = '';
+
+  khalifaEspresso.items.forEach((item: any) => {
+    const beanCustomization = item.customizations?.find((c: any) => c.id === 'bean_choice');
+    if (beanCustomization) {
+      beanCustomization.options = khalifaBeans.map((b: any) => ({
+        id: b.id,
+        name: b.name,
+        price: b.price,
+        description: b.notes
+      }));
+    }
+    item.branch = 'Khalifa City';
+  });
+
   return [
-    BASE_MENU.find(c => c.id === 'espresso')!,
+    khalifaEspresso,
     {
       id: 'filter-coffee',
       title: 'Filter Coffee',
@@ -1445,7 +1626,7 @@ const createKhalifaMenu = (): MenuCategory[] => {
       id: 'desserts',
       title: 'Desserts',
       items: [
-        { ...findItem('desserts', 'd_crepe_rolls')!, status: 'Coming Soon' },
+        { ...findItem('desserts', 'd_crepe_rolls')!, status: 'Coming Soon' as const },
         findItem('desserts', 'd_aseeda')!,
         { id: 'd_honey', name: 'Honey Cake', price: '39.20', image: 'https://iili.io/qqXWIea.png', ingredients: 'Layers of honey sponge and cream', calories: 450 },
         { id: 'd_peanut', name: 'Peanut Choco Tart', price: '39.20', image: 'https://iili.io/qqXGUIR.png', ingredients: 'Rich chocolate tart with peanut butter', calories: 480 },
@@ -1548,42 +1729,64 @@ const createAlQanaMenu = (): MenuCategory[] => {
   const baseEspresso = BASE_MENU.find(c => c.id === 'espresso');
   const alQanaEspresso = JSON.parse(JSON.stringify(baseEspresso));
 
-  // Update Description
-  alQanaEspresso.description = 'Our espresso selection features four distinct profiles:\n\n• 469 Blend: Apricot Jam, White Chocolate, Jaggery\n• Brazil Amazonic Soul: Dark Chocolate, Roasted Hazelnut, Caramel\n• Yemen Sharqi Haraaz: Chestnut, Cola, Red Grape\n• Colombia Sweet Dreams Decaf: Molasses, Dried Apricot, Pecan Nuts';
+  alQanaEspresso.title = 'AL QANA ESPRESSO SELECTION';
+  alQanaEspresso.headerStyle = {
+    backgroundColor: 'transparent',
+    color: '#fbbf24', // Gold
+    padding: '1rem 0',
+    textAlign: 'center',
+    fontFamily: 'serif',
+    letterSpacing: '0.2em',
+    fontSize: '2.5rem',
+    borderBottom: 'none'
+  };
 
   // Define Custom Beans
   const alQanaBeans = [
     {
       id: 'bean_469',
       name: '469 Blend',
+      notes: 'Apricot Jam, White Chocolate, Jaggery',
       price: 0,
-      description: 'Apricot Jam, White Chocolate, Jaggery'
+      isNew: false
     },
     {
       id: 'bean_brazil',
       name: 'Brazil Amazonic Soul',
-      price: 0,
-      description: 'Dark Chocolate, Roasted Hazelnut, Caramel'
+      notes: 'Dark Chocolate, Roasted Hazelnut, Caramel',
+      price: 1,
+      isNew: false
     },
     {
       id: 'bean_yemen',
       name: 'Yemen Sharqi Haraaz',
-      price: 0,
-      description: 'Chestnut, Cola, Red Grape'
+      notes: 'Chestnut, Cola, Red Grape',
+      price: 10,
+      isNew: false
     },
     {
       id: 'bean_decaf',
       name: 'Colombia Sweet Dreams Decaf',
+      notes: 'Molasses, Dried Apricot, Pecan Nuts',
       price: 0,
-      description: 'Molasses, Dried Apricot, Pecan Nuts'
+      isNew: false,
+      isDecaf: true
     }
   ];
+
+  alQanaEspresso.beanSelection = alQanaBeans;
+  alQanaEspresso.description = '';
 
   // Update all items to use these beans
   alQanaEspresso.items.forEach((item: any) => {
     const beanCustomization = item.customizations?.find((c: any) => c.id === 'bean_choice');
     if (beanCustomization) {
-      beanCustomization.options = alQanaBeans;
+      beanCustomization.options = alQanaBeans.map((b: any) => ({
+        id: b.id,
+        name: b.name,
+        price: b.price,
+        description: b.notes
+      }));
     }
     item.branch = 'Al Qana';
   });
@@ -1762,6 +1965,78 @@ const createAlQanaMenu = (): MenuCategory[] => {
   ];
 };
 
+// Marina Specific Menu
+const createMarinaMenu = (): MenuCategory[] => {
+  // Custom Espresso Category for Marina
+  const baseEspresso = BASE_MENU.find(c => c.id === 'espresso');
+  const marinaEspresso = JSON.parse(JSON.stringify(baseEspresso));
+
+  marinaEspresso.title = 'MARINA BRANCH SELECTION';
+  marinaEspresso.headerStyle = {
+    backgroundColor: 'transparent',
+    color: '#fbbf24', // Gold
+    padding: '1rem 0',
+    textAlign: 'center',
+    fontFamily: 'serif',
+    letterSpacing: '0.2em',
+    fontSize: '2.5rem',
+    borderBottom: 'none'
+  };
+
+  // Define Custom Beans for Marina
+  const marinaBeans = [
+    {
+      id: 'bean_nicaragua',
+      name: 'Nicaragua',
+      notes: 'Milk chocolate, sugar cane, and candied peanuts',
+      price: 0,
+      isNew: false
+    },
+    {
+      id: 'bean_kenya',
+      name: 'Kenya - Gichatha',
+      notes: 'Caramel, black cherry, cacao nips',
+      price: 0,
+      isNew: true
+    },
+    {
+      id: 'bean_coconutella',
+      name: 'Coconutella',
+      notes: 'Coconut cream, milk chocolate, toffee caramel',
+      price: 5,
+      isNew: false
+    },
+    {
+      id: 'bean_colombia_decaf',
+      name: 'Colombia Sweet Dreams (Decaf)',
+      notes: 'Molasses, dried apricot, pecan nuts',
+      price: 0,
+      isNew: false,
+      isDecaf: true
+    }
+  ];
+
+  marinaEspresso.beanSelection = marinaBeans;
+  marinaEspresso.description = ''; // Clear description to use custom bean selection view
+
+  // Update all items to use these beans
+  marinaEspresso.items.forEach((item: any) => {
+    const beanCustomization = item.customizations?.find((c: any) => c.id === 'bean_choice');
+    if (beanCustomization) {
+      beanCustomization.options = marinaBeans.map((b: any) => ({
+        id: b.id,
+        name: b.name,
+        price: b.price,
+        description: b.notes
+      }));
+    }
+    item.branch = 'Marina';
+  });
+
+  // Return full menu with replaced espresso
+  return BASE_MENU.map(cat => cat.id === 'espresso' ? marinaEspresso : cat);
+};
+
 // Golden Rule Layout Helper
 const applyGoldenRuleLayout = (menu: MenuCategory[]): MenuCategory[] => {
   // Clone to avoid mutation of the original array during splice operations
@@ -1845,7 +2120,7 @@ export const BRANCH_MENUS: BranchMenuDirectory = {
   'khalifa': applyGoldenRuleLayout(createKhalifaMenu()),
 
   // Marina
-  'marina': applyGoldenRuleLayout(createStandardMenu()),
+  'marina': applyGoldenRuleLayout(createMarinaMenu()),
 
   // Al Bateen
   'albateen': applyGoldenRuleLayout(createAlBateenMenu()),

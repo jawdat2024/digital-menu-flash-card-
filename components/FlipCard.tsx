@@ -39,7 +39,7 @@ const FlipCard: React.FC<FlipCardProps> = ({ item, onAdd, index = 0 }) => {
       </style>
       <div 
         className={`group relative w-full h-[450px] flex flex-col bg-[var(--card-bg)] rounded-[30px] overflow-hidden transition-all duration-500 ease-luxury border border-[var(--border-color)]
-        ${item.isSoldOut 
+        ${(item.isSoldOut || item.status === 'Sold Out' || item.status === 'Coming Soon')
             ? 'grayscale opacity-60 pointer-events-none' 
             : 'hover:border-[var(--text-primary)] hover:-translate-y-1'
         }`}
@@ -70,7 +70,7 @@ const FlipCard: React.FC<FlipCardProps> = ({ item, onAdd, index = 0 }) => {
                  <img 
                    src={item.image} 
                    alt={item.name}
-                   className={`w-full h-full object-cover transition-transform duration-[1.5s] ease-luxury grayscale-[20%] group-hover:grayscale-0 ${!item.isSoldOut && 'group-hover:scale-105'}`}
+                   className={`w-full h-full object-cover transition-transform duration-[1.5s] ease-luxury grayscale-[20%] group-hover:grayscale-0 ${!item.isSoldOut && item.status !== 'Sold Out' && item.status !== 'Coming Soon' && 'group-hover:scale-105'}`}
                    loading="lazy"
                  />
               ) : (
@@ -78,6 +78,19 @@ const FlipCard: React.FC<FlipCardProps> = ({ item, onAdd, index = 0 }) => {
                       <span className="font-didone text-3xl text-neutral-800 font-bold tracking-widest">CARTEL</span>
                   </div>
               )}
+              
+              {/* Status Overlays */}
+              {(item.isSoldOut || item.status === 'Sold Out') && (
+                 <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px] flex items-center justify-center z-10">
+                     <span className="text-white uppercase tracking-[0.3em] font-bold border border-white/30 px-6 py-3 text-xs bg-black/50">Sold Out</span>
+                 </div>
+              )}
+              {item.status === 'Coming Soon' && (
+                 <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px] flex items-center justify-center z-10">
+                     <span className="text-white uppercase tracking-[0.3em] font-bold border border-white/30 px-6 py-3 text-xs bg-black/50">Coming Soon</span>
+                 </div>
+              )}
+
               {/* Subtle Gradient Overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-[var(--card-bg)] via-transparent to-transparent opacity-90" />
           </div>
@@ -149,7 +162,7 @@ const FlipCard: React.FC<FlipCardProps> = ({ item, onAdd, index = 0 }) => {
                      )}
                   </div>
                   
-                  {!item.isSoldOut && (
+                  {!item.isSoldOut && item.status !== 'Sold Out' && item.status !== 'Coming Soon' && (
                     <button 
                         onClick={handleAddClick}
                         className={`

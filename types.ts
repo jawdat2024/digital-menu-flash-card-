@@ -45,6 +45,7 @@ export interface MenuItem {
   tastingNotes?: string;
   tags?: string[];
   branch?: string;
+  status?: 'Available' | 'Coming Soon' | 'Sold Out';
 }
 
 export interface MenuCategory {

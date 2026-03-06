@@ -35,9 +35,16 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({ item, onAdd }) => {
              )}
              
              {/* Sold Out Overlay */}
-             {item.isSoldOut && (
+             {(item.isSoldOut || item.status === 'Sold Out') && (
                  <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px] flex items-center justify-center z-10">
                      <span className="text-white uppercase tracking-[0.3em] font-bold border border-white/30 px-6 py-3 text-xs bg-black/50">Sold Out</span>
+                 </div>
+             )}
+
+             {/* Coming Soon Overlay */}
+             {item.status === 'Coming Soon' && (
+                 <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px] flex items-center justify-center z-10">
+                     <span className="text-white uppercase tracking-[0.3em] font-bold border border-white/30 px-6 py-3 text-xs bg-black/50">Coming Soon</span>
                  </div>
              )}
              
@@ -69,8 +76,8 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({ item, onAdd }) => {
                  </div>
                  
                  <button 
-                    onClick={() => !item.isSoldOut && onAdd(item)}
-                    disabled={item.isSoldOut}
+                    onClick={() => !item.isSoldOut && item.status !== 'Sold Out' && item.status !== 'Coming Soon' && onAdd(item)}
+                    disabled={item.isSoldOut || item.status === 'Sold Out' || item.status === 'Coming Soon'}
                     className="h-12 w-12 rounded-full bg-black text-white flex items-center justify-center hover:bg-neutral-800 transition-colors shadow-lg hover:scale-105 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed group/btn"
                     aria-label="Add to order"
                 >

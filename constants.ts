@@ -154,6 +154,15 @@ const BASE_MENU: MenuCategory[] = [
         image: 'https://iili.io/q2hnbp4.png',
         calories: 600
       },
+      { 
+        id: 'd_crepe_rolls', 
+        name: 'Crepe Rolls', 
+        ingredients: 'It’s made with our signature crepe mix, crisp on the outside and delicately tender inside, filled with Valrhona Dulcey chocolate and finished with smooth milk chocolate sauce. ✨', 
+        price: '38', 
+        image: 'https://iili.io/qxFnyvt.png',
+        status: 'Coming Soon',
+        calories: 0
+      },
 
       { 
         id: 'MUHALABIYA', 
@@ -1038,6 +1047,7 @@ const createMirdifMenu = (): MenuCategory[] => {
         findItem('desserts', 'MUHALABIYA')!, // Muhalabiya
         findItem('desserts', 'd_aseeda')!, // Aseeda
         findItem('desserts', 'd_san_seb')!, // San Sebastián
+        { ...findItem('desserts', 'd_crepe_rolls')!, status: 'Coming Soon' }, // Crepe Rolls
         { id: 'd_honey', name: 'Honeycake', price: '39.20', image: 'https://iili.io/qqXWIea.png', ingredients: 'Layers of honey sponge and cream', calories: 450 }, // Honeycake
         { id: 'd_tiramisu', name: 'Tiramisu', price: '39.20', image: 'https://iili.io/qnnTv0G.png', ingredients: 'Classic Italian dessert with coffee', calories: 400 }, // Tiramisu
         findItem('desserts', 'STICKY DATE')!, // Sticky dates
@@ -1256,6 +1266,7 @@ const createAlBateenMenu = (): MenuCategory[] => {
       id: 'desserts',
       title: 'Desserts',
       items: [
+        { ...findItem('desserts', 'd_crepe_rolls')!, status: 'Coming Soon' },
         findItem('desserts', 'd_aseeda')!,
         { id: 'd_honey', name: 'Honey Cake', price: '39.20', image: 'https://iili.io/qqXWIea.png', ingredients: 'Layers of honey sponge and cream', calories: 450 },
         { id: 'd_peanut', name: 'Peanut Choco Tart', price: '39.20', image: 'https://iili.io/qqXGUIR.png', ingredients: 'Rich chocolate tart with peanut butter', calories: 480 },
@@ -1421,7 +1432,7 @@ const createKhalifaMenu = (): MenuCategory[] => {
         },
         { 
           id: 'cb_eth_guji', 
-          name: 'Ethiopia Guji - Rogicha', 
+          name: 'Ethiopia Guji - Rojicha', 
           tastingNotes: 'Apricot, Pear, Honey', 
           price: '38', 
           image: 'https://iili.io/fUAAQ07.png', 
@@ -1434,6 +1445,7 @@ const createKhalifaMenu = (): MenuCategory[] => {
       id: 'desserts',
       title: 'Desserts',
       items: [
+        { ...findItem('desserts', 'd_crepe_rolls')!, status: 'Coming Soon' },
         findItem('desserts', 'd_aseeda')!,
         { id: 'd_honey', name: 'Honey Cake', price: '39.20', image: 'https://iili.io/qqXWIea.png', ingredients: 'Layers of honey sponge and cream', calories: 450 },
         { id: 'd_peanut', name: 'Peanut Choco Tart', price: '39.20', image: 'https://iili.io/qqXGUIR.png', ingredients: 'Rich chocolate tart with peanut butter', calories: 480 },
@@ -1682,6 +1694,7 @@ const createAlQanaMenu = (): MenuCategory[] => {
       items: [
         findItem('desserts', 'd_aseeda')!,
         { id: 'd_french_toast', name: 'French Toast', price: '66', image: 'https://iili.io/fUBoGzx.png', ingredients: 'Caramelized and served with vanilla ice cream, almond streusel, whipped vanilla cream, and rhubarb compote (option salted caramel, mix berries compote on the side)', branch: 'Al Qana' },
+        { ...findItem('desserts', 'd_crepe_rolls')!, status: 'Available' },
         { id: 'd_peanut', name: 'Peanut Choco Tart', price: '39.20', image: 'https://iili.io/qqXGUIR.png', ingredients: 'Rich chocolate tart with peanut butter', calories: 480 },
         { id: 'd_honey', name: 'Honey Cake', price: '39.20', image: 'https://iili.io/qqXWIea.png', ingredients: 'Layers of honey sponge and cream', calories: 450 },
         findItem('desserts', 'd_san_seb')!,

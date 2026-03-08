@@ -1401,7 +1401,7 @@ const createAlBateenMenu = (): MenuCategory[] => {
       items: [
         { id: 'sw_bacon', name: 'Bacon & Egg Cheese Bun', price: '44', image: 'https://iili.io/qqEAsNj.jpg', ingredients: 'Brioche bun with crispy bacon, scrambled egg, cheddar cheese, kimchi ketchup.', calories: 550 },
         { id: 'sw_tuna', name: 'Tunacado', price: '38', image: 'https://iili.io/qqEgPdN.jpg', ingredients: 'Toasted Brown slice bread with pesto oil, avocado, tuna mix, tomato, and jalapeños.', calories: 480 },
-        { id: 'sw_chick', name: 'Chicken & Avocado Croissant', price: '42', image: 'https://iili.io/qqGn1cb.jpg', ingredients: 'Grilled chicken, fresh avocado, croissant', calories: 520 },
+        { id: 'sw_chick', name: 'Chicken & Avocado Croissant', price: '42', image: 'https://iili.io/qqG2qR1.png', ingredients: 'Grilled chicken, fresh avocado, croissant', calories: 520 },
         { id: 'sw_club', name: 'Cartel Club Sandwich', price: '38', image: 'https://iili.io/qqEPTpS.jpg', ingredients: 'White sliced bread, chipotle mayo, cheddar, lettuce, gherkins, tomato, bacon, smoked turkey, and homemade chips.', calories: 600 },
         { id: 'sw_brisket', name: 'Brisket Blaze', price: '45', image: 'https://iili.io/qqERigt.jpg', ingredients: 'Toasted brown sliced bread stacked with smoked brisket, aged white cheddar, Dijon mayo, tangy relish, and finished with a perfectly burnt matured white cheddar cheese for added flavor.', calories: 650 },
         { id: 'sw_italian', name: 'Cold Cut Italian', price: '48', image: 'https://iili.io/qqEieVe.png', ingredients: 'white slice bread with pesto oil, fresh mozzarella, tomato slice, tartufo salami, chorizo, baby Rocca, sun-dried tomatoes, balsamic glaze, organic olive oil.', calories: 580 },
@@ -1418,13 +1418,13 @@ const createAlBateenMenu = (): MenuCategory[] => {
         { id: 'egg_turkish', name: 'Minted yogurt', price: '46', image: 'https://iili.io/qqGBwmB.jpg', ingredients: 'homemade tomato jam, poached eggs, mint pesto, chilly butter served with 2 slices of toasted zaatar sourdough.', calories: 400 },
         { id: 'egg_aussie', name: 'Aussie Benedict', price: '58', image: 'https://iili.io/qqMpPzG.png', ingredients: 'brioche bun with white barbecue sauce, pulled beef, 2 poached eggs, miso hollandaise, crispy onions & spring roll, chives.', calories: 580 },
         { id: 'egg_cro', name: 'EGG & AVO CROISSANT', price: '38', image: 'https://iili.io/qqXARp9.jpg', ingredients: 'Plain croissant, cream cheese mix, smashed avocado, tomato sauce, poached eggs sprinkled with pumpkin seeds and mix sesame seeds.', calories: 490 },
-        { id: 'egg_nduja', name: 'Nduja Chili Scrambled Tornado Eggs', price: '52', image: 'https://iili.io/qqGClvR.jpg', ingredients: 'garlic and butter pita bread, creamy mayo, mama’s sauce, smoked yogurt, spicy beef nduja, microgreens, and a drizzle of smoked oil.', calories: 450 },
       ]
     },
     {
       id: 'signature-drinks',
       title: 'Signature Drinks',
       items: [
+        findItem('signature-drinks', 'sig1')!,
         findItem('signature-drinks', 'sig_baby_shark')!,
         findItem('signature-drinks', 'sig2')!,
         findItem('signature-drinks', 'sig_matcha_shake')!,

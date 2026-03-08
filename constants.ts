@@ -1906,6 +1906,7 @@ const createAlQanaMenu = (): MenuCategory[] => {
         findItem('desserts', 'd_vanilla_pud')!,
         findItem('desserts', 'd_choc_chip')!,
         findItem('desserts', 'MUHALABIYA')!,
+        findItem('desserts', 'd_banana_pud')!,
       ].filter(Boolean)
     },
     {

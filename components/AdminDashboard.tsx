@@ -46,7 +46,7 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ onBack, initialBranchId
   // --- New Item Form State ---
   const [newItem, setNewItem] = useState<Partial<AdminItem>>({
     name: '',
-    category: 'Signature Drinks',
+    category: 'Signature drink',
     price: 0,
     image: '',
     active: true,
@@ -168,7 +168,7 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ onBack, initialBranchId
 
     saveToStorage([itemToAdd, ...items]);
     setIsAddModalOpen(false);
-    setNewItem({ name: '', category: 'Signature Drinks', price: 0, image: '' });
+    setNewItem({ name: '', category: 'Signature drink', price: 0, image: '' });
   };
 
   const handleEndOfDay = async () => {
@@ -356,7 +356,7 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ onBack, initialBranchId
                     <td className="p-4">
                       <div className="flex items-center gap-4">
                         <div className="w-10 h-10 rounded-lg bg-neutral-800 overflow-hidden relative">
-                          <img src={item.image} alt={item.name} className={`w-full h-full object-cover transition-opacity grayscale ${item.isSoldOut ? 'grayscale' : 'group-hover:grayscale-0'}`} />
+                          <img src={item.image} alt={item.name} className={`w-full h-full object-cover object-center transition-opacity grayscale ${item.isSoldOut ? 'grayscale' : 'group-hover:grayscale-0'}`} />
                           {item.isSoldOut && (
                              <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
                                 <Ban size={16} className="text-white" />

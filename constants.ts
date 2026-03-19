@@ -90,7 +90,7 @@ const ESPRESSO_BEAN_OPTIONS = [
 const BASE_MENU: MenuCategory[] = [
   {
     id: 'highly-recommend',
-    title: 'HIGHLY recommend',
+    title: 'BEST SELLER',
     items: [
       { 
         id: 'bw6', 
@@ -260,76 +260,73 @@ const BASE_MENU: MenuCategory[] = [
     title: 'Filter Coffee',
     items: [
       {
-        id: 'fil_kenya_kirimara',
-        name: 'Kirimara AA ',
-        origin: 'Kenya',
-        farm: 'Kirimara Estate',
-        tastingNotes: 'Bright acidity with notes of wild cherry, brown sugar, and raisins.',
-        ingredients: 'Pour-over brewing method (V60/Chemex) to highlight clarity and aroma.',
+        id: 'fil_eth_guji',
+        name: 'Colombia - Bourbon Sidra',
+        tastingNotes: 'Red grapes, watermelon, hard candy, raspberry',
+        ingredients: 'Pour-over brewing method',
         price: '46',
-        image: 'https://iili.io/qKemkeS.png',
-        tags: ['Seasonal Rotation'],
-        calories: 5
+        image: 'https://iili.io/qjAjZAJ.png',
+        calories: 5,
+        status: 'Available'
+      },
+      {
+        id: 'fil_cuban',
+        name: 'COSTA RICA',
+        tastingNotes: 'Cacao, fig compote, honey, cherry',
+        ingredients: 'Pour-over brewing method',
+        price: '57',
+        image: 'https://iili.io/qjAjZAJ.png',
+        calories: 5,
+        status: 'Available'
+      },
+      {
+        id: 'fil_kenya_kirimara',
+        name: 'Kenya Kirimara',
+        tastingNotes: 'Brown sugar, wild cherry, raisins',
+        ingredients: 'Pour-over brewing method',
+        price: '46',
+        image: 'https://iili.io/qjAjZAJ.png',
+        calories: 5,
+        status: 'Available'
       },
       {
         id: 'fil_col_mish',
-        name: 'Mish Mish',
-        origin: 'Colombia',
-        farm: 'Finca El Paraiso',
-        tastingNotes: 'Intense apricot and peach notes with a creamy body.',
-        ingredients: 'Pour-over brewing method (V60/Chemex).',
+        name: 'Colombia Mish Mish',
+        tastingNotes: 'Apricot jam, raspberry, lychee',
+        ingredients: 'Pour-over brewing method',
         price: '57',
-        image: 'https://iili.io/qKkHXu2.png',
-        tags: ['Staff Pick'],
-        calories: 5
+        image: 'https://iili.io/qjAjZAJ.png',
+        calories: 5,
+        status: 'Available'
       },
       {
-        id: 'fil_costa_canet',
-        name: 'Canet Chopin',
-        origin: 'Costa Rica',
-        farm: 'Canet Musician Series',
-        tastingNotes: 'CACAO FIG COMPOTE HONEY CHERRY',
-        ingredients: 'Pour-over brewing method (V60/Chemex).',
-        price: '57',
-        image: 'https://iili.io/qKkdOdb.png',
-        calories: 5
-      },
-      {
-        id: 'fil_col_sidra',
-        name: 'Bourbon Sidra',
-        origin: 'Colombia',
-        farm: 'Finca La Palma',
-        tastingNotes: 'Exotic tropical fruits, red apple, and a wine-like acidity.',
-        ingredients: 'Pour-over brewing method (V60/Chemex).',
-        price: '46',
-        image: 'https://iili.io/qKk3AKX.png',
-        calories: 5
-      },
-      {
-        id: 'fil_panama_gesha',
-        name: 'Gesha Cordillera',
-        origin: 'Panama',
-        farm: 'Volcan Baru',
-        tastingNotes: 'Jasmine, bergamot, and sweet mandarin with a tea-like body.',
-        ingredients: 'Pour-over brewing method (V60/Chemex).',
+        id: 'fil_col_black',
+        name: 'Panama – Cordillera Gesha',
+        tastingNotes: 'Cantaloupe, honey, berries, and lemongrass',
+        ingredients: 'Pour-over brewing method',
         price: '65',
-        image: 'https://iili.io/qKeQ4ja.png',
-        tags: ['Premium'],
-        calories: 5
+        image: 'https://iili.io/qjAjZAJ.png',
+        calories: 5,
+        status: 'Available'
       },
       {
         id: 'fil_decaf',
-        name: 'Sweet Dreams Decaf',
-        origin: 'Colombia',
-        farm: 'Various Smallholders',
-        tastingNotes: 'PASSTION FRUTIT CHEESECAKE MILK CHOCOLATE MOLASSES',
-        ingredients: 'Pour-over brewing method (V60/Chemex).',
+        name: 'Colombia Sweet Dreams Decaf',
+        tastingNotes: 'Passion fruit cheesecake, milk chocolate, molasses',
+        ingredients: 'Pour-over brewing method',
         price: '38',
-        image: 'https://iili.io/qKkqSTJ.png',
-        calories: 5
-      },
+        image: 'https://iili.io/qjAjZAJ.png',
+        calories: 5,
+        status: 'Available'
+      }
+    ]
+  },
+  {
+    id: 'cold-brew',
+    title: 'Cold Brew',
+    items: [
       {
-        id: 'fil_eth_cb',
+        id: 'cb_eth',
         name: 'Ethiopia Cold Brew',
         origin: 'Ethiopia',
         tastingNotes: 'Apricot, Honey, Pear',
@@ -339,7 +336,7 @@ const BASE_MENU: MenuCategory[] = [
         calories: 10
       },
       {
-        id: 'fil_col_cb',
+        id: 'cb_col',
         name: 'Colombia Cold Brew',
         origin: 'Colombia',
         tastingNotes: 'Hazelnut, Orange, Molasses',
@@ -349,25 +346,25 @@ const BASE_MENU: MenuCategory[] = [
         calories: 10
       },
       {
-        id: 'fil_ken_cb',
+        id: 'cb_ken',
         name: 'Kenya Cold Brew',
         origin: 'Kenya',
         tastingNotes: 'Wild Cherry, Brown Sugar, Raisins',
         ingredients: 'Slow-steeped cold water extraction for 12+ hours.',
         price: '38',
-        image: 'https://iili.io/f8yS6jj.jpg',
+        image: 'https://iili.io/qjc71DB.png',
         calories: 10
       }
     ]
   },
   {
     id: 'filter-taps',
-    title: 'Filter Taps Kegerator',
+    title: 'Filter Taps ',
     items: [
       {
         id: 'tap_col_straw',
         name: 'Colombia Strawberry',
-        ingredients: 'Filter coffee on tap',
+        ingredients: '[ TAP]  Strawberry jam – honey - milk chocolates ',
         price: '36',
         image: 'https://iili.io/qKkcmJa.png',
         calories: 5
@@ -375,7 +372,7 @@ const BASE_MENU: MenuCategory[] = [
       {
         id: 'tap_cuban',
         name: 'Cuban Cigar',
-        ingredients: 'Filter coffee on tap',
+        ingredients: '[TAP] Caramel popcorn - fresh tobaco - Deep Earthy Undertones',
         price: '41',
         image: 'https://iili.io/qKkRw5Q.png',
         calories: 5
@@ -383,7 +380,7 @@ const BASE_MENU: MenuCategory[] = [
       {
         id: 'tap_eth_rog',
         name: 'Ethiopia Rogisha',
-        ingredients: 'Filter coffee on tap',
+        ingredients: '[TAP] apricots – pear – honey ',
         price: '36',
         image: 'https://iili.io/qKka1vj.png',
         calories: 5
@@ -442,7 +439,7 @@ const BASE_MENU: MenuCategory[] = [
         name: 'CARTEL Latte',
         ingredients: '',
         price: '27',
-        image: 'https://iili.io/fUCZ079.png',
+        image: 'https://iili.io/qwbtDVn.jpg',
         calories: 140,
         customizations: [
           {
@@ -730,7 +727,7 @@ const BASE_MENU: MenuCategory[] = [
   },
   {
     id: 'signature-drinks',
-    title: 'Signature Drinks',
+    title: 'Signature drink',
     items: [
       {
         id: 'sig1',
@@ -881,7 +878,7 @@ const BASE_MENU: MenuCategory[] = [
   },
   {
     id: 'from-our-bakery',
-    title: 'From Our Bakery',
+    title: 'BAKE GOODS',
     items: [
       { 
         id: 'fob_zaatar', 
@@ -961,7 +958,7 @@ const BASE_MENU: MenuCategory[] = [
   },
   {
     id: 'tea',
-    title: 'Tea',
+    title: 'Signature drink',
     items: [
       { id: 'tea_black', name: 'Black Tea', price: '24', image: 'https://iili.io/qqX7BhF.jpg', ingredients: 'Premium black tea', calories: 5 },
       { id: 'tea_green', name: 'Green Tea', price: '24', image: 'https://iili.io/qqMGJ3J.jpg', ingredients: 'Premium green tea', calories: 5 },
@@ -1015,30 +1012,30 @@ const createMirdifMenu = (): MenuCategory[] => {
 
   const mirdifBeans = [
     {
-      id: 'bean_blind',
-      name: 'BLIND 469',
-      notes: 'Apricot Jam, White Chocolate, Jaggery',
+      id: 'bean_469',
+      name: 'THE 469 BLAND',
+      notes: 'White Chocolate, Apricot Jam, Jaggery',
       price: 0,
       isNew: false
     },
     {
-      id: 'bean_amazonic',
-      name: 'Amazonic Soul',
-      notes: 'Dark Chocolate, Roasted Hazelnut, Caramel',
+      id: 'bean_coconutella',
+      name: 'COCONUTELLA',
+      notes: 'Coconut Cream, Milk Chocolate, Toffee Caramel',
+      price: 5,
+      isNew: false
+    },
+    {
+      id: 'bean_kenya',
+      name: 'KENYA GICHATHA',
+      notes: 'Caramel, Cacao Nibs, Black Cherry',
       price: 1,
       isNew: false
     },
     {
-      id: 'bean_yemen',
-      name: 'Yemen - Sharki Haraz',
-      notes: 'Chestnut, Cola, Red Grape',
-      price: 10,
-      isNew: false
-    },
-    {
       id: 'bean_decaf',
-      name: 'Colombia Sweet Dreams (Decaf)',
-      notes: 'Molasses, Dried Apricot, Pecan Nuts',
+      name: 'SWEET DREAMS DECAF',
+      notes: 'Passion fruit cheesecake, milk chocolate, molasses',
       price: 0,
       isNew: false,
       isDecaf: true
@@ -1048,37 +1045,115 @@ const createMirdifMenu = (): MenuCategory[] => {
   mirdifEspresso.beanSelection = mirdifBeans;
   mirdifEspresso.description = '';
 
+  // Update all items to use these beans
+  mirdifEspresso.items.forEach((item: any) => {
+    const beanCustomization = item.customizations?.find((c: any) => c.id === 'bean_choice');
+    if (beanCustomization) {
+      beanCustomization.options = mirdifBeans.map((b: any) => ({
+        id: b.id,
+        name: b.name,
+        price: b.price,
+        description: b.notes
+      }));
+    }
+    item.branch = 'Mirdif';
+  });
+
   return [
     mirdifEspresso,
     {
-      id: 'breakfast',
-      title: 'Breakfast & Mains',
+      id: 'filter-coffee',
+      title: 'Filter Coffee',
       items: [
         { 
+          id: 'fil_eth_guji', 
+          name: 'Colombia - Bourbon Sidra',
+          tastingNotes: 'Red grapes, watermelon, hard candy, raspberry', 
+          price: '46', 
+          image: 'https://iili.io/qjAjZAJ.png', 
+          ingredients: 'Pour-over brewing method', 
+          calories: 5,
+          branch: 'Mirdif',
+          status: 'Available'
+        },
+        { 
+          id: 'fil_cuban', 
+          name: 'COSTA RICA',
+          tastingNotes: 'Cacao, fig compote, honey, cherry', 
+          price: '57', 
+          image: 'https://iili.io/qjAjZAJ.png', 
+          ingredients: 'Pour-over brewing method', 
+          calories: 5,
+          branch: 'Mirdif',
+          status: 'Available'
+        },
+        { 
+          id: 'fil_kenya_kiri', 
+          name: 'Kenya Kirimara',
+          tastingNotes: 'Brown sugar, wild cherry, raisins', 
+          price: '46', 
+          image: 'https://iili.io/qjAjZAJ.png', 
+          ingredients: 'Pour-over brewing method', 
+          calories: 5,
+          branch: 'Mirdif',
+          status: 'Available'
+        },
+        { 
+          id: 'fil_col_mish', 
+          name: 'Colombia Mish Mish',
+          tastingNotes: 'Apricot jam, raspberry, lychee', 
+          price: '57', 
+          image: 'https://iili.io/qjAjZAJ.png', 
+          ingredients: 'Pour-over brewing method', 
+          calories: 5,
+          branch: 'Mirdif',
+          status: 'Available'
+        },
+        { 
+          id: 'fil_col_black', 
+          name: 'Colombia Blackberry', 
+          tastingNotes: 'Blackberry Soda, Cacao Nibs, Karkade', 
+          price: '57', 
+          image: 'https://iili.io/qjAjZAJ.png', 
+          ingredients: 'Pour-over brewing method', 
+          calories: 5,
+          branch: 'Mirdif'
+        },
+        { 
+          id: 'fil_decaf', 
+          name: 'Colombia Sweet Dreams Decaf',
+          tastingNotes: 'Passion fruit cheesecake, milk chocolate, molasses', 
+          price: '38', 
+          image: 'https://iili.io/qjAjZAJ.png', 
+          ingredients: 'Pour-over brewing method', 
+          calories: 5,
+          branch: 'Mirdif',
+          status: 'Available'
+        }
+      ]
+    },
+    {
+      id: 'eggs-more',
+      title: 'Eggs & More',
+      items: [
+        { ...findItem('eggs-more', 'egg_avo')!, name: 'AVOCADO TOAST' },
+        { 
           ...findItem('eggs-more', 'egg_ben')!, 
-          name: 'Egg Benedict', 
+          name: 'EGG BENEDICT', 
+          image: 'https://iili.io/qqGfw3x.jpg',
           ingredients: 'English muffins with cream cheese, tomato sauce, smoky bacon, poached eggs, and miso hollandaise.' 
         },
-        {
-          id: 'fr_toast',
-          name: 'French Toast',
-          price: '66',
-          image: 'https://iili.io/fUBoGzx.png',
-          ingredients: 'Caramelized and served with vanilla ice cream, almond streusel, whipped vanilla cream, and rhubarb compote. Options/Side: Salted caramel, mix berries compote on the side.',
-          calories: 0
-        },
-        findItem('eggs-more', 'egg_avo')!, // Avocado toast
-        findItem('eggs-more', 'egg_truffle')!, // Truffle scrambled eggs
-        findItem('eggs-more', 'egg_cro')!, // Egg and avocado croissant
-        { ...findItem('eggs-more', 'egg_turkish')!, name: 'Turkish Eggs', image: 'https://iili.io/qqGBwmB.jpg' }, // Turkish eggs
-        findItem('eggs-more', 'egg_big')!, // Big breakfast
-        { ...findItem('eggs-more', 'egg_nduja')!, name: 'Tornado Chilli Eggs', image: 'https://iili.io/qqGClvR.jpg' }, // Tornado chilli eggs
-        { ...findItem('eggs-more', 'egg_aussie')!, name: 'Ausie Pulled Beef Benedict', image: 'https://iili.io/qqMpPzG.png' }, // Ausie pulled beef Benedict
+        { ...findItem('eggs-more', 'egg_truffle')!, name: 'Truffled Scrambled Egg' },
+        { ...findItem('eggs-more', 'egg_cro')!, name: 'Egg And Avocado Croissant' },
+        { ...findItem('eggs-more', 'egg_nduja')!, name: 'TORNADO CHILLI EGG' },
+        { ...findItem('eggs-more', 'egg_big')!, name: 'BIG BREAKFAST' },
+        { ...findItem('eggs-more', 'egg_aussie')!, name: 'Aussie pulled beef benedict' },
+        { ...findItem('eggs-more', 'egg_turkish')!, name: 'Turkish Egg' },
       ].filter(Boolean)
     },
     {
       id: 'signature-drinks',
-      title: 'Tea & Signature Drinks',
+      title: 'Signature drink',
       items: [
         findItem('signature-drinks', 'sig3')!, // Matcha cloud
         findItem('signature-drinks', 'sig_espresso_shake')!, // Espresso shake
@@ -1088,7 +1163,31 @@ const createMirdifMenu = (): MenuCategory[] => {
         findItem('signature-drinks', 'sig8')!, // Tanzanian hot chocolate
         findItem('tea', 'tea_black')!, // Black tea
         findItem('tea', 'tea_green')!, // Green tea
-        findItem('tea', 'tea_rush')!, // Rush hour berry
+        { ...findItem('tea', 'tea_rush')!, name: 'Hot Rush Hour', price: '33', image: 'https://iili.io/qlbAzS2.jpg' }, // Hot Rush Hour
+        { id: 'sig_cartel_rush', name: 'CARTEL Rush Hou', price: '33', image: 'https://iili.io/q2urMyF.jpg', ingredients: '', calories: 0 },
+        { 
+          id: 'sig_matcha_latte', 
+          name: 'MATCHA LATTE', 
+          price: '26', 
+          image: 'https://iili.io/q2utJ3J.jpg', 
+          ingredients: '', 
+          calories: 0,
+          customizations: [
+            {
+              id: 'milk_choice',
+              name: 'Milk Choice',
+              type: 'single',
+              options: [
+                { id: 'milk_full', name: 'Full Fat Milk', price: 0 },
+                { id: 'milk_skim', name: 'Skimmed Milk', price: 0 },
+                { id: 'milk_oat', name: 'Oat Milk', price: 4 },
+                { id: 'milk_almond', name: 'Almond Milk', price: 4 },
+                { id: 'milk_coconut', name: 'Coconut Milk', price: 4 },
+                { id: 'milk_soya', name: 'Soya Milk', price: 4 }
+              ]
+            }
+          ]
+        },
       ].filter(Boolean)
     },
     {
@@ -1125,21 +1224,20 @@ const createMirdifMenu = (): MenuCategory[] => {
       id: 'greens',
       title: 'Greens',
       items: [
-        { ...findItem('salads', 'sal_caesar')!, name: 'Caesar Salad' }, // Caesar salad
+        { ...findItem('salads', 'sal_caesar')!, name: 'Caesar Salad', image: 'https://iili.io/qqE6hg4.jpg' }, // Caesar salad
       ].filter(Boolean)
     },
     {
       id: 'sandwiches',
-      title: 'Sandwiches',
+      title: 'Sandwiches & Bagels',
       items: [
-        findItem('sandwiches', 'sw_shrimp')!,
-        findItem('sandwiches', 'sw_chick')!,
-        findItem('sandwiches', 'sw_tuna')!,
-        findItem('sandwiches', 'sw_club')!,
-        { ...findItem('sandwiches', 'sw_bacon')!, name: 'Bacon and Egg' },
-        findItem('sandwiches', 'sw_brisket')!,
-        findItem('sandwiches', 'sw_italian')!,
-        findItem('eggs-more', 'egg_cro')!,
+        { id: 'sw_bacon', name: 'Bacon & Egg Cheese Bun', price: '44', image: 'https://iili.io/qqEAsNj.jpg', ingredients: 'Brioche bun with crispy bacon, scrambled egg, cheddar cheese, kimchi ketchup.', calories: 550 },
+        { id: 'sw_tuna', name: 'Tunacado', price: '38', image: 'https://iili.io/qqEgPdN.jpg', ingredients: "Joe's bread, pesto mayo, tuna mix, tomato slice, avocado slice.", calories: 480 },
+        { id: 'sw_chick', name: 'Chicken & Avocado Croissant', price: '42', image: 'https://iili.io/qqG2qR1.png', ingredients: 'Grilled chicken, fresh avocado, croissant', calories: 520 },
+        { id: 'sw_club', name: 'Cartel Club Sandwich', price: '38', image: 'https://iili.io/qqEPTpS.jpg', ingredients: 'White sliced bread, chipotle mayo, cheddar, lettuce, grilled chicken, bacon, fried egg, tomato slice.', calories: 600 },
+        { id: 'sw_brisket', name: 'Brisket Blaze', price: '45', image: 'https://iili.io/qqERigt.jpg', ingredients: 'Brioche toast, chipotle mayo, cheddar, brisket, caramelized onion, jalapeño.', calories: 650 },
+        { id: 'sw_shrimp', name: 'Shrimp Toast', price: '35', image: 'https://iili.io/qqEYw12.jpg', ingredients: 'Sautéed shrimp on brioche toast', calories: 420 },
+        { id: 'sw_italian', name: 'Cold Cut Italian', price: '38', image: 'https://iili.io/qqEieVe.png', ingredients: 'White slice bread with pesto oil, fresh mozzarella, tomato slice, tartufo salami, chorizo, baby Rocca, sun-dried tomatoes, balsamic glaze, organic olive oil.', calories: 580 },
       ].filter(Boolean)
     },
     {
@@ -1157,20 +1255,20 @@ const createMirdifMenu = (): MenuCategory[] => {
       id: 'juices',
       title: 'Juices',
       items: [
-        { ...findItem('juices', 'juice_green')!, image: '', price: '24' }, // Green apple
-        { ...findItem('juices', 'juice_orange')!, image: '', price: '24' }, // Orange
-        { ...findItem('juices', 'juice_carrot')!, image: '', price: '24' }, // Carrot
-        { ...findItem('juices', 'juice_water')!, image: '', price: '24' }, // Watermelon
+        { ...findItem('juices', 'juice_green')!, image: 'https://iili.io/fQlvE74.png', price: '24' }, // Green apple
+        { ...findItem('juices', 'juice_orange')!, image: 'https://iili.io/fQlvmTN.png', price: '24' }, // Orange
+        { ...findItem('juices', 'juice_carrot')!, image: 'https://iili.io/fQlkJtt.png', price: '24' }, // Carrot
+        { ...findItem('juices', 'juice_water')!, image: 'https://iili.io/fPDiiEF.png', price: '24' }, // Watermelon
       ].filter(Boolean)
     },
     {
       id: 'healthy-bar',
       title: 'Healthy Bar',
       items: [
-        { ...findItem('smoothies', 'sm_acai')!, image: 'https://iili.io/qnBllxp.jpg' }, // Acai smoothie
-        findItem('smoothies', 'sm_straw')!, // Strawberry glaze
-        { ...findItem('smoothies', 'sm_coc')!, name: 'Coconut Doud' }, // Coconut doud
-        findItem('smoothies', 'sm_pit')!, // Pitaya
+        { ...findItem('smoothies', 'sm_pit')!, badge: 'NEW', image: 'https://iili.io/qqEH3rP.jpg', price: '42' }, // Pitaya
+        { ...findItem('smoothies', 'sm_acai')!, badge: 'NEW', image: 'https://iili.io/qnBllxp.jpg', price: '42' }, // Acai smoothie
+        { ...findItem('smoothies', 'sm_straw')!, badge: 'NEW', image: 'https://iili.io/qq1mS5b.jpg', price: '42' }, // Strawberry glaze
+        { ...findItem('smoothies', 'sm_coc')!, badge: 'NEW', image: 'https://iili.io/qqE9JUX.jpg', price: '42' }, // Blue Cloud
       ].filter(Boolean)
     }
   ];
@@ -1226,7 +1324,7 @@ const createAlBateenMenu = (): MenuCategory[] => {
     {
       id: 'bean_colombia_decaf',
       name: 'COLOMBIA SWEET DREAMS (DECAF)',
-      notes: 'Molasses, Dried Apricot, Pecan Nuts',
+      notes: 'Passion fruit cheesecake, milk chocolate, molasses',
       price: 0,
       isNew: false,
       isDecaf: true
@@ -1252,83 +1350,69 @@ const createAlBateenMenu = (): MenuCategory[] => {
 
   return [
     alBateenEspresso,
-
     {
       id: 'filter-coffee',
       title: 'Filter Coffee',
       items: [
         { 
           id: 'fil_eth_guji', 
-          name: 'Ethiopia Guji-Rogicha', 
-          tastingNotes: 'Apricot, Pear, Honey', 
-          price: '36', 
-          image: 'https://iili.io/qKeQ4ja.png', 
+          name: 'Colombia - Bourbon Sidra',
+          tastingNotes: 'Red grapes, watermelon, hard candy, raspberry', 
+          price: '46', 
+          image: 'https://iili.io/qjAjZAJ.png', 
           ingredients: 'Pour-over brewing method', 
-          calories: 5 
+          calories: 5,
+          status: 'Available'
         },
         { 
           id: 'fil_cuban', 
-          name: 'Cuban Cigar', 
-          tastingNotes: 'Deep Earthy Undertones, Caramel Popcorn, Fresh Tobacco', 
-          price: '41', 
-          image: 'https://iili.io/qKeQ4ja.png', 
+          name: 'COSTA RICA',
+          tastingNotes: 'Cacao, fig compote, honey, cherry', 
+          price: '57', 
+          image: 'https://iili.io/qjAjZAJ.png', 
           ingredients: 'Pour-over brewing method', 
-          calories: 5 
+          calories: 5,
+          status: 'Available'
         },
         { 
           id: 'fil_kenya_kiri', 
-          name: 'Kenya Kirimara', 
-          tastingNotes: 'Wild Cherry, Brown Sugar, Raisins', 
+          name: 'Kenya Kirimara',
+          tastingNotes: 'Brown sugar, wild cherry, raisins', 
           price: '46', 
-          image: 'https://iili.io/qKeQ4ja.png', 
+          image: 'https://iili.io/qjAjZAJ.png', 
           ingredients: 'Pour-over brewing method', 
-          calories: 5 
+          calories: 5,
+          status: 'Available'
         },
         { 
           id: 'fil_col_mish', 
-          name: 'Colombia Mish Mish', 
-          tastingNotes: 'Apricot Jam, Raspberry, Lychee', 
+          name: 'Colombia Mish Mish',
+          tastingNotes: 'Apricot jam, raspberry, lychee', 
           price: '57', 
-          image: 'https://iili.io/qKeQ4ja.png', 
+          image: 'https://iili.io/qjAjZAJ.png', 
           ingredients: 'Pour-over brewing method', 
-          calories: 5 
+          calories: 5,
+          status: 'Available'
         },
         { 
           id: 'fil_col_black', 
           name: 'Colombia Blackberry', 
           tastingNotes: 'Blackberry Soda, Cacao Nibs, Karkade', 
           price: '57', 
-          image: 'https://iili.io/qKeQ4ja.png', 
-          ingredients: 'Pour-over brewing method', 
-          calories: 5 
-        },
-        { 
-          id: 'fil_gesha_lime', 
-          name: 'Gesha-Key Lime Pie', 
-          tastingNotes: 'Orange Blossom, Lemongrass, Condensed Milk', 
-          price: '65', 
-          image: 'https://iili.io/qKeQ4ja.png', 
-          ingredients: 'Pour-over brewing method', 
-          calories: 5 
-        },
-        { 
-          id: 'fil_panama_cord', 
-          name: 'Panama-Cordillera Gesha Natural', 
-          tastingNotes: 'Cantaloupe, Honey, Berries, Lemongrass', 
-          price: '65', 
-          image: 'https://iili.io/qKeQ4ja.png', 
+          image: 'https://iili.io/qjAjZAJ.png', 
           ingredients: 'Pour-over brewing method', 
           calories: 5 
         },
         { 
           id: 'fil_decaf_sweet', 
-          name: 'Colombia Sweet Dreams - Decaf', 
-          tastingNotes: 'Molasses, Dried Apricot, Pecan nuts', 
+          name: 'Colombia Sweet Dreams Decaf',
+          tastingNotes: 'Passion fruit cheesecake, milk chocolate, molasses', 
           price: '38', 
-          image: 'https://iili.io/qKeQ4ja.png', 
+          image: 'https://iili.io/qjAjZAJ.png', 
           ingredients: 'Pour-over brewing method', 
-          calories: 5 
-        },
+          calories: 5,
+          status: 'Available'
+        }
       ]
     },
     {
@@ -1337,19 +1421,20 @@ const createAlBateenMenu = (): MenuCategory[] => {
       items: [
         { 
           id: 'cd_kenya', 
-          name: 'Kenya Kirimara', 
-          tastingNotes: 'Wild Cherry, Brown Sugar, Raisins', 
+          name: 'Kenya Kirimara',
+          tastingNotes: 'Brown sugar, wild cherry, raisins', 
           price: '38', 
-          image: 'https://iili.io/qCkJECJ.jpg', 
+          image: 'https://iili.io/qjAjZAJ.png', 
           ingredients: 'Cold drip brewing method', 
-          calories: 5 
+          calories: 5,
+          status: 'Available'
         },
         { 
           id: 'cd_gesha', 
           name: 'Gesha-Key Lime Pie', 
           tastingNotes: 'Orange Blossom, Lemongrass, Condensed Milk', 
           price: '48', 
-          image: 'https://iili.io/qCkJECJ.jpg', 
+          image: 'https://iili.io/qjAjZAJ.png', 
           ingredients: 'Cold drip brewing method', 
           calories: 5 
         },
@@ -1400,11 +1485,11 @@ const createAlBateenMenu = (): MenuCategory[] => {
       title: 'Sandwiches & Bagels',
       items: [
         { id: 'sw_bacon', name: 'Bacon & Egg Cheese Bun', price: '44', image: 'https://iili.io/qqEAsNj.jpg', ingredients: 'Brioche bun with crispy bacon, scrambled egg, cheddar cheese, kimchi ketchup.', calories: 550 },
-        { id: 'sw_tuna', name: 'Tunacado', price: '38', image: 'https://iili.io/qqEgPdN.jpg', ingredients: 'Toasted Brown slice bread with pesto oil, avocado, tuna mix, tomato, and jalapeños.', calories: 480 },
+        { id: 'sw_tuna', name: 'Tunacado', price: '38', image: 'https://iili.io/qqEgPdN.jpg', ingredients: "Joe's bread, pesto mayo, tuna mix, tomato slice, avocado slice.", calories: 480 },
         { id: 'sw_chick', name: 'Chicken & Avocado Croissant', price: '42', image: 'https://iili.io/qqG2qR1.png', ingredients: 'Grilled chicken, fresh avocado, croissant', calories: 520 },
-        { id: 'sw_club', name: 'Cartel Club Sandwich', price: '38', image: 'https://iili.io/qqEPTpS.jpg', ingredients: 'White sliced bread, chipotle mayo, cheddar, lettuce, gherkins, tomato, bacon, smoked turkey, and homemade chips.', calories: 600 },
-        { id: 'sw_brisket', name: 'Brisket Blaze', price: '45', image: 'https://iili.io/qqERigt.jpg', ingredients: 'Toasted brown sliced bread stacked with smoked brisket, aged white cheddar, Dijon mayo, tangy relish, and finished with a perfectly burnt matured white cheddar cheese for added flavor.', calories: 650 },
-        { id: 'sw_italian', name: 'Cold Cut Italian', price: '48', image: 'https://iili.io/qqEieVe.png', ingredients: 'white slice bread with pesto oil, fresh mozzarella, tomato slice, tartufo salami, chorizo, baby Rocca, sun-dried tomatoes, balsamic glaze, organic olive oil.', calories: 580 },
+        { id: 'sw_club', name: 'Cartel Club Sandwich', price: '38', image: 'https://iili.io/qqEPTpS.jpg', ingredients: 'White sliced bread, chipotle mayo, cheddar, lettuce, grilled chicken, bacon, fried egg, tomato slice.', calories: 600 },
+        { id: 'sw_brisket', name: 'Brisket Blaze', price: '45', image: 'https://iili.io/qqERigt.jpg', ingredients: 'Brioche toast, chipotle mayo, cheddar, brisket, caramelized onion, jalapeño.', calories: 650 },
+        { id: 'sw_italian', name: 'Cold Cut Italian', price: '38', image: 'https://iili.io/qqEieVe.png', ingredients: 'White slice bread with pesto oil, fresh mozzarella, tomato slice, tartufo salami, chorizo, baby Rocca, sun-dried tomatoes, balsamic glaze, organic olive oil.', calories: 580 },
         { id: 'sw_shrimp', name: 'Shrimp Toast', price: '35', image: 'https://iili.io/qqEYw12.jpg', ingredients: 'Sautéed shrimp on brioche toast', calories: 420 },
       ]
     },
@@ -1418,11 +1503,13 @@ const createAlBateenMenu = (): MenuCategory[] => {
         { id: 'egg_turkish', name: 'Minted yogurt', price: '46', image: 'https://iili.io/qqGBwmB.jpg', ingredients: 'homemade tomato jam, poached eggs, mint pesto, chilly butter served with 2 slices of toasted zaatar sourdough.', calories: 400 },
         { id: 'egg_aussie', name: 'Aussie Benedict', price: '58', image: 'https://iili.io/qqMpPzG.png', ingredients: 'brioche bun with white barbecue sauce, pulled beef, 2 poached eggs, miso hollandaise, crispy onions & spring roll, chives.', calories: 580 },
         { id: 'egg_cro', name: 'EGG & AVO CROISSANT', price: '38', image: 'https://iili.io/qqXARp9.jpg', ingredients: 'Plain croissant, cream cheese mix, smashed avocado, tomato sauce, poached eggs sprinkled with pumpkin seeds and mix sesame seeds.', calories: 490 },
+        { id: 'egg_nduja', name: 'Nduja Chili Scrambled Tornado Eggs', price: '52', image: 'https://iili.io/qqGClvR.jpg', ingredients: 'garlic and butter pita bread, creamy mayo, mama’s sauce, smoked yogurt, spicy beef nduja, microgreens, and a drizzle of smoked oil.', calories: 450 },
+        { id: 'egg_big', name: 'Big Breakfast Homemade', price: '65', image: 'https://iili.io/qqVHZ1R.png', ingredients: 'hash brown potatoes, red beans, sautéed portobello mushrooms, wagyu beef sausage, smoked veal bacon, roasted vine tomatoes, two sunny side up eggs on a slice of brioche bread, (eggs your way: scrambled, poached, sunny side up).', calories: 850 },
       ]
     },
     {
       id: 'signature-drinks',
-      title: 'Signature Drinks',
+      title: 'Signature drink',
       items: [
         findItem('signature-drinks', 'sig1')!,
         findItem('signature-drinks', 'sig_baby_shark')!,
@@ -1504,7 +1591,7 @@ const createKhalifaMenu = (): MenuCategory[] => {
     {
       id: 'bean_colombia_decaf',
       name: 'COLOMBIA SWEET DREAMS – DECAF',
-      notes: 'Molasses, Dried apricot, Pecan nuts',
+      notes: 'Passion fruit cheesecake, milk chocolate, molasses',
       price: 0,
       isNew: false,
       isDecaf: true
@@ -1535,57 +1622,62 @@ const createKhalifaMenu = (): MenuCategory[] => {
       items: [
         { 
           id: 'fil_eth_guji', 
-          name: 'Ethiopia Guji - Rojicha', 
-          tastingNotes: 'Apricot, Pear, Honey', 
-          price: '36', 
-          image: 'https://iili.io/qKeQ4ja.png', 
+          name: 'Colombia - Bourbon Sidra',
+          tastingNotes: 'Red grapes, watermelon, hard candy, raspberry', 
+          price: '46', 
+          image: 'https://iili.io/qjAjZAJ.png', 
           ingredients: 'Pour-over brewing method', 
-          calories: 5 
+          calories: 5,
+          status: 'Available'
+        },
+        { 
+          id: 'fil_cuban', 
+          name: 'COSTA RICA',
+          tastingNotes: 'Cacao, fig compote, honey, cherry', 
+          price: '57', 
+          image: 'https://iili.io/qjAjZAJ.png', 
+          ingredients: 'Pour-over brewing method', 
+          calories: 5,
+          status: 'Available'
         },
         { 
           id: 'fil_kenya_kiri', 
-          name: 'Kenya Kirimara', 
-          tastingNotes: 'Wild cherry, Brown sugar, Raisins', 
+          name: 'Kenya Kirimara',
+          tastingNotes: 'Brown sugar, wild cherry, raisins', 
           price: '46', 
-          image: 'https://iili.io/qKeQ4ja.png', 
+          image: 'https://iili.io/qjAjZAJ.png', 
           ingredients: 'Pour-over brewing method', 
-          calories: 5 
+          calories: 5,
+          status: 'Available'
         },
         { 
           id: 'fil_col_mish', 
-          name: 'Colombia Mis-Mish', 
-          tastingNotes: 'Apricot jam, Raspberry, Lychee', 
+          name: 'Colombia Mish Mish',
+          tastingNotes: 'Apricot jam, raspberry, lychee', 
           price: '57', 
-          image: 'https://iili.io/qKeQ4ja.png', 
+          image: 'https://iili.io/qjAjZAJ.png', 
           ingredients: 'Pour-over brewing method', 
-          calories: 5 
+          calories: 5,
+          status: 'Available'
         },
         { 
           id: 'fil_col_black', 
           name: 'Colombia Blackberry', 
-          tastingNotes: 'Blackberry soda, Cacao nibs, Karkade', 
+          tastingNotes: 'Blackberry Soda, Cacao Nibs, Karkade', 
           price: '57', 
-          image: 'https://iili.io/qKeQ4ja.png', 
-          ingredients: 'Pour-over brewing method', 
-          calories: 5 
-        },
-        { 
-          id: 'fil_gesha_lime', 
-          name: 'Gesha - Key Lime Pie', 
-          tastingNotes: 'Orange blossom, Lemongrass, Condensed milk', 
-          price: '65', 
-          image: 'https://iili.io/qKeQ4ja.png', 
+          image: 'https://iili.io/qjAjZAJ.png', 
           ingredients: 'Pour-over brewing method', 
           calories: 5 
         },
         { 
           id: 'fil_decaf_sweet', 
-          name: 'Colombia Sweet Dreams - Decaf', 
-          tastingNotes: 'Molasses, Dried apricot, Pecan nuts', 
+          name: 'Colombia Sweet Dreams Decaf',
+          tastingNotes: 'Passion fruit cheesecake, milk chocolate, molasses', 
           price: '38', 
-          image: 'https://iili.io/qKeQ4ja.png', 
+          image: 'https://iili.io/qjAjZAJ.png', 
           ingredients: 'Pour-over brewing method', 
-          calories: 5 
+          calories: 5,
+          status: 'Available'
         }
       ]
     },
@@ -1604,12 +1696,13 @@ const createKhalifaMenu = (): MenuCategory[] => {
         },
         { 
           id: 'cb_kenya', 
-          name: 'Kenya Kirimara', 
-          tastingNotes: 'Wild cherry, Brown sugar, Raisins', 
+          name: 'Kenya Kirimara',
+          tastingNotes: 'Brown sugar, wild cherry, raisins', 
           price: '38', 
           image: 'https://iili.io/f8yS6jj.jpg', 
           ingredients: 'Slow-steeped cold water extraction', 
-          calories: 10 
+          calories: 10,
+          status: 'Available'
         },
         { 
           id: 'cb_eth_guji', 
@@ -1656,10 +1749,10 @@ const createKhalifaMenu = (): MenuCategory[] => {
       title: 'Sandwiches',
       items: [
         { id: 'sw_bacon', name: 'Bacon & Egg Cheese Bun', price: '44', image: 'https://iili.io/qqEAsNj.jpg', ingredients: 'Brioche bun with crispy bacon, scrambled egg, cheddar cheese, kimchi ketchup.', calories: 550 },
-        { id: 'sw_tuna', name: 'Tunacado', price: '38', image: 'https://iili.io/qqEgPdN.jpg', ingredients: 'Toasted Brown slice bread with pesto oil, avocado, tuna mix, tomato, and jalapeños.', calories: 480 },
+        { id: 'sw_tuna', name: 'Tunacado', price: '38', image: 'https://iili.io/qqEgPdN.jpg', ingredients: "Joe's bread, pesto mayo, tuna mix, tomato slice, avocado slice.", calories: 480 },
         { id: 'sw_chick', name: 'Chicken & Avocado Croissant', price: '42', image: 'https://iili.io/qqGn1cb.jpg', ingredients: 'Grilled chicken, fresh avocado, croissant', calories: 520 },
-        { id: 'sw_club', name: 'Cartel Club Sandwich', price: '38', image: 'https://iili.io/qqEPTpS.jpg', ingredients: 'White sliced bread, chipotle mayo, cheddar, lettuce, gherkins, tomato, bacon, smoked turkey, and homemade chips.', calories: 600 },
-        { id: 'sw_brisket', name: 'Brisket Blaze', price: '45', image: 'https://iili.io/qqERigt.jpg', ingredients: 'Toasted brown sliced bread stacked with smoked brisket, aged white cheddar, Dijon mayo, tangy relish, and finished with a perfectly burnt matured white cheddar cheese for added flavor.', calories: 650 },
+        { id: 'sw_club', name: 'Cartel Club Sandwich', price: '38', image: 'https://iili.io/qqEPTpS.jpg', ingredients: 'White sliced bread, chipotle mayo, cheddar, lettuce, grilled chicken, bacon, fried egg, tomato slice.', calories: 600 },
+        { id: 'sw_brisket', name: 'Brisket Blaze', price: '45', image: 'https://iili.io/qqERigt.jpg', ingredients: 'Brioche toast, chipotle mayo, cheddar, brisket, caramelized onion, jalapeño.', calories: 650 },
       ]
     },
     {
@@ -1689,7 +1782,7 @@ const createKhalifaMenu = (): MenuCategory[] => {
     },
     {
       id: 'signature-drinks',
-      title: 'Signature Drinks',
+      title: 'Signature drink',
       items: [
         findItem('signature-drinks', 'sig7')!,
         findItem('signature-drinks', 'sig2')!,
@@ -1767,7 +1860,7 @@ const createAlQanaMenu = (): MenuCategory[] => {
     {
       id: 'bean_decaf',
       name: 'Colombia Sweet Dreams Decaf',
-      notes: 'Molasses, Dried Apricot, Pecan Nuts',
+      notes: 'Passion fruit cheesecake, milk chocolate, molasses',
       price: 0,
       isNew: false,
       isDecaf: true
@@ -1799,69 +1892,68 @@ const createAlQanaMenu = (): MenuCategory[] => {
       items: [
         {
           id: 'fil_eth_guji',
-          name: 'Guji Rogicha',
-          origin: 'Ethiopia',
-          tastingNotes: 'Apricot, Pear, Honey',
-          price: '36',
-          image: 'https://iili.io/qKeQ4ja.png',
+          name: 'Colombia - Bourbon Sidra',
+          tastingNotes: 'Red grapes, watermelon, hard candy, raspberry',
+          price: '46',
+          image: 'https://iili.io/qjAjZAJ.png',
           ingredients: 'Pour-over brewing method',
           calories: 5,
-          branch: 'Al Qana'
+          branch: 'Al Qana',
+          status: 'Available'
+        },
+        {
+          id: 'fil_cuban',
+          name: 'COSTA RICA',
+          tastingNotes: 'Cacao, fig compote, honey, cherry',
+          price: '57',
+          image: 'https://iili.io/qjAjZAJ.png',
+          ingredients: 'Pour-over brewing method',
+          calories: 5,
+          branch: 'Al Qana',
+          status: 'Available'
         },
         {
           id: 'fil_kenya_kiri',
-          name: 'Kirimara',
-          origin: 'Kenya',
-          tastingNotes: 'Wild Cherry, Brown Sugar, Raisins',
+          name: 'Kenya Kirimara',
+          tastingNotes: 'Brown sugar, wild cherry, raisins',
           price: '46',
-          image: 'https://iili.io/qKeQ4ja.png',
+          image: 'https://iili.io/qjAjZAJ.png',
           ingredients: 'Pour-over brewing method',
           calories: 5,
-          branch: 'Al Qana'
+          branch: 'Al Qana',
+          status: 'Available'
         },
         {
           id: 'fil_col_mish',
-          name: 'Mish Mish',
-          origin: 'Colombia',
-          tastingNotes: 'Apricot Jam, Raspberry, Lychee',
+          name: 'Colombia Mish Mish',
+          tastingNotes: 'Apricot jam, raspberry, lychee',
           price: '57',
-          image: 'https://iili.io/qKeQ4ja.png',
+          image: 'https://iili.io/qjAjZAJ.png',
           ingredients: 'Pour-over brewing method',
           calories: 5,
-          branch: 'Al Qana'
+          branch: 'Al Qana',
+          status: 'Available'
         },
         {
           id: 'fil_col_black',
-          name: 'Blackberry',
-          origin: 'Colombia',
+          name: 'Colombia Blackberry',
           tastingNotes: 'Blackberry Soda, Cacao Nibs, Karkade',
           price: '57',
-          image: 'https://iili.io/qKeQ4ja.png',
-          ingredients: 'Pour-over brewing method',
-          calories: 5,
-          branch: 'Al Qana'
-        },
-        {
-          id: 'fil_gesha_lime',
-          name: 'Gesha Key Lime Pie',
-          origin: 'Colombia',
-          tastingNotes: 'Orange Blossom, Lemongrass, Condensed Milk',
-          price: '65',
-          image: 'https://iili.io/qKeQ4ja.png',
+          image: 'https://iili.io/qjAjZAJ.png',
           ingredients: 'Pour-over brewing method',
           calories: 5,
           branch: 'Al Qana'
         },
         {
           id: 'fil_decaf_sweet',
-          name: 'Sweet Dreams Decaf',
-          origin: 'Colombia',
-          tastingNotes: 'Molasses, Dried Apricot, Pecan Nuts',
+          name: 'Colombia Sweet Dreams Decaf',
+          tastingNotes: 'Passion fruit cheesecake, milk chocolate, molasses',
           price: '38',
-          image: 'https://iili.io/qKeQ4ja.png',
+          image: 'https://iili.io/qjAjZAJ.png',
           ingredients: 'Pour-over brewing method',
           calories: 5,
-          branch: 'Al Qana'
+          branch: 'Al Qana',
+          status: 'Available'
         }
       ]
     },
@@ -1869,10 +1961,10 @@ const createAlQanaMenu = (): MenuCategory[] => {
       id: 'sandwiches',
       title: 'Sandwiches',
       items: [
-        { id: 'sw_italian', name: 'Cold Cut Italian', price: '48', image: 'https://iili.io/qqEieVe.png', ingredients: 'white slice bread with pesto oil, fresh mozzarella, tomato slice, tartufo salami, chorizo, baby Rocca, sun-dried tomatoes, balsamic glaze, organic olive oil.', calories: 580 },
-        { id: 'sw_tuna', name: 'Tunacado', price: '38', image: 'https://iili.io/qqEgPdN.jpg', ingredients: 'Toasted Brown slice bread with pesto oil, avocado, tuna mix, tomato, and jalapeños.', calories: 480 },
-        { id: 'sw_club', name: 'Cartel Club Sandwich', price: '38', image: 'https://iili.io/qqEPTpS.jpg', ingredients: 'White sliced bread, chipotle mayo, cheddar, lettuce, gherkins, tomato, bacon, smoked turkey, and homemade chips.', calories: 600 },
-        { id: 'sw_brisket', name: 'Brisket Blaze', price: '45', image: 'https://iili.io/qqERigt.jpg', ingredients: 'Toasted brown sliced bread stacked with smoked brisket, aged white cheddar, Dijon mayo, tangy relish, and finished with a perfectly burnt matured white cheddar cheese for added flavor.', calories: 650 },
+        { id: 'sw_italian', name: 'Cold Cut Italian', price: '38', image: 'https://iili.io/qqEieVe.png', ingredients: 'White slice bread with pesto oil, fresh mozzarella, tomato slice, tartufo salami, chorizo, baby Rocca, sun-dried tomatoes, balsamic glaze, organic olive oil.', calories: 580 },
+        { id: 'sw_tuna', name: 'Tunacado', price: '38', image: 'https://iili.io/qqEgPdN.jpg', ingredients: "Joe's bread, pesto mayo, tuna mix, tomato slice, avocado slice.", calories: 480 },
+        { id: 'sw_club', name: 'Cartel Club Sandwich', price: '38', image: 'https://iili.io/qqEPTpS.jpg', ingredients: 'White sliced bread, chipotle mayo, cheddar, lettuce, grilled chicken, bacon, fried egg, tomato slice.', calories: 600 },
+        { id: 'sw_brisket', name: 'Brisket Blaze', price: '45', image: 'https://iili.io/qqERigt.jpg', ingredients: 'Brioche toast, chipotle mayo, cheddar, brisket, caramelized onion, jalapeño.', calories: 650 },
         { id: 'sw_chick', name: 'Chicken Avocado Croissant', price: '35', image: 'https://iili.io/qqG2qR1.png', ingredients: 'A buttery, toasted kalonji-seed square croissant filled with tender grilled chicken and fresh avocado slices. Layered with crisp Lollo Bionda, sun-dried tomatoes, and shaved Grano Padano cheese. Finished with a house-made Caesar dressing and a fragrant drizzle of pesto oil.', calories: 520, branch: 'Al Qana' },
         { id: 'sw_shrimp', name: 'Shrimp Toast', price: '35', image: 'https://iili.io/qqEYw12.jpg', ingredients: 'Sautéed shrimp on brioche toast', calories: 420 },
         { id: 'sw_bacon', name: 'Bacon & Egg Cheese Bun', price: '44', image: 'https://iili.io/qqEAsNj.jpg', ingredients: 'Brioche bun with crispy bacon, scrambled egg, cheddar cheese, kimchi ketchup.', calories: 550 },
@@ -1925,7 +2017,7 @@ const createAlQanaMenu = (): MenuCategory[] => {
     },
     {
       id: 'signature-drinks',
-      title: 'Signature Drinks',
+      title: 'Signature drink',
       items: [
         findItem('signature-drinks', 'sig_espresso_shake')!,
         findItem('signature-drinks', 'sig_matcha_shake')!,
@@ -1972,7 +2064,7 @@ const createMarinaMenu = (): MenuCategory[] => {
   const baseEspresso = BASE_MENU.find(c => c.id === 'espresso');
   const marinaEspresso = JSON.parse(JSON.stringify(baseEspresso));
 
-  marinaEspresso.title = 'MARINA BRANCH SELECTION';
+  marinaEspresso.title = 'Espresso Based';
   marinaEspresso.headerStyle = {
     backgroundColor: 'transparent',
     color: '#fbbf24', // Gold
@@ -2010,7 +2102,7 @@ const createMarinaMenu = (): MenuCategory[] => {
     {
       id: 'bean_colombia_decaf',
       name: 'Colombia Sweet Dreams (Decaf)',
-      notes: 'Molasses, dried apricot, pecan nuts',
+      notes: 'Passion fruit cheesecake, milk chocolate, molasses',
       price: 0,
       isNew: false,
       isDecaf: true
@@ -2034,8 +2126,42 @@ const createMarinaMenu = (): MenuCategory[] => {
     item.branch = 'Marina';
   });
 
-  // Return full menu with replaced espresso
-  return BASE_MENU.map(cat => cat.id === 'espresso' ? marinaEspresso : cat);
+  // Custom Tea Category for Marina
+  const baseTea = BASE_MENU.find(c => c.id === 'tea');
+  const marinaTea = JSON.parse(JSON.stringify(baseTea));
+  const rushHour = marinaTea.items.find((i: any) => i.id === 'tea_rush');
+  if (rushHour) {
+    rushHour.name = 'Hot Rush Hour';
+    rushHour.price = '33';
+    rushHour.image = 'https://iili.io/qlbAzS2.jpg';
+  }
+  const blackTea = marinaTea.items.find((i: any) => i.id === 'tea_black');
+  if (blackTea) {
+    blackTea.name = 'EARL GRAY TEA';
+    blackTea.price = '24';
+  }
+
+  // Return full menu with replaced espresso and tea, and exclude juices
+  const marinaMenu = BASE_MENU
+    .filter(cat => cat.id !== 'juices')
+    .map(cat => {
+      if (cat.id === 'espresso') return marinaEspresso;
+      if (cat.id === 'tea') return marinaTea;
+      return cat;
+    });
+
+  marinaMenu.push({
+    id: 'sandwiches',
+    title: 'SANDWICHES & BAGELS',
+    items: [
+      { id: 'sw_italian', name: 'Cold Cut Italian', price: '38', image: 'https://iili.io/qqEieVe.png', ingredients: 'White slice bread with pesto oil, fresh mozzarella, tomato slice, tartufo salami, chorizo, baby Rocca, sun-dried tomatoes, balsamic glaze, organic olive oil.', calories: 580 },
+      { id: 'sw_club', name: 'Cartel Club Sandwich', price: '38', image: 'https://iili.io/qqEPTpS.jpg', ingredients: 'White sliced bread, chipotle mayo, cheddar, lettuce, grilled chicken, bacon, fried egg, tomato slice.', calories: 600 },
+      { id: 'sw_tuna', name: 'Tunacado', price: '38', image: 'https://iili.io/qqEgPdN.jpg', ingredients: "Joe's bread, pesto mayo, tuna mix, tomato slice, avocado slice.", calories: 480 },
+      { id: 'sw_brisket', name: 'Brisket Blaze', price: '45', image: 'https://iili.io/qqERigt.jpg', ingredients: 'Brioche toast, chipotle mayo, cheddar, brisket, caramelized onion, jalapeño.', calories: 650 }
+    ]
+  });
+
+  return marinaMenu;
 };
 
 // Golden Rule Layout Helper
@@ -2060,52 +2186,340 @@ const applyGoldenRuleLayout = (menu: MenuCategory[]): MenuCategory[] => {
     return extracted;
   };
 
-  // 1. Signature Drinks
-  const sig = extract(c => c.id === 'signature-drinks');
-  if (sig) newMenu.push(sig);
+  // 1. BEST SELLER
+  let bestSeller = extract(c => c.id === 'highly-recommend');
+  if (!bestSeller) {
+    const baseBestSeller = BASE_MENU.find(c => c.id === 'highly-recommend');
+    if (baseBestSeller) {
+      bestSeller = JSON.parse(JSON.stringify(baseBestSeller));
+    }
+  }
+  if (bestSeller) {
+    bestSeller.title = 'BEST SELLER';
+    newMenu.push(bestSeller);
+  }
 
-  // 2. Espresso
+  // 2. ESPRESSO BASED
   const esp = extract(c => c.id === 'espresso');
-  if (esp) newMenu.push(esp);
+  if (esp) {
+    esp.title = 'ESPRESSO BASED';
+    // Remove custom styling to ensure it matches the default white, sans-serif style
+    if (esp.headerStyle) {
+      delete esp.headerStyle;
+    }
+    newMenu.push(esp);
+  }
 
-  // 3. Specialty Coffee (Group: Filter Coffee, Cold Drip, and Cold Brew together)
-  const specialtyItems = extractAll(c => ['filter', 'filter-coffee', 'cold-drip', 'filter-taps'].includes(c.id));
+  // 3. FILTERED
+  const specialtyItems = extractAll(c => ['filter', 'filter-coffee', 'cold-drip', 'filter-taps', 'cold-brew'].includes(c.id));
   if (specialtyItems.length > 0) {
     newMenu.push({
       id: 'specialty-coffee',
-      title: 'Specialty Coffee',
+      title: 'FILTERED',
       items: [],
       subCategories: specialtyItems
     });
   }
 
-  // 4. Breakfast & Mains (Group: Healthy Bowls and Eggs & More)
-  const breakfastItems = extractAll(c => ['healthy-bowls', 'fruits-grains', 'fruits-gangs', 'eggs-more', 'breakfast'].includes(c.id));
+  // 4. SIGNATURE DRINKS + TEA
+  const sigTeaItems = extractAll(c => ['signature-drinks', 'tea', 'juices', 'smoothies'].includes(c.id));
+  if (sigTeaItems.length > 0) {
+    newMenu.push({
+      id: 'signature-tea',
+      title: 'SIGNATURE DRINKS + TEA',
+      items: [],
+      subCategories: sigTeaItems
+    });
+  }
+
+  // 5. FRUITS, SEEDS & GRAINS
+  const breakfastItems = extractAll(c => ['healthy-bowls', 'fruits-grains', 'fruits-gangs', 'eggs-more', 'breakfast', 'healthy-bar', 'salads', 'greens', 'green-salad'].includes(c.id));
   if (breakfastItems.length > 0) {
     newMenu.push({
       id: 'breakfast-mains',
-      title: 'Breakfast & Mains',
+      title: 'FRUITS, SEEDS & GRAINS',
       items: [],
       subCategories: breakfastItems
     });
   }
 
-  // 5. Sandwiches
+  // 6. BAKED GOODS
+  const bakedItems = extractAll(c => ['baked-goods', 'baked-items', 'from-our-bakery'].includes(c.id));
+  if (bakedItems.length > 0) {
+    newMenu.push({
+      id: 'baked-goods-group',
+      title: 'BAKED GOODS',
+      items: [],
+      subCategories: bakedItems
+    });
+  }
+
+  // 7. SANDWICHES & BAGELS
   const sandwiches = extract(c => c.id === 'sandwiches');
-  if (sandwiches) newMenu.push(sandwiches);
+  if (sandwiches) {
+    sandwiches.title = 'SANDWICHES & BAGELS';
+    newMenu.push(sandwiches);
+  }
 
-  // 6. Baked Goods
-  const baked = extract(c => ['baked-goods', 'baked-items', 'from-our-bakery'].includes(c.id));
-  if (baked) newMenu.push(baked);
-
-  // 7. Dessert
+  // 8. DESSERTS
   const dessert = extract(c => c.id === 'desserts');
-  if (dessert) newMenu.push(dessert);
+  if (dessert) {
+    dessert.title = 'DESSERTS';
+    newMenu.push(dessert);
+  }
 
-  // Append remaining categories (Juices, Tea, Smoothies, Salads, Greens, etc.)
-  newMenu.push(...remaining);
+  // Append any remaining categories just in case, to avoid losing data
+  if (remaining.length > 0) {
+    newMenu.push(...remaining);
+  }
 
   return newMenu;
+};
+
+// Dubai Branch Specific Menu
+const createDubaiMenu = (): MenuCategory[] => {
+  const findItem = (catId: string, itemId: string) => {
+    const cat = BASE_MENU.find(c => c.id === catId);
+    return cat?.items.find(i => i.id === itemId);
+  };
+
+  // Custom Espresso Category for Dubai
+  const baseEspresso = BASE_MENU.find(c => c.id === 'espresso');
+  const dubaiEspresso = JSON.parse(JSON.stringify(baseEspresso));
+
+  dubaiEspresso.title = 'DUBAI ESPRESSO SELECTION';
+  dubaiEspresso.headerStyle = {
+    backgroundColor: 'transparent',
+    color: '#fbbf24', // Gold
+    padding: '1rem 0',
+    textAlign: 'center',
+    fontFamily: 'serif',
+    letterSpacing: '0.2em',
+    fontSize: '2.5rem',
+    borderBottom: 'none'
+  };
+
+  const dubaiBeans = [
+    {
+      id: 'bean_469',
+      name: 'THE 469 BLAND',
+      notes: 'White Chocolate, Apricot Jam, Jaggery',
+      price: 0,
+      isNew: false
+    },
+    {
+      id: 'bean_coconutella',
+      name: 'COCONUTELLA',
+      notes: 'Coconut Cream, Milk Chocolate, Toffee Caramel',
+      price: 5,
+      isNew: false
+    },
+    {
+      id: 'bean_kenya',
+      name: 'KENYA GICHATHA',
+      notes: 'Caramel, Cacao Nibs, Black Cherry',
+      price: 1,
+      isNew: false
+    },
+    {
+      id: 'bean_decaf',
+      name: 'SWEET DREAMS DECAF',
+      notes: 'Passion fruit cheesecake, milk chocolate, molasses',
+      price: 0,
+      isNew: false,
+      isDecaf: true
+    }
+  ];
+
+  dubaiEspresso.beanSelection = dubaiBeans;
+  dubaiEspresso.description = '';
+
+  // Update all items to use these beans
+  dubaiEspresso.items.forEach((item: any) => {
+    const beanCustomization = item.customizations?.find((c: any) => c.id === 'bean_choice');
+    if (beanCustomization) {
+      beanCustomization.options = dubaiBeans.map((b: any) => ({
+        id: b.id,
+        name: b.name,
+        price: b.price,
+        description: b.notes
+      }));
+    }
+    item.branch = 'Dubai';
+  });
+
+  return [
+    dubaiEspresso,
+    {
+      id: 'filter-coffee',
+      title: 'Filter Coffee',
+      items: [
+        { 
+          id: 'fil_eth_guji', 
+          name: 'Colombia - Bourbon Sidra',
+          tastingNotes: 'Red grapes, watermelon, hard candy, raspberry', 
+          price: '46', 
+          image: 'https://iili.io/qjAjZAJ.png', 
+          ingredients: 'Pour-over brewing method', 
+          calories: 5,
+          branch: 'Dubai',
+          status: 'Available'
+        },
+        { 
+          id: 'fil_cuban', 
+          name: 'COSTA RICA',
+          tastingNotes: 'Cacao, fig compote, honey, cherry', 
+          price: '57', 
+          image: 'https://iili.io/qjAjZAJ.png', 
+          ingredients: 'Pour-over brewing method', 
+          calories: 5,
+          branch: 'Dubai',
+          status: 'Available'
+        },
+        { 
+          id: 'fil_kenya_kiri', 
+          name: 'Kenya Kirimara',
+          tastingNotes: 'Brown sugar, wild cherry, raisins', 
+          price: '46', 
+          image: 'https://iili.io/qjAjZAJ.png', 
+          ingredients: 'Pour-over brewing method', 
+          calories: 5,
+          branch: 'Dubai',
+          status: 'Available'
+        },
+        { 
+          id: 'fil_col_mish', 
+          name: 'Colombia Mish Mish',
+          tastingNotes: 'Apricot jam, raspberry, lychee', 
+          price: '57', 
+          image: 'https://iili.io/qjAjZAJ.png', 
+          ingredients: 'Pour-over brewing method', 
+          calories: 5,
+          branch: 'Dubai',
+          status: 'Available'
+        },
+        { 
+          id: 'fil_col_black', 
+          name: 'Colombia Blackberry', 
+          tastingNotes: 'Blackberry Soda, Cacao Nibs, Karkade', 
+          price: '57', 
+          image: 'https://iili.io/qjAjZAJ.png', 
+          ingredients: 'Pour-over brewing method', 
+          calories: 5,
+          branch: 'Dubai'
+        },
+        { 
+          id: 'fil_decaf', 
+          name: 'Colombia Sweet Dreams Decaf',
+          tastingNotes: 'Passion fruit cheesecake, milk chocolate, molasses', 
+          price: '38', 
+          image: 'https://iili.io/qjAjZAJ.png', 
+          ingredients: 'Pour-over brewing method', 
+          calories: 5,
+          branch: 'Dubai',
+          status: 'Available'
+        }
+      ]
+    },
+    {
+      id: 'fruits-grains',
+      title: 'Fruits, Grains',
+      items: [
+        findItem('healthy-bowls', 'bw1')!, // Acai Bowl
+        findItem('healthy-bowls', 'bw3')!, // Chia Pudding
+        findItem('healthy-bowls', 'bw2')!, // Overnight Oats
+        findItem('healthy-bowls', 'bw5')!, // Apple and Cinnamon Muesli
+        findItem('healthy-bowls', 'bw4')!, // Exotic Sunrise
+      ].filter(Boolean)
+    },
+    {
+      id: 'baked-goods',
+      title: 'Baked Goods',
+      items: [
+        findItem('from-our-bakery', 'fob_turkey')!, // Turkey Cheese Danish
+        findItem('from-our-bakery', 'fob_zaatar')!, // Zaatar & Labneh
+        findItem('from-our-bakery', 'fob_burrata')!, // Buratta Pizza
+        { id: 'bg_3cheese', name: '3 Cheese Croissant', price: '17', image: 'https://iili.io/qqECJAN.jpg', ingredients: 'Cheddar, mozzarella, and parmesan', calories: 350 }, // 3 Cheese Croissant
+        { id: 'bg_plain', name: 'Plain Croissant', price: '18', image: 'https://iili.io/qqX0EeR.png', ingredients: 'Classic butter croissant', calories: 280 }, // Plain Croissant
+        findItem('from-our-bakery', 'fob_almond')!, // Almond Croissant
+        findItem('desserts', 'd_choc_chip')!, // Chocolate Chip Cookies
+        findItem('from-our-bakery', 'fob_choc')!, // Chocolate Croissant
+      ].filter(Boolean)
+    },
+    {
+      id: 'desserts',
+      title: 'Desserts',
+      items: [
+        findItem('desserts', 'd_aseeda')!, // Aseeda
+        { id: 'd_honey', name: 'Honey Cake', price: '39.20', image: 'https://iili.io/qqXWIea.png', ingredients: 'Layers of honey sponge and cream', calories: 450 }, // Honey Cake
+        { id: 'd_peanut', name: 'Peanut Choco Tart', price: '39.20', image: 'https://iili.io/qqXGUIR.png', ingredients: 'Rich chocolate tart with peanut butter', calories: 480 }, // Peanut Choco Tart
+        { id: 'd_tiramisu', name: 'Tiramisu Bowl', price: '39.20', image: 'https://iili.io/qnnTv0G.png', ingredients: 'Classic Italian dessert with coffee', calories: 400 }, // Tiramisu Bowl
+        findItem('desserts', 'd_vanilla_pud')!, // Vanilla Pudding
+        findItem('desserts', 'd_banana_pud')!, // Banana Pudding
+        findItem('desserts', 'STICKY DATE')!, // Sticky Dates
+        findItem('desserts', 'MUHALABIYA')!, // Muhalabiya
+      ].filter(Boolean)
+    },
+    {
+      id: 'sandwiches',
+      title: 'Sandwiches & Bagels',
+      items: [
+        { id: 'sw_bacon', name: 'Bacon & Egg Cheese Bun', price: '44', image: 'https://iili.io/qqEAsNj.jpg', ingredients: 'Brioche bun with crispy bacon, scrambled egg, cheddar cheese, kimchi ketchup.', calories: 550 },
+        { id: 'sw_tuna', name: 'Tunacado', price: '38', image: 'https://iili.io/qqEgPdN.jpg', ingredients: "Joe's bread, pesto mayo, tuna mix, tomato slice, avocado slice.", calories: 480 },
+        { id: 'sw_chick', name: 'Chicken & Avocado Croissant', price: '42', image: 'https://iili.io/qqG2qR1.png', ingredients: 'Grilled chicken, fresh avocado, croissant', calories: 520 },
+        { id: 'sw_club', name: 'Cartel Club Sandwich', price: '38', image: 'https://iili.io/qqEPTpS.jpg', ingredients: 'White sliced bread, chipotle mayo, cheddar, lettuce, grilled chicken, bacon, fried egg, tomato slice.', calories: 600 },
+        { id: 'sw_brisket', name: 'Brisket Blaze', price: '45', image: 'https://iili.io/qqERigt.jpg', ingredients: 'Brioche toast, chipotle mayo, cheddar, brisket, caramelized onion, jalapeño.', calories: 650 },
+        { id: 'sw_shrimp', name: 'Shrimp Toast', price: '35', image: 'https://iili.io/qqEYw12.jpg', ingredients: 'Sautéed shrimp on brioche toast', calories: 420 },
+        { id: 'sw_italian', name: 'Cold Cut Italian', price: '38', image: 'https://iili.io/qqEieVe.png', ingredients: 'White slice bread with pesto oil, fresh mozzarella, tomato slice, tartufo salami, chorizo, baby Rocca, sun-dried tomatoes, balsamic glaze, organic olive oil.', calories: 580 },
+      ].filter(Boolean)
+    },
+    {
+      id: 'eggs-more',
+      title: 'Eggs & More',
+      items: [
+        { id: 'egg_avo', name: 'Avocado Toast', price: '45', image: 'https://iili.io/qqGqaMg.jpg', ingredients: 'Sourdough with smashed avocado, whipped feta, Pico de Gallo, pine nuts, parmesan, coriander, dill leaves, mix sesame seeds, lime wedges, chili flakes, dukka, and poached egg.', calories: 380 },
+        { id: 'egg_ben', name: 'Eggs Benedict', price: '46', image: 'https://iili.io/qqGfw3x.jpg', ingredients: 'English muffins with cream cheese, tomato sauce, smoky bacon, poached eggs, miso hollandaise, chives.', calories: 450 },
+        { id: 'egg_truffle', name: 'Scrambled Truffle Eggs', price: '54', image: 'https://iili.io/qqGqpDP.jpg', ingredients: 'Creamy scrambled eggs on brioche slice with truffle mayo, truffle oil, and shaved black truffle.', calories: 420 },
+        { id: 'egg_cro', name: 'EGG & AVO CROISSANT', price: '38', image: 'https://iili.io/qqXARp9.jpg', ingredients: 'Plain croissant, cream cheese mix, smashed avocado, tomato sauce, poached eggs sprinkled with pumpkin seeds and mix sesame seeds.', calories: 490 },
+        { id: 'egg_nduja', name: 'Nduja Chili Scrambled Tornado Eggs', price: '52', image: 'https://iili.io/qqGClvR.jpg', ingredients: 'garlic and butter pita bread, creamy mayo, mama’s sauce, smoked yogurt, spicy beef nduja, microgreens, and a drizzle of smoked oil.', calories: 450 },
+        { id: 'egg_big', name: 'Big Breakfast Homemade', price: '65', image: 'https://iili.io/qqVHZ1R.png', ingredients: 'hash brown potatoes, red beans, sautéed portobello mushrooms, wagyu beef sausage, smoked veal bacon, roasted vine tomatoes, two sunny side up eggs on a slice of brioche bread, (eggs your way: scrambled, poached, sunny side up).', calories: 850 },
+        { id: 'egg_aussie', name: 'Aussie Benedict', price: '58', image: 'https://iili.io/qqMpPzG.png', ingredients: 'brioche bun with white barbecue sauce, pulled beef, 2 poached eggs, miso hollandaise, crispy onions & spring roll, chives.', calories: 580 },
+        { id: 'egg_turkish', name: 'Minted yogurt', price: '46', image: 'https://iili.io/qqGBwmB.jpg', ingredients: 'homemade tomato jam, poached eggs, mint pesto, chilly butter served with 2 slices of toasted zaatar sourdough.', calories: 400 },
+      ].filter(Boolean)
+    },
+    {
+      id: 'salads',
+      title: 'Greens (Salad)',
+      items: [
+        { id: 'sal_caesar', name: 'Caesar-Style Salad', price: '42', image: 'https://iili.io/qqE6hg4.jpg', ingredients: 'little gem lettuce, creaser dressing, crouton, parmesan cheese, crushed pistachio (add Ons: poached egg, bacon or chicken).', calories: 350 },
+      ].filter(Boolean)
+    },
+    {
+      id: 'smoothies',
+      title: 'Smoothies',
+      items: [
+        { id: 'sm_acai', name: 'Açaí Smoothie', price: '42', image: 'https://iili.io/qnBllxp.jpg', ingredients: 'Acai berry, banana, strawberry, peanut butter, coconut water, oat milk, and apple juice.', calories: 280 },
+        { id: 'sm_pit', name: 'Pitaya Smoothie', price: '42', image: 'https://iili.io/qqEH3rP.jpg', ingredients: 'Apple juice, lemon juice, pitaya, frozen pineapple, banana, and lemon electrolytes.', calories: 270 },
+        { id: 'sm_coc', name: 'Blue Cloud Smoothie', price: '42', image: 'https://iili.io/qqE9JUX.jpg', ingredients: 'Coconut milk, pineapple, banana, avocado, vanilla stevia, collagen, peanut butter, blue spirulina, and on top coconut cloud cream.', calories: 300 },
+        { id: 'sm_straw', name: 'Strawberry Glaze Smoothie', price: '42', image: 'https://iili.io/qq1mS5b.jpg', ingredients: 'Almond milk, frozen strawberries, bananas, dates, maple syrup, collagen, vanilla stevia, sea moss gel, strawberry sauce, and coconut cloud cream.', calories: 260 },
+      ].filter(Boolean)
+    },
+    {
+      id: 'signature-drinks',
+      title: 'Signature drink',
+      items: [
+        findItem('signature-drinks', 'sig3')!, // Matcha Cloud
+        { id: 'sig_pink_cloud', name: 'Pink Cloud Matcha', price: '38', image: 'https://iili.io/q2ugtIa.png', ingredients: 'Matcha cream, matcha dust, coconut water, strawberry infusion', calories: 230 },
+        { id: 'sig_blue_cloud', name: 'Blue Cloud Matcha', price: '38', image: 'https://iili.io/q2ugtIa.png', ingredients: 'Matcha cream, matcha dust, coconut water, blue spirulina', calories: 230 },
+        findItem('signature-drinks', 'sig2')!, // Matcha Latte
+        findItem('signature-drinks', 'sig_matcha_shake')!, // Matcha Shake
+        findItem('signature-drinks', 'sig8')!, // Tanzanian Hot Chocolate
+        findItem('signature-drinks', 'sig_baby_shark')!, // Baby Shark
+        { id: 'sig_espresso_martini', name: "Cartel's Espresso Martini", price: '42', image: 'https://iili.io/q2uUQV4.jpg', ingredients: 'Double shot espresso, vanilla syrup, shaken over ice', calories: 150 },
+        findItem('signature-drinks', 'sig_espresso_shake')!, // Espresso Shake
+      ].filter(Boolean)
+    }
+  ];
 };
 
 // MULTI-BRANCH DATA DICTIONARY
@@ -2114,6 +2528,9 @@ export const BRANCH_MENUS: BranchMenuDirectory = {
   // Dubai Mirdif
   'mirdif': applyGoldenRuleLayout(createMirdifMenu()),
   
+  // Dubai
+  'dubai': applyGoldenRuleLayout(createDubaiMenu()),
+
   // Al Qana
   'alqana': applyGoldenRuleLayout(createAlQanaMenu()),
 

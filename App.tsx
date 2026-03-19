@@ -1,10 +1,9 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import FlipCard from './components/FlipCard';
+import SmoothieCard from './components/SmoothieCard';
 import AiBarista from './components/AiBarista';
-import OrderTray from './components/OrderTray';
 import FeedbackForm from './components/FeedbackForm';
-import ProductModal from './components/ProductModal';
 import AdminDashboard from './components/AdminDashboard';
 import BranchSelection from './components/BranchSelection';
 import Footer from './components/Footer';
@@ -16,12 +15,9 @@ const App: React.FC = () => {
   const [isAdminMode, setIsAdminMode] = useState(false);
   const [isLegalModalOpen, setIsLegalModalOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
-  const [trayItems, setTrayItems] = useState<MenuItem[]>([]);
-  const [isTrayOpen, setIsTrayOpen] = useState(false);
   
   // Default to null to show Branch Selection
   const [activeBranch, setActiveBranch] = useState<Branch | null>(null);
-  const [selectedItemForCustomization, setSelectedItemForCustomization] = useState<MenuItem | null>(null);
   const [inventoryStatus, setInventoryStatus] = useState<Record<string, boolean>>({});
 
   useEffect(() => {
@@ -135,27 +131,8 @@ const App: React.FC = () => {
       .filter((c): c is MenuCategory => c !== null);
   }, [searchQuery, inventoryStatus, currentBranchMenu]);
 
-  const handleCardAdd = (item: MenuItem) => {
-    if (item.isSoldOut) return;
-    if ((item.variants && item.variants.length > 0) || (item.customizations && item.customizations.length > 0)) {
-      setSelectedItemForCustomization(item);
-    } else {
-      addToTray(item);
-    }
-  };
-
-  const addToTray = (item: MenuItem) => {
-    setTrayItems(prev => [...prev, item]);
-    setIsTrayOpen(true);
-  };
-
-  const removeFromTray = (index: number) => {
-    setTrayItems(prev => prev.filter((_, i) => i !== index));
-  };
-
   const resetLocation = () => {
      setActiveBranch(null);
-     setTrayItems([]);
   };
 
   if (isAdminMode) {
@@ -178,28 +155,10 @@ const App: React.FC = () => {
            <Navbar 
             searchQuery={searchQuery}
             setSearchQuery={setSearchQuery}
-            cartCount={trayItems.length}
-            onOpenTray={() => setIsTrayOpen(true)}
             activeBranch={activeBranch}
             onSwitchLocation={resetLocation}
             activeMenuCategories={currentBranchMenu} 
           />
-
-          <OrderTray 
-            isOpen={isTrayOpen}
-            onClose={() => setIsTrayOpen(false)}
-            items={trayItems}
-            onRemove={removeFromTray}
-          />
-
-          {selectedItemForCustomization && (
-            <ProductModal 
-              isOpen={!!selectedItemForCustomization}
-              item={selectedItemForCustomization}
-              onClose={() => setSelectedItemForCustomization(null)}
-              onAddToTray={addToTray}
-            />
-          )}
 
           {/* Main Content Area with padding for fixed header */}
           <div id="menu-start" className={`relative pb-20 pt-32`}>
@@ -237,7 +196,7 @@ const App: React.FC = () => {
                               {category.beanSelection.map((bean, index) => (
                                 <div 
                                   key={bean.id}
-                                  className="relative group flex flex-col justify-between p-8 bg-[#1a1a1a] rounded-3xl border border-white/5 shadow-2xl hover:border-[#fbbf24]/20 transition-all duration-500 overflow-hidden min-h-[320px]"
+                                  className="relative group flex flex-col justify-between p-8 bg-[#1a1a1a] rounded-3xl border border-white/5 shadow-2xl hover:border-white/20 transition-all duration-500 overflow-hidden min-h-[320px]"
                                 >
                                   {/* Soft Studio Lighting Effect */}
                                   <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
@@ -245,13 +204,13 @@ const App: React.FC = () => {
                                   {/* Top Badge Area */}
                                   <div className="flex justify-between items-start w-full mb-6 relative z-10 h-8">
                                     {bean.isNew && (
-                                      <span className="px-3 py-1 bg-gradient-to-r from-[#fbbf24] to-[#d97706] text-slate-900 text-[10px] font-bold uppercase tracking-widest rounded-sm shadow-lg animate-pulse">
+                                      <span className="px-3 py-1 bg-white text-black text-[10px] font-bold uppercase tracking-widest rounded-sm shadow-lg animate-pulse">
                                         New
                                       </span>
                                     )}
                                     {bean.price > 0 && (
-                                      <div className="absolute top-0 right-0 w-12 h-12 rounded-full border border-[#fbbf24] flex items-center justify-center bg-[#1a1a1a] shadow-[0_0_15px_rgba(251,191,36,0.1)]">
-                                        <span className="text-[#fbbf24] text-[10px] font-bold tracking-tighter leading-none text-center">
+                                      <div className="absolute top-0 right-0 w-12 h-12 rounded-full border border-white/30 flex items-center justify-center bg-[#1a1a1a] shadow-[0_0_15px_rgba(255,255,255,0.1)]">
+                                        <span className="text-white text-[10px] font-bold tracking-tighter leading-none text-center">
                                           +{bean.price}<br/>AED
                                         </span>
                                       </div>
@@ -264,7 +223,7 @@ const App: React.FC = () => {
                                       {bean.name}
                                     </h4>
                                     
-                                    <div className="w-8 h-[1px] bg-[#fbbf24]/30 my-2" />
+                                    <div className="w-8 h-[1px] bg-white/30 my-2" />
 
                                     <p className="text-slate-400 text-sm font-light leading-relaxed tracking-wide max-w-[200px]">
                                       {bean.notes}
@@ -290,14 +249,24 @@ const App: React.FC = () => {
                     
                       {category.items.length > 0 && (
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-                          {category.items.map((item, index) => (
-                            <FlipCard 
-                              key={item.id} 
-                              item={item} 
-                              onAdd={handleCardAdd}
-                              index={index}
-                            />
-                          ))}
+                          {category.items.map((item, index) => {
+                            if (category.id === 'healthy-bar' && activeBranch.id === 'mirdif') {
+                              return (
+                                <SmoothieCard 
+                                  key={item.id} 
+                                  item={item} 
+                                  index={index}
+                                />
+                              );
+                            }
+                            return (
+                              <FlipCard 
+                                key={item.id} 
+                                item={item} 
+                                index={index}
+                              />
+                            );
+                          })}
                         </div>
                       )}
 
@@ -311,7 +280,6 @@ const App: React.FC = () => {
                                <FlipCard 
                                  key={item.id} 
                                  item={item} 
-                                 onAdd={handleCardAdd}
                                  index={index}
                                />
                              ))}

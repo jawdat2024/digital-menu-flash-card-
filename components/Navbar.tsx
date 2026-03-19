@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Search, ShoppingBag, MapPin, Instagram, Phone, Globe, X, Sun, Moon } from 'lucide-react';
+import { Search, MapPin, Instagram, Phone, Globe, X, Sun, Moon } from 'lucide-react';
 import { Branch, MenuCategory } from '../types';
 
 interface NavbarProps {
   searchQuery: string;
   setSearchQuery: (query: string) => void;
-  cartCount: number;
-  onOpenTray: () => void;
   activeBranch: Branch | null;
   onSwitchLocation: () => void;
   activeMenuCategories: MenuCategory[];
@@ -15,8 +13,6 @@ interface NavbarProps {
 const Navbar: React.FC<NavbarProps> = ({ 
   searchQuery, 
   setSearchQuery, 
-  cartCount, 
-  onOpenTray, 
   activeBranch,
   onSwitchLocation,
   activeMenuCategories
@@ -64,11 +60,11 @@ const Navbar: React.FC<NavbarProps> = ({
   };
 
   React.useEffect(() => {
-    // Ensure 'filter-taps' is default if present, otherwise first category
+    // Ensure 'highly-recommend' (BEST SELLER) is default if present, otherwise first category
     if (activeMenuCategories.length > 0) {
-      const hasFilterTaps = activeMenuCategories.some(cat => cat.id === 'filter-taps');
-      if (hasFilterTaps) {
-        setActiveCategoryId('filter-taps');
+      const hasBestSeller = activeMenuCategories.some(cat => cat.id === 'highly-recommend');
+      if (hasBestSeller) {
+        setActiveCategoryId('highly-recommend');
       } else {
         setActiveCategoryId(activeMenuCategories[0].id);
       }
@@ -191,7 +187,7 @@ const Navbar: React.FC<NavbarProps> = ({
                </div>
             </div>
 
-            {/* Right: Cart & Theme Toggle */}
+            {/* Right: Theme Toggle */}
             <div className="flex-1 flex justify-end items-center gap-2 sm:gap-4">
                {/* Theme Toggle */}
                <button
@@ -201,45 +197,31 @@ const Navbar: React.FC<NavbarProps> = ({
                >
                  {isDarkMode ? <Sun size={18} strokeWidth={1.5} /> : <Moon size={18} strokeWidth={1.5} />}
                </button>
-
-               {activeBranch && (
-                 <button 
-                   onClick={onOpenTray}
-                   className="relative text-[var(--text-primary)] hover:text-[var(--text-secondary)] transition-colors p-2"
-                 >
-                   <ShoppingBag size={20} strokeWidth={1.5} />
-                   {cartCount > 0 && (
-                     <span className="absolute -top-1 -right-1 h-4 w-4 bg-[var(--text-primary)] text-[var(--bg-primary)] text-[9px] font-bold flex items-center justify-center rounded-full shadow-md">
-                       {cartCount}
-                     </span>
-                   )}
-                 </button>
-               )}
             </div>
           </div>
         </div>
 
         {/* Categories Bar - Sticky Extension */}
         {!isSearchOpen && activeBranch && (
-          <div className="border-t border-[var(--border-color)] bg-[var(--bg-primary)] transition-colors duration-500">
+          <div className="border-t border-white/10 bg-black transition-colors duration-500">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="flex overflow-x-auto no-scrollbar py-3 space-x-8 md:justify-center">
+              <div className="flex overflow-x-auto no-scrollbar py-3 gap-6 justify-between md:justify-evenly w-full">
                 {activeMenuCategories.map((category) => (
                   <button
                     key={category.id}
                     onClick={() => scrollToSection(category.id)}
                     className={`text-[10px] font-bold uppercase tracking-[0.2em] whitespace-nowrap transition-colors relative group py-2 font-sans ${
-                      activeCategoryId === category.id ? 'text-[var(--text-primary)]' : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
+                      activeCategoryId === category.id ? 'text-white' : 'text-white/70 hover:text-white'
                     }`}
                   >
                     {category.title}
                     {/* Active Underline */}
                     {activeCategoryId === category.id && (
-                      <span className="absolute bottom-0 left-0 w-full h-[2px] bg-[var(--text-primary)] transition-all duration-300 translate-y-1"></span>
+                      <span className="absolute bottom-0 left-0 w-full h-[1px] bg-white transition-all duration-300 translate-y-1"></span>
                     )}
                     {/* Hover Underline (thinner) */}
                     {activeCategoryId !== category.id && (
-                      <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-[var(--text-primary)] transition-all duration-300 group-hover:w-full translate-y-1"></span>
+                      <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full translate-y-1"></span>
                     )}
                   </button>
                 ))}

@@ -15,13 +15,13 @@ body.dark-theme {
   /* Cartel Dark Mode */
   --bg-primary: #000000;
   --bg-secondary: #0A0A0A;
-  --text-primary: #D1D0D0;
-  --text-secondary: #A0A0A0;
+  --text-primary: #FFFFFF;
+  --text-secondary: #CCCCCC;
   --border-color: #222222;
   --card-bg: #000000;
-  --accent-color: #D1D0D0;
-  --icon-color: #D1D0D0;
-  --hover-bg: rgba(209, 208, 208, 0.1);
+  --accent-color: #FFFFFF;
+  --icon-color: #FFFFFF;
+  --hover-bg: rgba(255, 255, 255, 0.1);
 }
 
 body {
@@ -45,6 +45,6 @@ body {
 }
 
 .menu-heading {
-  font-family: 'Carter One', system-ui;
-  font-weight: 400; /* Carter One only comes in 400 weight */
+  font-family: 'Bodoni Moda', serif;
+  font-weight: 700;
 }

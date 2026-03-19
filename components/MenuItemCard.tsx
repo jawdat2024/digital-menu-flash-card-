@@ -1,15 +1,14 @@
 
 import React from 'react';
 import { MenuItem } from '../types';
-import { Plus, Flame } from 'lucide-react';
+import { Flame } from 'lucide-react';
 import CurrencySymbol from './CurrencySymbol';
 
 interface MenuItemCardProps {
   item: MenuItem;
-  onAdd: (item: MenuItem) => void;
 }
 
-const MenuItemCard: React.FC<MenuItemCardProps> = ({ item, onAdd }) => {
+const MenuItemCard: React.FC<MenuItemCardProps> = ({ item }) => {
   return (
     <div className="flex flex-col h-full bg-cartel-white text-black rounded-luxury overflow-hidden relative group hover:shadow-2xl transition-all duration-500 ease-luxury transform hover:-translate-y-1">
         {/* Badge */}
@@ -25,7 +24,7 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({ item, onAdd }) => {
                <img 
                  src={item.image} 
                  alt={item.name} 
-                 className="w-full h-full object-cover transition-transform duration-1000 ease-luxury group-hover:scale-105"
+                 className="w-full h-full object-cover object-center transition-transform duration-1000 ease-luxury group-hover:scale-105"
                  loading="lazy"
                />
              ) : (
@@ -65,7 +64,7 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({ item, onAdd }) => {
                 {item.ingredients}
             </p>
 
-            {/* Price & Action */}
+            {/* Price */}
             <div className="flex items-end justify-between mb-5">
                  <div className="flex flex-col">
                     {item.pricePrefix && <span className="text-[9px] uppercase tracking-widest text-neutral-400 mb-0.5">{item.pricePrefix}</span>}
@@ -74,15 +73,6 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({ item, onAdd }) => {
                         <span>{item.price}</span>
                     </div>
                  </div>
-                 
-                 <button 
-                    onClick={() => !item.isSoldOut && item.status !== 'Sold Out' && item.status !== 'Coming Soon' && onAdd(item)}
-                    disabled={item.isSoldOut || item.status === 'Sold Out' || item.status === 'Coming Soon'}
-                    className="h-12 w-12 rounded-full bg-black text-white flex items-center justify-center hover:bg-neutral-800 transition-colors shadow-lg hover:scale-105 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed group/btn"
-                    aria-label="Add to order"
-                >
-                    <Plus size={20} className="group-hover/btn:rotate-90 transition-transform duration-300" />
-                </button>
             </div>
 
             {/* Calorie Footer Strip */}

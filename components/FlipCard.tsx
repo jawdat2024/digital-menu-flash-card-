@@ -1,30 +1,24 @@
 import React, { useState } from 'react';
 import { MenuItem } from '../types';
-import { Plus, SlidersHorizontal, Flame, Sparkles } from 'lucide-react';
+import { SlidersHorizontal, Flame, Sparkles } from 'lucide-react';
 import CurrencySymbol from './CurrencySymbol';
 
 interface FlipCardProps {
   item: MenuItem;
-  onAdd: (item: MenuItem) => void;
   index?: number;
 }
 
-const FlipCard: React.FC<FlipCardProps> = ({ item, onAdd, index = 0 }) => {
+const FlipCard: React.FC<FlipCardProps> = ({ item, index = 0 }) => {
   const [triggerSparkle, setTriggerSparkle] = useState(false);
   const hasVariants = (item.variants && item.variants.length > 0) || (item.customizations && item.customizations.length > 0);
   const animationDelay = `${index * 50}ms`;
+  const isFilterTap = item.id.startsWith('tap_');
+  const isColdBrew = item.id.includes('_cb') || item.id.startsWith('cb_');
 
   const handleIconTap = (e: React.MouseEvent) => {
     e.stopPropagation();
     setTriggerSparkle(true);
     setTimeout(() => setTriggerSparkle(false), 1000);
-  };
-
-  const handleAddClick = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    if (!item.isSoldOut) {
-        onAdd(item);
-    }
   };
 
   return (
@@ -67,10 +61,10 @@ const FlipCard: React.FC<FlipCardProps> = ({ item, onAdd, index = 0 }) => {
           {/* Image Container */}
           <div className="h-[55%] w-full relative overflow-hidden bg-[var(--bg-secondary)]">
               {item.image ? (
-                 <img 
+                  <img 
                    src={item.image} 
                    alt={item.name}
-                   className={`w-full h-full object-cover transition-transform duration-[1.5s] ease-luxury grayscale-[20%] group-hover:grayscale-0 ${!item.isSoldOut && item.status !== 'Sold Out' && item.status !== 'Coming Soon' && 'group-hover:scale-105'}`}
+                   className={`w-full h-full ${isFilterTap || isColdBrew ? 'object-contain p-4' : 'object-cover'} object-center transition-transform duration-[1.5s] ease-luxury grayscale-[20%] group-hover:grayscale-0 ${!item.isSoldOut && item.status !== 'Sold Out' && item.status !== 'Coming Soon' && 'group-hover:scale-105'}`}
                    loading="lazy"
                  />
               ) : (
@@ -96,10 +90,11 @@ const FlipCard: React.FC<FlipCardProps> = ({ item, onAdd, index = 0 }) => {
           </div>
 
           {/* Content */}
-          <div className="flex-1 flex flex-col p-6 relative -mt-8 bg-[var(--card-bg)] rounded-t-2xl border-t border-[var(--border-color)]">
+          <div className={`flex-1 flex flex-col p-6 relative -mt-8 bg-[var(--card-bg)] rounded-t-2xl border-t ${isColdBrew ? 'border-blue-500/30' : 'border-[var(--border-color)]'}`}>
               <div className="flex justify-between items-start mb-2">
-                 <h3 className="text-lg font-didone font-bold text-[var(--text-primary)] tracking-wide leading-tight pr-2">
+                 <h3 className={`text-lg font-bold text-[var(--text-primary)] tracking-wide leading-tight pr-2 flex items-center gap-2 ${isFilterTap ? 'font-sans uppercase text-sm tracking-widest' : 'font-didone'}`}>
                    {item.name}
+                   {isColdBrew && <span className="text-blue-400" title="Chilled">❄️</span>}
                  </h3>
                  <div className="flex items-center gap-1 pt-1 shrink-0 text-[var(--text-primary)]">
                     <CurrencySymbol className="w-3.5 h-3.5" strokeWidth={2.5} />
@@ -161,19 +156,6 @@ const FlipCard: React.FC<FlipCardProps> = ({ item, onAdd, index = 0 }) => {
                        </div>
                      )}
                   </div>
-                  
-                  {!item.isSoldOut && item.status !== 'Sold Out' && item.status !== 'Coming Soon' && (
-                    <button 
-                        onClick={handleAddClick}
-                        className={`
-                        h-9 px-5 rounded-full flex items-center justify-center transition-all duration-300 
-                        bg-[var(--text-primary)] text-[var(--bg-primary)] hover:opacity-80 hover:scale-105 active:scale-95 cursor-pointer border border-transparent
-                        `}
-                    >
-                        {hasVariants ? <SlidersHorizontal size={14} /> : <Plus size={16} />}
-                        <span className="ml-2 text-[10px] font-bold uppercase tracking-widest">{hasVariants ? 'Options' : 'Add'}</span>
-                    </button>
-                  )}
               </div>
           </div>
       </div>

@@ -1197,7 +1197,7 @@ const createMirdifMenu = (): MenuCategory[] => {
         findItem('desserts', 'MUHALABIYA')!, // Muhalabiya
         findItem('desserts', 'd_aseeda')!, // Aseeda
         findItem('desserts', 'd_san_seb')!, // San Sebastián
-        { ...findItem('desserts', 'd_crepe_rolls')!, status: 'Coming Soon' as const }, // Crepe Rolls
+        { ...findItem('desserts', 'd_crepe_rolls')!, status: 'Available' }, // Crepe Rolls
         { id: 'd_honey', name: 'Honeycake', price: '39.20', image: 'https://iili.io/qqXWIea.png', ingredients: 'Layers of honey sponge and cream', calories: 450 }, // Honeycake
         { id: 'd_tiramisu', name: 'Tiramisu', price: '39.20', image: 'https://iili.io/qnnTv0G.png', ingredients: 'Classic Italian dessert with coffee', calories: 400 }, // Tiramisu
         findItem('desserts', 'STICKY DATE')!, // Sticky dates
@@ -2129,16 +2129,15 @@ const createMarinaMenu = (): MenuCategory[] => {
   // Custom Tea Category for Marina
   const baseTea = BASE_MENU.find(c => c.id === 'tea');
   const marinaTea = JSON.parse(JSON.stringify(baseTea));
+  
+  // Remove the bottom row items (EARL GRAY TEA and Green Tea)
+  marinaTea.items = marinaTea.items.filter((i: any) => i.id !== 'tea_black' && i.id !== 'tea_green');
+
   const rushHour = marinaTea.items.find((i: any) => i.id === 'tea_rush');
   if (rushHour) {
     rushHour.name = 'Hot Rush Hour';
     rushHour.price = '33';
     rushHour.image = 'https://iili.io/qlbAzS2.jpg';
-  }
-  const blackTea = marinaTea.items.find((i: any) => i.id === 'tea_black');
-  if (blackTea) {
-    blackTea.name = 'EARL GRAY TEA';
-    blackTea.price = '24';
   }
 
   // Return full menu with replaced espresso and tea, and exclude juices
@@ -2147,6 +2146,14 @@ const createMarinaMenu = (): MenuCategory[] => {
     .map(cat => {
       if (cat.id === 'espresso') return marinaEspresso;
       if (cat.id === 'tea') return marinaTea;
+      if (cat.id === 'desserts') {
+        return {
+          ...cat,
+          items: cat.items.map(item =>
+            item.id === 'd_crepe_rolls' ? { ...item, status: 'Available' } : item
+          )
+        };
+      }
       return cat;
     });
 

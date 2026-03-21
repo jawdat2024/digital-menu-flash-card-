@@ -58,33 +58,46 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ onBack, initialBranchId
 
   // --- Initialization & Switching Logic ---
   useEffect(() => {
-    // Dynamic Storage Key based on selected branch
     const storageKey = `cartel_inventory_${selectedBranchId}`;
     
-    // 1. Check LocalStorage for specific branch
+    const initialItems: AdminItem[] = [];
+    const menuSource = BRANCH_MENUS[selectedBranchId] || BRANCH_MENUS['khalifa'];
+
+    const processItem = (item: any, catTitle: string) => {
+      const priceNum = parseFloat(item.price.replace(/[^0-9.]/g, '')) || 0;
+      initialItems.push({
+        id: item.id,
+        name: item.name,
+        sku: `SKU-${item.id.toUpperCase()}`,
+        category: catTitle,
+        price: priceNum,
+        active: !item.isSoldOut, // Logic mapping
+        isSoldOut: !!item.isSoldOut,
+        image: item.image
+      });
+    };
+
+    menuSource.forEach(cat => {
+      cat.items.forEach(item => processItem(item, cat.title));
+      if (cat.subCategories) {
+        cat.subCategories.forEach(sub => {
+          sub.items.forEach(item => processItem(item, sub.title));
+        });
+      }
+    });
+
     const stored = localStorage.getItem(storageKey);
     if (stored) {
-      setItems(JSON.parse(stored));
-    } else {
-      // 2. Fallback: Load from constants based on selected Branch
-      const initialItems: AdminItem[] = [];
-      const menuSource = BRANCH_MENUS[selectedBranchId] || BRANCH_MENUS['khalifa'];
-
-      menuSource.forEach(cat => {
-        cat.items.forEach(item => {
-          const priceNum = parseFloat(item.price.replace(/[^0-9.]/g, '')) || 0;
-          initialItems.push({
-            id: item.id,
-            name: item.name,
-            sku: `SKU-${item.id.toUpperCase()}`,
-            category: cat.title,
-            price: priceNum,
-            active: !item.isSoldOut, // Logic mapping
-            isSoldOut: !!item.isSoldOut,
-            image: item.image
-          });
-        });
+      const parsedStored: AdminItem[] = JSON.parse(stored);
+      // Merge stored items with initial items
+      const mergedItems = initialItems.map(item => {
+        const storedItem = parsedStored.find(si => si.id === item.id);
+        return storedItem ? { ...item, active: storedItem.active, isSoldOut: storedItem.isSoldOut, price: storedItem.price } : item;
       });
+      // Add any custom items created in the dashboard
+      const customItems = parsedStored.filter(si => !initialItems.some(ii => ii.id === si.id));
+      setItems([...mergedItems, ...customItems]);
+    } else {
       setItems(initialItems);
       localStorage.setItem(storageKey, JSON.stringify(initialItems));
     }

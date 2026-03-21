@@ -950,10 +950,10 @@ const BASE_MENU: MenuCategory[] = [
     id: 'juices',
     title: 'Juices',
     items: [
-      { id: 'juice_green', name: 'Green Apple', price: '28', image: 'https://iili.io/fQlvE74.png', ingredients: 'Freshly squeezed green apple juice', calories: 120 },
-      { id: 'juice_orange', name: 'Orange', price: '28', image: 'https://iili.io/fPDU3b9.jpg', ingredients: 'Freshly squeezed orange juice', calories: 110 },
-      { id: 'juice_carrot', name: 'Carrot', price: '28', image: 'https://iili.io/fQlkSWX.png', ingredients: 'Freshly squeezed carrot juice', calories: 90 },
-      { id: 'juice_water', name: 'Watermelon', price: '28', image: 'https://iili.io/fQlkJtt.png', ingredients: 'Freshly squeezed watermelon juice', calories: 80 },
+      { id: 'juice_green', name: 'Green Apple', price: '24', image: 'https://iili.io/qv5Opwu.jpg', ingredients: 'Freshly squeezed green apple juice', calories: 120 },
+      { id: 'juice_orange', name: 'Orange', price: '24', image: 'https://iili.io/qv5W3mv.jpg', ingredients: 'Freshly squeezed orange juice', calories: 110 },
+      { id: 'juice_carrot', name: 'Carrot', price: '24', image: 'https://iili.io/qv5h6gt.jpg', ingredients: 'Freshly squeezed carrot juice', calories: 90 },
+      { id: 'juice_water', name: 'Watermelon', price: '24', image: 'https://iili.io/qv5Tqc7.jpg', ingredients: 'Freshly squeezed watermelon juice', calories: 80 },
     ]
   },
   {
@@ -1033,6 +1033,14 @@ const createMirdifMenu = (): MenuCategory[] => {
       isNew: false
     },
     {
+      id: 'bean_colombia_strawberry',
+      name: 'Colombia - Strawberry',
+      notes: 'Flavors will be available soon.',
+      price: 5,
+      isNew: true,
+      status: 'Coming Soon'
+    },
+    {
       id: 'bean_decaf',
       name: 'SWEET DREAMS DECAF',
       notes: 'Passion fruit cheesecake, milk chocolate, molasses',
@@ -1053,7 +1061,8 @@ const createMirdifMenu = (): MenuCategory[] => {
         id: b.id,
         name: b.name,
         price: b.price,
-        description: b.notes
+        description: b.notes,
+        status: b.status
       }));
     }
     item.branch = 'Mirdif';
@@ -1136,19 +1145,14 @@ const createMirdifMenu = (): MenuCategory[] => {
       id: 'eggs-more',
       title: 'Eggs & More',
       items: [
-        { ...findItem('eggs-more', 'egg_avo')!, name: 'AVOCADO TOAST' },
-        { 
-          ...findItem('eggs-more', 'egg_ben')!, 
-          name: 'EGG BENEDICT', 
-          image: 'https://iili.io/qqGfw3x.jpg',
-          ingredients: 'English muffins with cream cheese, tomato sauce, smoky bacon, poached eggs, and miso hollandaise.' 
-        },
-        { ...findItem('eggs-more', 'egg_truffle')!, name: 'Truffled Scrambled Egg' },
-        { ...findItem('eggs-more', 'egg_cro')!, name: 'Egg And Avocado Croissant' },
-        { ...findItem('eggs-more', 'egg_nduja')!, name: 'TORNADO CHILLI EGG' },
-        { ...findItem('eggs-more', 'egg_big')!, name: 'BIG BREAKFAST' },
-        { ...findItem('eggs-more', 'egg_aussie')!, name: 'Aussie pulled beef benedict' },
-        { ...findItem('eggs-more', 'egg_turkish')!, name: 'Turkish Egg' },
+        { id: 'egg_avo', name: 'AVOCADO TOAST', price: '45', image: 'https://iili.io/qqGqaMg.jpg', ingredients: 'Sourdough with smashed avocado, whipped feta, Pico de Gallo, pine nuts, parmesan, coriander, dill leaves, mix sesame seeds, lime wedges, chili flakes, dukka, and poached egg.', calories: 380 },
+        { id: 'egg_ben', name: 'EGG BENEDICT', price: '46', image: 'https://iili.io/qqGfw3x.jpg', ingredients: 'English muffins with cream cheese, tomato sauce, smoky bacon, poached eggs, and miso hollandaise.', calories: 450 },
+        { id: 'egg_truffle', name: 'Truffled Scrambled Egg', price: '54', image: 'https://iili.io/qqGqpDP.jpg', ingredients: 'Creamy scrambled eggs on brioche slice with truffle mayo, truffle oil, and shaved black truffle.', calories: 420 },
+        { id: 'egg_cro', name: 'Egg And Avocado Croissant', price: '38', image: 'https://iili.io/qqXARp9.jpg', ingredients: 'Plain croissant, cream cheese mix, smashed avocado, tomato sauce, poached eggs sprinkled with pumpkin seeds and mix sesame seeds.', calories: 490 },
+        { id: 'egg_nduja', name: 'TORNADO CHILLI EGG', price: '52', image: 'https://iili.io/qqGClvR.jpg', ingredients: 'garlic and butter pita bread, creamy mayo, mama’s sauce, smoked yogurt, spicy beef nduja, microgreens, and a drizzle of smoked oil.', calories: 450 },
+        { id: 'egg_big', name: 'BIG BREAKFAST', price: '65', image: 'https://iili.io/qqVHZ1R.png', ingredients: 'hash brown potatoes, red beans, sautéed portobello mushrooms, wagyu beef sausage, smoked veal bacon, roasted vine tomatoes, two sunny side up eggs on a slice of brioche bread, (eggs your way: scrambled, poached, sunny side up).', calories: 850 },
+        { id: 'egg_aussie', name: 'Aussie pulled beef benedict', price: '58', image: 'https://iili.io/qqMpPzG.png', ingredients: 'brioche bun with white barbecue sauce, pulled beef, 2 poached eggs, miso hollandaise, crispy onions & spring roll, chives.', calories: 580 },
+        { id: 'egg_turkish', name: 'Turkish Egg', price: '46', image: 'https://iili.io/qqGBwmB.jpg', ingredients: 'homemade tomato jam, poached eggs, mint pesto, chilly butter served with 2 slices of toasted zaatar sourdough.', calories: 400 },
       ].filter(Boolean)
     },
     {
@@ -1224,7 +1228,7 @@ const createMirdifMenu = (): MenuCategory[] => {
       id: 'greens',
       title: 'Greens',
       items: [
-        { ...findItem('salads', 'sal_caesar')!, name: 'Caesar Salad', image: 'https://iili.io/qqE6hg4.jpg' }, // Caesar salad
+        { id: 'sal_caesar', name: 'Caesar Salad', price: '42', image: 'https://iili.io/qqE6hg4.jpg', ingredients: 'little gem lettuce, creaser dressing, crouton, parmesan cheese, crushed pistachio (add Ons: poached egg, bacon or chicken).', calories: 350 },
       ].filter(Boolean)
     },
     {
@@ -1255,20 +1259,20 @@ const createMirdifMenu = (): MenuCategory[] => {
       id: 'juices',
       title: 'Juices',
       items: [
-        { ...findItem('juices', 'juice_green')!, image: 'https://iili.io/fQlvE74.png', price: '24' }, // Green apple
-        { ...findItem('juices', 'juice_orange')!, image: 'https://iili.io/fQlvmTN.png', price: '24' }, // Orange
-        { ...findItem('juices', 'juice_carrot')!, image: 'https://iili.io/fQlkJtt.png', price: '24' }, // Carrot
-        { ...findItem('juices', 'juice_water')!, image: 'https://iili.io/fPDiiEF.png', price: '24' }, // Watermelon
+        findItem('juices', 'juice_green')!, // Green apple
+        findItem('juices', 'juice_orange')!, // Orange
+        findItem('juices', 'juice_carrot')!, // Carrot
+        findItem('juices', 'juice_water')!, // Watermelon
       ].filter(Boolean)
     },
     {
       id: 'healthy-bar',
       title: 'Healthy Bar',
       items: [
-        { ...findItem('smoothies', 'sm_pit')!, badge: 'NEW', image: 'https://iili.io/qqEH3rP.jpg', price: '42' }, // Pitaya
-        { ...findItem('smoothies', 'sm_acai')!, badge: 'NEW', image: 'https://iili.io/qnBllxp.jpg', price: '42' }, // Acai smoothie
-        { ...findItem('smoothies', 'sm_straw')!, badge: 'NEW', image: 'https://iili.io/qq1mS5b.jpg', price: '42' }, // Strawberry glaze
-        { ...findItem('smoothies', 'sm_coc')!, badge: 'NEW', image: 'https://iili.io/qqE9JUX.jpg', price: '42' }, // Blue Cloud
+        { id: 'sm_pit', name: 'Pitaya Smoothie', price: '42', image: 'https://iili.io/qqEH3rP.jpg', ingredients: 'Apple juice, lemon juice, pitaya, frozen pineapple, banana, and lemon electrolytes.', calories: 270, badge: 'NEW' },
+        { id: 'sm_acai', name: 'Açaí Smoothie', price: '42', image: 'https://iili.io/qnBllxp.jpg', ingredients: 'Acai berry, banana, strawberry, peanut butter, coconut water, oat milk, and apple juice.', calories: 280, badge: 'NEW' },
+        { id: 'sm_straw', name: 'Strawberry Glaze Smoothie', price: '42', image: 'https://iili.io/qq1mS5b.jpg', ingredients: 'Almond milk, frozen strawberries, bananas, dates, maple syrup, collagen, vanilla stevia, sea moss gel, strawberry sauce, and coconut cloud cream.', calories: 260, badge: 'NEW' },
+        { id: 'sm_coc', name: 'Blue Cloud Smoothie', price: '42', image: 'https://iili.io/qqE9JUX.jpg', ingredients: 'Coconut milk, pineapple, banana, avocado, vanilla stevia, collagen, peanut butter, blue spirulina, and on top coconut cloud cream.', calories: 300, badge: 'NEW' },
       ].filter(Boolean)
     }
   ];
@@ -1315,11 +1319,12 @@ const createAlBateenMenu = (): MenuCategory[] => {
       isNew: true
     },
     {
-      id: 'bean_coconutella',
-      name: 'COCONUTELLA',
-      notes: 'Coconut Cream, Milk Chocolate, Toffee Caramel',
+      id: 'bean_colombia_strawberry',
+      name: 'Colombia - Strawberry',
+      notes: 'Flavors will be available soon.',
       price: 5,
-      isNew: false
+      isNew: true,
+      status: 'Available'
     },
     {
       id: 'bean_colombia_decaf',
@@ -1342,7 +1347,8 @@ const createAlBateenMenu = (): MenuCategory[] => {
         id: b.id,
         name: b.name,
         price: b.price,
-        description: b.notes
+        description: b.notes,
+        status: b.status
       }));
     }
     item.branch = 'Al Bateen';
@@ -1468,7 +1474,7 @@ const createAlBateenMenu = (): MenuCategory[] => {
       id: 'desserts',
       title: 'Desserts',
       items: [
-        { ...findItem('desserts', 'd_crepe_rolls')!, status: 'Coming Soon' as const },
+        { ...findItem('desserts', 'd_crepe_rolls')!, status: 'Available' as const },
         findItem('desserts', 'd_aseeda')!,
         { id: 'd_honey', name: 'Honey Cake', price: '39.20', image: 'https://iili.io/qqXWIea.png', ingredients: 'Layers of honey sponge and cream', calories: 450 },
         { id: 'd_peanut', name: 'Peanut Choco Tart', price: '39.20', image: 'https://iili.io/qqXGUIR.png', ingredients: 'Rich chocolate tart with peanut butter', calories: 480 },
@@ -1508,6 +1514,19 @@ const createAlBateenMenu = (): MenuCategory[] => {
       ]
     },
     {
+      id: 'sweet-breakfast',
+      title: 'SWEET BREAKFAST',
+      items: [
+        {
+          id: 'sb_french_toast',
+          name: 'FRENCH TOAST',
+          price: '66',
+          image: 'https://iili.io/q2ARzyG.jpg',
+          ingredients: 'Caramelized and served with vanilla ice cream, almond streusel, whipped vanilla cream, and rhubarb compote (option: salted caramel, mix berries compote)',
+        }
+      ]
+    },
+    {
       id: 'signature-drinks',
       title: 'Signature drink',
       items: [
@@ -1538,7 +1557,8 @@ const createAlBateenMenu = (): MenuCategory[] => {
         { id: 'sm_coc', name: 'Blue Cloud Smoothie', price: '42', image: 'https://iili.io/qqE9JUX.jpg', ingredients: 'Coconut milk, pineapple, banana, avocado, vanilla stevia, collagen, peanut butter, blue spirulina, and on top coconut cloud cream.', calories: 300 },
         { id: 'sm_pit', name: 'Pitaya Smoothie', price: '42', image: 'https://iili.io/qqEH3rP.jpg', ingredients: 'Apple juice, lemon juice, pitaya, frozen pineapple, banana, and lemon electrolytes.', calories: 270 },
       ]
-    }
+    },
+    BASE_MENU.find(c => c.id === 'juices')!,
   ];
 };
 
@@ -1589,6 +1609,14 @@ const createKhalifaMenu = (): MenuCategory[] => {
       isNew: false
     },
     {
+      id: 'bean_colombia_strawberry',
+      name: 'Colombia - Strawberry',
+      notes: 'Flavors will be available soon.',
+      price: 5,
+      isNew: true,
+      status: 'Coming Soon'
+    },
+    {
       id: 'bean_colombia_decaf',
       name: 'COLOMBIA SWEET DREAMS – DECAF',
       notes: 'Passion fruit cheesecake, milk chocolate, molasses',
@@ -1608,7 +1636,8 @@ const createKhalifaMenu = (): MenuCategory[] => {
         id: b.id,
         name: b.name,
         price: b.price,
-        description: b.notes
+        description: b.notes,
+        status: b.status
       }));
     }
     item.branch = 'Khalifa City';
@@ -1806,7 +1835,8 @@ const createKhalifaMenu = (): MenuCategory[] => {
         { id: 'sm_coc', name: 'Blue Cloud Smoothie', price: '42', image: 'https://iili.io/qqE9JUX.jpg', ingredients: 'Coconut milk, pineapple, banana, avocado, vanilla stevia, collagen, peanut butter, blue spirulina, and on top coconut cloud cream.', calories: 300 },
         { id: 'sm_pit', name: 'Pitaya Smoothie', price: '42', image: 'https://iili.io/qqEH3rP.jpg', ingredients: 'Apple juice, lemon juice, pitaya, frozen pineapple, banana, and lemon electrolytes.', calories: 270 },
       ]
-    }
+    },
+    BASE_MENU.find(c => c.id === 'juices')!,
   ];
 };
 
@@ -1858,6 +1888,14 @@ const createAlQanaMenu = (): MenuCategory[] => {
       isNew: false
     },
     {
+      id: 'bean_colombia_strawberry',
+      name: 'Colombia - Strawberry',
+      notes: 'Flavors will be available soon.',
+      price: 5,
+      isNew: true,
+      status: 'Coming Soon'
+    },
+    {
       id: 'bean_decaf',
       name: 'Colombia Sweet Dreams Decaf',
       notes: 'Passion fruit cheesecake, milk chocolate, molasses',
@@ -1878,7 +1916,8 @@ const createAlQanaMenu = (): MenuCategory[] => {
         id: b.id,
         name: b.name,
         price: b.price,
-        description: b.notes
+        description: b.notes,
+        status: b.status
       }));
     }
     item.branch = 'Al Qana';
@@ -1997,6 +2036,7 @@ const createAlQanaMenu = (): MenuCategory[] => {
         { id: 'd_tiramisu', name: 'Tiramisu Bowl', price: '39.20', image: 'https://iili.io/qnnTv0G.png', ingredients: 'Classic Italian dessert with coffee', calories: 400 },
         findItem('desserts', 'd_vanilla_pud')!,
         findItem('desserts', 'd_choc_chip')!,
+        { id: 'd_choco_fudge_cookie', name: 'CHOCO FUDGE COOKIE', ingredients: 'Rich and fudgy dark chocolate cookie', price: '21', image: 'https://iili.io/qqMhN2e.png' },
         findItem('desserts', 'MUHALABIYA')!,
         findItem('desserts', 'd_banana_pud')!,
       ].filter(Boolean)
@@ -2038,6 +2078,7 @@ const createAlQanaMenu = (): MenuCategory[] => {
         { id: 'sm_coc', name: 'Blue Cloud Smoothie', price: '42', image: 'https://iili.io/qqE9JUX.jpg', ingredients: 'Coconut milk, pineapple, banana, avocado, vanilla stevia, collagen, peanut butter, blue spirulina, and on top coconut cloud cream.', calories: 300 },
       ]
     },
+    BASE_MENU.find(c => c.id === 'juices')!,
     {
       id: 'salads',
       title: 'Green Salad',
@@ -2100,6 +2141,14 @@ const createMarinaMenu = (): MenuCategory[] => {
       isNew: false
     },
     {
+      id: 'bean_colombia_strawberry',
+      name: 'Colombia - Strawberry',
+      notes: 'Flavors will be available soon.',
+      price: 5,
+      isNew: true,
+      status: 'Coming Soon'
+    },
+    {
       id: 'bean_colombia_decaf',
       name: 'Colombia Sweet Dreams (Decaf)',
       notes: 'Passion fruit cheesecake, milk chocolate, molasses',
@@ -2120,7 +2169,8 @@ const createMarinaMenu = (): MenuCategory[] => {
         id: b.id,
         name: b.name,
         price: b.price,
-        description: b.notes
+        description: b.notes,
+        status: b.status
       }));
     }
     item.branch = 'Marina';
@@ -2140,9 +2190,8 @@ const createMarinaMenu = (): MenuCategory[] => {
     rushHour.image = 'https://iili.io/qlbAzS2.jpg';
   }
 
-  // Return full menu with replaced espresso and tea, and exclude juices
+  // Return full menu with replaced espresso and tea
   const marinaMenu = BASE_MENU
-    .filter(cat => cat.id !== 'juices')
     .map(cat => {
       if (cat.id === 'espresso') return marinaEspresso;
       if (cat.id === 'tea') return marinaTea;
@@ -2329,6 +2378,14 @@ const createDubaiMenu = (): MenuCategory[] => {
       isNew: false
     },
     {
+      id: 'bean_colombia_strawberry',
+      name: 'Colombia - Strawberry',
+      notes: 'Flavors will be available soon.',
+      price: 5,
+      isNew: true,
+      status: 'Coming Soon'
+    },
+    {
       id: 'bean_decaf',
       name: 'SWEET DREAMS DECAF',
       notes: 'Passion fruit cheesecake, milk chocolate, molasses',
@@ -2349,7 +2406,8 @@ const createDubaiMenu = (): MenuCategory[] => {
         id: b.id,
         name: b.name,
         price: b.price,
-        description: b.notes
+        description: b.notes,
+        status: b.status
       }));
     }
     item.branch = 'Dubai';
@@ -2511,6 +2569,7 @@ const createDubaiMenu = (): MenuCategory[] => {
         { id: 'sm_straw', name: 'Strawberry Glaze Smoothie', price: '42', image: 'https://iili.io/qq1mS5b.jpg', ingredients: 'Almond milk, frozen strawberries, bananas, dates, maple syrup, collagen, vanilla stevia, sea moss gel, strawberry sauce, and coconut cloud cream.', calories: 260 },
       ].filter(Boolean)
     },
+    BASE_MENU.find(c => c.id === 'juices')!,
     {
       id: 'signature-drinks',
       title: 'Signature drink',

@@ -196,18 +196,32 @@ const App: React.FC = () => {
                               {category.beanSelection.map((bean, index) => (
                                 <div 
                                   key={bean.id}
-                                  className="relative group flex flex-col justify-between p-8 bg-[#1a1a1a] rounded-3xl border border-white/5 shadow-2xl hover:border-white/20 transition-all duration-500 overflow-hidden min-h-[320px]"
+                                  className={`relative group flex flex-col justify-between p-8 bg-[#1a1a1a] rounded-3xl border border-white/5 shadow-2xl hover:border-white/20 transition-all duration-500 overflow-hidden min-h-[320px] ${
+                                    (bean.status === 'Sold Out' || bean.status === 'Coming Soon') ? 'grayscale opacity-60 pointer-events-none' : ''
+                                  }`}
                                 >
                                   {/* Soft Studio Lighting Effect */}
                                   <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
                                   
                                   {/* Top Badge Area */}
                                   <div className="flex justify-between items-start w-full mb-6 relative z-10 h-8">
-                                    {bean.isNew && (
-                                      <span className="px-3 py-1 bg-white text-black text-[10px] font-bold uppercase tracking-widest rounded-sm shadow-lg animate-pulse">
-                                        New
-                                      </span>
-                                    )}
+                                    <div className="flex flex-col gap-2">
+                                      {bean.isNew && (!bean.status || bean.status === 'Available') && (
+                                        <span className="px-3 py-1 bg-white text-black text-[10px] font-bold uppercase tracking-widest rounded-sm shadow-lg animate-pulse">
+                                          New
+                                        </span>
+                                      )}
+                                      {bean.status === 'Coming Soon' && (
+                                        <span className="px-3 py-1 bg-neutral-800 text-white text-[10px] font-bold uppercase tracking-widest rounded-sm shadow-lg border border-white/20">
+                                          Coming Soon
+                                        </span>
+                                      )}
+                                      {bean.status === 'Sold Out' && (
+                                        <span className="px-3 py-1 bg-red-900/80 text-white text-[10px] font-bold uppercase tracking-widest rounded-sm shadow-lg border border-red-500/30">
+                                          Sold Out
+                                        </span>
+                                      )}
+                                    </div>
                                     {bean.price > 0 && (
                                       <div className="absolute top-0 right-0 w-12 h-12 rounded-full border border-white/30 flex items-center justify-center bg-[#1a1a1a] shadow-[0_0_15px_rgba(255,255,255,0.1)]">
                                         <span className="text-white text-[10px] font-bold tracking-tighter leading-none text-center">
@@ -276,13 +290,24 @@ const App: React.FC = () => {
                              {sub.title}
                            </h3>
                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                             {sub.items.map((item, index) => (
-                               <FlipCard 
-                                 key={item.id} 
-                                 item={item} 
-                                 index={index}
-                               />
-                             ))}
+                             {sub.items.map((item, index) => {
+                               if (sub.id === 'healthy-bar' && activeBranch.id === 'mirdif') {
+                                 return (
+                                   <SmoothieCard 
+                                     key={item.id} 
+                                     item={item} 
+                                     index={index}
+                                   />
+                                 );
+                               }
+                               return (
+                                 <FlipCard 
+                                   key={item.id} 
+                                   item={item} 
+                                   index={index}
+                                 />
+                               );
+                             })}
                            </div>
                          </div>
                       ))}

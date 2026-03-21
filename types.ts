@@ -11,6 +11,7 @@ export interface ModifierOption {
   name: string;
   price: number; // Additional cost
   description?: string;
+  status?: 'Available' | 'Coming Soon' | 'Sold Out';
 }
 
 export interface ModifierGroup {
@@ -55,6 +56,7 @@ export interface BeanSelectionItem {
   price?: number;
   isNew?: boolean;
   isDecaf?: boolean;
+  status?: 'Available' | 'Coming Soon' | 'Sold Out';
 }
 
 export interface MenuCategory {

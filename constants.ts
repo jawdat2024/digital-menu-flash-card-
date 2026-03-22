@@ -117,12 +117,12 @@ const BASE_MENU: MenuCategory[] = [
         calories: 380
       },
       { 
-        id: 'd_decon_cheese', 
-        name: 'Deconstructed Cheese Cake', 
-        ingredients: 'A light and creamy eggless yogurt vanilla cheesecake served deconstructed, layered with crunchy almond crumble.with mixed berries compote', 
-        price: '39.20', 
-        image: 'https://iili.io/q2hets4.png',
-        calories: 380
+        id: ' sw_italian', 
+        name: 'Cold Cut Italian', 
+        ingredients: 'White slice bread with pesto oil, fresh mozzarella, tomato slice, tartufo salami, chorizo, baby Rocca, sun-dried tomatoes, balsamic glaze, organic olive oil', 
+        price: '38', 
+        image: 'https://iili.io/qqEieVe.png',
+        calories: 580
       },
       {
         id: 'sig8',
@@ -262,7 +262,7 @@ const BASE_MENU: MenuCategory[] = [
       {
         id: 'fil_eth_guji',
         name: 'Colombia - Bourbon Sidra',
-        tastingNotes: 'Red grapes, watermelon, hard candy, raspberry',
+          tastingNotes: 'Red grapes, Watermelon, Hard Candy, Raspberry',
         ingredients: 'Pour-over brewing method',
         price: '46',
         image: 'https://iili.io/qjAjZAJ.png',
@@ -271,8 +271,8 @@ const BASE_MENU: MenuCategory[] = [
       },
       {
         id: 'fil_cuban',
-        name: 'COSTA RICA',
-        tastingNotes: 'Cacao, fig compote, honey, cherry',
+        name: 'Costa Rica - Canet Chopin',
+          tastingNotes: 'Cacao, Fig Compote, Honey, Cherry',
         ingredients: 'Pour-over brewing method',
         price: '57',
         image: 'https://iili.io/qjAjZAJ.png',
@@ -282,7 +282,7 @@ const BASE_MENU: MenuCategory[] = [
       {
         id: 'fil_kenya_kirimara',
         name: 'Kenya Kirimara',
-        tastingNotes: 'Brown sugar, wild cherry, raisins',
+          tastingNotes: 'Wild Cherry, Brown Sugar, Raisins',
         ingredients: 'Pour-over brewing method',
         price: '46',
         image: 'https://iili.io/qjAjZAJ.png',
@@ -292,7 +292,7 @@ const BASE_MENU: MenuCategory[] = [
       {
         id: 'fil_col_mish',
         name: 'Colombia Mish Mish',
-        tastingNotes: 'Apricot jam, raspberry, lychee',
+          tastingNotes: 'Apricot Jam, Raspberry, Lychee',
         ingredients: 'Pour-over brewing method',
         price: '57',
         image: 'https://iili.io/qjAjZAJ.png',
@@ -301,8 +301,8 @@ const BASE_MENU: MenuCategory[] = [
       },
       {
         id: 'fil_col_black',
-        name: 'Panama – Cordillera Gesha',
-        tastingNotes: 'Cantaloupe, honey, berries, and lemongrass',
+        name: 'Panamá Cordillera Gesha',
+          tastingNotes: 'Cantaloupe, Honey, Berries, Lemongrass',
         ingredients: 'Pour-over brewing method',
         price: '65',
         image: 'https://iili.io/qjAjZAJ.png',
@@ -312,7 +312,7 @@ const BASE_MENU: MenuCategory[] = [
       {
         id: 'fil_decaf',
         name: 'Colombia Sweet Dreams Decaf',
-        tastingNotes: 'Passion fruit cheesecake, milk chocolate, molasses',
+          tastingNotes: 'Passion fruit cheesecake, Milk chocolate, Molasses',
         ingredients: 'Pour-over brewing method',
         price: '38',
         image: 'https://iili.io/qjAjZAJ.png',
@@ -329,7 +329,7 @@ const BASE_MENU: MenuCategory[] = [
         id: 'cb_eth',
         name: 'Ethiopia Cold Brew',
         origin: 'Ethiopia',
-        tastingNotes: 'Apricot, Honey, Pear',
+        tastingNotes: 'Apricot, Pear, Honey',
         ingredients: 'Slow-steeped cold water extraction for 12+ hours.',
         price: '38',
         image: 'https://iili.io/fUAAQ07.png',
@@ -339,7 +339,7 @@ const BASE_MENU: MenuCategory[] = [
         id: 'cb_col',
         name: 'Colombia Cold Brew',
         origin: 'Colombia',
-        tastingNotes: 'Hazelnut, Orange, Molasses',
+        tastingNotes: 'Apricot Jam, Raspberry, Lychee',
         ingredients: 'Slow-steeped cold water extraction for 12+ hours.',
         price: '38',
         image: 'https://iili.io/qKYaxff.png',
@@ -1035,7 +1035,7 @@ const createMirdifMenu = (): MenuCategory[] => {
     {
       id: 'bean_colombia_strawberry',
       name: 'Colombia - Strawberry',
-      notes: 'Flavors will be available soon.',
+      notes: 'Strawberry Jam, Honey, Milk Chocolates',
       price: 5,
       isNew: true,
       status: 'Coming Soon'
@@ -1043,7 +1043,7 @@ const createMirdifMenu = (): MenuCategory[] => {
     {
       id: 'bean_decaf',
       name: 'SWEET DREAMS DECAF',
-      notes: 'Passion fruit cheesecake, milk chocolate, molasses',
+      notes: 'Passion fruit cheesecake, Milk chocolate, Molasses',
       price: 0,
       isNew: false,
       isDecaf: true
@@ -1075,10 +1075,10 @@ const createMirdifMenu = (): MenuCategory[] => {
       title: 'Filter Coffee',
       items: [
         { 
-          id: 'fil_eth_guji', 
-          name: 'Colombia - Bourbon Sidra',
-          tastingNotes: 'Red grapes, watermelon, hard candy, raspberry', 
-          price: '46', 
+          id: 'fil_ethiopia_g_0', 
+          name: 'Ethiopia Guji-Rogicha',
+          tastingNotes: 'Apricot, Pear, Honey.', 
+          price: '38', 
           image: 'https://iili.io/qjAjZAJ.png', 
           ingredients: 'Pour-over brewing method', 
           calories: 5,
@@ -1086,20 +1086,9 @@ const createMirdifMenu = (): MenuCategory[] => {
           status: 'Available'
         },
         { 
-          id: 'fil_cuban', 
-          name: 'COSTA RICA',
-          tastingNotes: 'Cacao, fig compote, honey, cherry', 
-          price: '57', 
-          image: 'https://iili.io/qjAjZAJ.png', 
-          ingredients: 'Pour-over brewing method', 
-          calories: 5,
-          branch: 'Mirdif',
-          status: 'Available'
-        },
-        { 
-          id: 'fil_kenya_kiri', 
+          id: 'fil_kenya_kiri_1', 
           name: 'Kenya Kirimara',
-          tastingNotes: 'Brown sugar, wild cherry, raisins', 
+          tastingNotes: 'Wild Cherry, Brown Sugar, Raisins.', 
           price: '46', 
           image: 'https://iili.io/qjAjZAJ.png', 
           ingredients: 'Pour-over brewing method', 
@@ -1108,9 +1097,9 @@ const createMirdifMenu = (): MenuCategory[] => {
           status: 'Available'
         },
         { 
-          id: 'fil_col_mish', 
-          name: 'Colombia Mish Mish',
-          tastingNotes: 'Apricot jam, raspberry, lychee', 
+          id: 'fil_colombia_b_2', 
+          name: 'Colombia Blackberry',
+          tastingNotes: 'Blackberry Soda, Cacao Nibs, Karkade.', 
           price: '57', 
           image: 'https://iili.io/qjAjZAJ.png', 
           ingredients: 'Pour-over brewing method', 
@@ -1119,19 +1108,20 @@ const createMirdifMenu = (): MenuCategory[] => {
           status: 'Available'
         },
         { 
-          id: 'fil_col_black', 
-          name: 'Colombia Blackberry', 
-          tastingNotes: 'Blackberry Soda, Cacao Nibs, Karkade', 
+          id: 'fil_colombia_m_3', 
+          name: 'Colombia Mish Mish',
+          tastingNotes: 'Apricot Jam, Raspberry, Lychee.', 
           price: '57', 
           image: 'https://iili.io/qjAjZAJ.png', 
           ingredients: 'Pour-over brewing method', 
           calories: 5,
-          branch: 'Mirdif'
+          branch: 'Mirdif',
+          status: 'Available'
         },
         { 
-          id: 'fil_decaf', 
+          id: 'fil_colombia_s_4', 
           name: 'Colombia Sweet Dreams Decaf',
-          tastingNotes: 'Passion fruit cheesecake, milk chocolate, molasses', 
+          tastingNotes: 'Passion fruit cheesecake, Milk chocolate, Molasses', 
           price: '38', 
           image: 'https://iili.io/qjAjZAJ.png', 
           ingredients: 'Pour-over brewing method', 
@@ -1321,7 +1311,7 @@ const createAlBateenMenu = (): MenuCategory[] => {
     {
       id: 'bean_colombia_strawberry',
       name: 'Colombia - Strawberry',
-      notes: 'Flavors will be available soon.',
+      notes: 'Strawberry Jam, Honey, Milk Chocolates',
       price: 5,
       isNew: true,
       status: 'Available'
@@ -1329,7 +1319,7 @@ const createAlBateenMenu = (): MenuCategory[] => {
     {
       id: 'bean_colombia_decaf',
       name: 'COLOMBIA SWEET DREAMS (DECAF)',
-      notes: 'Passion fruit cheesecake, milk chocolate, molasses',
+      notes: 'Passion fruit cheesecake, Milk chocolate, Molasses',
       price: 0,
       isNew: false,
       isDecaf: true
@@ -1361,62 +1351,58 @@ const createAlBateenMenu = (): MenuCategory[] => {
       title: 'Filter Coffee',
       items: [
         { 
-          id: 'fil_eth_guji', 
-          name: 'Colombia - Bourbon Sidra',
-          tastingNotes: 'Red grapes, watermelon, hard candy, raspberry', 
-          price: '46', 
+          id: 'fil_gesha_key__0', 
+          name: 'Gesha Key Lime Pie',
+          tastingNotes: 'Orange Blossom, Lemongrass, Condensed Milk', 
+          price: '48', 
           image: 'https://iili.io/qjAjZAJ.png', 
           ingredients: 'Pour-over brewing method', 
           calories: 5,
+          branch: 'Al Bateen',
           status: 'Available'
         },
         { 
-          id: 'fil_cuban', 
-          name: 'COSTA RICA',
-          tastingNotes: 'Cacao, fig compote, honey, cherry', 
-          price: '57', 
-          image: 'https://iili.io/qjAjZAJ.png', 
-          ingredients: 'Pour-over brewing method', 
-          calories: 5,
-          status: 'Available'
-        },
-        { 
-          id: 'fil_kenya_kiri', 
+          id: 'fil_kenya_kiri_1', 
           name: 'Kenya Kirimara',
-          tastingNotes: 'Brown sugar, wild cherry, raisins', 
+          tastingNotes: 'Wild Cherry, Brown Sugar, Raisins.', 
           price: '46', 
           image: 'https://iili.io/qjAjZAJ.png', 
           ingredients: 'Pour-over brewing method', 
           calories: 5,
+          branch: 'Al Bateen',
           status: 'Available'
         },
         { 
-          id: 'fil_col_mish', 
+          id: 'fil_colombia_m_2', 
           name: 'Colombia Mish Mish',
-          tastingNotes: 'Apricot jam, raspberry, lychee', 
+          tastingNotes: 'Apricot Jam, Raspberry, Lychee', 
           price: '57', 
           image: 'https://iili.io/qjAjZAJ.png', 
           ingredients: 'Pour-over brewing method', 
           calories: 5,
+          branch: 'Al Bateen',
           status: 'Available'
         },
         { 
-          id: 'fil_col_black', 
-          name: 'Colombia Blackberry', 
-          tastingNotes: 'Blackberry Soda, Cacao Nibs, Karkade', 
-          price: '57', 
-          image: 'https://iili.io/qjAjZAJ.png', 
-          ingredients: 'Pour-over brewing method', 
-          calories: 5 
-        },
-        { 
-          id: 'fil_decaf_sweet', 
+          id: 'fil_colombia_s_3', 
           name: 'Colombia Sweet Dreams Decaf',
-          tastingNotes: 'Passion fruit cheesecake, milk chocolate, molasses', 
+          tastingNotes: 'Passion fruit cheesecake, Milk chocolate, Molasses', 
           price: '38', 
           image: 'https://iili.io/qjAjZAJ.png', 
           ingredients: 'Pour-over brewing method', 
           calories: 5,
+          branch: 'Al Bateen',
+          status: 'Available'
+        },
+        { 
+          id: 'fil_panama_cor_4', 
+          name: 'Panama Cordillera Gesha',
+          tastingNotes: 'Cantaloupe, Honey, Berries, Lemongrass', 
+          price: '65', 
+          image: 'https://iili.io/qjAjZAJ.png', 
+          ingredients: 'Pour-over brewing method', 
+          calories: 5,
+          branch: 'Al Bateen',
           status: 'Available'
         }
       ]
@@ -1428,7 +1414,7 @@ const createAlBateenMenu = (): MenuCategory[] => {
         { 
           id: 'cd_kenya', 
           name: 'Kenya Kirimara',
-          tastingNotes: 'Brown sugar, wild cherry, raisins', 
+          tastingNotes: 'Wild Cherry, Brown Sugar, Raisins', 
           price: '38', 
           image: 'https://iili.io/qjAjZAJ.png', 
           ingredients: 'Cold drip brewing method', 
@@ -1437,7 +1423,7 @@ const createAlBateenMenu = (): MenuCategory[] => {
         },
         { 
           id: 'cd_gesha', 
-          name: 'Gesha-Key Lime Pie', 
+          name: 'Gesha Key Lime Pie',
           tastingNotes: 'Orange Blossom, Lemongrass, Condensed Milk', 
           price: '48', 
           image: 'https://iili.io/qjAjZAJ.png', 
@@ -1611,7 +1597,7 @@ const createKhalifaMenu = (): MenuCategory[] => {
     {
       id: 'bean_colombia_strawberry',
       name: 'Colombia - Strawberry',
-      notes: 'Flavors will be available soon.',
+      notes: 'Strawberry Jam, Honey, Milk Chocolates',
       price: 5,
       isNew: true,
       status: 'Coming Soon'
@@ -1619,7 +1605,7 @@ const createKhalifaMenu = (): MenuCategory[] => {
     {
       id: 'bean_colombia_decaf',
       name: 'COLOMBIA SWEET DREAMS – DECAF',
-      notes: 'Passion fruit cheesecake, milk chocolate, molasses',
+      notes: 'Passion fruit cheesecake, Milk chocolate, Molasses',
       price: 0,
       isNew: false,
       isDecaf: true
@@ -1650,62 +1636,69 @@ const createKhalifaMenu = (): MenuCategory[] => {
       title: 'Filter Coffee',
       items: [
         { 
-          id: 'fil_eth_guji', 
-          name: 'Colombia - Bourbon Sidra',
-          tastingNotes: 'Red grapes, watermelon, hard candy, raspberry', 
-          price: '46', 
-          image: 'https://iili.io/qjAjZAJ.png', 
-          ingredients: 'Pour-over brewing method', 
-          calories: 5,
-          status: 'Available'
-        },
-        { 
-          id: 'fil_cuban', 
-          name: 'COSTA RICA',
-          tastingNotes: 'Cacao, fig compote, honey, cherry', 
-          price: '57', 
-          image: 'https://iili.io/qjAjZAJ.png', 
-          ingredients: 'Pour-over brewing method', 
-          calories: 5,
-          status: 'Available'
-        },
-        { 
-          id: 'fil_kenya_kiri', 
-          name: 'Kenya Kirimara',
-          tastingNotes: 'Brown sugar, wild cherry, raisins', 
-          price: '46', 
-          image: 'https://iili.io/qjAjZAJ.png', 
-          ingredients: 'Pour-over brewing method', 
-          calories: 5,
-          status: 'Available'
-        },
-        { 
-          id: 'fil_col_mish', 
-          name: 'Colombia Mish Mish',
-          tastingNotes: 'Apricot jam, raspberry, lychee', 
-          price: '57', 
-          image: 'https://iili.io/qjAjZAJ.png', 
-          ingredients: 'Pour-over brewing method', 
-          calories: 5,
-          status: 'Available'
-        },
-        { 
-          id: 'fil_col_black', 
-          name: 'Colombia Blackberry', 
-          tastingNotes: 'Blackberry Soda, Cacao Nibs, Karkade', 
-          price: '57', 
-          image: 'https://iili.io/qjAjZAJ.png', 
-          ingredients: 'Pour-over brewing method', 
-          calories: 5 
-        },
-        { 
-          id: 'fil_decaf_sweet', 
-          name: 'Colombia Sweet Dreams Decaf',
-          tastingNotes: 'Passion fruit cheesecake, milk chocolate, molasses', 
+          id: 'fil_ethiopia_g_0', 
+          name: 'Ethiopia Guji-Rogicha',
+          tastingNotes: 'Apricot, Pear, Honey.', 
           price: '38', 
           image: 'https://iili.io/qjAjZAJ.png', 
           ingredients: 'Pour-over brewing method', 
           calories: 5,
+          branch: 'Khalifa City',
+          status: 'Available'
+        },
+        { 
+          id: 'fil_kenya_kiri_1', 
+          name: 'Kenya Kirimara',
+          tastingNotes: 'Wild Cherry, Brown Sugar, Raisins.', 
+          price: '46', 
+          image: 'https://iili.io/qjAjZAJ.png', 
+          ingredients: 'Pour-over brewing method', 
+          calories: 5,
+          branch: 'Khalifa City',
+          status: 'Available'
+        },
+        { 
+          id: 'fil_colombia_m_2', 
+          name: 'Colombia Mish Mish',
+          tastingNotes: 'Apricot Jam, Raspberry, Lychee', 
+          price: '57', 
+          image: 'https://iili.io/qjAjZAJ.png', 
+          ingredients: 'Pour-over brewing method', 
+          calories: 5,
+          branch: 'Khalifa City',
+          status: 'Available'
+        },
+        { 
+          id: 'fil_gesha_key__3', 
+          name: 'Gesha Key Lime Pie',
+          tastingNotes: 'Orange Blossom, Lemongrass, Condensed Milk', 
+          price: '48', 
+          image: 'https://iili.io/qjAjZAJ.png', 
+          ingredients: 'Pour-over brewing method', 
+          calories: 5,
+          branch: 'Khalifa City',
+          status: 'Available'
+        },
+        { 
+          id: 'fil_colombia_s_4', 
+          name: 'Colombia Sweet Dreams Decaf',
+          tastingNotes: 'Passion fruit cheesecake, Milk chocolate, Molasses', 
+          price: '38', 
+          image: 'https://iili.io/qjAjZAJ.png', 
+          ingredients: 'Pour-over brewing method', 
+          calories: 5,
+          branch: 'Khalifa City',
+          status: 'Available'
+        },
+        { 
+          id: 'fil_colombia_b_5', 
+          name: 'Colombia Blackberry',
+          tastingNotes: 'Blackberry Soda, Cacao Nibs, Karkade.', 
+          price: '57', 
+          image: 'https://iili.io/qjAjZAJ.png', 
+          ingredients: 'Pour-over brewing method', 
+          calories: 5,
+          branch: 'Khalifa City',
           status: 'Available'
         }
       ]
@@ -1716,8 +1709,8 @@ const createKhalifaMenu = (): MenuCategory[] => {
       items: [
         { 
           id: 'cb_col_plan', 
-          name: 'Colombia Planadas', 
-          tastingNotes: 'Hazelnut, Orange, Molasses', 
+          name: 'Cuban Cigar',
+          tastingNotes: 'Deep Earthy Undertones, Caramel Popcorn, Fresh Tobacco', 
           price: '38', 
           image: 'https://iili.io/qKYaxff.png', 
           ingredients: 'Slow-steeped cold water extraction', 
@@ -1726,7 +1719,7 @@ const createKhalifaMenu = (): MenuCategory[] => {
         { 
           id: 'cb_kenya', 
           name: 'Kenya Kirimara',
-          tastingNotes: 'Brown sugar, wild cherry, raisins', 
+          tastingNotes: 'Wild Cherry, Brown Sugar, Raisins', 
           price: '38', 
           image: 'https://iili.io/f8yS6jj.jpg', 
           ingredients: 'Slow-steeped cold water extraction', 
@@ -1735,7 +1728,7 @@ const createKhalifaMenu = (): MenuCategory[] => {
         },
         { 
           id: 'cb_eth_guji', 
-          name: 'Ethiopia Guji - Rojicha', 
+          name: 'Ethiopia Guji-Rogicha',
           tastingNotes: 'Apricot, Pear, Honey', 
           price: '38', 
           image: 'https://iili.io/fUAAQ07.png', 
@@ -1890,7 +1883,7 @@ const createAlQanaMenu = (): MenuCategory[] => {
     {
       id: 'bean_colombia_strawberry',
       name: 'Colombia - Strawberry',
-      notes: 'Flavors will be available soon.',
+      notes: 'Strawberry Jam, Honey, Milk Chocolates',
       price: 5,
       isNew: true,
       status: 'Coming Soon'
@@ -1898,7 +1891,7 @@ const createAlQanaMenu = (): MenuCategory[] => {
     {
       id: 'bean_decaf',
       name: 'Colombia Sweet Dreams Decaf',
-      notes: 'Passion fruit cheesecake, milk chocolate, molasses',
+      notes: 'Passion fruit cheesecake, Milk chocolate, Molasses',
       price: 0,
       isNew: false,
       isDecaf: true
@@ -1929,67 +1922,68 @@ const createAlQanaMenu = (): MenuCategory[] => {
       id: 'filter-coffee',
       title: 'Filter Coffee',
       items: [
-        {
-          id: 'fil_eth_guji',
-          name: 'Colombia - Bourbon Sidra',
-          tastingNotes: 'Red grapes, watermelon, hard candy, raspberry',
-          price: '46',
-          image: 'https://iili.io/qjAjZAJ.png',
-          ingredients: 'Pour-over brewing method',
+        { 
+          id: 'fil_ethiopia_g_0', 
+          name: 'Ethiopia Guji-Rogicha',
+          tastingNotes: 'Apricot, Pear, Honey.', 
+          price: '38', 
+          image: 'https://iili.io/qjAjZAJ.png', 
+          ingredients: 'Pour-over brewing method', 
           calories: 5,
           branch: 'Al Qana',
           status: 'Available'
         },
-        {
-          id: 'fil_cuban',
-          name: 'COSTA RICA',
-          tastingNotes: 'Cacao, fig compote, honey, cherry',
-          price: '57',
-          image: 'https://iili.io/qjAjZAJ.png',
-          ingredients: 'Pour-over brewing method',
-          calories: 5,
-          branch: 'Al Qana',
-          status: 'Available'
-        },
-        {
-          id: 'fil_kenya_kiri',
-          name: 'Kenya Kirimara',
-          tastingNotes: 'Brown sugar, wild cherry, raisins',
-          price: '46',
-          image: 'https://iili.io/qjAjZAJ.png',
-          ingredients: 'Pour-over brewing method',
-          calories: 5,
-          branch: 'Al Qana',
-          status: 'Available'
-        },
-        {
-          id: 'fil_col_mish',
-          name: 'Colombia Mish Mish',
-          tastingNotes: 'Apricot jam, raspberry, lychee',
-          price: '57',
-          image: 'https://iili.io/qjAjZAJ.png',
-          ingredients: 'Pour-over brewing method',
-          calories: 5,
-          branch: 'Al Qana',
-          status: 'Available'
-        },
-        {
-          id: 'fil_col_black',
+        { 
+          id: 'fil_colombia_b_1', 
           name: 'Colombia Blackberry',
-          tastingNotes: 'Blackberry Soda, Cacao Nibs, Karkade',
-          price: '57',
-          image: 'https://iili.io/qjAjZAJ.png',
-          ingredients: 'Pour-over brewing method',
+          tastingNotes: 'Blackberry Soda, Cacao Nibs, Karkade.', 
+          price: '57', 
+          image: 'https://iili.io/qjAjZAJ.png', 
+          ingredients: 'Pour-over brewing method', 
           calories: 5,
-          branch: 'Al Qana'
+          branch: 'Al Qana',
+          status: 'Available'
         },
-        {
-          id: 'fil_decaf_sweet',
+        { 
+          id: 'fil_gesha_key__2', 
+          name: 'Gesha Key Lime Pie',
+          tastingNotes: 'Orange Blossom, Lemongrass, Condensed Milk', 
+          price: '48', 
+          image: 'https://iili.io/qjAjZAJ.png', 
+          ingredients: 'Pour-over brewing method', 
+          calories: 5,
+          branch: 'Al Qana',
+          status: 'Available'
+        },
+        { 
+          id: 'fil_kenya_kiri_3', 
+          name: 'Kenya Kirimara',
+          tastingNotes: 'Wild Cherry, Brown Sugar, Raisins.', 
+          price: '46', 
+          image: 'https://iili.io/qjAjZAJ.png', 
+          ingredients: 'Pour-over brewing method', 
+          calories: 5,
+          branch: 'Al Qana',
+          status: 'Available'
+        },
+        { 
+          id: 'fil_colombia_m_4', 
+          name: 'Colombia Mish Mish',
+          tastingNotes: 'Apricot Jam, Raspberry, Lychee', 
+          price: '57', 
+          image: 'https://iili.io/qjAjZAJ.png', 
+          ingredients: 'Pour-over brewing method', 
+          calories: 5,
+          branch: 'Al Qana',
+          status: 'Available'
+        },
+        { 
+          id: 'fil_colombia_s_5', 
           name: 'Colombia Sweet Dreams Decaf',
-          tastingNotes: 'Passion fruit cheesecake, milk chocolate, molasses',
-          price: '38',
-          image: 'https://iili.io/qjAjZAJ.png',
-          ingredients: 'Pour-over brewing method',
+          tastingNotes: 'Passion fruit cheesecake, Milk chocolate, Molasses', 
+          price: '38', 
+          image: 'https://iili.io/qjAjZAJ.png', 
+          ingredients: 'Pour-over brewing method', 
           calories: 5,
           branch: 'Al Qana',
           status: 'Available'
@@ -2129,7 +2123,7 @@ const createMarinaMenu = (): MenuCategory[] => {
     {
       id: 'bean_kenya',
       name: 'Kenya - Gichatha',
-      notes: 'Caramel, black cherry, cacao nips',
+      notes: 'Caramel, black cherry, Cacao Nibs',
       price: 0,
       isNew: true
     },
@@ -2143,7 +2137,7 @@ const createMarinaMenu = (): MenuCategory[] => {
     {
       id: 'bean_colombia_strawberry',
       name: 'Colombia - Strawberry',
-      notes: 'Flavors will be available soon.',
+      notes: 'Strawberry Jam, Honey, Milk Chocolates',
       price: 5,
       isNew: true,
       status: 'Coming Soon'
@@ -2151,7 +2145,7 @@ const createMarinaMenu = (): MenuCategory[] => {
     {
       id: 'bean_colombia_decaf',
       name: 'Colombia Sweet Dreams (Decaf)',
-      notes: 'Passion fruit cheesecake, milk chocolate, molasses',
+      notes: 'Passion fruit cheesecake, Milk chocolate, Molasses',
       price: 0,
       isNew: false,
       isDecaf: true
@@ -2190,11 +2184,85 @@ const createMarinaMenu = (): MenuCategory[] => {
     rushHour.image = 'https://iili.io/qlbAzS2.jpg';
   }
 
+  const marinaFilter = {
+    id: 'filter-coffee',
+    title: 'Filter Coffee',
+    items: [
+        { 
+          id: 'fil_colombia___0', 
+          name: 'Colombia - Bourbon Sidra',
+          tastingNotes: 'Red grapes, Watermelon, Hard Candy, Raspberry.', 
+          price: '46', 
+          image: 'https://iili.io/qjAjZAJ.png', 
+          ingredients: 'Pour-over brewing method', 
+          calories: 5,
+          branch: 'Marina',
+          status: 'Available'
+        },
+        { 
+          id: 'fil_panama_cor_1', 
+          name: 'Panama Cordillera Gesha',
+          tastingNotes: 'Cantaloupe, Honey, Berries, Lemongrass.', 
+          price: '65', 
+          image: 'https://iili.io/qjAjZAJ.png', 
+          ingredients: 'Pour-over brewing method', 
+          calories: 5,
+          branch: 'Marina',
+          status: 'Available'
+        },
+        { 
+          id: 'fil_costa_rica_2', 
+          name: 'Costa Rica - Canet Chopin',
+          tastingNotes: 'Cacao, Fig Compote, Honey, Cherry.', 
+          price: '57', 
+          image: 'https://iili.io/qjAjZAJ.png', 
+          ingredients: 'Pour-over brewing method', 
+          calories: 5,
+          branch: 'Marina',
+          status: 'Available'
+        },
+        { 
+          id: 'fil_kenya_kiri_3', 
+          name: 'Kenya Kirimara',
+          tastingNotes: 'Wild Cherry, Brown Sugar, Raisins.', 
+          price: '46', 
+          image: 'https://iili.io/qjAjZAJ.png', 
+          ingredients: 'Pour-over brewing method', 
+          calories: 5,
+          branch: 'Marina',
+          status: 'Available'
+        },
+        { 
+          id: 'fil_colombia_m_4', 
+          name: 'Colombia Mish Mish',
+          tastingNotes: 'Apricot Jam, Raspberry, Lychee', 
+          price: '57', 
+          image: 'https://iili.io/qjAjZAJ.png', 
+          ingredients: 'Pour-over brewing method', 
+          calories: 5,
+          branch: 'Marina',
+          status: 'Available'
+        },
+        { 
+          id: 'fil_colombia_s_5', 
+          name: 'Colombia Sweet Dreams Decaf',
+          tastingNotes: 'Passion fruit cheesecake, Milk chocolate, Molasses', 
+          price: '38', 
+          image: 'https://iili.io/qjAjZAJ.png', 
+          ingredients: 'Pour-over brewing method', 
+          calories: 5,
+          branch: 'Marina',
+          status: 'Available'
+        }
+    ]
+  };
+
   // Return full menu with replaced espresso and tea
   const marinaMenu = BASE_MENU
     .map(cat => {
       if (cat.id === 'espresso') return marinaEspresso;
       if (cat.id === 'tea') return marinaTea;
+      if (cat.id === 'filter') return marinaFilter;
       if (cat.id === 'desserts') {
         return {
           ...cat,
@@ -2380,7 +2448,7 @@ const createDubaiMenu = (): MenuCategory[] => {
     {
       id: 'bean_colombia_strawberry',
       name: 'Colombia - Strawberry',
-      notes: 'Flavors will be available soon.',
+      notes: 'Strawberry Jam, Honey, Milk Chocolates',
       price: 5,
       isNew: true,
       status: 'Coming Soon'
@@ -2388,7 +2456,7 @@ const createDubaiMenu = (): MenuCategory[] => {
     {
       id: 'bean_decaf',
       name: 'SWEET DREAMS DECAF',
-      notes: 'Passion fruit cheesecake, milk chocolate, molasses',
+      notes: 'Passion fruit cheesecake, Milk chocolate, Molasses',
       price: 0,
       isNew: false,
       isDecaf: true
@@ -2420,10 +2488,10 @@ const createDubaiMenu = (): MenuCategory[] => {
       title: 'Filter Coffee',
       items: [
         { 
-          id: 'fil_eth_guji', 
-          name: 'Colombia - Bourbon Sidra',
-          tastingNotes: 'Red grapes, watermelon, hard candy, raspberry', 
-          price: '46', 
+          id: 'fil_ethiopia_g_0', 
+          name: 'Ethiopia Guji-Rogicha',
+          tastingNotes: 'Apricot, Pear, Honey.', 
+          price: '38', 
           image: 'https://iili.io/qjAjZAJ.png', 
           ingredients: 'Pour-over brewing method', 
           calories: 5,
@@ -2431,20 +2499,9 @@ const createDubaiMenu = (): MenuCategory[] => {
           status: 'Available'
         },
         { 
-          id: 'fil_cuban', 
-          name: 'COSTA RICA',
-          tastingNotes: 'Cacao, fig compote, honey, cherry', 
-          price: '57', 
-          image: 'https://iili.io/qjAjZAJ.png', 
-          ingredients: 'Pour-over brewing method', 
-          calories: 5,
-          branch: 'Dubai',
-          status: 'Available'
-        },
-        { 
-          id: 'fil_kenya_kiri', 
+          id: 'fil_kenya_kiri_1', 
           name: 'Kenya Kirimara',
-          tastingNotes: 'Brown sugar, wild cherry, raisins', 
+          tastingNotes: 'Wild Cherry, Brown Sugar, Raisins.', 
           price: '46', 
           image: 'https://iili.io/qjAjZAJ.png', 
           ingredients: 'Pour-over brewing method', 
@@ -2453,9 +2510,20 @@ const createDubaiMenu = (): MenuCategory[] => {
           status: 'Available'
         },
         { 
-          id: 'fil_col_mish', 
+          id: 'fil_colombia_b_2', 
+          name: 'Colombia Blackberry',
+          tastingNotes: 'Blackberry Soda, Cacao Nibs, Karkade.', 
+          price: '46', 
+          image: 'https://iili.io/qjAjZAJ.png', 
+          ingredients: 'Pour-over brewing method', 
+          calories: 5,
+          branch: 'Dubai',
+          status: 'Available'
+        },
+        { 
+          id: 'fil_colombia_m_3', 
           name: 'Colombia Mish Mish',
-          tastingNotes: 'Apricot jam, raspberry, lychee', 
+          tastingNotes: 'Apricot Jam, Raspberry, Lychee.', 
           price: '57', 
           image: 'https://iili.io/qjAjZAJ.png', 
           ingredients: 'Pour-over brewing method', 
@@ -2464,19 +2532,9 @@ const createDubaiMenu = (): MenuCategory[] => {
           status: 'Available'
         },
         { 
-          id: 'fil_col_black', 
-          name: 'Colombia Blackberry', 
-          tastingNotes: 'Blackberry Soda, Cacao Nibs, Karkade', 
-          price: '57', 
-          image: 'https://iili.io/qjAjZAJ.png', 
-          ingredients: 'Pour-over brewing method', 
-          calories: 5,
-          branch: 'Dubai'
-        },
-        { 
-          id: 'fil_decaf', 
+          id: 'fil_colombia_s_4', 
           name: 'Colombia Sweet Dreams Decaf',
-          tastingNotes: 'Passion fruit cheesecake, milk chocolate, molasses', 
+          tastingNotes: 'Passion fruit cheesecake, Milk chocolate, Molasses', 
           price: '38', 
           image: 'https://iili.io/qjAjZAJ.png', 
           ingredients: 'Pour-over brewing method', 

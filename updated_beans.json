@@ -1,0 +1,277 @@
+[
+  {
+    "branchName": "alqana",
+    "items": [
+      {
+        "itemName": "Colombia - Bourbon Sidra",
+        "price": "46",
+        "tastingNotes": "Red grapes, Watermelon, Hard Candy, Raspberry"
+      },
+      {
+        "itemName": "Costa Rica - Canet Chopin",
+        "price": "57",
+        "tastingNotes": "Cacao, Fig Compote, Honey, Cherry"
+      },
+      {
+        "itemName": "Kenya Kirimara",
+        "price": "46",
+        "tastingNotes": "Wild Cherry, Brown Sugar, Raisins"
+      },
+      {
+        "itemName": "Colombia Mish Mish",
+        "price": "57",
+        "tastingNotes": "Apricot Jam, Raspberry, Lychee"
+      },
+      {
+        "itemName": "Colombia Blackberry",
+        "price": "57",
+        "tastingNotes": "Blackberry Soda, Cacao Nibs, Karkade"
+      },
+      {
+        "itemName": "Colombia Sweet Dreams Decaf",
+        "price": "38",
+        "tastingNotes": "Passion fruit cheesecake, Milk chocolate, Molasses"
+      },
+      {
+        "itemName": "469 Blend",
+        "price": "0",
+        "tastingNotes": "Apricot Jam, White Chocolate, Jaggery"
+      },
+      {
+        "itemName": "Brazil Amazonic Soul",
+        "price": "1",
+        "tastingNotes": "Dark Chocolate, Roasted Hazelnut, Caramel"
+      },
+      {
+        "itemName": "Yemen Sharqi Haraaz",
+        "price": "10",
+        "tastingNotes": "Chestnut, Cola, Red Grape"
+      },
+      {
+        "itemName": "Colombia - Strawberry",
+        "price": "5",
+        "tastingNotes": "Strawberry Jam, Honey, Milk Chocolates"
+      },
+      {
+        "itemName": "Colombia Sweet Dreams Decaf",
+        "price": "0",
+        "tastingNotes": "Passion fruit cheesecake, Milk chocolate, Molasses"
+      }
+    ]
+  },
+  {
+    "branchName": "khalifa",
+    "items": [
+      {
+        "itemName": "Colombia - Bourbon Sidra",
+        "price": "46",
+        "tastingNotes": "Red grapes, Watermelon, Hard Candy, Raspberry"
+      },
+      {
+        "itemName": "Costa Rica - Canet Chopin",
+        "price": "57",
+        "tastingNotes": "Cacao, Fig Compote, Honey, Cherry"
+      },
+      {
+        "itemName": "Kenya Kirimara",
+        "price": "46",
+        "tastingNotes": "Wild Cherry, Brown Sugar, Raisins"
+      },
+      {
+        "itemName": "Colombia Mish Mish",
+        "price": "57",
+        "tastingNotes": "Apricot Jam, Raspberry, Lychee"
+      },
+      {
+        "itemName": "Colombia Blackberry",
+        "price": "57",
+        "tastingNotes": "Blackberry Soda, Cacao Nibs, Karkade"
+      },
+      {
+        "itemName": "Colombia Sweet Dreams Decaf",
+        "price": "38",
+        "tastingNotes": "Passion fruit cheesecake, Milk chocolate, Molasses"
+      },
+      {
+        "itemName": "Cuban Cigar",
+        "price": "38",
+        "tastingNotes": "Deep Earthy Undertones, Caramel Popcorn, Fresh Tobacco"
+      },
+      {
+        "itemName": "Kenya Kirimara",
+        "price": "38",
+        "tastingNotes": "Wild Cherry, Brown Sugar, Raisins"
+      },
+      {
+        "itemName": "Ethiopia Guji-Rogicha",
+        "price": "38",
+        "tastingNotes": "Apricot, Pear, Honey"
+      },
+      {
+        "itemName": "BRAZIL AMAZONIC SOUL",
+        "price": "1",
+        "tastingNotes": "Dark chocolate, Roasted hazelnut, Caramel"
+      },
+      {
+        "itemName": "YEMEN SHARQI",
+        "price": "10",
+        "tastingNotes": "Chestnut, Cola, Red grape"
+      },
+      {
+        "itemName": "COCONUTELLA",
+        "price": "5",
+        "tastingNotes": "Coconut cream, Milk chocolate, Toffee caramel"
+      },
+      {
+        "itemName": "Colombia - Strawberry",
+        "price": "5",
+        "tastingNotes": "Strawberry Jam, Honey, Milk Chocolates"
+      },
+      {
+        "itemName": "COLOMBIA SWEET DREAMS – DECAF",
+        "price": "0",
+        "tastingNotes": "Passion fruit cheesecake, Milk chocolate, Molasses"
+      }
+    ]
+  },
+  {
+    "branchName": "albateen",
+    "items": [
+      {
+        "itemName": "Colombia - Bourbon Sidra",
+        "price": "46",
+        "tastingNotes": "Red grapes, Watermelon, Hard Candy, Raspberry"
+      },
+      {
+        "itemName": "Costa Rica - Canet Chopin",
+        "price": "57",
+        "tastingNotes": "Cacao, Fig Compote, Honey, Cherry"
+      },
+      {
+        "itemName": "Kenya Kirimara",
+        "price": "46",
+        "tastingNotes": "Wild Cherry, Brown Sugar, Raisins"
+      },
+      {
+        "itemName": "Colombia Mish Mish",
+        "price": "57",
+        "tastingNotes": "Apricot Jam, Raspberry, Lychee"
+      },
+      {
+        "itemName": "Colombia Blackberry",
+        "price": "57",
+        "tastingNotes": "Blackberry Soda, Cacao Nibs, Karkade"
+      },
+      {
+        "itemName": "Colombia Sweet Dreams Decaf",
+        "price": "38",
+        "tastingNotes": "Passion fruit cheesecake, Milk chocolate, Molasses"
+      },
+      {
+        "itemName": "Kenya Kirimara",
+        "price": "38",
+        "tastingNotes": "Wild Cherry, Brown Sugar, Raisins"
+      },
+      {
+        "itemName": "Gesha Key Lime Pie",
+        "price": "48",
+        "tastingNotes": "Orange Blossom, Lemongrass, Condensed Milk"
+      },
+      {
+        "itemName": "BRAZIL AMAZONIC SOUL",
+        "price": "1",
+        "tastingNotes": "Dark Chocolate, Roasted Hazelnut, Caramel"
+      },
+      {
+        "itemName": "KENYA GICHATHA",
+        "price": "1",
+        "tastingNotes": "Caramel, Cacao Nibs, Black Cherry"
+      },
+      {
+        "itemName": "Colombia - Strawberry",
+        "price": "5",
+        "tastingNotes": "Strawberry Jam, Honey, Milk Chocolates"
+      },
+      {
+        "itemName": "COLOMBIA SWEET DREAMS (DECAF)",
+        "price": "0",
+        "tastingNotes": "Passion fruit cheesecake, Milk chocolate, Molasses"
+      }
+    ]
+  },
+  {
+    "branchName": "marina",
+    "items": [
+      {
+        "itemName": "Colombia - Bourbon Sidra",
+        "price": "46",
+        "tastingNotes": "Red grapes, Watermelon, Hard Candy, Raspberry"
+      },
+      {
+        "itemName": "Costa Rica - Canet Chopin",
+        "price": "57",
+        "tastingNotes": "Cacao, Fig Compote, Honey, Cherry"
+      },
+      {
+        "itemName": "Kenya Kirimara",
+        "price": "46",
+        "tastingNotes": "Wild Cherry, Brown Sugar, Raisins"
+      },
+      {
+        "itemName": "Colombia Mish Mish",
+        "price": "57",
+        "tastingNotes": "Apricot Jam, Raspberry, Lychee"
+      },
+      {
+        "itemName": "Panamá Cordillera Gesha",
+        "price": "65",
+        "tastingNotes": "Cantaloupe, Honey, Berries, Lemongrass"
+      },
+      {
+        "itemName": "Colombia Sweet Dreams Decaf",
+        "price": "38",
+        "tastingNotes": "Passion fruit cheesecake, Milk chocolate, Molasses"
+      },
+      {
+        "itemName": "Ethiopia Cold Brew",
+        "price": "38",
+        "tastingNotes": "Apricot, Pear, Honey"
+      },
+      {
+        "itemName": "Colombia Cold Brew",
+        "price": "38",
+        "tastingNotes": "Apricot Jam, Raspberry, Lychee"
+      },
+      {
+        "itemName": "Kenya Cold Brew",
+        "price": "38",
+        "tastingNotes": "Wild Cherry, Brown Sugar, Raisins"
+      },
+      {
+        "itemName": "Nicaragua",
+        "price": "0",
+        "tastingNotes": "Milk chocolate, sugar cane, and candied peanuts"
+      },
+      {
+        "itemName": "Kenya - Gichatha",
+        "price": "0",
+        "tastingNotes": "Caramel, black cherry, Cacao Nibs"
+      },
+      {
+        "itemName": "Coconutella",
+        "price": "5",
+        "tastingNotes": "Coconut cream, milk chocolate, toffee caramel"
+      },
+      {
+        "itemName": "Colombia - Strawberry",
+        "price": "5",
+        "tastingNotes": "Strawberry Jam, Honey, Milk Chocolates"
+      },
+      {
+        "itemName": "Colombia Sweet Dreams (Decaf)",
+        "price": "0",
+        "tastingNotes": "Passion fruit cheesecake, Milk chocolate, Molasses"
+      }
+    ]
+  }
+]

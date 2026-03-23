@@ -94,19 +94,19 @@ const BASE_MENU: MenuCategory[] = [
     items: [
       { 
         id: 'bw6', 
-        name: 'CARTEL Banana, Dates & Yogurt', 
-        ingredients: 'Earl Grey Chia, fresh banana, sweet dates, creamy yogurt.', 
-        price: '38',
-        image: 'https://iili.io/q2j9Vwu.png',
-        calories: 350
+        name: 'EXOTIC SUNRISE', 
+        ingredients: 'Coconut yogurt, homemade granola, passion fruit, mango slices, exotic gel, and lime zest.', 
+        price: '42',
+        image: 'https://iili.io/fvyol0F.jpg',
+        calories:360
       },
       { 
         id: 'bw7', 
-        name: 'CARTEL Matcha Chia Pudding', 
-        ingredients: 'Premium Matcha infused chia pudding, coconut milk, seasonal toppings.', 
-        price: '38',
-        image: 'https://iili.io/q2hpnov.png',
-        calories: 330
+        name: 'Apple Cinnamon Muesli', 
+        ingredients: 'Cinnamon yogurt, granola, apple crumble, soft caramel, berry compote, honeycomb, raspberries, blueberries, blackberries, apple crisp, mixed nuts, and organic honey drizzle.', 
+        price: '42',
+        image: 'https://iili.io/fvyxG49.jpg',
+        calories:410 
       },
       { 
         id: 'bw2', 

@@ -25,7 +25,7 @@ const BranchSelection: React.FC<BranchSelectionProps> = ({ onSelectBranch }) => 
       {/* Main Content Area */}
       <div className="content-wrapper">
         <h1 className="brand-title">CARTEL</h1>
-        <p className="brand-subtitle">WE KNOW OUR NOTES</p>
+        <p className="brand-subtitle"> A NEW FREQUENCY </p>
         
         {/* Branch Navigation Buttons */}
         <div className="branch-nav-container">

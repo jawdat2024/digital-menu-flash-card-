@@ -262,7 +262,7 @@ const BASE_MENU: MenuCategory[] = [
       {
         id: 'fil_eth_guji',
         name: 'Colombia - Bourbon Sidra',
-          tastingNotes: 'Red grapes, Watermelon, Hard Candy, Raspberry',
+        tastingNotes: 'Red grapes, Watermelon, Hard Candy, Raspberry',
         ingredients: 'Pour-over brewing method',
         price: '46',
         image: 'https://iili.io/qjAjZAJ.png',
@@ -272,7 +272,7 @@ const BASE_MENU: MenuCategory[] = [
       {
         id: 'fil_cuban',
         name: 'Costa Rica - Canet Chopin',
-          tastingNotes: 'Cacao, Fig Compote, Honey, Cherry',
+        tastingNotes: 'Cacao, Fig Compote, Honey, Cherry',
         ingredients: 'Pour-over brewing method',
         price: '57',
         image: 'https://iili.io/qjAjZAJ.png',
@@ -282,7 +282,7 @@ const BASE_MENU: MenuCategory[] = [
       {
         id: 'fil_kenya_kirimara',
         name: 'Kenya Kirimara',
-          tastingNotes: 'Wild Cherry, Brown Sugar, Raisins',
+        tastingNotes: 'Wild Cherry, Brown Sugar, Raisins',
         ingredients: 'Pour-over brewing method',
         price: '46',
         image: 'https://iili.io/qjAjZAJ.png',
@@ -292,7 +292,7 @@ const BASE_MENU: MenuCategory[] = [
       {
         id: 'fil_col_mish',
         name: 'Colombia Mish Mish',
-          tastingNotes: 'Apricot Jam, Raspberry, Lychee',
+        tastingNotes: 'Apricot Jam, Raspberry, Lychee',
         ingredients: 'Pour-over brewing method',
         price: '57',
         image: 'https://iili.io/qjAjZAJ.png',
@@ -302,7 +302,7 @@ const BASE_MENU: MenuCategory[] = [
       {
         id: 'fil_col_black',
         name: 'Panamá Cordillera Gesha',
-          tastingNotes: 'Cantaloupe, Honey, Berries, Lemongrass',
+        tastingNotes: 'Cantaloupe, Honey, Berries, Lemongrass',
         ingredients: 'Pour-over brewing method',
         price: '65',
         image: 'https://iili.io/qjAjZAJ.png',
@@ -312,8 +312,8 @@ const BASE_MENU: MenuCategory[] = [
       {
         id: 'fil_decaf',
         name: 'Colombia Sweet Dreams Decaf',
-          tastingNotes: 'Passion fruit cheesecake, Milk chocolate, Molasses',
-        ingredients: 'Pour-over brewing method',
+        tastingNotes: 'Passion fruit cheesecake, Milk chocolate, Molasses',
+        ingredients: 'Passion fruit cheesecake, Milk chocolate, Molasses',
         price: '38',
         image: 'https://iili.io/qjAjZAJ.png',
         calories: 5,
@@ -2026,6 +2026,7 @@ const createAlQanaMenu = (): MenuCategory[] => {
         { id: 'd_peanut', name: 'Peanut Choco Tart', price: '39.20', image: 'https://iili.io/qqXGUIR.png', ingredients: 'Rich chocolate tart with peanut butter', calories: 480 },
         { id: 'd_honey', name: 'Honey Cake', price: '39.20', image: 'https://iili.io/qqXWIea.png', ingredients: 'Layers of honey sponge and cream', calories: 450 },
         findItem('desserts', 'd_san_seb')!,
+        { id: 'd_cartel_crust_san_seb', name: 'CARTEL Crust San Sebastian', price: '39.20', image: 'https://iili.io/q2hnbp4.png' },
         findItem('desserts', 'STICKY DATE')!,
         { id: 'd_tiramisu', name: 'Tiramisu Bowl', price: '39.20', image: 'https://iili.io/qnnTv0G.png', ingredients: 'Classic Italian dessert with coffee', calories: 400 },
         findItem('desserts', 'd_vanilla_pud')!,
@@ -2451,7 +2452,7 @@ const createDubaiMenu = (): MenuCategory[] => {
       notes: 'Strawberry Jam, Honey, Milk Chocolates',
       price: 5,
       isNew: true,
-      status: 'Coming Soon'
+      status: 'active'
     },
     {
       id: 'bean_decaf',

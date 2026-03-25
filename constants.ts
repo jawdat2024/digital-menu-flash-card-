@@ -2124,10 +2124,10 @@ const createMarinaMenu = (): MenuCategory[] => {
       isNew: false
     },
     {
-      id: 'bean_kenya',
-      name: 'Kenya - Gichatha',
-      notes: 'Caramel, black cherry, Cacao Nibs',
-      price: 0,
+      id: 'bean_brazil_chocolate',
+      name: 'Brazil Chocolate',
+      notes: 'Chocolate biscuit, condensed milk, and chestnuts',
+      price: 1,
       isNew: true
     },
     {
@@ -2136,14 +2136,6 @@ const createMarinaMenu = (): MenuCategory[] => {
       notes: 'Coconut cream, milk chocolate, toffee caramel',
       price: 5,
       isNew: false
-    },
-    {
-      id: 'bean_colombia_strawberry',
-      name: 'Colombia - Strawberry',
-      notes: 'Strawberry Jam, Honey, Milk Chocolates',
-      price: 5,
-      isNew: true,
-      status: 'Coming Soon'
     },
     {
       id: 'bean_colombia_decaf',

@@ -1295,9 +1295,9 @@ const createAlBateenMenu = (): MenuCategory[] => {
   // Define Custom Beans
   const alBateenBeans = [
     {
-      id: 'bean_brazil_amazonic',
-      name: 'BRAZIL AMAZONIC SOUL',
-      notes: 'Dark Chocolate, Roasted Hazelnut, Caramel',
+      id: 'bean_nicaragua',
+      name: 'NICARAGUA',
+      notes: 'Sugarcane, Candied Peanuts, Milk Chocolate',
       price: 1,
       isNew: false
     },
@@ -2054,6 +2054,8 @@ const createAlQanaMenu = (): MenuCategory[] => {
       id: 'signature-drinks',
       title: 'Signature drink',
       items: [
+        { ...findItem('signature-drinks', 'sig1')!, name: 'Rush Hour', image: 'https://iili.io/q2urMyF.jpg', status: 'Available' },
+        { ...findItem('tea', 'tea_rush')!, id: 'sig_hot_rush', name: 'HOT RUSH HOUR', price: '33', image: 'https://iili.io/qlbAzS2.jpg', status: 'Available' },
         findItem('signature-drinks', 'sig_espresso_shake')!,
         findItem('signature-drinks', 'sig_matcha_shake')!,
         findItem('signature-drinks', 'sig_baby_shark')!,

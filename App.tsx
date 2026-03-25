@@ -33,6 +33,12 @@ const App: React.FC = () => {
     }
   }, []);
 
+  useEffect(() => {
+    if (activeBranch) {
+      window.scrollTo(0, 0);
+    }
+  }, [activeBranch]);
+
   const currentBranchMenu: MenuCategory[] = useMemo(() => {
     if (!activeBranch) return [];
     return BRANCH_MENUS[activeBranch.id] || BRANCH_MENUS['khalifa']; 

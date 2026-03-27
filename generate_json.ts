@@ -25,7 +25,8 @@ const result = branches.map(branchName => {
           }
         });
       } else {
-        if (category.title === 'Filter Coffee' || category.title === 'Cold Brew' || category.title === 'Cold Drip') {
+        const title = category.title as string;
+        if (title === 'Filter Coffee' || title === 'Cold Brew' || title === 'Cold Drip') {
           category.items.forEach(item => {
             if (item.tastingNotes) {
               items.push({

@@ -1298,13 +1298,13 @@ const createAlBateenMenu = (): MenuCategory[] => {
       id: 'bean_nicaragua',
       name: 'NICARAGUA',
       notes: 'Sugarcane, Candied Peanuts, Milk Chocolate',
-      price: 1,
+      price: 0,
       isNew: false
     },
     {
-      id: 'bean_kenya_gichatha',
-      name: 'KENYA GICHATHA',
-      notes: 'Caramel, Cacao Nibs, Black Cherry',
+      id: 'bean_brazil_chocolate',
+      name: 'Brazil Chocolate',
+      notes: 'Chocolate biscuit, condensed milk, and chestnuts',
       price: 1,
       isNew: true
     },

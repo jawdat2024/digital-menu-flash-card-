@@ -1228,9 +1228,9 @@ const createMirdifMenu = (): MenuCategory[] => {
         { id: 'sw_bacon', name: 'Bacon & Egg Cheese Bun', price: '44', image: 'https://iili.io/qqEAsNj.jpg', ingredients: 'Brioche bun with crispy bacon, scrambled egg, cheddar cheese, kimchi ketchup.', calories: 550 },
         { id: 'sw_tuna', name: 'Tunacado', price: '38', image: 'https://iili.io/qqEgPdN.jpg', ingredients: "Joe's bread, pesto mayo, tuna mix, tomato slice, avocado slice.", calories: 480 },
         { id: 'sw_chick', name: 'Chicken & Avocado Croissant', price: '42', image: 'https://iili.io/qqG2qR1.png', ingredients: 'Grilled chicken, fresh avocado, croissant', calories: 520 },
-        { id: 'sw_club', name: 'Cartel Club Sandwich', price: '38', image: 'https://iili.io/qqEPTpS.jpg', ingredients: 'White sliced bread, chipotle mayo, cheddar, lettuce, grilled chicken, bacon, fried egg, tomato slice.', calories: 600 },
-        { id: 'sw_brisket', name: 'Brisket Blaze', price: '45', image: 'https://iili.io/qqERigt.jpg', ingredients: 'Brioche toast, chipotle mayo, cheddar, brisket, caramelized onion, jalapeño.', calories: 650 },
-        { id: 'sw_shrimp', name: 'Shrimp Toast', price: '35', image: 'https://iili.io/qqEYw12.jpg', ingredients: 'Sautéed shrimp on brioche toast', calories: 420 },
+        { id: 'sw_club', name: 'Cartel Club Sandwich', price: '38', image: 'https://iili.io/qqEPTpS.jpg', ingredients: 'White sliced bread, chipotle mayo, cheddar, lettuce, gherkins, tomato, bacon, smoked turkey, homemade chips.', calories: 600 },
+        { id: 'sw_brisket', name: 'Brisket Blaze', price: '45', image: 'https://iili.io/qqERigt.jpg', ingredients: 'Toasted brown sliced bread stacked with smoked brisket, aged white cheddar, Dijon mayo, tangy relish, and finished with a perfectly burnt matured white cheddar cheese for added flavor.', calories: 650 },
+        { id: 'sw_shrimp', name: 'Shrimp Toast', price: '35', image: 'https://iili.io/qqEYw12.jpg', ingredients: 'Crispy milk bread topped with house-made shrimp paste, drizzled with dynamite sauce, garnished with salmon caviar, and finished with mixed sesame seeds.', calories: 420 },
         { id: 'sw_italian', name: 'Cold Cut Italian', price: '38', image: 'https://iili.io/qqEieVe.png', ingredients: 'White slice bread with pesto oil, fresh mozzarella, tomato slice, tartufo salami, chorizo, baby Rocca, sun-dried tomatoes, balsamic glaze, organic olive oil.', calories: 580 },
       ].filter(Boolean)
     },
@@ -1520,10 +1520,10 @@ const createAlBateenMenu = (): MenuCategory[] => {
         { id: 'sw_bacon', name: 'Bacon & Egg Cheese Bun', price: '44', image: 'https://iili.io/qqEAsNj.jpg', ingredients: 'Brioche bun with crispy bacon, scrambled egg, cheddar cheese, kimchi ketchup.', calories: 550 },
         { id: 'sw_tuna', name: 'Tunacado', price: '38', image: 'https://iili.io/qqEgPdN.jpg', ingredients: "Joe's bread, pesto mayo, tuna mix, tomato slice, avocado slice.", calories: 480 },
         { id: 'sw_chick', name: 'Chicken & Avocado Croissant', price: '42', image: 'https://iili.io/qqG2qR1.png', ingredients: 'Grilled chicken, fresh avocado, croissant', calories: 520 },
-        { id: 'sw_club', name: 'Cartel Club Sandwich', price: '38', image: 'https://iili.io/qqEPTpS.jpg', ingredients: 'White sliced bread, chipotle mayo, cheddar, lettuce, grilled chicken, bacon, fried egg, tomato slice.', calories: 600 },
-        { id: 'sw_brisket', name: 'Brisket Blaze', price: '45', image: 'https://iili.io/qqERigt.jpg', ingredients: 'Brioche toast, chipotle mayo, cheddar, brisket, caramelized onion, jalapeño.', calories: 650 },
+        { id: 'sw_club', name: 'Cartel Club Sandwich', price: '38', image: 'https://iili.io/qqEPTpS.jpg', ingredients: 'White sliced bread, chipotle mayo, cheddar, lettuce, gherkins, tomato, bacon, smoked turkey, homemade chips.', calories: 600 },
+        { id: 'sw_brisket', name: 'Brisket Blaze', price: '45', image: 'https://iili.io/qqERigt.jpg', ingredients: 'Toasted brown sliced bread stacked with smoked brisket, aged white cheddar, Dijon mayo, tangy relish, and finished with a perfectly burnt matured white cheddar cheese for added flavor.', calories: 650 },
         { id: 'sw_italian', name: 'Cold Cut Italian', price: '38', image: 'https://iili.io/qqEieVe.png', ingredients: 'White slice bread with pesto oil, fresh mozzarella, tomato slice, tartufo salami, chorizo, baby Rocca, sun-dried tomatoes, balsamic glaze, organic olive oil.', calories: 580 },
-        { id: 'sw_shrimp', name: 'Shrimp Toast', price: '35', image: 'https://iili.io/qqEYw12.jpg', ingredients: 'Sautéed shrimp on brioche toast', calories: 420 },
+        { id: 'sw_shrimp', name: 'Shrimp Toast', price: '35', image: 'https://iili.io/qqEYw12.jpg', ingredients: 'Crispy milk bread topped with house-made shrimp paste, drizzled with dynamite sauce, garnished with salmon caviar, and finished with mixed sesame seeds.', calories: 420 },
       ]
     },
     {
@@ -1820,8 +1820,8 @@ const createKhalifaMenu = (): MenuCategory[] => {
         { id: 'sw_bacon', name: 'Bacon & Egg Cheese Bun', price: '44', image: 'https://iili.io/qqEAsNj.jpg', ingredients: 'Brioche bun with crispy bacon, scrambled egg, cheddar cheese, kimchi ketchup.', calories: 550 },
         { id: 'sw_tuna', name: 'Tunacado', price: '38', image: 'https://iili.io/qqEgPdN.jpg', ingredients: "Joe's bread, pesto mayo, tuna mix, tomato slice, avocado slice.", calories: 480 },
         { id: 'sw_chick', name: 'Chicken & Avocado Croissant', price: '42', image: 'https://iili.io/qqGn1cb.jpg', ingredients: 'Grilled chicken, fresh avocado, croissant', calories: 520 },
-        { id: 'sw_club', name: 'Cartel Club Sandwich', price: '38', image: 'https://iili.io/qqEPTpS.jpg', ingredients: 'White sliced bread, chipotle mayo, cheddar, lettuce, grilled chicken, bacon, fried egg, tomato slice.', calories: 600 },
-        { id: 'sw_brisket', name: 'Brisket Blaze', price: '45', image: 'https://iili.io/qqERigt.jpg', ingredients: 'Brioche toast, chipotle mayo, cheddar, brisket, caramelized onion, jalapeño.', calories: 650 },
+        { id: 'sw_club', name: 'Cartel Club Sandwich', price: '38', image: 'https://iili.io/qqEPTpS.jpg', ingredients: 'White sliced bread, chipotle mayo, cheddar, lettuce, gherkins, tomato, bacon, smoked turkey, homemade chips.', calories: 600 },
+        { id: 'sw_brisket', name: 'Brisket Blaze', price: '45', image: 'https://iili.io/qqERigt.jpg', ingredients: 'Toasted brown sliced bread stacked with smoked brisket, aged white cheddar, Dijon mayo, tangy relish, and finished with a perfectly burnt matured white cheddar cheese for added flavor.', calories: 650 },
       ]
     },
     {
@@ -2050,10 +2050,10 @@ const createAlQanaMenu = (): MenuCategory[] => {
       items: [
         { id: 'sw_italian', name: 'Cold Cut Italian', price: '38', image: 'https://iili.io/qqEieVe.png', ingredients: 'White slice bread with pesto oil, fresh mozzarella, tomato slice, tartufo salami, chorizo, baby Rocca, sun-dried tomatoes, balsamic glaze, organic olive oil.', calories: 580 },
         { id: 'sw_tuna', name: 'Tunacado', price: '38', image: 'https://iili.io/qqEgPdN.jpg', ingredients: "Joe's bread, pesto mayo, tuna mix, tomato slice, avocado slice.", calories: 480 },
-        { id: 'sw_club', name: 'Cartel Club Sandwich', price: '38', image: 'https://iili.io/qqEPTpS.jpg', ingredients: 'White sliced bread, chipotle mayo, cheddar, lettuce, grilled chicken, bacon, fried egg, tomato slice.', calories: 600 },
-        { id: 'sw_brisket', name: 'Brisket Blaze', price: '45', image: 'https://iili.io/qqERigt.jpg', ingredients: 'Brioche toast, chipotle mayo, cheddar, brisket, caramelized onion, jalapeño.', calories: 650 },
+        { id: 'sw_club', name: 'Cartel Club Sandwich', price: '38', image: 'https://iili.io/qqEPTpS.jpg', ingredients: 'White sliced bread, chipotle mayo, cheddar, lettuce, gherkins, tomato, bacon, smoked turkey, homemade chips.', calories: 600 },
+        { id: 'sw_brisket', name: 'Brisket Blaze', price: '45', image: 'https://iili.io/qqERigt.jpg', ingredients: 'Toasted brown sliced bread stacked with smoked brisket, aged white cheddar, Dijon mayo, tangy relish, and finished with a perfectly burnt matured white cheddar cheese for added flavor.', calories: 650 },
         { id: 'sw_chick', name: 'Chicken Avocado Croissant', price: '35', image: 'https://iili.io/qqG2qR1.png', ingredients: 'A buttery, toasted kalonji-seed square croissant filled with tender grilled chicken and fresh avocado slices. Layered with crisp Lollo Bionda, sun-dried tomatoes, and shaved Grano Padano cheese. Finished with a house-made Caesar dressing and a fragrant drizzle of pesto oil.', calories: 520, branch: 'Al Qana' },
-        { id: 'sw_shrimp', name: 'Shrimp Toast', price: '35', image: 'https://iili.io/qqEYw12.jpg', ingredients: 'Sautéed shrimp on brioche toast', calories: 420 },
+        { id: 'sw_shrimp', name: 'Shrimp Toast', price: '35', image: 'https://iili.io/qqEYw12.jpg', ingredients: 'Crispy milk bread topped with house-made shrimp paste, drizzled with dynamite sauce, garnished with salmon caviar, and finished with mixed sesame seeds.', calories: 420 },
         { id: 'sw_bacon', name: 'Bacon & Egg Cheese Bun', price: '44', image: 'https://iili.io/qqEAsNj.jpg', ingredients: 'Brioche bun with crispy bacon, scrambled egg, cheddar cheese, kimchi ketchup.', calories: 550 },
       ]
     },
@@ -2075,7 +2075,7 @@ const createAlQanaMenu = (): MenuCategory[] => {
       title: 'Desserts',
       items: [
         findItem('desserts', 'd_aseeda')!,
-        { id: 'd_french_toast', name: 'French Toast', price: '66', image: 'https://iili.io/fUBoGzx.png', ingredients: 'Caramelized and served with vanilla ice cream, almond streusel, whipped vanilla cream, and rhubarb compote (option salted caramel, mix berries compote on the side)', branch: 'Al Qana' },
+        { id: 'd_french_toast', name: 'French Toast', price: '66', image: 'https://iili.io/q2ARzyG.jpg', ingredients: 'Caramelized and served with vanilla ice cream, almond streusel, whipped vanilla cream, and rhubarb compote (option salted caramel, mix berries compote on the side)', branch: 'Al Qana' },
         { ...findItem('desserts', 'd_crepe_rolls')!, status: 'Available' },
         { id: 'd_peanut', name: 'Peanut Choco Tart', price: '39.20', image: 'https://iili.io/qqXGUIR.png', ingredients: 'Rich chocolate tart with peanut butter', calories: 480 },
         { id: 'd_honey', name: 'Honey Cake', price: '39.20', image: 'https://iili.io/qqXWIea.png', ingredients: 'Layers of honey sponge and cream', calories: 450 },
@@ -2084,10 +2084,9 @@ const createAlQanaMenu = (): MenuCategory[] => {
         findItem('desserts', 'STICKY DATE')!,
         { id: 'd_tiramisu', name: 'Tiramisu Bowl', price: '39.20', image: 'https://iili.io/qnnTv0G.png', ingredients: 'Classic Italian dessert with coffee', calories: 400 },
         findItem('desserts', 'd_vanilla_pud')!,
-        findItem('desserts', 'd_choc_chip')!,
+        { ...findItem('desserts', 'd_choc_chip')!, image: 'https://iili.io/fvmyUc7.jpg' },
         { id: 'd_choco_fudge_cookie', name: 'CHOCO FUDGE COOKIE', ingredients: 'Rich and fudgy dark chocolate cookie', price: '21', image: 'https://iili.io/qqMhN2e.png' },
-        findItem('desserts', 'MUHALABIYA')!,
-        findItem('desserts', 'd_banana_pud')!,
+findItem('desserts', 'd_banana_pud')!,
       ].filter(Boolean)
     },
     {
@@ -2347,9 +2346,9 @@ const createMarinaMenu = (): MenuCategory[] => {
     title: 'SANDWICHES & BAGELS',
     items: [
       { id: 'sw_italian', name: 'Cold Cut Italian', price: '38', image: 'https://iili.io/qqEieVe.png', ingredients: 'White slice bread with pesto oil, fresh mozzarella, tomato slice, tartufo salami, chorizo, baby Rocca, sun-dried tomatoes, balsamic glaze, organic olive oil.', calories: 580 },
-      { id: 'sw_club', name: 'Cartel Club Sandwich', price: '38', image: 'https://iili.io/qqEPTpS.jpg', ingredients: 'White sliced bread, chipotle mayo, cheddar, lettuce, grilled chicken, bacon, fried egg, tomato slice.', calories: 600 },
+      { id: 'sw_club', name: 'Cartel Club Sandwich', price: '38', image: 'https://iili.io/qqEPTpS.jpg', ingredients: 'White sliced bread, chipotle mayo, cheddar, lettuce, gherkins, tomato, bacon, smoked turkey, homemade chips.', calories: 600 },
       { id: 'sw_tuna', name: 'Tunacado', price: '38', image: 'https://iili.io/qqEgPdN.jpg', ingredients: "Joe's bread, pesto mayo, tuna mix, tomato slice, avocado slice.", calories: 480 },
-      { id: 'sw_brisket', name: 'Brisket Blaze', price: '45', image: 'https://iili.io/qqERigt.jpg', ingredients: 'Brioche toast, chipotle mayo, cheddar, brisket, caramelized onion, jalapeño.', calories: 650 }
+      { id: 'sw_brisket', name: 'Brisket Blaze', price: '45', image: 'https://iili.io/qqERigt.jpg', ingredients: 'Toasted brown sliced bread stacked with smoked brisket, aged white cheddar, Dijon mayo, tangy relish, and finished with a perfectly burnt matured white cheddar cheese for added flavor.', calories: 650 }
     ]
   });
 
@@ -2675,9 +2674,9 @@ const createDubaiMenu = (): MenuCategory[] => {
         { id: 'sw_bacon', name: 'Bacon & Egg Cheese Bun', price: '44', image: 'https://iili.io/qqEAsNj.jpg', ingredients: 'Brioche bun with crispy bacon, scrambled egg, cheddar cheese, kimchi ketchup.', calories: 550 },
         { id: 'sw_tuna', name: 'Tunacado', price: '38', image: 'https://iili.io/qqEgPdN.jpg', ingredients: "Joe's bread, pesto mayo, tuna mix, tomato slice, avocado slice.", calories: 480 },
         { id: 'sw_chick', name: 'Chicken & Avocado Croissant', price: '42', image: 'https://iili.io/qqG2qR1.png', ingredients: 'Grilled chicken, fresh avocado, croissant', calories: 520 },
-        { id: 'sw_club', name: 'Cartel Club Sandwich', price: '38', image: 'https://iili.io/qqEPTpS.jpg', ingredients: 'White sliced bread, chipotle mayo, cheddar, lettuce, grilled chicken, bacon, fried egg, tomato slice.', calories: 600 },
-        { id: 'sw_brisket', name: 'Brisket Blaze', price: '45', image: 'https://iili.io/qqERigt.jpg', ingredients: 'Brioche toast, chipotle mayo, cheddar, brisket, caramelized onion, jalapeño.', calories: 650 },
-        { id: 'sw_shrimp', name: 'Shrimp Toast', price: '35', image: 'https://iili.io/qqEYw12.jpg', ingredients: 'Sautéed shrimp on brioche toast', calories: 420 },
+        { id: 'sw_club', name: 'Cartel Club Sandwich', price: '38', image: 'https://iili.io/qqEPTpS.jpg', ingredients: 'White sliced bread, chipotle mayo, cheddar, lettuce, gherkins, tomato, bacon, smoked turkey, homemade chips.', calories: 600 },
+        { id: 'sw_brisket', name: 'Brisket Blaze', price: '45', image: 'https://iili.io/qqERigt.jpg', ingredients: 'Toasted brown sliced bread stacked with smoked brisket, aged white cheddar, Dijon mayo, tangy relish, and finished with a perfectly burnt matured white cheddar cheese for added flavor.', calories: 650 },
+        { id: 'sw_shrimp', name: 'Shrimp Toast', price: '35', image: 'https://iili.io/qqEYw12.jpg', ingredients: 'Crispy milk bread topped with house-made shrimp paste, drizzled with dynamite sauce, garnished with salmon caviar, and finished with mixed sesame seeds.', calories: 420 },
         { id: 'sw_italian', name: 'Cold Cut Italian', price: '38', image: 'https://iili.io/qqEieVe.png', ingredients: 'White slice bread with pesto oil, fresh mozzarella, tomato slice, tartufo salami, chorizo, baby Rocca, sun-dried tomatoes, balsamic glaze, organic olive oil.', calories: 580 },
       ].filter(Boolean)
     },
@@ -2695,6 +2694,20 @@ const createDubaiMenu = (): MenuCategory[] => {
         { id: 'egg_turkish', name: 'Minted yogurt', price: '46', image: 'https://iili.io/qqGBwmB.jpg', ingredients: 'homemade tomato jam, poached eggs, mint pesto, chilly butter served with 2 slices of toasted zaatar sourdough.', calories: 400 },
       ].filter(Boolean)
     },
+    {
+      id: 'sweet-breakfast',
+      title: 'SWEET BREAKFAST',
+      items: [
+        {
+          id: 'sb_french_toast',
+          name: 'CARTEL FRENCH TOAST',
+          price: '66',
+          image: 'https://iili.io/q2ARzyG.jpg',
+          ingredients: 'Caramelized and served with vanilla ice cream, almond streusel, whipped vanilla cream, and rhubarb compote (option: salted caramel, mix berries compote)',
+        }
+      ]
+    },
+
     {
       id: 'salads',
       title: 'Greens (Salad)',

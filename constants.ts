@@ -110,7 +110,7 @@ const BASE_MENU: MenuCategory[] = [
       },
       { 
         id: 'bw2', 
-        name: 'CARTEL Overnight Oats', 
+        name: 'Overnight Oats', 
         ingredients: 'Oats are soaked in oat milk with mixed berry compote, peanut butter, and cashew nuts.', 
         price: '42',
         image: 'https://iili.io/fvyqMn1.jpg',
@@ -126,7 +126,7 @@ const BASE_MENU: MenuCategory[] = [
       },
       {
         id: 'sig8',
-        name: 'CARTEL Tanzanian Hot Chocolate',
+        name: 'Tanzanian Hot Chocolate',
         ingredients: 'Single origin Tanzanian cacao, rich and velvety steamed milk. MARSHMELLO, chocholate stick',
         price: '32',
         image: 'https://iili.io/q2u8XqB.jpg',
@@ -148,7 +148,7 @@ const BASE_MENU: MenuCategory[] = [
     items: [
       { 
         id: 'd_san_seb', 
-        name: 'CARTEL Crust San Sebastian', 
+        name: 'Crust San Sebastian', 
         ingredients: 'Basque-style burnt cheesecake, creamy center, caramelized exterior', 
         price: '39.20',
         image: 'https://iili.io/q2hnbp4.png',
@@ -166,7 +166,7 @@ const BASE_MENU: MenuCategory[] = [
 
       { 
         id: 'MUHALABIYA', 
-        name: 'CARTEL MUHALABIYA', 
+        name: 'MUHALABIYA', 
         ingredients: 'Our silky-smooth Muhalabiya is infused with delicate floral notes and topped with a cloud of premium Ghazl el Banat (Arabic cotton candy). Finished with a vibrant sprinkle of crushed pistachios and dried rose petals, every spoonful offers a perfect balance of creamy, airy, and crunchy textures.', 
         price: '39.20', 
         image: 'https://iili.io/qttIcV2.jpg',
@@ -190,7 +190,7 @@ const BASE_MENU: MenuCategory[] = [
       },
       { 
         id: 'd_snickers', 
-        name: ' CARTEL Snickers', 
+        name: 'Snickers', 
         ingredients: 'Peanuts, caramel, and nougat coated in milk chocolate', 
         price: '39.20', 
         image: 'https://iili.io/q2hTJNj.png',
@@ -198,7 +198,7 @@ const BASE_MENU: MenuCategory[] = [
       },
       { 
         id: 'd_aseeda', 
-        name: 'CARTEL ASEEDA', 
+        name: 'ASEEDA', 
         ingredients: 'Modern twist on traditional Aseeda, saffron, cardamom, date molasses, roasted nuts', 
         price: '43', 
         image: 'https://i.postimg.cc/cLJWz07y/asseda.jpg',
@@ -238,7 +238,7 @@ const BASE_MENU: MenuCategory[] = [
       },
       { 
         id: 'STICKY DATE', 
-        name: 'CARTEL SICKY DATE ', 
+        name: 'SICKY DATE ', 
         ingredients: 'Warm, treacle-infused date cake, house-made candied pecans, and London Dairy Vanilla Ice Cream. Rich, velvety, and classic', 
         price: '39.20', 
         image: 'https://iili.io/q2PPbjV.png',
@@ -332,7 +332,7 @@ const BASE_MENU: MenuCategory[] = [
         tastingNotes: 'Apricot, Pear, Honey',
         ingredients: 'Slow-steeped cold water extraction for 12+ hours.',
         price: '38',
-        image: 'https://iili.io/fUAAQ07.png',
+        image: 'https://iili.io/B3OHMFV.jpg',
         calories: 10
       },
       {
@@ -352,7 +352,7 @@ const BASE_MENU: MenuCategory[] = [
         tastingNotes: 'Wild Cherry, Brown Sugar, Raisins',
         ingredients: 'Slow-steeped cold water extraction for 12+ hours.',
         price: '38',
-        image: 'https://iili.io/qjc71DB.png',
+        image: 'https://iili.io/B3Ns6UG.jpg',
         calories: 10
       }
     ]
@@ -394,7 +394,7 @@ const BASE_MENU: MenuCategory[] = [
     items: [
       {
         id: 'esp1',
-        name: 'CARTEL Espresso',
+        name: 'Espresso',
         ingredients: '',
         price: '24',
         image: 'https://iili.io/fUCfVDl.jpg',
@@ -409,7 +409,7 @@ const BASE_MENU: MenuCategory[] = [
       },
       {
         id: 'esp_cap',
-        name: 'CARTEL Cappuccino',
+        name: 'Cappuccino',
         ingredients: '',
         price: '28',
         image: 'https://iili.io/q2uiIPj.jpg',
@@ -436,7 +436,7 @@ const BASE_MENU: MenuCategory[] = [
       },
       {
         id: 'esp2',
-        name: 'CARTEL Latte',
+        name: 'Latte',
         ingredients: '',
         price: '27',
         image: 'https://iili.io/qwbtDVn.jpg',
@@ -462,7 +462,7 @@ const BASE_MENU: MenuCategory[] = [
       },
       {
         id: 'esp3',
-        name: 'CARTEL Macchiato',
+        name: 'Macchiato',
         ingredients: '',
         price: '26',
         image: 'https://iili.io/q2usfqJ.jpg',
@@ -477,7 +477,7 @@ const BASE_MENU: MenuCategory[] = [
       },
       {
         id: 'esp4',
-        name: 'CARTEL Cortado',
+        name: 'Cortado',
         ingredients: '',
         price: '26',
         image: 'https://iili.io/q2uiNDX.jpg',
@@ -504,7 +504,7 @@ const BASE_MENU: MenuCategory[] = [
       },
       {
         id: 'esp5',
-        name: 'CARTEL Piccolo',
+        name: 'Piccolo',
         ingredients: '',
         price: '25',
         image: 'https://iili.io/q2uQQWX.jpg',
@@ -531,7 +531,7 @@ const BASE_MENU: MenuCategory[] = [
       },
       {
         id: 'esp6',
-        name: 'CARTEL Flat White',
+        name: 'Flat White',
         ingredients: '',
         price: '27',
         image: 'https://iili.io/q2usTzX.jpg',
@@ -558,7 +558,7 @@ const BASE_MENU: MenuCategory[] = [
       },
       {
         id: 'esp7',
-        name: 'CARTEL Americano',
+        name: 'Americano',
         ingredients: '',
         price: '25',
         image: 'https://iili.io/q2u6jgp.jpg',
@@ -573,7 +573,7 @@ const BASE_MENU: MenuCategory[] = [
       },
       {
         id: 'esp8',
-        name: 'CARTEL Spanish Piccolo',
+        name: 'Spanish Piccolo',
         ingredients: '',
         price: '28',
         image: 'https://iili.io/q2usMXe.jpg',
@@ -600,7 +600,7 @@ const BASE_MENU: MenuCategory[] = [
       },
       {
         id: 'esp9',
-        name: 'CARTEL Spanish Latte',
+        name: 'Spanish Latte',
         ingredients: '',
         price: '32',
         image: 'https://iili.io/q2uLKT7.jpg',
@@ -626,7 +626,7 @@ const BASE_MENU: MenuCategory[] = [
       },
       {
         id: 'esp10',
-        name: 'CARTEL Spanish Cortado',
+        name: 'Spanish Cortado',
         ingredients: '',
         price: '29',
         image: 'https://iili.io/q2usMXe.jpg',
@@ -653,7 +653,7 @@ const BASE_MENU: MenuCategory[] = [
       },
             {
         id: 'esp11',
-        name: 'CARTEL Babyccino',
+        name: 'Babyccino',
         ingredients: '',
         price: '11',
         image: 'https://iili.io/q2uPvaV.jpg',
@@ -709,7 +709,7 @@ const BASE_MENU: MenuCategory[] = [
       },
       { 
         id: 'bw6', 
-        name: 'CARTEL Banana, Dates & Yogurt', 
+        name: 'Banana, Dates & Yogurt', 
         ingredients: 'Earl Grey Chia, fresh banana, sweet dates, creamy yogurt.', 
         price: '38',
         image: 'https://iili.io/q2j9Vwu.png',
@@ -717,7 +717,7 @@ const BASE_MENU: MenuCategory[] = [
       },
       { 
         id: 'bw7', 
-        name: 'CARTEL Matcha Chia Pudding', 
+        name: 'Matcha Chia Pudding', 
         ingredients: 'Premium Matcha infused chia pudding, coconut milk, seasonal toppings.', 
         price: '38',
         image: 'https://iili.io/q2hpnov.png',
@@ -731,7 +731,7 @@ const BASE_MENU: MenuCategory[] = [
     items: [
       {
         id: 'sig1',
-        name: 'CARTEL RUSH HOUR',
+        name: 'RUSH HOUR',
         ingredients: '',
         price: '33',
         image: 'https://iili.io/q2urMyF.jpg',
@@ -750,7 +750,7 @@ const BASE_MENU: MenuCategory[] = [
       },
        {
         id: 'sig8',
-        name: 'CARTEL Tanzanian Hot Chocolate',
+        name: 'Tanzanian Hot Chocolate',
         ingredients: 'Single origin Tanzanian cacao, rich and velvety steamed milk. MARSHMELLO, chocholate stick',
         price: '32',
         image: 'https://iili.io/q2u8XqB.jpg',
@@ -1158,7 +1158,7 @@ const createMirdifMenu = (): MenuCategory[] => {
         findItem('tea', 'tea_black')!, // Black tea
         findItem('tea', 'tea_green')!, // Green tea
         { ...findItem('tea', 'tea_rush')!, name: 'Hot Rush Hour', price: '33', image: 'https://iili.io/qlbAzS2.jpg' }, // Hot Rush Hour
-        { id: 'sig_cartel_rush', name: 'CARTEL Rush Hou', price: '33', image: 'https://iili.io/q2urMyF.jpg', ingredients: '', calories: 0 },
+        { id: 'sig_cartel_rush', name: 'Rush Hour', price: '33', image: 'https://iili.io/q2urMyF.jpg', ingredients: '', calories: 0 },
         { 
           id: 'sig_matcha_latte', 
           name: 'MATCHA LATTE', 
@@ -1228,7 +1228,7 @@ const createMirdifMenu = (): MenuCategory[] => {
         { id: 'sw_bacon', name: 'Bacon & Egg Cheese Bun', price: '44', image: 'https://iili.io/qqEAsNj.jpg', ingredients: 'Brioche bun with crispy bacon, scrambled egg, cheddar cheese, kimchi ketchup.', calories: 550 },
         { id: 'sw_tuna', name: 'Tunacado', price: '38', image: 'https://iili.io/qqEgPdN.jpg', ingredients: "Joe's bread, pesto mayo, tuna mix, tomato slice, avocado slice.", calories: 480 },
         { id: 'sw_chick', name: 'Chicken & Avocado Croissant', price: '42', image: 'https://iili.io/qqG2qR1.png', ingredients: 'Grilled chicken, fresh avocado, croissant', calories: 520 },
-        { id: 'sw_club', name: 'Cartel Club Sandwich', price: '38', image: 'https://iili.io/qqEPTpS.jpg', ingredients: 'White sliced bread, chipotle mayo, cheddar, lettuce, gherkins, tomato, bacon, smoked turkey, homemade chips.', calories: 600 },
+        { id: 'sw_club', name: 'Club Sandwich', price: '38', image: 'https://iili.io/qqEPTpS.jpg', ingredients: 'White sliced bread, chipotle mayo, cheddar, lettuce, gherkins, tomato, bacon, smoked turkey, homemade chips.', calories: 600 },
         { id: 'sw_brisket', name: 'Brisket Blaze', price: '45', image: 'https://iili.io/qqERigt.jpg', ingredients: 'Toasted brown sliced bread stacked with smoked brisket, aged white cheddar, Dijon mayo, tangy relish, and finished with a perfectly burnt matured white cheddar cheese for added flavor.', calories: 650 },
         { id: 'sw_shrimp', name: 'Shrimp Toast', price: '35', image: 'https://iili.io/qqEYw12.jpg', ingredients: 'Crispy milk bread topped with house-made shrimp paste, drizzled with dynamite sauce, garnished with salmon caviar, and finished with mixed sesame seeds.', calories: 420 },
         { id: 'sw_italian', name: 'Cold Cut Italian', price: '38', image: 'https://iili.io/qqEieVe.png', ingredients: 'White slice bread with pesto oil, fresh mozzarella, tomato slice, tartufo salami, chorizo, baby Rocca, sun-dried tomatoes, balsamic glaze, organic olive oil.', calories: 580 },
@@ -1367,7 +1367,7 @@ const createAlBateenMenu = (): MenuCategory[] => {
           name: 'CUBAN CIGAR',
           origin: 'CUBAN CIGAR { FILTER TAPS }',
           tastingNotes: 'Deep Earthy Undertones, Caramel Popcorn, Fresh Tobacco', 
-          price: '38', 
+          price: '41', 
           image: 'https://iili.io/qLf9mXt.jpg', 
           ingredients: 'Pour-over brewing method', 
           calories: 5,
@@ -1404,18 +1404,6 @@ const createAlBateenMenu = (): MenuCategory[] => {
           origin: 'COLOMBIA { FILTER TAPS }',
           tastingNotes: 'Blackberry Soda, Cacao Nibs, Karkade', 
           price: '57', 
-          image: 'https://iili.io/qLf9mXt.jpg', 
-          ingredients: 'Pour-over brewing method', 
-          calories: 5,
-          branch: 'Al Bateen',
-          status: 'Available'
-        },
-        { 
-          id: 'fil_gesha_key', 
-          name: 'GESHA-KEY LIME PIE',
-          origin: 'GESHA',
-          tastingNotes: 'Orange Blossom, Lemongrass, Condensed Milk', 
-          price: '48', 
           image: 'https://iili.io/qLf9mXt.jpg', 
           ingredients: 'Pour-over brewing method', 
           calories: 5,
@@ -1520,7 +1508,7 @@ const createAlBateenMenu = (): MenuCategory[] => {
         { id: 'sw_bacon', name: 'Bacon & Egg Cheese Bun', price: '44', image: 'https://iili.io/qqEAsNj.jpg', ingredients: 'Brioche bun with crispy bacon, scrambled egg, cheddar cheese, kimchi ketchup.', calories: 550 },
         { id: 'sw_tuna', name: 'Tunacado', price: '38', image: 'https://iili.io/qqEgPdN.jpg', ingredients: "Joe's bread, pesto mayo, tuna mix, tomato slice, avocado slice.", calories: 480 },
         { id: 'sw_chick', name: 'Chicken & Avocado Croissant', price: '42', image: 'https://iili.io/qqG2qR1.png', ingredients: 'Grilled chicken, fresh avocado, croissant', calories: 520 },
-        { id: 'sw_club', name: 'Cartel Club Sandwich', price: '38', image: 'https://iili.io/qqEPTpS.jpg', ingredients: 'White sliced bread, chipotle mayo, cheddar, lettuce, gherkins, tomato, bacon, smoked turkey, homemade chips.', calories: 600 },
+        { id: 'sw_club', name: 'Club Sandwich', price: '38', image: 'https://iili.io/qqEPTpS.jpg', ingredients: 'White sliced bread, chipotle mayo, cheddar, lettuce, gherkins, tomato, bacon, smoked turkey, homemade chips.', calories: 600 },
         { id: 'sw_brisket', name: 'Brisket Blaze', price: '45', image: 'https://iili.io/qqERigt.jpg', ingredients: 'Toasted brown sliced bread stacked with smoked brisket, aged white cheddar, Dijon mayo, tangy relish, and finished with a perfectly burnt matured white cheddar cheese for added flavor.', calories: 650 },
         { id: 'sw_italian', name: 'Cold Cut Italian', price: '38', image: 'https://iili.io/qqEieVe.png', ingredients: 'White slice bread with pesto oil, fresh mozzarella, tomato slice, tartufo salami, chorizo, baby Rocca, sun-dried tomatoes, balsamic glaze, organic olive oil.', calories: 580 },
         { id: 'sw_shrimp', name: 'Shrimp Toast', price: '35', image: 'https://iili.io/qqEYw12.jpg', ingredients: 'Crispy milk bread topped with house-made shrimp paste, drizzled with dynamite sauce, garnished with salmon caviar, and finished with mixed sesame seeds.', calories: 420 },
@@ -1725,18 +1713,6 @@ const createKhalifaMenu = (): MenuCategory[] => {
           status: 'Available'
         },
         { 
-          id: 'fil_gesha_key__3', 
-          name: 'GESHA – KEY LIME PIE',
-          origin: 'GESHA',
-          tastingNotes: 'Orange Blossom, Lemongrass, Condensed Milk', 
-          price: '48', 
-          image: 'https://iili.io/qLf9mXt.jpg', 
-          ingredients: 'Pour-over brewing method', 
-          calories: 5,
-          branch: 'Khalifa City',
-          status: 'Available'
-        },
-        { 
           id: 'fil_colombia_s_4', 
           name: 'COLOMBIA SWEET DREAMS – DECAF',
           origin: 'COLOMBIA (DECAF)',
@@ -1758,7 +1734,7 @@ const createKhalifaMenu = (): MenuCategory[] => {
           id: 'cb_col_plan', 
           name: 'Cuban Cigar',
           tastingNotes: 'Deep Earthy Undertones, Caramel Popcorn, Fresh Tobacco', 
-          price: '38', 
+          price: '41', 
           image: 'https://iili.io/qKYaxff.png', 
           ingredients: 'Slow-steeped cold water extraction', 
           calories: 10 
@@ -1768,7 +1744,7 @@ const createKhalifaMenu = (): MenuCategory[] => {
           name: 'Kenya Kirimara',
           tastingNotes: 'Wild Cherry, Brown Sugar, Raisins', 
           price: '38', 
-          image: 'https://iili.io/qjc71DB.png', 
+          image: 'https://iili.io/B3Ns6UG.jpg', 
           ingredients: 'Slow-steeped cold water extraction', 
           calories: 10,
           status: 'Available'
@@ -1778,7 +1754,7 @@ const createKhalifaMenu = (): MenuCategory[] => {
           name: 'Ethiopia Guji-Rogicha',
           tastingNotes: 'Apricot, Pear, Honey', 
           price: '38', 
-          image: 'https://iili.io/fUAAQ07.png', 
+          image: 'https://iili.io/B3OHMFV.jpg', 
           ingredients: 'Slow-steeped cold water extraction', 
           calories: 10 
         }
@@ -1820,7 +1796,7 @@ const createKhalifaMenu = (): MenuCategory[] => {
         { id: 'sw_bacon', name: 'Bacon & Egg Cheese Bun', price: '44', image: 'https://iili.io/qqEAsNj.jpg', ingredients: 'Brioche bun with crispy bacon, scrambled egg, cheddar cheese, kimchi ketchup.', calories: 550 },
         { id: 'sw_tuna', name: 'Tunacado', price: '38', image: 'https://iili.io/qqEgPdN.jpg', ingredients: "Joe's bread, pesto mayo, tuna mix, tomato slice, avocado slice.", calories: 480 },
         { id: 'sw_chick', name: 'Chicken & Avocado Croissant', price: '42', image: 'https://iili.io/qqGn1cb.jpg', ingredients: 'Grilled chicken, fresh avocado, croissant', calories: 520 },
-        { id: 'sw_club', name: 'Cartel Club Sandwich', price: '38', image: 'https://iili.io/qqEPTpS.jpg', ingredients: 'White sliced bread, chipotle mayo, cheddar, lettuce, gherkins, tomato, bacon, smoked turkey, homemade chips.', calories: 600 },
+        { id: 'sw_club', name: 'Club Sandwich', price: '38', image: 'https://iili.io/qqEPTpS.jpg', ingredients: 'White sliced bread, chipotle mayo, cheddar, lettuce, gherkins, tomato, bacon, smoked turkey, homemade chips.', calories: 600 },
         { id: 'sw_brisket', name: 'Brisket Blaze', price: '45', image: 'https://iili.io/qqERigt.jpg', ingredients: 'Toasted brown sliced bread stacked with smoked brisket, aged white cheddar, Dijon mayo, tangy relish, and finished with a perfectly burnt matured white cheddar cheese for added flavor.', calories: 650 },
       ]
     },
@@ -2019,18 +1995,6 @@ const createAlQanaMenu = (): MenuCategory[] => {
           status: 'Available'
         },
         { 
-          id: 'fil_gesha_key', 
-          name: 'GESHA KEY LIME PIE',
-          origin: 'GESHA',
-          tastingNotes: 'Orange Blossom, Lemongrass, Condensed Milk', 
-          price: '48', 
-          image: 'https://iili.io/qLf9mXt.jpg', 
-          ingredients: 'Pour-over brewing method', 
-          calories: 5,
-          branch: 'Al Qana',
-          status: 'Available'
-        },
-        { 
           id: 'fil_colombia_s', 
           name: 'COLOMBIA SWEET DREAMS DECAF',
           origin: 'COLOMBIA (DECAF)',
@@ -2050,7 +2014,7 @@ const createAlQanaMenu = (): MenuCategory[] => {
       items: [
         { id: 'sw_italian', name: 'Cold Cut Italian', price: '38', image: 'https://iili.io/qqEieVe.png', ingredients: 'White slice bread with pesto oil, fresh mozzarella, tomato slice, tartufo salami, chorizo, baby Rocca, sun-dried tomatoes, balsamic glaze, organic olive oil.', calories: 580 },
         { id: 'sw_tuna', name: 'Tunacado', price: '38', image: 'https://iili.io/qqEgPdN.jpg', ingredients: "Joe's bread, pesto mayo, tuna mix, tomato slice, avocado slice.", calories: 480 },
-        { id: 'sw_club', name: 'Cartel Club Sandwich', price: '38', image: 'https://iili.io/qqEPTpS.jpg', ingredients: 'White sliced bread, chipotle mayo, cheddar, lettuce, gherkins, tomato, bacon, smoked turkey, homemade chips.', calories: 600 },
+        { id: 'sw_club', name: 'Club Sandwich', price: '38', image: 'https://iili.io/qqEPTpS.jpg', ingredients: 'White sliced bread, chipotle mayo, cheddar, lettuce, gherkins, tomato, bacon, smoked turkey, homemade chips.', calories: 600 },
         { id: 'sw_brisket', name: 'Brisket Blaze', price: '45', image: 'https://iili.io/qqERigt.jpg', ingredients: 'Toasted brown sliced bread stacked with smoked brisket, aged white cheddar, Dijon mayo, tangy relish, and finished with a perfectly burnt matured white cheddar cheese for added flavor.', calories: 650 },
         { id: 'sw_chick', name: 'Chicken Avocado Croissant', price: '35', image: 'https://iili.io/qqG2qR1.png', ingredients: 'A buttery, toasted kalonji-seed square croissant filled with tender grilled chicken and fresh avocado slices. Layered with crisp Lollo Bionda, sun-dried tomatoes, and shaved Grano Padano cheese. Finished with a house-made Caesar dressing and a fragrant drizzle of pesto oil.', calories: 520, branch: 'Al Qana' },
         { id: 'sw_shrimp', name: 'Shrimp Toast', price: '35', image: 'https://iili.io/qqEYw12.jpg', ingredients: 'Crispy milk bread topped with house-made shrimp paste, drizzled with dynamite sauce, garnished with salmon caviar, and finished with mixed sesame seeds.', calories: 420 },
@@ -2080,7 +2044,7 @@ const createAlQanaMenu = (): MenuCategory[] => {
         { id: 'd_peanut', name: 'Peanut Choco Tart', price: '39.20', image: 'https://iili.io/qqXGUIR.png', ingredients: 'Rich chocolate tart with peanut butter', calories: 480 },
         { id: 'd_honey', name: 'Honey Cake', price: '39.20', image: 'https://iili.io/qqXWIea.png', ingredients: 'Layers of honey sponge and cream', calories: 450 },
         findItem('desserts', 'd_san_seb')!,
-        { id: 'd_cartel_crust_san_seb', name: 'CARTEL Crust San Sebastian', price: '39.20', image: 'https://iili.io/q2hnbp4.png' },
+        { id: 'd_cartel_crust_san_seb', name: 'Crust San Sebastian', price: '39.20', image: 'https://iili.io/q2hnbp4.png' },
         findItem('desserts', 'STICKY DATE')!,
         { id: 'd_tiramisu', name: 'Tiramisu Bowl', price: '39.20', image: 'https://iili.io/qnnTv0G.png', ingredients: 'Classic Italian dessert with coffee', calories: 400 },
         findItem('desserts', 'd_vanilla_pud')!,
@@ -2346,7 +2310,7 @@ const createMarinaMenu = (): MenuCategory[] => {
     title: 'SANDWICHES & BAGELS',
     items: [
       { id: 'sw_italian', name: 'Cold Cut Italian', price: '38', image: 'https://iili.io/qqEieVe.png', ingredients: 'White slice bread with pesto oil, fresh mozzarella, tomato slice, tartufo salami, chorizo, baby Rocca, sun-dried tomatoes, balsamic glaze, organic olive oil.', calories: 580 },
-      { id: 'sw_club', name: 'Cartel Club Sandwich', price: '38', image: 'https://iili.io/qqEPTpS.jpg', ingredients: 'White sliced bread, chipotle mayo, cheddar, lettuce, gherkins, tomato, bacon, smoked turkey, homemade chips.', calories: 600 },
+      { id: 'sw_club', name: 'Club Sandwich', price: '38', image: 'https://iili.io/qqEPTpS.jpg', ingredients: 'White sliced bread, chipotle mayo, cheddar, lettuce, gherkins, tomato, bacon, smoked turkey, homemade chips.', calories: 600 },
       { id: 'sw_tuna', name: 'Tunacado', price: '38', image: 'https://iili.io/qqEgPdN.jpg', ingredients: "Joe's bread, pesto mayo, tuna mix, tomato slice, avocado slice.", calories: 480 },
       { id: 'sw_brisket', name: 'Brisket Blaze', price: '45', image: 'https://iili.io/qqERigt.jpg', ingredients: 'Toasted brown sliced bread stacked with smoked brisket, aged white cheddar, Dijon mayo, tangy relish, and finished with a perfectly burnt matured white cheddar cheese for added flavor.', calories: 650 }
     ]
@@ -2603,18 +2567,6 @@ const createDubaiMenu = (): MenuCategory[] => {
           status: 'Available'
         },
         { 
-          id: 'fil_gesha_key', 
-          name: 'GESHA KEY LIME PIE',
-          origin: 'GESHA',
-          tastingNotes: 'Orange Blossom - Lemongrass - Condensed Milk', 
-          price: '48', 
-          image: 'https://iili.io/qLf9mXt.jpg', 
-          ingredients: 'Pour-over brewing method', 
-          calories: 5,
-          branch: 'Dubai',
-          status: 'Available'
-        },
-        { 
           id: 'fil_colombia_s', 
           name: 'COLOMBIA SWEET DREAMS DECAF',
           origin: 'COLOMBIA (DECAF)',
@@ -2674,7 +2626,7 @@ const createDubaiMenu = (): MenuCategory[] => {
         { id: 'sw_bacon', name: 'Bacon & Egg Cheese Bun', price: '44', image: 'https://iili.io/qqEAsNj.jpg', ingredients: 'Brioche bun with crispy bacon, scrambled egg, cheddar cheese, kimchi ketchup.', calories: 550 },
         { id: 'sw_tuna', name: 'Tunacado', price: '38', image: 'https://iili.io/qqEgPdN.jpg', ingredients: "Joe's bread, pesto mayo, tuna mix, tomato slice, avocado slice.", calories: 480 },
         { id: 'sw_chick', name: 'Chicken & Avocado Croissant', price: '42', image: 'https://iili.io/qqG2qR1.png', ingredients: 'Grilled chicken, fresh avocado, croissant', calories: 520 },
-        { id: 'sw_club', name: 'Cartel Club Sandwich', price: '38', image: 'https://iili.io/qqEPTpS.jpg', ingredients: 'White sliced bread, chipotle mayo, cheddar, lettuce, gherkins, tomato, bacon, smoked turkey, homemade chips.', calories: 600 },
+        { id: 'sw_club', name: 'Club Sandwich', price: '38', image: 'https://iili.io/qqEPTpS.jpg', ingredients: 'White sliced bread, chipotle mayo, cheddar, lettuce, gherkins, tomato, bacon, smoked turkey, homemade chips.', calories: 600 },
         { id: 'sw_brisket', name: 'Brisket Blaze', price: '45', image: 'https://iili.io/qqERigt.jpg', ingredients: 'Toasted brown sliced bread stacked with smoked brisket, aged white cheddar, Dijon mayo, tangy relish, and finished with a perfectly burnt matured white cheddar cheese for added flavor.', calories: 650 },
         { id: 'sw_shrimp', name: 'Shrimp Toast', price: '35', image: 'https://iili.io/qqEYw12.jpg', ingredients: 'Crispy milk bread topped with house-made shrimp paste, drizzled with dynamite sauce, garnished with salmon caviar, and finished with mixed sesame seeds.', calories: 420 },
         { id: 'sw_italian', name: 'Cold Cut Italian', price: '38', image: 'https://iili.io/qqEieVe.png', ingredients: 'White slice bread with pesto oil, fresh mozzarella, tomato slice, tartufo salami, chorizo, baby Rocca, sun-dried tomatoes, balsamic glaze, organic olive oil.', calories: 580 },
@@ -2700,7 +2652,7 @@ const createDubaiMenu = (): MenuCategory[] => {
       items: [
         {
           id: 'sb_french_toast',
-          name: 'CARTEL FRENCH TOAST',
+          name: 'FRENCH TOAST',
           price: '66',
           image: 'https://iili.io/q2ARzyG.jpg',
           ingredients: 'Caramelized and served with vanilla ice cream, almond streusel, whipped vanilla cream, and rhubarb compote (option: salted caramel, mix berries compote)',
@@ -2737,7 +2689,7 @@ const createDubaiMenu = (): MenuCategory[] => {
         findItem('signature-drinks', 'sig_matcha_shake')!, // Matcha Shake
         findItem('signature-drinks', 'sig8')!, // Tanzanian Hot Chocolate
         findItem('signature-drinks', 'sig_baby_shark')!, // Baby Shark
-        { id: 'sig_espresso_martini', name: "Cartel's Espresso Martini", price: '42', image: 'https://iili.io/q2uUQV4.jpg', ingredients: 'Double shot espresso, vanilla syrup, shaken over ice', calories: 150 },
+        { id: 'sig_espresso_martini', name: "Espresso Martini", price: '42', image: 'https://iili.io/q2uUQV4.jpg', ingredients: 'Double shot espresso, vanilla syrup, shaken over ice', calories: 150 },
         findItem('signature-drinks', 'sig_espresso_shake')!, // Espresso Shake
       ].filter(Boolean)
     }

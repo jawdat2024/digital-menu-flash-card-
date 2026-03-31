@@ -10,78 +10,70 @@ interface MenuItemCardProps {
 
 const MenuItemCard: React.FC<MenuItemCardProps> = ({ item }) => {
   return (
-    <div className="flex flex-col h-full bg-cartel-white text-black rounded-luxury overflow-hidden relative group hover:shadow-2xl transition-all duration-500 ease-luxury transform hover:-translate-y-1">
+    <div className="flex flex-col h-full bg-white rounded-[32px] overflow-hidden relative group hover:shadow-2xl transition-all duration-500 ease-out transform hover:-translate-y-1 p-2">
         {/* Badge */}
         {item.badge && (
-            <div className="absolute top-4 right-4 z-20 bg-white/95 backdrop-blur-sm text-black border border-black/5 shadow-xl text-[9px] font-bold uppercase tracking-[0.2em] px-3 py-1.5 rounded-full">
+            <div className="absolute top-6 right-6 z-20 bg-black/90 backdrop-blur-sm text-white border border-white/10 shadow-xl text-[9px] font-bold uppercase tracking-[0.2em] px-3 py-1.5 rounded-full">
                  {item.badge}
             </div>
         )}
 
-        {/* Image Area */}
-        <div className="h-[280px] w-full bg-neutral-100 relative overflow-hidden">
+        {/* Top Half: Image Area */}
+        <div className="h-[280px] w-full bg-white relative overflow-hidden flex items-center justify-center rounded-t-[24px]">
              {item.image ? (
                <img 
                  src={item.image} 
                  alt={item.name} 
-                 className="w-full h-full object-cover object-center transition-transform duration-1000 ease-luxury group-hover:scale-105"
+                 className="w-full h-full object-cover object-center transition-transform duration-1000 ease-out group-hover:scale-105"
                  loading="lazy"
                />
              ) : (
-               <div className="w-full h-full flex items-center justify-center bg-neutral-200">
-                  <span className="font-didone text-4xl text-neutral-300 font-bold tracking-widest opacity-50">CARTEL</span>
+               <div className="w-full h-full flex items-center justify-center bg-neutral-50">
+                  <span className="font-didone text-3xl text-neutral-200 font-bold tracking-widest">CARTEL</span>
                </div>
              )}
              
-             {/* Sold Out Overlay */}
+             {/* Overlays */}
              {(item.isSoldOut || item.status === 'Sold Out') && (
-                 <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px] flex items-center justify-center z-10">
-                     <span className="text-white uppercase tracking-[0.3em] font-bold border border-white/30 px-6 py-3 text-xs bg-black/50">Sold Out</span>
+                 <div className="absolute inset-0 bg-white/60 backdrop-blur-[2px] flex items-center justify-center z-10">
+                     <span className="text-black uppercase tracking-[0.3em] font-bold border border-black/30 px-6 py-3 text-xs bg-white/50 rounded-full">Sold Out</span>
                  </div>
              )}
 
-             {/* Coming Soon Overlay */}
              {item.status === 'Coming Soon' && (
-                 <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px] flex items-center justify-center z-10">
-                     <span className="text-white uppercase tracking-[0.3em] font-bold border border-white/30 px-6 py-3 text-xs bg-black/50">Coming Soon</span>
+                 <div className="absolute inset-0 bg-white/60 backdrop-blur-[2px] flex items-center justify-center z-10">
+                     <span className="text-black uppercase tracking-[0.3em] font-bold border border-black/30 px-6 py-3 text-xs bg-white/50 rounded-full">Coming Soon</span>
                  </div>
              )}
-             
-             {/* Gradient Overlay for Text Contrast at bottom of image if needed, minimal here */}
-             <div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
         </div>
 
-        {/* Content Area */}
-        <div className="flex-1 flex flex-col p-6 relative">
-            {/* Header */}
-            <div className="mb-4">
-                <h3 className="font-didone text-2xl font-bold uppercase tracking-wide leading-tight mb-3">{item.name}</h3>
-                <div className="w-8 h-px bg-black/10"></div>
-            </div>
-            
-            {/* Description */}
-            <p className="text-xs text-neutral-500 font-sans leading-relaxed line-clamp-3 mb-8 flex-1">
-                {item.ingredients}
-            </p>
-
-            {/* Price */}
-            <div className="flex items-end justify-between mb-5">
-                 <div className="flex flex-col">
-                    {item.pricePrefix && <span className="text-[9px] uppercase tracking-widest text-neutral-400 mb-0.5">{item.pricePrefix}</span>}
-                    <div className="flex items-center gap-1 text-2xl font-bold tracking-tight">
-                        <CurrencySymbol className="w-5 h-5" strokeWidth={2.5} />
+        {/* Bottom Half: Black Container */}
+        <div className="bg-black flex-1 flex flex-col p-6 md:p-8 relative z-10 rounded-[24px] mt-2">
+            <div className="flex flex-col items-center justify-center text-center w-full flex-1">
+                <h3 className="font-didone text-2xl md:text-3xl font-bold tracking-wide text-white mb-5">{item.name}</h3>
+                
+                <div className="w-full h-px bg-neutral-800 mb-5"></div>
+                
+                {item.price && (
+                    <div className="flex items-center gap-1 text-lg font-light tracking-widest text-neutral-300 mb-4">
+                        <CurrencySymbol className="w-4 h-4" />
                         <span>{item.price}</span>
                     </div>
-                 </div>
+                )}
+                
+                {item.ingredients && (
+                    <p className="text-xs text-neutral-400 font-sans leading-relaxed line-clamp-3 mb-6 max-w-[95%]">
+                        {item.ingredients}
+                    </p>
+                )}
             </div>
-
-            {/* Calorie Footer Strip */}
-            {item.calories && (
-                <div className="pt-3 mt-auto border-t border-neutral-100 flex items-center gap-2 text-neutral-400 select-none animate-in fade-in duration-500">
-                    <Flame size={12} className="text-neutral-300" />
-                    <span className="text-[10px] font-medium uppercase tracking-widest text-neutral-500/80">Est. {item.calories} kcal</span>
-                </div>
-            )}
+            
+            <div className="mt-auto pt-2 flex items-center justify-center gap-2 text-neutral-400">
+                <Flame size={14} className="text-neutral-500" />
+                <span className="text-[10px] font-medium uppercase tracking-widest">
+                    EST. {item.calories || 0}
+                </span>
+            </div>
         </div>
     </div>
   );

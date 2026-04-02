@@ -71,7 +71,7 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({ item }) => {
             <div className="mt-auto pt-2 flex items-center justify-center gap-2 text-neutral-400">
                 <Flame size={14} className="text-neutral-500" />
                 <span className="text-[10px] font-medium uppercase tracking-widest">
-                    EST. {item.calories || 0}
+                    EST. CAL {item.calories || 0}
                 </span>
             </div>
         </div>

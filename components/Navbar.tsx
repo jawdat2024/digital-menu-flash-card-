@@ -19,7 +19,6 @@ const Navbar: React.FC<NavbarProps> = ({
 }) => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isInstaModalOpen, setIsInstaModalOpen] = useState(false);
-  const [isPhoneDropdownOpen, setIsPhoneDropdownOpen] = useState(false);
   const [activeCategoryId, setActiveCategoryId] = useState('filter-taps');
   const [isDarkMode, setIsDarkMode] = useState(() => {
     if (typeof window !== 'undefined') {
@@ -30,13 +29,13 @@ const Navbar: React.FC<NavbarProps> = ({
     return true;
   });
 
-  // Phone numbers for locations (placeholders)
+  // Phone numbers for locations
   const LOCATION_PHONES: Record<string, string> = {
-    'Al Bateen': '+971500000001',
-    'Al Qana': '+971500000002',
-    'Khalifa City': '+971500000003',
-    'Mirdif': '+971500000004',
-    'Marina': '+971500000005',
+    'albateen': '026435015',
+    'marina': '025828627',
+    'khalifa': '0508802828',
+    'mirdif': '0503009922',
+    'alqana': '0503009955',
   };
 
   useEffect(() => {
@@ -106,30 +105,6 @@ const Navbar: React.FC<NavbarProps> = ({
                       >
                         <Instagram size={18} strokeWidth={1.5} />
                       </button>
-                      
-                      <div className="relative">
-                        <button 
-                          onClick={() => setIsPhoneDropdownOpen(!isPhoneDropdownOpen)}
-                          className={`text-[var(--text-primary)] hover:text-[var(--accent-color)] transition-colors p-1 ${isPhoneDropdownOpen ? 'text-[var(--accent-color)]' : ''}`}
-                        >
-                          <Phone size={18} strokeWidth={1.5} />
-                        </button>
-                        
-                        {/* Phone Dropdown */}
-                        {isPhoneDropdownOpen && (
-                          <div className="absolute top-full left-0 mt-4 w-48 bg-[var(--bg-primary)] border border-[var(--border-color)] rounded-sm shadow-xl py-2 animate-in fade-in zoom-in-95 duration-200">
-                            {Object.entries(LOCATION_PHONES).map(([name, phone]) => (
-                              <a 
-                                key={name}
-                                href={`tel:${phone}`}
-                                className="block px-4 py-2 text-xs text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--hover-bg)] transition-colors uppercase tracking-wider"
-                              >
-                                {name}
-                              </a>
-                            ))}
-                          </div>
-                        )}
-                      </div>
 
                       <a 
                         href="https://cartel.coffee/" 
@@ -151,15 +126,26 @@ const Navbar: React.FC<NavbarProps> = ({
                     </button>
 
                     {!isSearchOpen && (
-                      <button
-                        onClick={onSwitchLocation}
-                        className="flex items-center gap-1 sm:gap-2 text-[var(--text-primary)] hover:text-[var(--text-secondary)] transition-colors group p-1"
-                      >
-                        <MapPin size={18} strokeWidth={1.5} />
-                        <span className="hidden lg:inline text-[10px] font-sans uppercase tracking-widest border-b border-transparent group-hover:border-[var(--border-color)] transition-all whitespace-nowrap">
-                          {activeBranch.name.replace('CARTEL ', '')}
-                        </span>
-                      </button>
+                      <>
+                        <button
+                          onClick={onSwitchLocation}
+                          className="flex items-center gap-1 sm:gap-2 text-[var(--text-primary)] hover:text-[var(--text-secondary)] transition-colors group p-1"
+                        >
+                          <MapPin size={18} strokeWidth={1.5} />
+                          <span className="hidden lg:inline text-[10px] font-sans uppercase tracking-widest border-b border-transparent group-hover:border-[var(--border-color)] transition-all whitespace-nowrap">
+                            {activeBranch.name.replace('CARTEL ', '')}
+                          </span>
+                        </button>
+                        
+                        {LOCATION_PHONES[activeBranch.id] && (
+                          <a 
+                            href={`tel:${LOCATION_PHONES[activeBranch.id]}`}
+                            className="text-[var(--text-primary)] hover:text-[var(--accent-color)] transition-colors p-1 flex items-center"
+                          >
+                            <Phone size={18} strokeWidth={1.5} />
+                          </a>
+                        )}
+                      </>
                     )}
                    </div>
                   

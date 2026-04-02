@@ -151,7 +151,7 @@ const FlipCard: React.FC<FlipCardProps> = ({ item, index = 0 }) => {
                      {item.calories && (
                        <div className="flex items-center gap-1.5 text-[var(--text-secondary)]">
                           <Flame size={12} />
-                          <span className="text-[10px] font-medium uppercase tracking-widest font-sans">Est. {item.calories}</span>
+                          <span className="text-[10px] font-medium uppercase tracking-widest font-sans">EST. CAL {item.calories}</span>
                        </div>
                      )}
                   </div>

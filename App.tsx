@@ -2,7 +2,6 @@ import React, { useState, useMemo, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import FlipCard from './components/FlipCard';
 import SmoothieCard from './components/SmoothieCard';
-import AiBarista from './components/AiBarista';
 import FeedbackForm from './components/FeedbackForm';
 import AdminDashboard from './components/AdminDashboard';
 import BranchSelection from './components/BranchSelection';
@@ -293,8 +292,6 @@ const App: React.FC = () => {
           </div>
 
           <Footer />
-
-          <AiBarista />
         </div>
       )}
 

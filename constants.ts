@@ -137,7 +137,7 @@ const BASE_MENU: MenuCategory[] = [
         name: 'Matcha Cloud',
         ingredients: 'matcha cream , matcha dust. coconut water',
         price: '38',
-        image: 'https://iili.io/q2ugtIa.png',
+        image: 'https://iili.io/BBR55tj.jpg',
         calories: 220
       }
     ]
@@ -666,7 +666,7 @@ const BASE_MENU: MenuCategory[] = [
   },
   {
     id: 'healthy-bowls',
-    title: 'Healthy Bowls',
+    title: 'FRUITS SEEDS & GRAINS.',
     items: [
       { 
         id: 'bw1', 
@@ -762,7 +762,7 @@ const BASE_MENU: MenuCategory[] = [
         name: 'Matcha Cloud',
         ingredients: 'matcha cream , matcha dust. coconut water',
         price: '38',
-        image: 'https://iili.io/q2ugtIa.png',
+        image: 'https://iili.io/BBR55tj.jpg',
         calories: 220
       },
       {
@@ -1170,13 +1170,7 @@ const createMirdifMenu = (): MenuCategory[] => {
     },
     {
       id: 'eggs-more',
-      title: 'Eggs & More',
-      headerStyle: {
-        background: 'linear-gradient(to right, #ffffff, #bfdbfe)',
-        WebkitBackgroundClip: 'text',
-        WebkitTextFillColor: 'transparent',
-        textShadow: '0 0 15px rgba(191, 219, 254, 0.4)'
-      },
+      title: 'EGG& MORE',
       items: [
         { id: 'sw_bacon', name: 'Bacon & Egg Cheese Bun', price: '44', image: 'https://iili.io/qqEAsNj.jpg', ingredients: 'Brioche bun with crispy bacon, scrambled egg, cheddar cheese, kimchi ketchup.', calories: 550 },
         { id: 'egg_avo', name: 'Avocado Toast', price: '45', image: 'https://iili.io/qqGqaMg.jpg', ingredients: 'Sourdough with smashed avocado, whipped feta, Pico de Gallo, pine nuts, parmesan, coriander, dill leaves, mix sesame seeds, lime wedges, chili flakes, dukka, and poached egg.', calories: 380 },
@@ -1279,7 +1273,7 @@ const createMirdifMenu = (): MenuCategory[] => {
     },
     {
       id: 'healthy-bowls',
-      title: 'Healthy Bowls',
+      title: 'FRUITS SEEDS & GRAINS.',
       items: [
         findItem('healthy-bowls', 'bw1')!, // Acai bowl
         findItem('healthy-bowls', 'bw3')!, // Chia pudding
@@ -1542,7 +1536,7 @@ const createAlBateenMenu = (): MenuCategory[] => {
     },
     {
       id: 'healthy-bowls',
-      title: 'Healthy Bowls',
+      title: 'FRUITS SEEDS & GRAINS.',
       items: [
         findItem('healthy-bowls', 'bw1')!,
         findItem('healthy-bowls', 'bw5')!,
@@ -1594,13 +1588,7 @@ const createAlBateenMenu = (): MenuCategory[] => {
     },
     {
       id: 'eggs-more',
-      title: 'Eggs & More',
-      headerStyle: {
-        background: 'linear-gradient(to right, #ffffff, #bfdbfe)',
-        WebkitBackgroundClip: 'text',
-        WebkitTextFillColor: 'transparent',
-        textShadow: '0 0 15px rgba(191, 219, 254, 0.4)'
-      },
+      title: 'EGG& MORE',
       items: [
         { id: 'sw_bacon', name: 'Bacon & Egg Cheese Bun', price: '44', image: 'https://iili.io/qqEAsNj.jpg', ingredients: 'Brioche bun with crispy bacon, scrambled egg, cheddar cheese, kimchi ketchup.', calories: 550 },
         { id: 'egg_avo', name: 'Avocado Toast', price: '45', image: 'https://iili.io/qqGqaMg.jpg', ingredients: 'Sourdough with smashed avocado, whipped feta, Pico de Gallo, pine nuts, parmesan, coriander, dill leaves, mix sesame seeds, lime wedges, chili flakes, dukka, and poached egg.', calories: 380 },
@@ -1867,7 +1855,7 @@ const createKhalifaMenu = (): MenuCategory[] => {
     },
     {
       id: 'healthy-bowls',
-      title: 'Healthy Bowls',
+      title: 'FRUITS SEEDS & GRAINS.',
       items: [
         findItem('healthy-bowls', 'bw1')!,
         findItem('healthy-bowls', 'bw5')!,
@@ -1901,13 +1889,7 @@ const createKhalifaMenu = (): MenuCategory[] => {
     },
     {
       id: 'eggs-more',
-      title: 'Eggs & More',
-      headerStyle: {
-        background: 'linear-gradient(to right, #ffffff, #bfdbfe)',
-        WebkitBackgroundClip: 'text',
-        WebkitTextFillColor: 'transparent',
-        textShadow: '0 0 15px rgba(191, 219, 254, 0.4)'
-      },
+      title: 'EGG& MORE',
       items: [
         { id: 'sw_bacon', name: 'Bacon & Egg Cheese Bun', price: '44', image: 'https://iili.io/qqEAsNj.jpg', ingredients: 'Brioche bun with crispy bacon, scrambled egg, cheddar cheese, kimchi ketchup.', calories: 550 },
         { id: 'egg_avo', name: 'Avocado Toast', price: '45', image: 'https://iili.io/qqGqaMg.jpg', ingredients: 'Sourdough with smashed avocado, whipped feta, Pico de Gallo, pine nuts, parmesan, coriander, dill leaves, mix sesame seeds, lime wedges, chili flakes, dukka, and poached egg.', calories: 380 },
@@ -2183,13 +2165,7 @@ findItem('desserts', 'd_banana_pud')!,
     },
     {
       id: 'eggs-more',
-      title: 'Eggs & More',
-      headerStyle: {
-        background: 'linear-gradient(to right, #ffffff, #bfdbfe)',
-        WebkitBackgroundClip: 'text',
-        WebkitTextFillColor: 'transparent',
-        textShadow: '0 0 15px rgba(191, 219, 254, 0.4)'
-      },
+      title: 'EGG& MORE',
       items: [
         { id: 'sw_bacon', name: 'Bacon & Egg Cheese Bun', price: '44', image: 'https://iili.io/qqEAsNj.jpg', ingredients: 'Brioche bun with crispy bacon, scrambled egg, cheddar cheese, kimchi ketchup.', calories: 550 },
         { id: 'egg_big', name: 'Big Breakfast', price: '65', image: 'https://iili.io/qqVHZ1R.png', ingredients: 'hash brown potatoes, red beans, sautéed portobello mushrooms, wagyu beef sausage, smoked veal bacon, roasted vine tomatoes, two sunny side up eggs on a slice of brioche bread, (eggs your way: scrambled, poached, sunny side up).', calories: 850 },
@@ -2237,7 +2213,7 @@ findItem('desserts', 'd_banana_pud')!,
     },
     {
       id: 'healthy-bowls',
-      title: 'Healthy Bowls',
+      title: 'FRUITS SEEDS & GRAINS.',
       items: [
         findItem('healthy-bowls', 'bw2')!,
         findItem('healthy-bowls', 'bw3')!,
@@ -2672,7 +2648,7 @@ const applyGoldenRuleLayout = (menu: MenuCategory[]): MenuCategory[] => {
     const uniqueItems = Array.from(new Map(allItems.map(item => [item.id, item])).values());
     newMenu.push({
       id: 'healthy-bowls',
-      title: 'Healthy Bowls',
+      title: 'FRUITS SEEDS & GRAINS.',
       items: uniqueItems
     });
   }
@@ -2684,13 +2660,7 @@ const applyGoldenRuleLayout = (menu: MenuCategory[]): MenuCategory[] => {
     const uniqueItems = Array.from(new Map(allItems.map(item => [item.id, item])).values());
     newMenu.push({
       id: 'eggs-more',
-      title: 'Eggs & More',
-      headerStyle: {
-        background: 'linear-gradient(to right, #ffffff, #bfdbfe)',
-        WebkitBackgroundClip: 'text',
-        WebkitTextFillColor: 'transparent',
-        textShadow: '0 0 15px rgba(191, 219, 254, 0.4)'
-      },
+      title: 'EGG& MORE',
       items: uniqueItems
     });
   }
@@ -2937,7 +2907,7 @@ const createDubaiMenu = (): MenuCategory[] => {
     },
     {
       id: 'healthy-bowls',
-      title: 'Healthy Bowls',
+      title: 'FRUITS SEEDS & GRAINS.',
       items: [
         findItem('healthy-bowls', 'bw1')!, // Acai Bowl
         findItem('healthy-bowls', 'bw3')!, // Chia Pudding
@@ -2988,13 +2958,7 @@ const createDubaiMenu = (): MenuCategory[] => {
     },
     {
       id: 'eggs-more',
-      title: 'Eggs & More',
-      headerStyle: {
-        background: 'linear-gradient(to right, #ffffff, #bfdbfe)',
-        WebkitBackgroundClip: 'text',
-        WebkitTextFillColor: 'transparent',
-        textShadow: '0 0 15px rgba(191, 219, 254, 0.4)'
-      },
+      title: 'EGG& MORE',
       items: [
         { id: 'sw_bacon', name: 'Bacon & Egg Cheese Bun', price: '44', image: 'https://iili.io/qqEAsNj.jpg', ingredients: 'Brioche bun with crispy bacon, scrambled egg, cheddar cheese, kimchi ketchup.', calories: 550 },
         { id: 'egg_avo', name: 'Avocado Toast', price: '45', image: 'https://iili.io/qqGqaMg.jpg', ingredients: 'Sourdough with smashed avocado, whipped feta, Pico de Gallo, pine nuts, parmesan, coriander, dill leaves, mix sesame seeds, lime wedges, chili flakes, dukka, and poached egg.', calories: 380 },

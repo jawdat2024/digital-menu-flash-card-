@@ -48,3 +48,201 @@ body {
   font-family: 'Bodoni Moda', serif;
   font-weight: 700;
 }
+
+/* Bean Offering Global Styles */
+.bean-offering-section {
+  width: 100%;
+  max-width: 1200px;
+  margin: 2rem auto 3rem;
+  padding: 0 1rem;
+}
+
+.bean-offering-title {
+  font-family: 'Bodoni Moda', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: var(--text-primary);
+  letter-spacing: 0.05em;
+}
+
+.bean-offering-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; /* Firefox */
+}
+
+.bean-offering-row::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+.bean-card-sm {
+  flex: 0 0 calc(33.333% - 6px); /* Fits 3 cards perfectly on mobile */
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 16px 8px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  min-height: 120px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+}
+
+.bean-card-sm:hover {
+  border-color: var(--text-primary);
+  transform: translateY(-2px);
+}
+
+.bean-card-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+}
+
+.bean-card-notes {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.6rem;
+  font-weight: 400;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+@media (min-width: 768px) {
+  .bean-offering-title {
+    font-size: 2rem;
+  }
+  .bean-offering-row {
+    gap: 16px;
+    justify-content: center;
+  }
+  .bean-card-sm {
+    flex: 0 1 200px;
+    padding: 20px 16px;
+  }
+  .bean-card-title {
+    font-size: 0.875rem;
+  }
+  .bean-card-notes {
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .mobile-grid-2 {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
+  }
+  
+  .mobile-grid-2 .h-\[450px\] {
+    height: 280px !important;
+  }
+  
+  .mobile-grid-2 .h-\[280px\] {
+    height: 140px !important;
+  }
+  
+  .mobile-grid-2 .p-6, .mobile-grid-2 .p-8 {
+    padding: 0.5rem !important;
+  }
+  
+  .mobile-grid-2 .font-didone {
+    font-size: clamp(0.875rem, 3.5vw, 1.2rem) !important;
+  }
+  
+  .mobile-grid-2 .text-lg, .mobile-grid-2 .text-2xl, .mobile-grid-2 .text-3xl {
+    font-size: 0.875rem !important;
+  }
+  
+  .mobile-grid-2 .text-sm {
+    font-size: 0.65rem !important;
+    line-height: 1.2 !important;
+  }
+  
+  .mobile-grid-2 .text-xs {
+    font-size: 0.6rem !important;
+    line-height: 1.2 !important;
+  }
+  
+  .mobile-grid-2 .text-\[10px\], .mobile-grid-2 .text-\[9px\], .mobile-grid-2 .text-\[8px\] {
+    font-size: 0.5rem !important;
+  }
+  
+  .mobile-grid-2 .mb-6, .mobile-grid-2 .mb-8 {
+    margin-bottom: 0.5rem !important;
+  }
+  
+  .mobile-grid-2 .mb-4, .mobile-grid-2 .mb-5 {
+    margin-bottom: 0.25rem !important;
+  }
+  
+  .mobile-grid-2 .gap-3 {
+    gap: 0.25rem !important;
+  }
+  
+  .mobile-grid-2 .pt-4 {
+    padding-top: 0.5rem !important;
+  }
+  
+  .mobile-grid-2 .mt-auto {
+    margin-top: auto !important;
+  }
+  
+  .mobile-grid-2 .-mt-8 {
+    margin-top: -16px !important;
+  }
+  
+  .mobile-grid-2 .-mt-6 {
+    margin-top: -12px !important;
+  }
+  
+  .mobile-grid-2 .top-4 {
+    top: 0.5rem !important;
+  }
+  
+  .mobile-grid-2 .left-4 {
+    left: 0.5rem !important;
+  }
+  
+  .mobile-grid-2 .right-4 {
+    right: 0.5rem !important;
+  }
+  
+  .mobile-grid-2 .w-8 {
+    width: 1.5rem !important;
+  }
+  
+  .mobile-grid-2 .h-8 {
+    height: 1.5rem !important;
+  }
+  
+  .mobile-grid-2 .min-h-\[50px\] {
+    min-height: 30px !important;
+  }
+  
+  .mobile-grid-2 svg {
+    width: 12px !important;
+    height: 12px !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .mobile-grid-2 {
+    display: grid;
+    gap: 2rem; /* 32px equivalent to gap-8 */
+  }
+}

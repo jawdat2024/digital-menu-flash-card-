@@ -13,7 +13,7 @@ const FlipCard: React.FC<FlipCardProps> = ({ item, index = 0 }) => {
   const hasVariants = (item.variants && item.variants.length > 0) || (item.customizations && item.customizations.length > 0);
   const animationDelay = `${index * 50}ms`;
   const isFilterTap = item.id.startsWith('tap_');
-  const isColdBrew = item.id.includes('_cb') || item.id.startsWith('cb_');
+  const isColdBrew = item.id.includes('_cb') || item.id.startsWith('cb_') || item.id.includes('cd_') || item.name.includes('❄️');
 
   const handleIconTap = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -94,7 +94,6 @@ const FlipCard: React.FC<FlipCardProps> = ({ item, index = 0 }) => {
               <div className="flex justify-between items-start mb-2">
                  <h3 className={`text-lg font-bold text-[var(--text-primary)] tracking-wide leading-tight pr-2 flex items-center gap-2 ${isFilterTap ? 'font-sans uppercase text-sm tracking-widest' : 'font-didone'}`}>
                    {item.name}
-                   {isColdBrew && <span className="text-blue-400" title="Chilled">❄️</span>}
                  </h3>
                  <div className="flex items-center gap-1 pt-1 shrink-0 text-[var(--text-primary)]">
                     <CurrencySymbol className="w-3.5 h-3.5" strokeWidth={2.5} />

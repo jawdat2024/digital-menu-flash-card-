@@ -197,62 +197,26 @@ const App: React.FC = () => {
                         </h2>
                         
                         {category.beanSelection ? (
-                          <div className="mt-16 w-full max-w-7xl mx-auto px-4">
-                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                          <div className="bean-offering-section">
+                            <h3 className="bean-offering-title">Espresso Offering</h3>
+                            <div className="bean-offering-row">
                               {category.beanSelection.map((bean, index) => (
                                 <div 
                                   key={bean.id}
-                                  className={`relative group flex flex-col justify-between p-8 bg-[#1a1a1a] rounded-3xl border border-white/5 shadow-2xl hover:border-white/20 transition-all duration-500 overflow-hidden min-h-[320px] ${
+                                  className={`bean-card-sm ${
                                     (bean.status === 'Sold Out' || bean.status === 'Coming Soon') ? 'grayscale opacity-60 pointer-events-none' : ''
                                   }`}
                                 >
-                                  {/* Soft Studio Lighting Effect */}
-                                  <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
-                                  
-                                  {/* Top Badge Area */}
-                                  <div className="flex justify-between items-start w-full mb-6 relative z-10 h-8">
-                                    <div className="flex flex-col gap-2">
-                                      {bean.isNew && (!bean.status || bean.status === 'Available') && (
-                                        <span className="px-3 py-1 bg-white text-black text-[10px] font-bold uppercase tracking-widest rounded-sm shadow-lg animate-pulse">
-                                          New
-                                        </span>
-                                      )}
-                                      {bean.status === 'Coming Soon' && (
-                                        <span className="px-3 py-1 bg-neutral-800 text-white text-[10px] font-bold uppercase tracking-widest rounded-sm shadow-lg border border-white/20">
-                                          Coming Soon
-                                        </span>
-                                      )}
-                                      {bean.status === 'Sold Out' && (
-                                        <span className="px-3 py-1 bg-red-900/80 text-white text-[10px] font-bold uppercase tracking-widest rounded-sm shadow-lg border border-red-500/30">
-                                          Sold Out
-                                        </span>
-                                      )}
-                                    </div>
+                                  <div className="bean-card-title flex items-center justify-center gap-1">
+                                    {bean.name}
                                     {bean.price > 0 && (
-                                      <div className="absolute top-0 right-0 w-12 h-12 rounded-full border border-white/30 flex items-center justify-center bg-[#1a1a1a] shadow-[0_0_15px_rgba(255,255,255,0.1)]">
-                                        <span className="text-white text-[10px] font-bold tracking-tighter leading-none text-center">
-                                          +{bean.price}<br/>AED
-                                        </span>
-                                      </div>
+                                      <span className="inline-flex items-center justify-center bg-neutral-800 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full ml-1">
+                                        +{bean.price} AED
+                                      </span>
                                     )}
                                   </div>
-
-                                  {/* Content */}
-                                  <div className="flex flex-col items-center text-center space-y-4 relative z-10 flex-grow justify-center">
-                                    <h4 className="text-2xl font-sans font-medium text-white tracking-wide leading-tight">
-                                      {bean.name}
-                                    </h4>
-                                    
-                                    <div className="w-8 h-[1px] bg-white/30 my-2" />
-
-                                    <p className="text-slate-400 text-sm font-light leading-relaxed tracking-wide max-w-[200px]">
-                                      {bean.notes}
-                                    </p>
-                                  </div>
-
-                                  {/* Bottom Indicator (Optional, adds to tablet feel) */}
-                                  <div className="mt-6 flex justify-center opacity-20 group-hover:opacity-100 transition-opacity duration-500">
-                                    <div className="w-12 h-1 rounded-full bg-white/10" />
+                                  <div className="bean-card-notes">
+                                    {bean.notes}
                                   </div>
                                 </div>
                               ))}
@@ -268,7 +232,7 @@ const App: React.FC = () => {
                       </div>
                     
                       {category.items.length > 0 && (
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+                        <div className="grid mobile-grid-2 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
                           {category.items.map((item, index) => {
                             if (category.id === 'healthy-bar' && activeBranch.id === 'mirdif') {
                               return (
@@ -295,7 +259,7 @@ const App: React.FC = () => {
                            <h3 className="text-2xl menu-heading text-[var(--text-primary)] mb-8 text-center border-b border-[var(--border-color)] pb-2 inline-block px-8 opacity-80">
                              {sub.title}
                            </h3>
-                           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                           <div className="grid mobile-grid-2 md:grid-cols-2 lg:grid-cols-3 gap-8">
                              {sub.items.map((item, index) => {
                                if (sub.id === 'healthy-bar' && activeBranch.id === 'mirdif') {
                                  return (

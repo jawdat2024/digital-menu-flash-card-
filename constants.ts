@@ -311,7 +311,7 @@ const BASE_MENU: MenuCategory[] = [
       },
       {
         id: 'fil_decaf',
-        name: 'Colombia Sweet Dreams Decaf',
+        name: 'Colombia Sweet Dreams (Decaf)',
         tastingNotes: 'Passion fruit cheesecake, Milk chocolate, Molasses',
         ingredients: 'Passion fruit cheesecake, Milk chocolate, Molasses',
         price: '38',
@@ -1048,9 +1048,15 @@ const createMirdifMenu = (): MenuCategory[] => {
       price: 0,
       isNew: false,
       isDecaf: true
+    },
+    {
+      id: 'bean_colombia_decaf',
+      name: 'Colombia Sweet Dreams (Decaf)',
+      notes: 'Passion fruit cheesecake, Milk chocolate, Molasses',
+      price: 0,
+      isNew: false,
+      isDecaf: true
     }
-  
-  
   ];
 
   mirdifEspresso.beanSelection = mirdifBeans;
@@ -1123,7 +1129,7 @@ const createMirdifMenu = (): MenuCategory[] => {
         },
         { 
           id: 'fil_colombia_s_4', 
-          name: 'Colombia Sweet Dreams Decaf',
+          name: 'Colombia Sweet Dreams (Decaf)',
           tastingNotes: 'Passion fruit cheesecake, Milk chocolate, Molasses', 
           price: '38', 
           image: 'https://iili.io/qLf9mXt.jpg', 
@@ -1463,7 +1469,7 @@ const createAlBateenMenu = (): MenuCategory[] => {
         },
         { 
           id: 'fil_colombia_s', 
-          name: 'Colombia Sweet Dreams – Decaf',
+          name: 'Colombia Sweet Dreams (Decaf)',
           origin: 'COLOMBIA (DECAF)',
           tastingNotes: 'Molasses, Dried Apricot, Pecan nuts', 
           price: '38', 
@@ -1706,7 +1712,7 @@ const createKhalifaMenu = (): MenuCategory[] => {
     },
     {
       id: 'bean_colombia_decaf',
-      name: 'Colombia Sweet Dreams – Decaf',
+      name: 'Colombia Sweet Dreams (Decaf)',
       notes: 'Passion fruit cheesecake, Milk chocolate, Molasses',
       price: 0,
       isNew: false,
@@ -1789,7 +1795,7 @@ const createKhalifaMenu = (): MenuCategory[] => {
         },
         { 
           id: 'fil_colombia_s_4', 
-          name: 'Colombia Sweet Dreams – Decaf',
+          name: 'Colombia Sweet Dreams (Decaf)',
           origin: 'COLOMBIA (DECAF)',
           tastingNotes: 'Molasses, Dried Apricot, Pecan Nuts', 
           price: '38', 
@@ -1988,15 +1994,13 @@ const createAlQanaMenu = (): MenuCategory[] => {
       status: 'Coming Soon'
     },
     {
-      id: 'bean_decaf',
-      name: 'Colombia Sweet Dreams Decaf',
+      id: 'bean_colombia_decaf',
+      name: 'Colombia Sweet Dreams (Decaf)',
       notes: 'Passion fruit cheesecake, Milk chocolate, Molasses',
       price: 0,
       isNew: false,
       isDecaf: true
     }
-  
-  
   ];
 
   alQanaEspresso.beanSelection = alQanaBeans;
@@ -2073,7 +2077,7 @@ const createAlQanaMenu = (): MenuCategory[] => {
         },
         { 
           id: 'fil_colombia_s', 
-          name: 'Colombia Sweet Dreams Decaf',
+          name: 'Colombia Sweet Dreams (Decaf)',
           origin: 'COLOMBIA (DECAF)',
           tastingNotes: 'Molasses, Dried Apricot, Pecan Nuts', 
           price: '38', 
@@ -2259,9 +2263,9 @@ const createMarinaMenu = (): MenuCategory[] => {
       isNew: true
     },
     {
-      id: 'bean_coconutella',
-      name: 'Coconutella',
-      notes: 'Coconut cream, milk chocolate, toffee caramel',
+      id: 'bean_coconut',
+      name: 'Coconut',
+      notes: 'Coconut flakes, light chocolate, and vanilla cream',
       price: 5,
       isNew: false
     },
@@ -2273,8 +2277,6 @@ const createMarinaMenu = (): MenuCategory[] => {
       isNew: false,
       isDecaf: true
     }
-  
-  
   ];
 
   marinaEspresso.beanSelection = marinaBeans;
@@ -2776,8 +2778,8 @@ const createDubaiMenu = (): MenuCategory[] => {
       status: 'active'
     },
     {
-      id: 'bean_decaf',
-      name: 'Sweet Dreams Decaf',
+      id: 'bean_colombia_decaf',
+      name: 'Colombia Sweet Dreams (Decaf)',
       notes: 'Passion fruit cheesecake, Milk chocolate, Molasses',
       price: 0,
       isNew: false,
@@ -2859,7 +2861,7 @@ const createDubaiMenu = (): MenuCategory[] => {
         },
         { 
           id: 'fil_colombia_s', 
-          name: 'Colombia Sweet Dreams Decaf',
+          name: 'Colombia Sweet Dreams (Decaf)',
           origin: 'COLOMBIA (DECAF)',
           tastingNotes: 'Molasses - Dried Apricot - Pecan Nuts', 
           price: '38', 

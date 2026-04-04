@@ -10,6 +10,19 @@ interface FlipCardProps {
 
 const FlipCard: React.FC<FlipCardProps> = ({ item, index = 0 }) => {
   const [triggerSparkle, setTriggerSparkle] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isAnimating, setIsAnimating] = useState(false);
+
+  const openModal = () => {
+    setIsModalOpen(true);
+    setTimeout(() => setIsAnimating(true), 10);
+  };
+
+  const closeModal = (e?: React.MouseEvent) => {
+    if (e) e.stopPropagation();
+    setIsAnimating(false);
+    setTimeout(() => setIsModalOpen(false), 400);
+  };
   const hasVariants = (item.variants && item.variants.length > 0) || (item.customizations && item.customizations.length > 0);
   const animationDelay = `${index * 50}ms`;
   const isFilterTap = item.id.startsWith('tap_');
@@ -32,7 +45,8 @@ const FlipCard: React.FC<FlipCardProps> = ({ item, index = 0 }) => {
         `}
       </style>
       <div 
-        className={`group relative w-full h-[450px] flex flex-col bg-[var(--card-bg)] rounded-[30px] overflow-hidden transition-all duration-500 ease-luxury border border-[var(--border-color)]
+        onClick={openModal}
+        className={`group relative w-full h-[450px] flex flex-col bg-[var(--card-bg)] rounded-[30px] overflow-hidden transition-all duration-500 ease-luxury border border-[var(--border-color)] cursor-pointer
         ${(item.isSoldOut || item.status === 'Sold Out' || item.status === 'Coming Soon')
             ? 'grayscale opacity-60 pointer-events-none' 
             : 'hover:border-[var(--text-primary)] hover:-translate-y-1'
@@ -64,7 +78,8 @@ const FlipCard: React.FC<FlipCardProps> = ({ item, index = 0 }) => {
                   <img 
                    src={item.image} 
                    alt={item.name}
-                   className={`w-full h-full ${isFilterTap || isColdBrew ? 'object-contain p-4' : 'object-cover'} object-center transition-transform duration-[1.5s] ease-luxury grayscale-[20%] group-hover:grayscale-0 ${!item.isSoldOut && item.status !== 'Sold Out' && item.status !== 'Coming Soon' && 'group-hover:scale-105'}`}
+                   className={`w-full h-full ${isFilterTap || isColdBrew ? 'object-contain p-4' : 'object-cover'} object-center transition-transform duration-[1.5s] ease-luxury grayscale-[20%] group-hover:grayscale-0`}
+                   style={{ transform: 'scale(1.2)' }}
                    loading="lazy"
                  />
               ) : (
@@ -158,8 +173,72 @@ const FlipCard: React.FC<FlipCardProps> = ({ item, index = 0 }) => {
               </div>
           </div>
       </div>
+
+      {/* Modal Overlay */}
+      {isModalOpen && (
+        <div 
+          className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6"
+          onClick={closeModal}
+          style={{
+            backgroundColor: 'rgba(0, 0, 0, 0.7)',
+            opacity: isAnimating ? 1 : 0,
+            transition: 'opacity 0.4s ease-in-out'
+          }}
+        >
+          <div 
+            className="bg-[var(--card-bg)] border border-[var(--border-color)] rounded-2xl p-6 w-full max-w-md md:max-w-lg relative shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+            style={{
+              opacity: isAnimating ? 1 : 0,
+              transform: isAnimating ? 'translateY(0)' : 'translateY(20px)',
+              transition: 'opacity 0.4s ease-in-out, transform 0.4s ease-in-out'
+            }}
+          >
+            <button 
+              onClick={closeModal}
+              className="absolute top-4 right-4 text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
+            >
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+            <h3 className={`text-xl font-bold text-[var(--text-primary)] mb-4 pr-6 ${isFilterTap ? 'font-sans uppercase tracking-widest' : 'font-didone'}`}>
+              {item.name}
+            </h3>
+            <div className="text-sm text-[var(--text-secondary)] font-sans leading-relaxed max-h-[60vh] overflow-y-auto pr-2">
+              {item.origin ? (
+                <div className="flex flex-col gap-3">
+                   {item.tags && item.tags.length > 0 && (
+                      <div className="flex gap-2 mb-1">
+                        {item.tags.map(tag => (
+                          <span key={tag} className="bg-[var(--accent-color)] text-[var(--bg-primary)] text-[8px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-sm">
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                   )}
+                   <div className="text-[10px] uppercase tracking-widest text-[var(--accent-color)] font-bold">
+                      {item.origin} {item.farm && <span className="text-[var(--text-secondary)]">• {item.farm}</span>}
+                   </div>
+                   {item.tastingNotes && (
+                     <p className="text-sm text-[var(--text-primary)] font-didone italic leading-relaxed">
+                       "{item.tastingNotes}"
+                     </p>
+                   )}
+                   <div className="flex flex-wrap gap-3 text-[9px] uppercase tracking-wider text-[var(--text-secondary)] border-t border-[var(--border-color)] pt-3 mt-auto mb-2">
+                      {item.process && <span>Process: <span className="text-[var(--text-primary)] opacity-80">{item.process}</span></span>}
+                      {item.elevation && <span className="border-l border-[var(--border-color)] pl-3">Elev: <span className="text-[var(--text-primary)] opacity-80">{item.elevation}</span></span>}
+                   </div>
+                   <p className="text-[9px] text-[var(--text-secondary)] font-sans uppercase tracking-wider mb-4">
+                      {item.ingredients}
+                   </p>
+                </div>
+              ) : (
+                item.ingredients
+              )}
+            </div>
+          </div>
+        </div>
+      )}
     </>
-  );
-};
+  );};
 
 export default FlipCard;

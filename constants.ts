@@ -154,6 +154,15 @@ const BASE_MENU: MenuCategory[] = [
     title: "Dessert",
     items: [
       {
+        id: "d_deconstructed_cheesecake",
+        name: "Deconstructed Cheesecake",
+        ingredients: "A light and creamy eggless vanilla cheesecake served deconstructed, layered with crunchy almond crumble with mixed berries.",
+        price: "39.20",
+        image: "https://iili.io/q2hets4.png",
+        calories: 0,
+      },
+
+      {
         id: "d_san_seb",
         name: "Crust San Sebastian",
         ingredients:
@@ -1150,6 +1159,40 @@ const createMirdifMenu = (): MenuCategory[] => {
   mirdifEspresso.beanSelection = mirdifBeans;
   mirdifEspresso.description = "";
 
+
+  mirdifEspresso.items.push(
+    {
+      id: "esp_cortado_freedo",
+      name: "Cortado Freedo",
+      ingredients: "",
+      price: "31",
+      image: "https://iili.io/BxjiyhX.jpg",
+      calories: 0,
+      customizations: [
+        {
+          id: "bean_choice",
+          title: "Bean Choice",
+          options: [],
+        },
+      ],
+    },
+    {
+      id: "esp_cartel_espresso_martini",
+      name: "Cartel Espresso Martini",
+      ingredients: "",
+      price: "36",
+      image: "https://iili.io/BxwBNCg.jpg",
+      calories: 0,
+      customizations: [
+        {
+          id: "bean_choice",
+          title: "Bean Choice",
+          options: [],
+        },
+      ],
+    }
+  );
+
   // Update all items to use these beans
   mirdifEspresso.items.forEach((item: any) => {
     const beanCustomization = item.customizations?.find(
@@ -1687,16 +1730,6 @@ const createAlBateenMenu = (): MenuCategory[] => {
       title: "Filter Coffee",
       items: [
         {
-          id: "fil_cuban_cigar",
-          name: "Cuban Cigar {tap filter}",
-          tastingNotes: "Caramel popcorn, fresh tobacco",
-          price: "41",
-          image: "https://iili.io/qLf9mXt.jpg",
-          ingredients: "Pour-over brewing method",
-          calories: 5,
-          status: "Available",
-        },
-        {
           id: "fil_mish_mish",
           name: "Mish Mish",
           tastingNotes: "Apricot jam, raspberry, lychee",
@@ -1748,7 +1781,7 @@ const createAlBateenMenu = (): MenuCategory[] => {
         },
         {
           id: "fil_colombia_gesha",
-          name: "Colombia Gesha",
+          name: "Colombia Gesha Key Lime Pie",
           tastingNotes: "Orange blossom, lemon grass, condensed milk",
           price: "65",
           image: "https://iili.io/qLf9mXt.jpg",
@@ -1835,6 +1868,7 @@ const createAlBateenMenu = (): MenuCategory[] => {
       id: "desserts",
       title: "Desserts",
       items: [
+        findItem("desserts", "d_deconstructed_cheesecake")!,
         {
           ...findItem("desserts", "d_crepe_rolls")!,
           status: "Available" as const,
@@ -2774,6 +2808,7 @@ const createAlQanaMenu = (): MenuCategory[] => {
       id: "desserts",
       title: "Desserts",
       items: [
+        findItem("desserts", "d_deconstructed_cheesecake")!,
         findItem("desserts", "d_aseeda")!,
         {
           id: "d_french_toast",

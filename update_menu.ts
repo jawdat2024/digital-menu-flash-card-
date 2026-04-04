@@ -4,40 +4,46 @@ import path from 'path';
 const constantsPath = path.join(process.cwd(), 'constants.ts');
 let content = fs.readFileSync(constantsPath, 'utf8');
 
-// Task 1: Cold Brew (Khalifa Branch Only)
-// Target: KHALIFA_BRANCH -> COLD_BREW_KENYA
-// Action: Update src URL for product image.
-// New Asset: https://iili.io/qjc71DB.png
-// Find the Kenya Kirimara cold brew in Khalifa branch.
-// It's around line 1767. Let's replace the image for cb_kenya in the cold-brew section of createKhalifaMenu.
-const khalifaMenuRegex = /const createKhalifaMenu = \(\): MenuCategory\[\] => \{[\s\S]*?return \([\s\S]*?\];/;
-const khalifaMenuMatch = content.match(khalifaMenuRegex);
-// Wait, the return is `return [` not `return (`.
-// Let's just do a string replacement for the specific block.
-content = content.replace(
-  /id: 'cb_kenya',[\s\S]*?name: 'Kenya Kirimara',[\s\S]*?tastingNotes: 'Wild Cherry, Brown Sugar, Raisins',[\s\S]*?price: '38',[\s\S]*?image: 'https:\/\/iili\.io\/f8yS6jj\.jpg',/g,
-  `id: 'cb_kenya', 
-          name: 'Kenya Kirimara',
-          tastingNotes: 'Wild Cherry, Brown Sugar, Raisins', 
-          price: '38', 
-          image: 'https://iili.io/qjc71DB.png',`
-);
+// 1. New Product Addition (Dessert Category)
+// Add to BASE_MENU desserts
+const newDessert = `      {
+        id: "d_deconstructed_cheesecake",
+        name: "Deconstructed Cheesecake",
+        ingredients: "A light and creamy eggless vanilla cheesecake served deconstructed, layered with crunchy almond crumble with mixed berries.",
+        price: "39.20",
+        image: "https://iili.io/q2hets4.png",
+        calories: 0,
+      },
+`;
 
-// Task 2: New Product Deployment: Signature Drinks (Khalifa Branch)
-// Target Category: SIGNATURE_DRINKS_TEA
-// Item Details: Name: RUSH HOUR, Price: 33 AED, Image URL: https://iili.io/q2urMyF.jpg
-// Action: Append new object to the branch product array.
-// In createKhalifaMenu, the signature-drinks items array ends with sig_matcha_shake.
-const sigDrinksRegex = /id: 'signature-drinks',[\s\S]*?title: 'Signature drink',[\s\S]*?items: \[([\s\S]*?)\]\.filter\(Boolean\)/;
-// We need to make sure we only replace in createKhalifaMenu.
-const khalifaSigDrinksRegex = /(const createKhalifaMenu = \(\): MenuCategory\[\] => \{[\s\S]*?id: 'signature-drinks',\s*title: 'Signature drink',\s*items: \[[\s\S]*?)(]\.filter\(Boolean\))/;
-content = content.replace(khalifaSigDrinksRegex, `$1  { id: 'sig_rush_hour', name: 'RUSH HOUR', price: '33', image: 'https://iili.io/q2urMyF.jpg', ingredients: 'Signature drink', calories: 10, status: 'Available' },\n        $2`);
+// Find BASE_MENU desserts array
+const baseDessertsRegex = /(id:\s*"desserts",\s*title:\s*"Dessert",\s*items:\s*\[)/;
+content = content.replace(baseDessertsRegex, `$1\n${newDessert}`);
 
-// Task 3: Global Asset Sync: Filtered Coffee (All Branches)
-// Target: GLOBAL_ALL_BRANCHES -> FILTERED_COFFEE
-// Action: Batch update the "Filtered" image asset across the entire database/state.
-// New Asset: https://iili.io/qLf9mXt.jpg
-content = content.replace(/https:\/\/iili\.io\/qjAjZAJ\.png/g, 'https://iili.io/qLf9mXt.jpg');
+// Add to Al Bateen desserts
+const alBateenDessertsRegex = /(const createAlBateenMenu = \(\): MenuCategory\[\] => \{[\s\S]*?id:\s*"desserts",\s*title:\s*"Desserts",\s*items:\s*\[)/;
+content = content.replace(alBateenDessertsRegex, `$1\n        findItem("desserts", "d_deconstructed_cheesecake")!,`);
+
+// Add to Al Qana desserts
+const alQanaDessertsRegex = /(const createAlQanaMenu = \(\): MenuCategory\[\] => \{[\s\S]*?id:\s*"desserts",\s*title:\s*"Desserts",\s*items:\s*\[)/;
+content = content.replace(alQanaDessertsRegex, `$1\n        findItem("desserts", "d_deconstructed_cheesecake")!,`);
+
+// 2. Product Removal (Al Bateen Only)
+// Target Item: Cigar {tap filter}
+// In Al Bateen Filter Coffee
+const alBateenCigarRegex = /(const createAlBateenMenu = \(\): MenuCategory\[\] => \{[\s\S]*?id:\s*"filter-coffee",\s*title:\s*"Filter Coffee",\s*items:\s*\[[\s\S]*?)\{\s*id:\s*"fil_cuban_cigar",[\s\S]*?status:\s*"Available",\s*\},\s*/;
+content = content.replace(alBateenCigarRegex, `$1`);
+
+// 3. Product Modification (Filtered Category)
+// Branch: Al Bateen
+// Original Name: Colombia Gesha.
+// New Name: Colombia Gesha Key Lime Pie
+// Category Path: Filtered -> Cold Drip & Filter Brewing
+// Wait, in Al Bateen, the filter coffee items are:
+// fil_mish_mish, fil_kenya_kirimara, fil_blackberry, fil_ethiopia, fil_colombia_sweet_decaf, fil_colombia_gesha, fil_costa_rica
+// Let's update fil_colombia_gesha in Al Bateen specifically.
+const alBateenGeshaRegex = /(const createAlBateenMenu = \(\): MenuCategory\[\] => \{[\s\S]*?id:\s*"fil_colombia_gesha",\s*name:\s*")Colombia Gesha(")/;
+content = content.replace(alBateenGeshaRegex, `$1Colombia Gesha Key Lime Pie$2`);
 
 fs.writeFileSync(constantsPath, content, 'utf8');
-console.log('Update complete.');
+console.log('Update script executed successfully.');

@@ -1672,10 +1672,10 @@ const createAlBateenMenu = (): MenuCategory[] => {
   // Define Custom Beans
   const alBateenBeans = [
     {
-      id: "bean_nicaragua",
-      name: "Nicaragua",
-      notes: "Sugarcane, Candied Peanuts, Milk Chocolate",
-      price: 0,
+      id: "bean_latino",
+      name: "Latino Blend",
+      notes: "Milk Chocolate, Hazelnut, Toffee",
+      price: 1,
       isNew: false,
     },
     {

@@ -3068,23 +3068,23 @@ const createMarinaMenu = (): MenuCategory[] => {
   // Define Custom Beans for Marina
   const marinaBeans = [
     {
-      id: "bean_nicaragua",
-      name: "Nicaragua",
-      notes: "Milk chocolate, sugar cane, and candied peanuts",
+      id: "bean_three_africa",
+      name: "Three Africa (The Bright Classic)",
+      notes: "Caramel, Vanilla, Candied Tamarind",
       price: 0,
       isNew: false,
     },
     {
-      id: "bean_brazil_chocolate",
-      name: "Brazil Chocolate",
-      notes: "Chocolate biscuit, condensed milk, chestnut",
+      id: "bean_latino_blend",
+      name: "Latino Blend (The Crowd Pleaser)",
+      notes: "Chocolate Biscuit, Condensed Milk, Chestnut",
       price: 1,
       isNew: true,
     },
     {
-      id: "bean_coconut",
-      name: "Coconut",
-      notes: "Coconut flakes, light chocolate, and vanilla cream",
+      id: "bean_colombia_peach",
+      name: "Colombia Peach (The Tropical Refresh)",
+      notes: "Peach, Vanilla Ice Cream, Lychee",
       price: 5,
       isNew: false,
     },

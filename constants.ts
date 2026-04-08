@@ -4407,9 +4407,7 @@ const RAW_BRANCH_MENUS: BranchMenuDirectory = {
     const healthyBowlsIdx = menu.findIndex(c => c.id === 'healthy-bowls');
     if (healthyBowlsIdx !== -1) {
       menu[healthyBowlsIdx].items.forEach(item => {
-        if (!item.name.toLowerCase().includes('overnight oat')) {
-          item.status = 'Coming Soon';
-        }
+        item.status = 'Available';
       });
     }
 

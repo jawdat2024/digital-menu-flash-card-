@@ -46,6 +46,13 @@ const BranchSelection: React.FC<BranchSelectionProps> = ({ onSelectBranch }) => 
               </button>
             );
           })}
+
+          {/* AL AIN - Coming Soon */}
+          <div className="branch-pill-btn coming-soon-btn">
+            <MapPin className="btn-icon" strokeWidth={1.5} />
+            <span className="btn-text">AL AIN</span>
+            <span className="coming-soon-badge">COMING SOON</span>
+          </div>
         </div>
       </div>
 
@@ -143,6 +150,32 @@ const BranchSelection: React.FC<BranchSelectionProps> = ({ onSelectBranch }) => 
           border-color: rgba(255, 255, 255, 0.4);
         }
 
+        .coming-soon-btn {
+          background: rgba(15, 15, 15, 0.7);
+          border: 1px solid rgba(255, 255, 255, 0.08);
+          cursor: default;
+          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+          backdrop-filter: blur(10px);
+        }
+
+        .coming-soon-btn:hover {
+          background: rgba(15, 15, 15, 0.7);
+          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+          transform: none;
+          border-color: rgba(255, 255, 255, 0.08);
+        }
+
+        .coming-soon-badge {
+          font-family: 'Inter', sans-serif;
+          font-size: 0.65rem;
+          color: #C5A059; /* Muted elegant gold */
+          letter-spacing: 0.2em;
+          text-transform: uppercase;
+          font-weight: 500;
+          margin-top: 0.25rem;
+          opacity: 0.9;
+        }
+
         .btn-icon {
           color: #FFFFFF;
           width: 24px;
@@ -198,6 +231,16 @@ const BranchSelection: React.FC<BranchSelectionProps> = ({ onSelectBranch }) => 
             min-width: auto;
             justify-content: flex-start;
             padding-left: 2rem;
+          }
+
+          .coming-soon-btn {
+            flex-wrap: wrap;
+          }
+
+          .coming-soon-badge {
+            margin-top: 0;
+            margin-left: auto; /* Push to the right on mobile */
+            padding-right: 1rem;
           }
         }
       `}</style>

@@ -2213,16 +2213,6 @@ const createKhalifaMenu = (): MenuCategory[] => {
       title: "Filter Coffee",
       items: [
         {
-          id: "fil_cuban_cigar",
-          name: "Cuban Cigar {tap filter}",
-          tastingNotes: "Caramel popcorn, fresh tobacco",
-          price: "41",
-          image: "https://iili.io/qLf9mXt.jpg",
-          ingredients: "Pour-over brewing method",
-          calories: 5,
-          status: "Available",
-        },
-        {
           id: "fil_mish_mish",
           name: "Mish Mish",
           tastingNotes: "Apricot jam, raspberry, lychee",
@@ -2277,16 +2267,6 @@ const createKhalifaMenu = (): MenuCategory[] => {
           name: "Colombia Gesha",
           tastingNotes: "Orange blossom, lemon grass, condensed milk",
           price: "65",
-          image: "https://iili.io/qLf9mXt.jpg",
-          ingredients: "Pour-over brewing method",
-          calories: 5,
-          status: "Available",
-        },
-        {
-          id: "fil_costa_rica",
-          name: "Costa Rica",
-          tastingNotes: "Cacao, fig compote, honey, cherry",
-          price: "57",
           image: "https://iili.io/qLf9mXt.jpg",
           ingredients: "Pour-over brewing method",
           calories: 5,
@@ -2357,14 +2337,6 @@ const createKhalifaMenu = (): MenuCategory[] => {
           ingredients:
             "Joe's bread, pesto mayo, tuna mix, tomato slice, avocado slice.",
           calories: 480,
-        },
-        {
-          id: "sw_chick",
-          name: "Chicken & Avocado Croissant",
-          price: "42",
-          image: "https://iili.io/qqGn1cb.jpg",
-          ingredients: "Grilled chicken, fresh avocado, croissant",
-          calories: 520,
         },
         {
           id: "sw_club",
@@ -2545,7 +2517,10 @@ const createKhalifaMenu = (): MenuCategory[] => {
         },
       ],
     },
-    BASE_MENU.find((c) => c.id === "juices")!,
+    {
+      ...BASE_MENU.find((c) => c.id === "juices")!,
+      items: BASE_MENU.find((c) => c.id === "juices")!.items.filter(item => item.name === "Orange" || item.id === "juice_orange"),
+    },
   ];
 };
 
@@ -3458,13 +3433,43 @@ const applyGoldenRuleLayout = (menu: MenuCategory[]): MenuCategory[] => {
       });
     }
 
-    if (coldBrewItems.length > 0) {
-      newSubCategories.push({
-        id: "cold-brew",
-        title: "COLD BREW",
-        items: coldBrewItems,
-      });
-    }
+    // Always add the global cold brew items
+    newSubCategories.push({
+      id: "cold-brew",
+      title: "COLD BREW",
+      items: [
+        {
+          id: "cb_colombia_global",
+          name: "Colombia",
+          tastingNotes: "hazelnut, orange, molasses",
+          price: "38",
+          image: "https://iili.io/qKYaxff.png",
+          ingredients: "Cold Brew",
+          calories: 5,
+          status: "Available",
+        },
+        {
+          id: "cb_ethiopia_global",
+          name: "Ethiopia",
+          tastingNotes: "Apricot, Pear, Honey",
+          price: "38",
+          image: "https://iili.io/B3OHMFV.jpg",
+          ingredients: "Cold Brew",
+          calories: 5,
+          status: "Available",
+        },
+        {
+          id: "cb_kenya_global",
+          name: "Kenya",
+          tastingNotes: "Brown Sugar – Wild Cherry- Raisins",
+          price: "38",
+          image: "https://iili.io/B3Ns6UG.jpg",
+          ingredients: "Cold Brew",
+          calories: 5,
+          status: "Available",
+        }
+      ],
+    });
 
     newMenu.push({
       id: "specialty-coffee",
@@ -4134,7 +4139,288 @@ const RAW_BRANCH_MENUS: BranchMenuDirectory = {
   khalifa: applyGoldenRuleLayout(createKhalifaMenu()),
 
   // Marina
-  marina: applyGoldenRuleLayout(createMarinaMenu()),
+  marina: (() => {
+    const menu = applyGoldenRuleLayout(createMarinaMenu());
+    const specialtyIdx = menu.findIndex(c => c.id === 'specialty-coffee');
+    if (specialtyIdx !== -1) {
+      const specialty = menu[specialtyIdx];
+      
+      if (specialty.subCategories) {
+        const filteredHot = specialty.subCategories.find(sc => sc.id === 'filtered-hot');
+        if (filteredHot) {
+          // 1. Update "Filtered (Hot)" Category
+          filteredHot.items = filteredHot.items.filter(item => {
+            const name = item.name.toLowerCase();
+            return !name.includes('cuban cigar') &&
+                   !name.includes('cigar') &&
+                   !name.includes('blackberry') &&
+                   name !== 'ethiopia' &&
+                   name !== 'sweet decaf' &&
+                   name !== 'bodisha' &&
+                   name !== 'rogisha' &&
+                   name !== 'strawberry' &&
+                   name !== 'kirimara' &&
+                   name !== 'kenya kiramara {tap filter}' &&
+                   name !== 'kenya kirimara [tap filter]' &&
+                   name !== 'mish mish' &&
+                   name !== 'costa rica' &&
+                   name !== 'gesha';
+          });
+          
+          const newFilteredItems = [
+            {
+              id: "fil_colombia_sidra",
+              name: "Colombia Sidra",
+              tastingNotes: "Vibrant red grapes and juicy watermelon with nostalgic hard candy and raspberry finish.",
+              price: "57",
+              image: "https://iili.io/qLf9mXt.jpg",
+              ingredients: "Pour-over brewing method",
+              calories: 5,
+              status: "Available",
+            },
+            {
+              id: "fil_colombia_strawberry",
+              name: "Colombia Strawberry",
+              tastingNotes: "A luscious blend of sweet strawberry jam, golden honey, and smooth milk chocolate.",
+              price: "41",
+              image: "https://iili.io/qLf9mXt.jpg",
+              ingredients: "Pour-over brewing method",
+              calories: 5,
+              status: "Available",
+            },
+            {
+              id: "fil_mish_mish",
+              name: "Mish Mish",
+              tastingNotes: "Delicate notes of apricot jam and bright raspberry, rounded out by exotic lychee.",
+              price: "57",
+              image: "https://iili.io/qLf9mXt.jpg",
+              ingredients: "Pour-over brewing method",
+              calories: 5,
+              status: "Available",
+            },
+            {
+              id: "fil_costa_rica",
+              name: "Costa Rica",
+              tastingNotes: "Deep, comforting layers of cacao and fig compote with a honey-cherry sweetness.",
+              price: "57",
+              image: "https://iili.io/qLf9mXt.jpg",
+              ingredients: "Pour-over brewing method",
+              calories: 5,
+              status: "Available",
+            },
+            {
+              id: "fil_kenya_kiramara",
+              name: "Kenya Kiramara {TAP FILTER}",
+              tastingNotes: "Rich brown sugar and sun-dried raisins balanced by the tartness of wild cherry.",
+              price: "46",
+              image: "https://iili.io/qLf9mXt.jpg",
+              ingredients: "Pour-over brewing method",
+              calories: 5,
+              status: "Available",
+            },
+            {
+              id: "fil_panama_gesha",
+              name: "Panama Gesha",
+              tastingNotes: "An elegant, floral profile of cantaloupe and honey with whispers of lemongrass and berries.",
+              price: "65",
+              image: "https://iili.io/qLf9mXt.jpg",
+              ingredients: "Pour-over brewing method",
+              calories: 5,
+              status: "Available",
+            },
+            {
+              id: "fil_sweet_dream_decaf",
+              name: "Sweet Dream Decaf",
+              tastingNotes: "A cozy, full-bodied cup featuring dried apricot, dark molasses, and toasted pecan nuts.",
+              price: "36",
+              image: "https://iili.io/qLf9mXt.jpg",
+              ingredients: "Pour-over brewing method",
+              calories: 5,
+              status: "Available",
+            }
+          ];
+
+          newFilteredItems.forEach(newItem => {
+            const baseName = newItem.name.replace('{TAP FILTER}', '').trim().toLowerCase();
+            const existingIdx = filteredHot.items.findIndex(item => item.name.toLowerCase().includes(baseName));
+            if (existingIdx !== -1) {
+              filteredHot.items[existingIdx] = { ...filteredHot.items[existingIdx], ...newItem };
+            } else {
+              filteredHot.items.push(newItem);
+            }
+          });
+        }
+        
+        // 2. Create New Category: "TAPS FILTERED"
+        const tapsFilteredCategory = {
+          id: "taps-filtered",
+          title: "TAPS FILTERED",
+          items: [
+            {
+              id: "tap_ethiopia_rojicha",
+              name: "ETHIOPIA ROJICHA",
+              tastingNotes: "Apricot, Pear, Honey",
+              price: "36",
+              image: "https://iili.io/qKka1vj.png",
+              ingredients: "{TAPS FILTERED}",
+              calories: 5,
+              status: "Available",
+            },
+            {
+              id: "tap_kenya_kiramara",
+              name: "Kenya Kiramara",
+              tastingNotes: "Brown Sugar – Wild Cherry- Raisins",
+              price: "46",
+              image: "https://iili.io/BuylWL7.png",
+              ingredients: "Available for Manual Pouring",
+              calories: 5,
+              status: "Available",
+            },
+            {
+              id: "tap_colombia_strawberry",
+              name: "Colombia Strawberry",
+              tastingNotes: "Strawberry Jam – Honey - Milk Chocolates",
+              price: "57",
+              image: "https://iili.io/qKkcmJa.png",
+              ingredients: "Available for Manual Pouring",
+              calories: 5,
+              status: "Available",
+            }
+          ]
+        };
+        
+        // 3. Update "MANUALLY POURING" Category
+        const manuallyPouringCategory = {
+          id: "manually-pouring",
+          title: "MANUALLY POURING",
+          items: [
+            {
+              id: "man_colombia_sidra",
+              name: "COLOMBIA SIDRA",
+              tastingNotes: "Vibrant red grapes and juicy watermelon with a nostalgic hard candy and raspberry finish.",
+              price: "57",
+              image: "https://iili.io/qLf9mXt.jpg",
+              ingredients: "Manual Pouring",
+              calories: 5,
+              status: "Available",
+            },
+            {
+              id: "man_colombia_strawberry",
+              name: "COLOMBIA STRAWBERRY",
+              tastingNotes: "A luscious blend of sweet strawberry jam, golden honey, and smooth milk chocolate.",
+              price: "41",
+              image: "https://iili.io/qLf9mXt.jpg",
+              ingredients: "Manual Pouring",
+              calories: 5,
+              status: "Available",
+            },
+            {
+              id: "man_mish_mish",
+              name: "MISH MISH",
+              tastingNotes: "Delicate notes of apricot jam and bright raspberry, rounded out by exotic lychee.",
+              price: "57",
+              image: "https://iili.io/qLf9mXt.jpg",
+              ingredients: "Manual Pouring",
+              calories: 5,
+              status: "Available",
+            },
+            {
+              id: "man_costa_rica",
+              name: "COSTA RICA",
+              tastingNotes: "Deep, comforting layers of cacao and fig compote with a honey-cherry sweetness.",
+              price: "57",
+              image: "https://iili.io/qLf9mXt.jpg",
+              ingredients: "Manual Pouring",
+              calories: 5,
+              status: "Available",
+            },
+            {
+              id: "man_kenya_kiramara",
+              name: "KENYA KIRAMARA",
+              tastingNotes: "Rich brown sugar and sun-dried raisins balanced by the tartness of wild cherry.",
+              price: "46",
+              image: "https://iili.io/qLf9mXt.jpg",
+              ingredients: "Manual Pouring",
+              calories: 5,
+              status: "Available",
+            },
+            {
+              id: "man_panama_gesha",
+              name: "PANAMA GESHA",
+              tastingNotes: "An elegant, floral profile of cantaloupe and honey with whispers of lemongrass and berries.",
+              price: "65",
+              image: "https://iili.io/qLf9mXt.jpg",
+              ingredients: "Manual Pouring",
+              calories: 5,
+              status: "Available",
+            },
+            {
+              id: "man_sweet_dream_decaf",
+              name: "SWEET DREAM DECAF",
+              tastingNotes: "A cozy, full-bodied cup featuring dried apricot, dark molasses, and toasted pecan nuts.",
+              price: "36",
+              image: "https://iili.io/qLf9mXt.jpg",
+              ingredients: "Manual Pouring",
+              calories: 5,
+              status: "Available",
+            }
+          ]
+        };
+        
+        const hotIdx = specialty.subCategories.findIndex(sc => sc.id === 'filtered-hot');
+        if (hotIdx !== -1) {
+          specialty.subCategories.splice(hotIdx + 1, 0, tapsFilteredCategory, manuallyPouringCategory);
+        } else {
+          specialty.subCategories.push(tapsFilteredCategory, manuallyPouringCategory);
+        }
+      }
+      if (specialty.subCategories) {
+        specialty.subCategories = specialty.subCategories.filter(sc => sc.id !== 'filtered-hot');
+      }
+    }
+    
+    // 1. Best Seller Modification
+    const bestSellerIdx = menu.findIndex(c => c.id === 'highly-recommend');
+    if (bestSellerIdx !== -1) {
+      menu[bestSellerIdx].items = menu[bestSellerIdx].items.filter(item => {
+        const name = item.name.toLowerCase();
+        return !name.includes('exotic sunrise') && 
+               !name.includes('apple cinnamon muesli') && 
+               !name.includes('cold cut italian');
+      });
+    }
+
+    // 2. Category Deletion: "Juices"
+    const juicesIdx = menu.findIndex(c => c.id === 'juices');
+    if (juicesIdx !== -1) {
+      menu.splice(juicesIdx, 1);
+    }
+
+    // 3. Availability Updates (Coming Soon)
+    const sandwichesIdx = menu.findIndex(c => c.id === 'sandwiches');
+    if (sandwichesIdx !== -1) {
+      menu[sandwichesIdx].items.forEach(item => {
+        item.status = 'Coming Soon';
+      });
+    }
+
+    const healthyBowlsIdx = menu.findIndex(c => c.id === 'healthy-bowls');
+    if (healthyBowlsIdx !== -1) {
+      menu[healthyBowlsIdx].items.forEach(item => {
+        if (!item.name.toLowerCase().includes('overnight oat')) {
+          item.status = 'Coming Soon';
+        }
+      });
+    }
+
+    
+    // 2. Category Deletion: "Juices" (Fix for subCategories)
+    const sigTeaIdx = menu.findIndex(c => c.id === 'signature-tea');
+    if (sigTeaIdx !== -1 && menu[sigTeaIdx].subCategories) {
+      menu[sigTeaIdx].subCategories = menu[sigTeaIdx].subCategories.filter(sc => sc.id !== 'juices');
+    }
+    return menu;
+  })(),
 
   // Al Bateen
   albateen: applyGoldenRuleLayout(createAlBateenMenu()),

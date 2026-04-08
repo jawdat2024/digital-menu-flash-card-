@@ -291,7 +291,7 @@ const App: React.FC = () => {
             <FeedbackForm />
           </div>
 
-          <Footer />
+          <Footer onAdminAccess={() => setIsAdminMode(true)} />
         </div>
       )}
 

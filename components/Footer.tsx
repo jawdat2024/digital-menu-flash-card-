@@ -1,7 +1,11 @@
 import React from 'react';
 import { Mail } from 'lucide-react';
 
-const Footer: React.FC = () => {
+interface FooterProps {
+  onAdminAccess?: () => void;
+}
+
+const Footer: React.FC<FooterProps> = ({ onAdminAccess }) => {
   return (
     <footer className="relative z-10 bg-neutral-900/50 border-t border-white/10 mt-32 py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -9,7 +13,12 @@ const Footer: React.FC = () => {
           
           {/* Brand Section */}
           <div className="space-y-6 text-center">
-            <h2 className="text-4xl font-didone text-white tracking-widest">CARTEL</h2>
+            <h2 
+              className="text-4xl font-didone text-white tracking-widest cursor-pointer select-none"
+              onDoubleClick={onAdminAccess}
+            >
+              CARTEL
+            </h2>
             <p className="text-neutral-500 text-xs uppercase tracking-[0.2em] leading-relaxed max-w-md mx-auto">
               Specialty Coffee Roasters • Abu Dhabi • Dubai
               <br />

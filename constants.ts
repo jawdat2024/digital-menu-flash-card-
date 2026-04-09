@@ -178,7 +178,7 @@ const BASE_MENU: MenuCategory[] = [
           "It’s made with our signature crepe mix, crisp on the outside and delicately tender inside, filled with Valrhona Dulcey chocolate and finished with smooth milk chocolate sauce. ✨",
         price: "42",
         image: "https://iili.io/qxFnyvt.png",
-        status: "Coming Soon",
+        status: "Coming Soon" as const,
         calories: 0,
       },
 
@@ -292,7 +292,7 @@ const BASE_MENU: MenuCategory[] = [
         price: "46",
         image: "https://iili.io/qLf9mXt.jpg",
         calories: 5,
-        status: "Available",
+        status: "Available" as const,
       },
       {
         id: "fil_cuban",
@@ -302,7 +302,7 @@ const BASE_MENU: MenuCategory[] = [
         price: "57",
         image: "https://iili.io/qLf9mXt.jpg",
         calories: 5,
-        status: "Available",
+        status: "Available" as const,
       },
       {
         id: "fil_kenya_kirimara",
@@ -312,7 +312,7 @@ const BASE_MENU: MenuCategory[] = [
         price: "46",
         image: "https://iili.io/qLf9mXt.jpg",
         calories: 5,
-        status: "Available",
+        status: "Available" as const,
       },
       {
         id: "fil_col_mish",
@@ -322,7 +322,7 @@ const BASE_MENU: MenuCategory[] = [
         price: "57",
         image: "https://iili.io/qLf9mXt.jpg",
         calories: 5,
-        status: "Available",
+        status: "Available" as const,
       },
       {
         id: "fil_col_black",
@@ -332,7 +332,7 @@ const BASE_MENU: MenuCategory[] = [
         price: "65",
         image: "https://iili.io/qLf9mXt.jpg",
         calories: 5,
-        status: "Available",
+        status: "Available" as const,
       },
       {
         id: "fil_decaf",
@@ -342,7 +342,7 @@ const BASE_MENU: MenuCategory[] = [
         price: "38",
         image: "https://iili.io/qLf9mXt.jpg",
         calories: 5,
-        status: "Available",
+        status: "Available" as const,
       },
       {
         id: "cb_eth",
@@ -353,7 +353,7 @@ const BASE_MENU: MenuCategory[] = [
         price: "38",
         image: "https://iili.io/B3OHMFV.jpg",
         calories: 10,
-        status: "Available",
+        status: "Available" as const,
       },
       {
         id: "cb_col",
@@ -364,7 +364,7 @@ const BASE_MENU: MenuCategory[] = [
         price: "38",
         image: "https://iili.io/qKYaxff.png",
         calories: 10,
-        status: "Available",
+        status: "Available" as const,
       },
       {
         id: "cb_ken",
@@ -375,7 +375,7 @@ const BASE_MENU: MenuCategory[] = [
         price: "38",
         image: "https://iili.io/B3Ns6UG.jpg",
         calories: 10,
-        status: "Available",
+        status: "Available" as const,
       },
     ],
   },
@@ -1126,9 +1126,9 @@ const createMirdifMenu = (): MenuCategory[] => {
   const mirdifBeans = [
     {
       id: "bean_469",
-      name: "Brazil Chocolate",
-      notes: "Chocolate biscuit, condensed milk, chestnut",
-      price: 1,
+      name: "Three Africa (The Bright Classic)",
+      notes: "Caramel, Vanilla, Candied Tamarind",
+      price: 0,
       isNew: false,
     },
     {
@@ -1137,13 +1137,13 @@ const createMirdifMenu = (): MenuCategory[] => {
       notes: "Strawberry Jam, Honey, Milk Chocolates",
       price: 5,
       isNew: true,
-      status: "Available",
+      status: "Available" as const,
     },
     {
       id: "bean_latino",
       name: "Latino Blend",
       notes: "Milk Chocolate, Hazelnut, Toffee",
-      price: 0,
+      price: 1,
       isNew: false,
     },
     {
@@ -1224,7 +1224,7 @@ const createMirdifMenu = (): MenuCategory[] => {
           image: "https://iili.io/qLf9mXt.jpg",
           ingredients: "Pour-over brewing method",
           calories: 5,
-          status: "Available",
+          status: "Available" as const,
         },
         {
           id: "fil_mish_mish",
@@ -1234,7 +1234,7 @@ const createMirdifMenu = (): MenuCategory[] => {
           image: "https://iili.io/qLf9mXt.jpg",
           ingredients: "Pour-over brewing method",
           calories: 5,
-          status: "Available",
+          status: "Available" as const,
         },
         {
           id: "fil_kenya_kirimara",
@@ -1244,7 +1244,7 @@ const createMirdifMenu = (): MenuCategory[] => {
           image: "https://iili.io/qLf9mXt.jpg",
           ingredients: "Pour-over brewing method",
           calories: 5,
-          status: "Available",
+          status: "Available" as const,
         },
         {
           id: "fil_blackberry",
@@ -1254,7 +1254,7 @@ const createMirdifMenu = (): MenuCategory[] => {
           image: "https://iili.io/qLf9mXt.jpg",
           ingredients: "Pour-over brewing method",
           calories: 5,
-          status: "Available",
+          status: "Available" as const,
         },
         {
           id: "fil_ethiopia",
@@ -1264,7 +1264,7 @@ const createMirdifMenu = (): MenuCategory[] => {
           image: "https://iili.io/qLf9mXt.jpg",
           ingredients: "Pour-over brewing method",
           calories: 5,
-          status: "Available",
+          status: "Available" as const,
         },
         {
           id: "fil_colombia_sweet_decaf",
@@ -1274,7 +1274,7 @@ const createMirdifMenu = (): MenuCategory[] => {
           image: "https://iili.io/qLf9mXt.jpg",
           ingredients: "Pour-over brewing method",
           calories: 5,
-          status: "Available",
+          status: "Available" as const,
         },
         {
           id: "fil_colombia_gesha",
@@ -1284,7 +1284,7 @@ const createMirdifMenu = (): MenuCategory[] => {
           image: "https://iili.io/qLf9mXt.jpg",
           ingredients: "Pour-over brewing method",
           calories: 5,
-          status: "Available",
+          status: "Available" as const,
         },
         {
           id: "fil_costa_rica",
@@ -1294,7 +1294,7 @@ const createMirdifMenu = (): MenuCategory[] => {
           image: "https://iili.io/qLf9mXt.jpg",
           ingredients: "Pour-over brewing method",
           calories: 5,
-          status: "Available",
+          status: "Available" as const,
         },
       ],
     },
@@ -1642,6 +1642,21 @@ const createMirdifMenu = (): MenuCategory[] => {
         },
       ].filter(Boolean),
     },
+    {
+      id: "sweet-breakfast-mirdif",
+      title: "SWEET BREAKFAST",
+      items: [
+        {
+          id: "sb_french_toast_mirdif",
+          name: "French Toast",
+          price: "66",
+          image: "https://iili.io/q2ARzyG.jpg",
+          ingredients: "Caramelized and served with vanilla ice cream, almond streusel, whipped vanilla cream, and rhubarb compote (option salted caramel, mix berries compote on the side).",
+          calories: 650,
+          status: "Available" as const,
+        }
+      ]
+    },
   ];
 };
 
@@ -1680,9 +1695,9 @@ const createAlBateenMenu = (): MenuCategory[] => {
     },
     {
       id: "bean_brazil_chocolate",
-      name: "Brazil Chocolate",
-      notes: "Chocolate biscuit, condensed milk, chestnut",
-      price: 1,
+      name: "Three Africa (The Bright Classic)",
+      notes: "Caramel, Vanilla, Candied Tamarind",
+      price: 0,
       isNew: true,
     },
     {
@@ -1691,7 +1706,7 @@ const createAlBateenMenu = (): MenuCategory[] => {
       notes: "Strawberry Jam, Honey, Milk Chocolates",
       price: 5,
       isNew: true,
-      status: "Available",
+      status: "Available" as const,
     },
     {
       id: "bean_colombia_decaf",
@@ -1737,7 +1752,7 @@ const createAlBateenMenu = (): MenuCategory[] => {
           image: "https://iili.io/qLf9mXt.jpg",
           ingredients: "Pour-over brewing method",
           calories: 5,
-          status: "Available",
+          status: "Available" as const,
         },
         {
           id: "fil_kenya_kirimara",
@@ -1747,7 +1762,7 @@ const createAlBateenMenu = (): MenuCategory[] => {
           image: "https://iili.io/qLf9mXt.jpg",
           ingredients: "Pour-over brewing method",
           calories: 5,
-          status: "Available",
+          status: "Available" as const,
         },
         {
           id: "fil_blackberry",
@@ -1757,7 +1772,7 @@ const createAlBateenMenu = (): MenuCategory[] => {
           image: "https://iili.io/qLf9mXt.jpg",
           ingredients: "Pour-over brewing method",
           calories: 5,
-          status: "Available",
+          status: "Available" as const,
         },
         {
           id: "fil_ethiopia",
@@ -1767,7 +1782,7 @@ const createAlBateenMenu = (): MenuCategory[] => {
           image: "https://iili.io/qLf9mXt.jpg",
           ingredients: "Pour-over brewing method",
           calories: 5,
-          status: "Available",
+          status: "Available" as const,
         },
         {
           id: "fil_colombia_sweet_decaf",
@@ -1777,7 +1792,7 @@ const createAlBateenMenu = (): MenuCategory[] => {
           image: "https://iili.io/qLf9mXt.jpg",
           ingredients: "Pour-over brewing method",
           calories: 5,
-          status: "Available",
+          status: "Available" as const,
         },
         {
           id: "fil_colombia_gesha",
@@ -1787,7 +1802,7 @@ const createAlBateenMenu = (): MenuCategory[] => {
           image: "https://iili.io/qLf9mXt.jpg",
           ingredients: "Pour-over brewing method",
           calories: 5,
-          status: "Available",
+          status: "Available" as const,
         },
         {
           id: "fil_costa_rica",
@@ -1797,7 +1812,7 @@ const createAlBateenMenu = (): MenuCategory[] => {
           image: "https://iili.io/qLf9mXt.jpg",
           ingredients: "Pour-over brewing method",
           calories: 5,
-          status: "Available",
+          status: "Available" as const,
         },
       ],
     },
@@ -1813,7 +1828,7 @@ const createAlBateenMenu = (): MenuCategory[] => {
           image: "https://iili.io/qLf9mXt.jpg",
           ingredients: "Cold drip brewing method",
           calories: 5,
-          status: "Available",
+          status: "Available" as const,
         },
         {
           id: "cd_gesha",
@@ -2175,7 +2190,7 @@ const createKhalifaMenu = (): MenuCategory[] => {
       notes: "Strawberry Jam, Honey, Milk Chocolates",
       price: 5,
       isNew: true,
-      status: "Available",
+      status: "Available" as const,
     },
     {
       id: "bean_colombia_decaf",
@@ -2220,7 +2235,7 @@ const createKhalifaMenu = (): MenuCategory[] => {
           image: "https://iili.io/qLf9mXt.jpg",
           ingredients: "Pour-over brewing method",
           calories: 5,
-          status: "Available",
+          status: "Available" as const,
         },
         {
           id: "fil_kenya_kirimara",
@@ -2230,7 +2245,7 @@ const createKhalifaMenu = (): MenuCategory[] => {
           image: "https://iili.io/qLf9mXt.jpg",
           ingredients: "Pour-over brewing method",
           calories: 5,
-          status: "Available",
+          status: "Available" as const,
         },
         {
           id: "fil_blackberry",
@@ -2240,7 +2255,7 @@ const createKhalifaMenu = (): MenuCategory[] => {
           image: "https://iili.io/qLf9mXt.jpg",
           ingredients: "Pour-over brewing method",
           calories: 5,
-          status: "Available",
+          status: "Available" as const,
         },
         {
           id: "fil_ethiopia",
@@ -2250,7 +2265,7 @@ const createKhalifaMenu = (): MenuCategory[] => {
           image: "https://iili.io/qLf9mXt.jpg",
           ingredients: "Pour-over brewing method",
           calories: 5,
-          status: "Available",
+          status: "Available" as const,
         },
         {
           id: "fil_colombia_sweet_decaf",
@@ -2260,7 +2275,7 @@ const createKhalifaMenu = (): MenuCategory[] => {
           image: "https://iili.io/qLf9mXt.jpg",
           ingredients: "Pour-over brewing method",
           calories: 5,
-          status: "Available",
+          status: "Available" as const,
         },
         {
           id: "fil_colombia_gesha",
@@ -2270,7 +2285,7 @@ const createKhalifaMenu = (): MenuCategory[] => {
           image: "https://iili.io/qLf9mXt.jpg",
           ingredients: "Pour-over brewing method",
           calories: 5,
-          status: "Available",
+          status: "Available" as const,
         },
       ],
     },
@@ -2471,7 +2486,7 @@ const createKhalifaMenu = (): MenuCategory[] => {
           image: "https://iili.io/q2urMyF.jpg",
           ingredients: "Signature drink",
           calories: 10,
-          status: "Available",
+          status: "Available" as const,
         },
       ].filter(Boolean),
     },
@@ -2559,9 +2574,9 @@ const createAlQanaMenu = (): MenuCategory[] => {
     },
     {
       id: "bean_brazil",
-      name: "Brazil Chocolate",
-      notes: "Chocolate biscuit, condensed milk, chestnut",
-      price: 1,
+      name: "Three Africa (The Bright Classic)",
+      notes: "Caramel, Vanilla, Candied Tamarind",
+      price: 0,
       isNew: false,
     },
 
@@ -2571,7 +2586,7 @@ const createAlQanaMenu = (): MenuCategory[] => {
       notes: "Strawberry Jam, Honey, Milk Chocolates",
       price: 5,
       isNew: true,
-      status: "Available",
+      status: "Available" as const,
     },
     {
       id: "bean_colombia_decaf",
@@ -2617,7 +2632,7 @@ const createAlQanaMenu = (): MenuCategory[] => {
           image: "https://iili.io/qLf9mXt.jpg",
           ingredients: "Pour-over brewing method",
           calories: 5,
-          status: "Available",
+          status: "Available" as const,
         },
         {
           id: "fil_mish_mish",
@@ -2627,7 +2642,7 @@ const createAlQanaMenu = (): MenuCategory[] => {
           image: "https://iili.io/qLf9mXt.jpg",
           ingredients: "Pour-over brewing method",
           calories: 5,
-          status: "Available",
+          status: "Available" as const,
         },
         {
           id: "fil_kenya_kirimara",
@@ -2637,7 +2652,7 @@ const createAlQanaMenu = (): MenuCategory[] => {
           image: "https://iili.io/qLf9mXt.jpg",
           ingredients: "Pour-over brewing method",
           calories: 5,
-          status: "Available",
+          status: "Available" as const,
         },
         {
           id: "fil_blackberry",
@@ -2647,7 +2662,7 @@ const createAlQanaMenu = (): MenuCategory[] => {
           image: "https://iili.io/qLf9mXt.jpg",
           ingredients: "Pour-over brewing method",
           calories: 5,
-          status: "Available",
+          status: "Available" as const,
         },
         {
           id: "fil_ethiopia",
@@ -2657,7 +2672,7 @@ const createAlQanaMenu = (): MenuCategory[] => {
           image: "https://iili.io/qLf9mXt.jpg",
           ingredients: "Pour-over brewing method",
           calories: 5,
-          status: "Available",
+          status: "Available" as const,
         },
         {
           id: "fil_colombia_sweet_decaf",
@@ -2667,7 +2682,7 @@ const createAlQanaMenu = (): MenuCategory[] => {
           image: "https://iili.io/qLf9mXt.jpg",
           ingredients: "Pour-over brewing method",
           calories: 5,
-          status: "Available",
+          status: "Available" as const,
         },
         {
           id: "fil_colombia_gesha",
@@ -2677,7 +2692,7 @@ const createAlQanaMenu = (): MenuCategory[] => {
           image: "https://iili.io/qLf9mXt.jpg",
           ingredients: "Pour-over brewing method",
           calories: 5,
-          status: "Available",
+          status: "Available" as const,
         },
         {
           id: "fil_costa_rica",
@@ -2687,7 +2702,7 @@ const createAlQanaMenu = (): MenuCategory[] => {
           image: "https://iili.io/qLf9mXt.jpg",
           ingredients: "Pour-over brewing method",
           calories: 5,
-          status: "Available",
+          status: "Available" as const,
         },
       ],
     },
@@ -2928,7 +2943,7 @@ const createAlQanaMenu = (): MenuCategory[] => {
           ...findItem("signature-drinks", "sig1")!,
           name: "Rush Hour",
           image: "https://iili.io/q2urMyF.jpg",
-          status: "Available",
+          status: "Available" as const,
         },
         {
           ...findItem("tea", "tea_rush")!,
@@ -2936,7 +2951,7 @@ const createAlQanaMenu = (): MenuCategory[] => {
           name: "Hot Rush Hour",
           price: "33",
           image: "https://iili.io/qlbAzS2.jpg",
-          status: "Available",
+          status: "Available" as const,
         },
         findItem("signature-drinks", "sig_espresso_shake")!,
         findItem("signature-drinks", "sig_matcha_shake")!,
@@ -3051,8 +3066,8 @@ const createMarinaMenu = (): MenuCategory[] => {
     },
     {
       id: "bean_latino_blend",
-      name: "Latino Blend (The Crowd Pleaser)",
-      notes: "Chocolate Biscuit, Condensed Milk, Chestnut",
+      name: "Latino Blend",
+      notes: "Milk Chocolate, Hazelnut, Toffee",
       price: 1,
       isNew: true,
     },
@@ -3121,7 +3136,7 @@ const createMarinaMenu = (): MenuCategory[] => {
         image: "https://iili.io/qLf9mXt.jpg",
         ingredients: "Pour-over brewing method",
         calories: 5,
-        status: "Available",
+        status: "Available" as const,
       },
       {
         id: "fil_mish_mish",
@@ -3131,7 +3146,7 @@ const createMarinaMenu = (): MenuCategory[] => {
         image: "https://iili.io/qLf9mXt.jpg",
         ingredients: "Pour-over brewing method",
         calories: 5,
-        status: "Available",
+        status: "Available" as const,
       },
       {
         id: "fil_kenya_kirimara",
@@ -3141,7 +3156,7 @@ const createMarinaMenu = (): MenuCategory[] => {
         image: "https://iili.io/qLf9mXt.jpg",
         ingredients: "Pour-over brewing method",
         calories: 5,
-        status: "Available",
+        status: "Available" as const,
       },
       {
         id: "fil_blackberry",
@@ -3151,7 +3166,7 @@ const createMarinaMenu = (): MenuCategory[] => {
         image: "https://iili.io/qLf9mXt.jpg",
         ingredients: "Pour-over brewing method",
         calories: 5,
-        status: "Available",
+        status: "Available" as const,
       },
       {
         id: "fil_ethiopia",
@@ -3161,7 +3176,7 @@ const createMarinaMenu = (): MenuCategory[] => {
         image: "https://iili.io/qLf9mXt.jpg",
         ingredients: "Pour-over brewing method",
         calories: 5,
-        status: "Available",
+        status: "Available" as const,
       },
       {
         id: "fil_colombia_sweet_decaf",
@@ -3171,7 +3186,7 @@ const createMarinaMenu = (): MenuCategory[] => {
         image: "https://iili.io/qLf9mXt.jpg",
         ingredients: "Pour-over brewing method",
         calories: 5,
-        status: "Available",
+        status: "Available" as const,
       },
       {
         id: "fil_colombia_gesha",
@@ -3181,7 +3196,7 @@ const createMarinaMenu = (): MenuCategory[] => {
         image: "https://iili.io/qLf9mXt.jpg",
         ingredients: "Pour-over brewing method",
         calories: 5,
-        status: "Available",
+        status: "Available" as const,
       },
       {
         id: "fil_costa_rica",
@@ -3191,7 +3206,7 @@ const createMarinaMenu = (): MenuCategory[] => {
         image: "https://iili.io/qLf9mXt.jpg",
         ingredients: "Pour-over brewing method",
         calories: 5,
-        status: "Available",
+        status: "Available" as const,
       },
     ],
   };
@@ -3253,6 +3268,22 @@ const createMarinaMenu = (): MenuCategory[] => {
         calories: 650,
       },
     ],
+  });
+
+  marinaMenu.push({
+    id: "health-bar-marina",
+    title: "HEALTH BAR",
+    items: [
+      {
+        id: "hb_acai_smoothie_marina",
+        name: "Acai Smoothie",
+        price: "42",
+        image: "https://iili.io/BBBfCDN.jpg",
+        ingredients: "Acai berry, banana, strawberry, peanut butter, coconut water, oat milk, and apple juice.",
+        calories: 320,
+        status: "Available" as const,
+      }
+    ]
   });
 
   return marinaMenu;
@@ -3446,7 +3477,7 @@ const applyGoldenRuleLayout = (menu: MenuCategory[]): MenuCategory[] => {
           image: "https://iili.io/qKYaxff.png",
           ingredients: "Cold Brew",
           calories: 5,
-          status: "Available",
+          status: "Available" as const,
         },
         {
           id: "cb_ethiopia_global",
@@ -3456,7 +3487,7 @@ const applyGoldenRuleLayout = (menu: MenuCategory[]): MenuCategory[] => {
           image: "https://iili.io/B3OHMFV.jpg",
           ingredients: "Cold Brew",
           calories: 5,
-          status: "Available",
+          status: "Available" as const,
         },
         {
           id: "cb_kenya_global",
@@ -3466,7 +3497,7 @@ const applyGoldenRuleLayout = (menu: MenuCategory[]): MenuCategory[] => {
           image: "https://iili.io/B3Ns6UG.jpg",
           ingredients: "Cold Brew",
           calories: 5,
-          status: "Available",
+          status: "Available" as const,
         }
       ],
     });
@@ -3686,7 +3717,7 @@ const createDubaiMenu = (): MenuCategory[] => {
           image: "https://iili.io/qLf9mXt.jpg",
           ingredients: "Pour-over brewing method",
           calories: 5,
-          status: "Available",
+          status: "Available" as const,
         },
         {
           id: "fil_mish_mish",
@@ -3696,7 +3727,7 @@ const createDubaiMenu = (): MenuCategory[] => {
           image: "https://iili.io/qLf9mXt.jpg",
           ingredients: "Pour-over brewing method",
           calories: 5,
-          status: "Available",
+          status: "Available" as const,
         },
         {
           id: "fil_kenya_kirimara",
@@ -3706,7 +3737,7 @@ const createDubaiMenu = (): MenuCategory[] => {
           image: "https://iili.io/qLf9mXt.jpg",
           ingredients: "Pour-over brewing method",
           calories: 5,
-          status: "Available",
+          status: "Available" as const,
         },
         {
           id: "fil_blackberry",
@@ -3716,7 +3747,7 @@ const createDubaiMenu = (): MenuCategory[] => {
           image: "https://iili.io/qLf9mXt.jpg",
           ingredients: "Pour-over brewing method",
           calories: 5,
-          status: "Available",
+          status: "Available" as const,
         },
         {
           id: "fil_ethiopia",
@@ -3726,7 +3757,7 @@ const createDubaiMenu = (): MenuCategory[] => {
           image: "https://iili.io/qLf9mXt.jpg",
           ingredients: "Pour-over brewing method",
           calories: 5,
-          status: "Available",
+          status: "Available" as const,
         },
         {
           id: "fil_colombia_sweet_decaf",
@@ -3736,7 +3767,7 @@ const createDubaiMenu = (): MenuCategory[] => {
           image: "https://iili.io/qLf9mXt.jpg",
           ingredients: "Pour-over brewing method",
           calories: 5,
-          status: "Available",
+          status: "Available" as const,
         },
         {
           id: "fil_colombia_gesha",
@@ -3746,7 +3777,7 @@ const createDubaiMenu = (): MenuCategory[] => {
           image: "https://iili.io/qLf9mXt.jpg",
           ingredients: "Pour-over brewing method",
           calories: 5,
-          status: "Available",
+          status: "Available" as const,
         },
         {
           id: "fil_costa_rica",
@@ -3756,7 +3787,7 @@ const createDubaiMenu = (): MenuCategory[] => {
           image: "https://iili.io/qLf9mXt.jpg",
           ingredients: "Pour-over brewing method",
           calories: 5,
-          status: "Available",
+          status: "Available" as const,
         },
       ],
     },
@@ -4176,7 +4207,7 @@ const RAW_BRANCH_MENUS: BranchMenuDirectory = {
               image: "https://iili.io/qLf9mXt.jpg",
               ingredients: "Pour-over brewing method",
               calories: 5,
-              status: "Available",
+              status: "Available" as const,
             },
             {
               id: "fil_colombia_strawberry",
@@ -4186,7 +4217,7 @@ const RAW_BRANCH_MENUS: BranchMenuDirectory = {
               image: "https://iili.io/qLf9mXt.jpg",
               ingredients: "Pour-over brewing method",
               calories: 5,
-              status: "Available",
+              status: "Available" as const,
             },
             {
               id: "fil_mish_mish",
@@ -4196,7 +4227,7 @@ const RAW_BRANCH_MENUS: BranchMenuDirectory = {
               image: "https://iili.io/qLf9mXt.jpg",
               ingredients: "Pour-over brewing method",
               calories: 5,
-              status: "Available",
+              status: "Available" as const,
             },
             {
               id: "fil_costa_rica",
@@ -4206,7 +4237,7 @@ const RAW_BRANCH_MENUS: BranchMenuDirectory = {
               image: "https://iili.io/qLf9mXt.jpg",
               ingredients: "Pour-over brewing method",
               calories: 5,
-              status: "Available",
+              status: "Available" as const,
             },
             {
               id: "fil_kenya_kiramara",
@@ -4216,7 +4247,7 @@ const RAW_BRANCH_MENUS: BranchMenuDirectory = {
               image: "https://iili.io/qLf9mXt.jpg",
               ingredients: "Pour-over brewing method",
               calories: 5,
-              status: "Available",
+              status: "Available" as const,
             },
             {
               id: "fil_panama_gesha",
@@ -4226,7 +4257,7 @@ const RAW_BRANCH_MENUS: BranchMenuDirectory = {
               image: "https://iili.io/qLf9mXt.jpg",
               ingredients: "Pour-over brewing method",
               calories: 5,
-              status: "Available",
+              status: "Available" as const,
             },
             {
               id: "fil_sweet_dream_decaf",
@@ -4236,7 +4267,7 @@ const RAW_BRANCH_MENUS: BranchMenuDirectory = {
               image: "https://iili.io/qLf9mXt.jpg",
               ingredients: "Pour-over brewing method",
               calories: 5,
-              status: "Available",
+              status: "Available" as const,
             }
           ];
 
@@ -4264,7 +4295,7 @@ const RAW_BRANCH_MENUS: BranchMenuDirectory = {
               image: "https://iili.io/qKka1vj.png",
               ingredients: "{TAPS FILTERED}",
               calories: 5,
-              status: "Available",
+              status: "Available" as const,
             },
             {
               id: "tap_kenya_kiramara",
@@ -4274,7 +4305,7 @@ const RAW_BRANCH_MENUS: BranchMenuDirectory = {
               image: "https://iili.io/BuylWL7.png",
               ingredients: "Available for Manual Pouring",
               calories: 5,
-              status: "Available",
+              status: "Available" as const,
             },
             {
               id: "tap_colombia_strawberry",
@@ -4284,7 +4315,7 @@ const RAW_BRANCH_MENUS: BranchMenuDirectory = {
               image: "https://iili.io/qKkcmJa.png",
               ingredients: "Available for Manual Pouring",
               calories: 5,
-              status: "Available",
+              status: "Available" as const,
             }
           ]
         };
@@ -4302,7 +4333,7 @@ const RAW_BRANCH_MENUS: BranchMenuDirectory = {
               image: "https://iili.io/qLf9mXt.jpg",
               ingredients: "Manual Pouring",
               calories: 5,
-              status: "Available",
+              status: "Available" as const,
             },
             {
               id: "man_colombia_strawberry",
@@ -4312,7 +4343,7 @@ const RAW_BRANCH_MENUS: BranchMenuDirectory = {
               image: "https://iili.io/qLf9mXt.jpg",
               ingredients: "Manual Pouring",
               calories: 5,
-              status: "Available",
+              status: "Available" as const,
             },
             {
               id: "man_mish_mish",
@@ -4322,7 +4353,7 @@ const RAW_BRANCH_MENUS: BranchMenuDirectory = {
               image: "https://iili.io/qLf9mXt.jpg",
               ingredients: "Manual Pouring",
               calories: 5,
-              status: "Available",
+              status: "Available" as const,
             },
             {
               id: "man_costa_rica",
@@ -4332,7 +4363,7 @@ const RAW_BRANCH_MENUS: BranchMenuDirectory = {
               image: "https://iili.io/qLf9mXt.jpg",
               ingredients: "Manual Pouring",
               calories: 5,
-              status: "Available",
+              status: "Available" as const,
             },
             {
               id: "man_kenya_kiramara",
@@ -4342,7 +4373,7 @@ const RAW_BRANCH_MENUS: BranchMenuDirectory = {
               image: "https://iili.io/qLf9mXt.jpg",
               ingredients: "Manual Pouring",
               calories: 5,
-              status: "Available",
+              status: "Available" as const,
             },
             {
               id: "man_panama_gesha",
@@ -4352,7 +4383,7 @@ const RAW_BRANCH_MENUS: BranchMenuDirectory = {
               image: "https://iili.io/qLf9mXt.jpg",
               ingredients: "Manual Pouring",
               calories: 5,
-              status: "Available",
+              status: "Available" as const,
             },
             {
               id: "man_sweet_dream_decaf",
@@ -4362,7 +4393,7 @@ const RAW_BRANCH_MENUS: BranchMenuDirectory = {
               image: "https://iili.io/qLf9mXt.jpg",
               ingredients: "Manual Pouring",
               calories: 5,
-              status: "Available",
+              status: "Available" as const,
             }
           ]
         };

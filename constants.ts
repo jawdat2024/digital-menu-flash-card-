@@ -2832,7 +2832,6 @@ const createAlQanaMenu = (): MenuCategory[] => {
       id: "baked-goods",
       title: "Baked Goods",
       items: [
-        findItem("from-our-bakery", "fob_bacon_glaze")!,
         {
           id: "bg_plain",
           name: "Plain Croissant",
@@ -2890,12 +2889,6 @@ const createAlQanaMenu = (): MenuCategory[] => {
           calories: 450,
         },
         findItem("desserts", "d_san_seb")!,
-        {
-          id: "d_cartel_crust_san_seb",
-          name: "Crust San Sebastian",
-          price: "39.20",
-          image: "https://iili.io/q2hnbp4.png",
-        },
         findItem("desserts", "STICKY DATE")!,
         {
           id: "d_tiramisu",
@@ -3285,22 +3278,6 @@ const createMarinaMenu = (): MenuCategory[] => {
         items: cat.items.map((item) =>
           item.id === "d_crepe_rolls" ? { ...item, status: "Available" } : item,
         ),
-      };
-    }
-    if (cat.id === "from-our-bakery") {
-      return {
-        ...cat,
-        items: [
-          ...cat.items,
-          {
-            id: "fob_bacon_glaze",
-            name: "Bacon Glaze",
-            ingredients: "Flaky croissant dough rolled with Angus beef bacon inside, baked until golden, then glazed with burnt butter and organic maple syrup.",
-            price: "22",
-            image: "https://iili.io/B1idjQn.jpg",
-            status: "Available" as const,
-          }
-        ]
       };
     }
     return cat;

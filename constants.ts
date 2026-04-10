@@ -1191,7 +1191,7 @@ const createMirdifMenu = (): MenuCategory[] => {
     },
     {
       id: "bean_colombia_strawberry",
-      name: "Colombia - Strawberry",
+      name: "Colombia Peach",
       notes: "Strawberry Jam, Honey, Milk Chocolates",
       price: 5,
       isNew: true,
@@ -1761,7 +1761,7 @@ const createAlBateenMenu = (): MenuCategory[] => {
     },
     {
       id: "bean_colombia_strawberry",
-      name: "Colombia - Strawberry",
+      name: "Colombia Peach",
       notes: "Strawberry Jam, Honey, Milk Chocolates",
       price: 5,
       isNew: true,
@@ -2238,15 +2238,15 @@ const createKhalifaMenu = (): MenuCategory[] => {
   const khalifaBeans = [
     {
       id: "bean_brazil_amazonic",
-      name: "Nicaragua",
+      name: "Latino Blend",
       notes: "Dark chocolate, Roasted hazelnut, Caramel",
-      price: 0,
+      price: 1,
       isNew: false,
     },
 
     {
       id: "bean_colombia_strawberry",
-      name: "Colombia - Strawberry",
+      name: "Colombia Peach",
       notes: "Strawberry Jam, Honey, Milk Chocolates",
       price: 5,
       isNew: true,
@@ -2287,6 +2287,16 @@ const createKhalifaMenu = (): MenuCategory[] => {
       id: "filter-coffee",
       title: "Filter Coffee",
       items: [
+        {
+          id: "fil_colombia_bourbon_sidra",
+          name: "Colombia Bourbon Sidra",
+          tastingNotes: "Red grape, watermelon, hard candy, raspberry",
+          price: "46",
+          image: "https://iili.io/qLf9mXt.jpg",
+          ingredients: "Pour-over brewing method",
+          calories: 5,
+          status: "Available" as const,
+        },
         {
           id: "fil_mish_mish",
           name: "Mish Mish",
@@ -2643,7 +2653,7 @@ const createAlQanaMenu = (): MenuCategory[] => {
 
     {
       id: "bean_colombia_strawberry",
-      name: "Colombia Strawberry",
+      name: "Colombia Peach",
       notes: "Strawberry Jam, Honey, Milk Chocolates",
       price: 5,
       isNew: true,
@@ -3280,6 +3290,40 @@ const createMarinaMenu = (): MenuCategory[] => {
         ),
       };
     }
+    if (cat.id === "highly-recommend") {
+      return {
+        ...cat,
+        items: [
+          ...cat.items,
+          {
+            id: "bw6_marina",
+            name: "Banana, Dates & Yogurt",
+            ingredients: "Earl Grey Chia, fresh banana, sweet dates, creamy yogurt.",
+            price: "38",
+            image: "https://iili.io/q2j9Vwu.png",
+            calories: 350,
+          },
+          {
+            id: "bw7_marina",
+            name: "Matcha Chia Pudding",
+            ingredients: "Premium Matcha infused chia pudding, coconut milk, seasonal toppings.",
+            price: "38",
+            image: "https://iili.io/q2hpnov.png",
+            calories: 330,
+          },
+          {
+            id: "fil_colombia_sidra_marina",
+            name: "Colombia Sidra",
+            tastingNotes: "Red Grapes, Watermelon, Hard Candy, Raspberry.",
+            price: "57",
+            image: "https://iili.io/qLf9mXt.jpg",
+            ingredients: "Pour-over brewing method",
+            calories: 5,
+            status: "Available" as const,
+          }
+        ]
+      };
+    }
     return cat;
   });
 
@@ -3723,7 +3767,7 @@ const createDubaiMenu = (): MenuCategory[] => {
     },
     {
       id: "bean_colombia_strawberry",
-      name: "Colombia - Strawberry",
+      name: "Colombia Peach",
       notes: "Strawberry Jam, Honey, Milk Chocolates",
       price: 5,
       isNew: true,
@@ -4236,7 +4280,7 @@ const RAW_BRANCH_MENUS: BranchMenuDirectory = {
       if (specialty.subCategories) {
         const filteredHot = specialty.subCategories.find(sc => sc.id === 'filtered-hot');
         if (filteredHot) {
-          // 1. Update "Filtered (Hot)" Category
+          // 1. Update "Filtered" Category
           filteredHot.items = filteredHot.items.filter(item => {
             const name = item.name.toLowerCase();
             return !name.includes('cuban cigar') &&

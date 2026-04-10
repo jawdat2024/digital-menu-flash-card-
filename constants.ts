@@ -287,7 +287,7 @@ const BASE_MENU: MenuCategory[] = [
       {
         id: "fil_eth_guji",
         name: "Colombia - Bourbon Sidra",
-        tastingNotes: "Red grapes, Watermelon, Hard Candy, Raspberry",
+        tastingNotes: "Red Grapes, Watermelon, Hard Candy, Raspberry.",
         ingredients: "Pour-over brewing method",
         price: "46",
         image: "https://iili.io/qLf9mXt.jpg",
@@ -297,7 +297,7 @@ const BASE_MENU: MenuCategory[] = [
       {
         id: "fil_cuban",
         name: "Costa Rica - Canet Chopin",
-        tastingNotes: "Cacao, Fig Compote, Honey, Cherry",
+        tastingNotes: "Cacao, Fig Compote, Honey, Cherry.",
         ingredients: "Pour-over brewing method",
         price: "57",
         image: "https://iili.io/qLf9mXt.jpg",
@@ -307,7 +307,7 @@ const BASE_MENU: MenuCategory[] = [
       {
         id: "fil_kenya_kirimara",
         name: "Kenya Kirimara",
-        tastingNotes: "Wild Cherry, Brown Sugar, Raisins",
+        tastingNotes: "Brown Sugar, Wild Cherry, Raisins.",
         ingredients: "Pour-over brewing method",
         price: "46",
         image: "https://iili.io/qLf9mXt.jpg",
@@ -317,7 +317,7 @@ const BASE_MENU: MenuCategory[] = [
       {
         id: "fil_col_mish",
         name: "Colombia Mish Mish",
-        tastingNotes: "Apricot Jam, Raspberry, Lychee",
+        tastingNotes: "Apricot Jam, Raspberry, Lychee.",
         ingredients: "Pour-over brewing method",
         price: "57",
         image: "https://iili.io/qLf9mXt.jpg",
@@ -327,7 +327,7 @@ const BASE_MENU: MenuCategory[] = [
       {
         id: "fil_col_black",
         name: "Panamá Cordillera Gesha",
-        tastingNotes: "Cantaloupe, Honey, Berries, Lemongrass",
+        tastingNotes: "Cantaloupe, Honey, Berries, And Lemongrass.",
         ingredients: "Pour-over brewing method",
         price: "65",
         image: "https://iili.io/qLf9mXt.jpg",
@@ -348,7 +348,7 @@ const BASE_MENU: MenuCategory[] = [
         id: "cb_eth",
         name: "Ethiopia Cold Brew",
         origin: "Ethiopia",
-        tastingNotes: "Apricot, Pear, Honey",
+        tastingNotes: "Apricot, Pear, Honey.",
         ingredients: "Slow-steeped cold water extraction for 12+ hours.",
         price: "38",
         image: "https://iili.io/B3OHMFV.jpg",
@@ -370,12 +370,62 @@ const BASE_MENU: MenuCategory[] = [
         id: "cb_ken",
         name: "Kenya Cold Brew",
         origin: "Kenya",
-        tastingNotes: "Wild Cherry, Brown Sugar, Raisins",
+        tastingNotes: "Brown Sugar, Wild Cherry, Raisins.",
         ingredients: "Slow-steeped cold water extraction for 12+ hours.",
         price: "38",
         image: "https://iili.io/B3Ns6UG.jpg",
         calories: 10,
         status: "Available" as const,
+      },
+          {
+        id: "fil_new_0",
+        name: "Colombia - Anaerobic Banana",
+        tastingNotes: "Banana Bread, Milk Chocolate, Toffee.",
+        ingredients: "Pour-over brewing method",
+        price: "TBD",
+        image: "https://iili.io/qLf9mXt.jpg",
+        calories: 5,
+        status: "Available" as const
+      },
+      {
+        id: "fil_new_1",
+        name: "Colombia - La Vega Farm",
+        tastingNotes: "Jaggery, Elderberry, Cantaloupe.",
+        ingredients: "Pour-over brewing method",
+        price: "TBD",
+        image: "https://iili.io/qLf9mXt.jpg",
+        calories: 5,
+        status: "Available" as const
+      },
+      {
+        id: "fil_new_2",
+        name: "Yemen - Shariq Haraz",
+        tastingNotes: "Chestnut, Cola, Red Grapes.",
+        ingredients: "Pour-over brewing method",
+        price: "TBD",
+        image: "https://iili.io/qLf9mXt.jpg",
+        calories: 5,
+        status: "Available" as const
+      },
+      {
+        id: "fil_new_3",
+        name: "Colombia - Rum Brule",
+        tastingNotes: "Golden Raisins, Molasses, Custard, Oak.",
+        ingredients: "Pour-over brewing method",
+        price: "TBD",
+        image: "https://iili.io/qLf9mXt.jpg",
+        calories: 5,
+        status: "Available" as const
+      },
+      {
+        id: "fil_new_4",
+        name: "Colombia - Eucalyptus",
+        tastingNotes: "Mint Chocolate, Cinnamon, Caramel.",
+        ingredients: "Pour-over brewing method",
+        price: "TBD",
+        image: "https://iili.io/qLf9mXt.jpg",
+        calories: 5,
+        status: "Available" as const
       },
     ],
   },
@@ -386,7 +436,7 @@ const BASE_MENU: MenuCategory[] = [
       {
         id: "tap_col_straw",
         name: "Colombia Strawberry",
-        tastingNotes: "Strawberry jam, honey, milk chocolates",
+        tastingNotes: "Strawberry Jam, Honey, Milk Chocolates.",
         ingredients: "",
         price: "41",
         image: "https://iili.io/qKkcmJa.png",
@@ -404,7 +454,7 @@ const BASE_MENU: MenuCategory[] = [
       {
         id: "tap_eth_rog",
         name: "Ethiopia Rogisha",
-        tastingNotes: "Apricots, pear, honey",
+        tastingNotes: "Apricot, Pear, Honey.",
         ingredients: "",
         price: "36",
         image: "https://iili.io/qKka1vj.png",
@@ -982,6 +1032,14 @@ const BASE_MENU: MenuCategory[] = [
         calories: 380,
       },
       {
+        id: "fob_bacon_glaze",
+        name: "Bacon Glaze",
+        ingredients: "Flaky croissant dough rolled with Angus beef bacon inside, baked until golden, then glazed with burnt butter and organic maple syrup.",
+        price: "22",
+        image: "https://iili.io/B1idjQn.jpg",
+        status: "Available" as const,
+      },
+      {
         id: "fob_choc",
         name: "Chocolate Croissant",
         ingredients:
@@ -1229,7 +1287,7 @@ const createMirdifMenu = (): MenuCategory[] => {
         {
           id: "fil_mish_mish",
           name: "Mish Mish",
-          tastingNotes: "Apricot jam, raspberry, lychee",
+          tastingNotes: "Apricot Jam, Raspberry, Lychee.",
           price: "57",
           image: "https://iili.io/qLf9mXt.jpg",
           ingredients: "Pour-over brewing method",
@@ -1239,7 +1297,7 @@ const createMirdifMenu = (): MenuCategory[] => {
         {
           id: "fil_kenya_kirimara",
           name: "Kenya KIRIMARA",
-          tastingNotes: "Brown sugar, wild cherry, raisins",
+          tastingNotes: "Brown Sugar, Wild Cherry, Raisins.",
           price: "46",
           image: "https://iili.io/qLf9mXt.jpg",
           ingredients: "Pour-over brewing method",
@@ -1259,7 +1317,7 @@ const createMirdifMenu = (): MenuCategory[] => {
         {
           id: "fil_ethiopia",
           name: "Ethiopia",
-          tastingNotes: "Apricot, pear, honey",
+          tastingNotes: "Apricot, Pear, Honey.",
           price: "36",
           image: "https://iili.io/qLf9mXt.jpg",
           ingredients: "Pour-over brewing method",
@@ -1289,7 +1347,7 @@ const createMirdifMenu = (): MenuCategory[] => {
         {
           id: "fil_costa_rica",
           name: "Costa Rica",
-          tastingNotes: "Cacao, fig compote, honey, cherry",
+          tastingNotes: "Cacao, Fig Compote, Honey, Cherry.",
           price: "57",
           image: "https://iili.io/qLf9mXt.jpg",
           ingredients: "Pour-over brewing method",
@@ -1487,7 +1545,8 @@ const createMirdifMenu = (): MenuCategory[] => {
           ingredients: "Classic butter croissant",
           calories: 280,
         }, // Plain croissant
-        findItem("from-our-bakery", "fob_almond")!, // Almond croissant
+        findItem("from-our-bakery", "fob_almond")!,
+        findItem("from-our-bakery", "fob_bacon_glaze")!, // Almond croissant
         {
           id: "bg_3cheese",
           name: "3 Cheese Croissant",
@@ -1747,7 +1806,7 @@ const createAlBateenMenu = (): MenuCategory[] => {
         {
           id: "fil_mish_mish",
           name: "Mish Mish",
-          tastingNotes: "Apricot jam, raspberry, lychee",
+          tastingNotes: "Apricot Jam, Raspberry, Lychee.",
           price: "57",
           image: "https://iili.io/qLf9mXt.jpg",
           ingredients: "Pour-over brewing method",
@@ -1757,7 +1816,7 @@ const createAlBateenMenu = (): MenuCategory[] => {
         {
           id: "fil_kenya_kirimara",
           name: "Kenya KIRIMARA",
-          tastingNotes: "Brown sugar, wild cherry, raisins",
+          tastingNotes: "Brown Sugar, Wild Cherry, Raisins.",
           price: "46",
           image: "https://iili.io/qLf9mXt.jpg",
           ingredients: "Pour-over brewing method",
@@ -1777,7 +1836,7 @@ const createAlBateenMenu = (): MenuCategory[] => {
         {
           id: "fil_ethiopia",
           name: "Ethiopia",
-          tastingNotes: "Apricot, pear, honey",
+          tastingNotes: "Apricot, Pear, Honey.",
           price: "36",
           image: "https://iili.io/qLf9mXt.jpg",
           ingredients: "Pour-over brewing method",
@@ -1807,7 +1866,7 @@ const createAlBateenMenu = (): MenuCategory[] => {
         {
           id: "fil_costa_rica",
           name: "Costa Rica",
-          tastingNotes: "Cacao, fig compote, honey, cherry",
+          tastingNotes: "Cacao, Fig Compote, Honey, Cherry.",
           price: "57",
           image: "https://iili.io/qLf9mXt.jpg",
           ingredients: "Pour-over brewing method",
@@ -1823,7 +1882,7 @@ const createAlBateenMenu = (): MenuCategory[] => {
         {
           id: "cd_kenya",
           name: "Kenya Kirimara",
-          tastingNotes: "Wild Cherry, Brown Sugar, Raisins",
+          tastingNotes: "Brown Sugar, Wild Cherry, Raisins.",
           price: "38",
           image: "https://iili.io/qLf9mXt.jpg",
           ingredients: "Cold drip brewing method",
@@ -1860,6 +1919,7 @@ const createAlBateenMenu = (): MenuCategory[] => {
         findItem("from-our-bakery", "fob_zaatar")!,
         findItem("from-our-bakery", "fob_burrata")!,
         findItem("from-our-bakery", "fob_almond")!,
+        findItem("from-our-bakery", "fob_bacon_glaze")!,
         {
           id: "bg_plain",
           name: "Plain Croissant",
@@ -2230,7 +2290,7 @@ const createKhalifaMenu = (): MenuCategory[] => {
         {
           id: "fil_mish_mish",
           name: "Mish Mish",
-          tastingNotes: "Apricot jam, raspberry, lychee",
+          tastingNotes: "Apricot Jam, Raspberry, Lychee.",
           price: "57",
           image: "https://iili.io/qLf9mXt.jpg",
           ingredients: "Pour-over brewing method",
@@ -2240,7 +2300,7 @@ const createKhalifaMenu = (): MenuCategory[] => {
         {
           id: "fil_kenya_kirimara",
           name: "Kenya KIRIMARA",
-          tastingNotes: "Brown sugar, wild cherry, raisins",
+          tastingNotes: "Brown Sugar, Wild Cherry, Raisins.",
           price: "46",
           image: "https://iili.io/qLf9mXt.jpg",
           ingredients: "Pour-over brewing method",
@@ -2260,7 +2320,7 @@ const createKhalifaMenu = (): MenuCategory[] => {
         {
           id: "fil_ethiopia",
           name: "Ethiopia",
-          tastingNotes: "Apricot, pear, honey",
+          tastingNotes: "Apricot, Pear, Honey.",
           price: "36",
           image: "https://iili.io/qLf9mXt.jpg",
           ingredients: "Pour-over brewing method",
@@ -2381,6 +2441,7 @@ const createKhalifaMenu = (): MenuCategory[] => {
         findItem("from-our-bakery", "fob_zaatar")!,
         findItem("from-our-bakery", "fob_burrata")!,
         findItem("from-our-bakery", "fob_almond")!,
+        findItem("from-our-bakery", "fob_bacon_glaze")!,
         {
           id: "bg_plain",
           name: "Plain Croissant",
@@ -2637,7 +2698,7 @@ const createAlQanaMenu = (): MenuCategory[] => {
         {
           id: "fil_mish_mish",
           name: "Mish Mish",
-          tastingNotes: "Apricot jam, raspberry, lychee",
+          tastingNotes: "Apricot Jam, Raspberry, Lychee.",
           price: "57",
           image: "https://iili.io/qLf9mXt.jpg",
           ingredients: "Pour-over brewing method",
@@ -2647,7 +2708,7 @@ const createAlQanaMenu = (): MenuCategory[] => {
         {
           id: "fil_kenya_kirimara",
           name: "Kenya KIRIMARA",
-          tastingNotes: "Brown sugar, wild cherry, raisins",
+          tastingNotes: "Brown Sugar, Wild Cherry, Raisins.",
           price: "46",
           image: "https://iili.io/qLf9mXt.jpg",
           ingredients: "Pour-over brewing method",
@@ -2667,7 +2728,7 @@ const createAlQanaMenu = (): MenuCategory[] => {
         {
           id: "fil_ethiopia",
           name: "Ethiopia",
-          tastingNotes: "Apricot, pear, honey",
+          tastingNotes: "Apricot, Pear, Honey.",
           price: "36",
           image: "https://iili.io/qLf9mXt.jpg",
           ingredients: "Pour-over brewing method",
@@ -2697,7 +2758,7 @@ const createAlQanaMenu = (): MenuCategory[] => {
         {
           id: "fil_costa_rica",
           name: "Costa Rica",
-          tastingNotes: "Cacao, fig compote, honey, cherry",
+          tastingNotes: "Cacao, Fig Compote, Honey, Cherry.",
           price: "57",
           image: "https://iili.io/qLf9mXt.jpg",
           ingredients: "Pour-over brewing method",
@@ -2771,6 +2832,7 @@ const createAlQanaMenu = (): MenuCategory[] => {
       id: "baked-goods",
       title: "Baked Goods",
       items: [
+        findItem("from-our-bakery", "fob_bacon_glaze")!,
         {
           id: "bg_plain",
           name: "Plain Croissant",
@@ -2789,6 +2851,7 @@ const createAlQanaMenu = (): MenuCategory[] => {
         },
         findItem("from-our-bakery", "fob_burrata")!,
         findItem("from-our-bakery", "fob_almond")!,
+        findItem("from-our-bakery", "fob_bacon_glaze")!,
         findItem("from-our-bakery", "fob_choc")!,
         findItem("from-our-bakery", "fob_zaatar")!,
         findItem("from-our-bakery", "fob_turkey")!,
@@ -3141,7 +3204,7 @@ const createMarinaMenu = (): MenuCategory[] => {
       {
         id: "fil_mish_mish",
         name: "Mish Mish",
-        tastingNotes: "Apricot jam, raspberry, lychee",
+        tastingNotes: "Apricot Jam, Raspberry, Lychee.",
         price: "57",
         image: "https://iili.io/qLf9mXt.jpg",
         ingredients: "Pour-over brewing method",
@@ -3151,7 +3214,7 @@ const createMarinaMenu = (): MenuCategory[] => {
       {
         id: "fil_kenya_kirimara",
         name: "Kenya KIRIMARA",
-        tastingNotes: "Brown sugar, wild cherry, raisins",
+        tastingNotes: "Brown Sugar, Wild Cherry, Raisins.",
         price: "46",
         image: "https://iili.io/qLf9mXt.jpg",
         ingredients: "Pour-over brewing method",
@@ -3171,7 +3234,7 @@ const createMarinaMenu = (): MenuCategory[] => {
       {
         id: "fil_ethiopia",
         name: "Ethiopia",
-        tastingNotes: "Apricot, pear, honey",
+        tastingNotes: "Apricot, Pear, Honey.",
         price: "36",
         image: "https://iili.io/qLf9mXt.jpg",
         ingredients: "Pour-over brewing method",
@@ -3201,7 +3264,7 @@ const createMarinaMenu = (): MenuCategory[] => {
       {
         id: "fil_costa_rica",
         name: "Costa Rica",
-        tastingNotes: "Cacao, fig compote, honey, cherry",
+        tastingNotes: "Cacao, Fig Compote, Honey, Cherry.",
         price: "57",
         image: "https://iili.io/qLf9mXt.jpg",
         ingredients: "Pour-over brewing method",
@@ -3222,6 +3285,22 @@ const createMarinaMenu = (): MenuCategory[] => {
         items: cat.items.map((item) =>
           item.id === "d_crepe_rolls" ? { ...item, status: "Available" } : item,
         ),
+      };
+    }
+    if (cat.id === "from-our-bakery") {
+      return {
+        ...cat,
+        items: [
+          ...cat.items,
+          {
+            id: "fob_bacon_glaze",
+            name: "Bacon Glaze",
+            ingredients: "Flaky croissant dough rolled with Angus beef bacon inside, baked until golden, then glazed with burnt butter and organic maple syrup.",
+            price: "22",
+            image: "https://iili.io/B1idjQn.jpg",
+            status: "Available" as const,
+          }
+        ]
       };
     }
     return cat;
@@ -3482,7 +3561,7 @@ const applyGoldenRuleLayout = (menu: MenuCategory[]): MenuCategory[] => {
         {
           id: "cb_ethiopia_global",
           name: "Ethiopia",
-          tastingNotes: "Apricot, Pear, Honey",
+          tastingNotes: "Apricot, Pear, Honey.",
           price: "38",
           image: "https://iili.io/B3OHMFV.jpg",
           ingredients: "Cold Brew",
@@ -3492,7 +3571,7 @@ const applyGoldenRuleLayout = (menu: MenuCategory[]): MenuCategory[] => {
         {
           id: "cb_kenya_global",
           name: "Kenya",
-          tastingNotes: "Brown Sugar – Wild Cherry- Raisins",
+          tastingNotes: "Brown Sugar, Wild Cherry, Raisins.",
           price: "38",
           image: "https://iili.io/B3Ns6UG.jpg",
           ingredients: "Cold Brew",
@@ -3722,7 +3801,7 @@ const createDubaiMenu = (): MenuCategory[] => {
         {
           id: "fil_mish_mish",
           name: "Mish Mish",
-          tastingNotes: "Apricot jam, raspberry, lychee",
+          tastingNotes: "Apricot Jam, Raspberry, Lychee.",
           price: "57",
           image: "https://iili.io/qLf9mXt.jpg",
           ingredients: "Pour-over brewing method",
@@ -3732,7 +3811,7 @@ const createDubaiMenu = (): MenuCategory[] => {
         {
           id: "fil_kenya_kirimara",
           name: "Kenya KIRIMARA",
-          tastingNotes: "Brown sugar, wild cherry, raisins",
+          tastingNotes: "Brown Sugar, Wild Cherry, Raisins.",
           price: "46",
           image: "https://iili.io/qLf9mXt.jpg",
           ingredients: "Pour-over brewing method",
@@ -3752,7 +3831,7 @@ const createDubaiMenu = (): MenuCategory[] => {
         {
           id: "fil_ethiopia",
           name: "Ethiopia",
-          tastingNotes: "Apricot, pear, honey",
+          tastingNotes: "Apricot, Pear, Honey.",
           price: "36",
           image: "https://iili.io/qLf9mXt.jpg",
           ingredients: "Pour-over brewing method",
@@ -3782,7 +3861,7 @@ const createDubaiMenu = (): MenuCategory[] => {
         {
           id: "fil_costa_rica",
           name: "Costa Rica",
-          tastingNotes: "Cacao, fig compote, honey, cherry",
+          tastingNotes: "Cacao, Fig Compote, Honey, Cherry.",
           price: "57",
           image: "https://iili.io/qLf9mXt.jpg",
           ingredients: "Pour-over brewing method",
@@ -3825,7 +3904,8 @@ const createDubaiMenu = (): MenuCategory[] => {
           ingredients: "Classic butter croissant",
           calories: 280,
         }, // Plain Croissant
-        findItem("from-our-bakery", "fob_almond")!, // Almond Croissant
+        findItem("from-our-bakery", "fob_almond")!,
+        findItem("from-our-bakery", "fob_bacon_glaze")!, // Almond Croissant
         findItem("desserts", "d_choc_chip")!, // Chocolate Chip Cookies
         findItem("from-our-bakery", "fob_choc")!, // Chocolate Croissant
       ].filter(Boolean),
@@ -4200,11 +4280,21 @@ const RAW_BRANCH_MENUS: BranchMenuDirectory = {
           
           const newFilteredItems = [
             {
-              id: "fil_colombia_sidra",
-              name: "Colombia Sidra",
-              tastingNotes: "Vibrant red grapes and juicy watermelon with nostalgic hard candy and raspberry finish.",
-              price: "57",
-              image: "https://iili.io/qLf9mXt.jpg",
+              id: "fil_ethiopia_rojicha",
+              name: "Ethiopia Rojicha",
+              tastingNotes: "Apricot, Pear, Honey.",
+              price: "36",
+              image: "https://iili.io/qKka1vj.png",
+              ingredients: "Pour-over brewing method",
+              calories: 5,
+              status: "Available" as const,
+            },
+            {
+              id: "fil_kenya_kirimara",
+              name: "Kenya Kirimara",
+              tastingNotes: "Brown Sugar, Wild Cherry, Raisins.",
+              price: "46",
+              image: "https://iili.io/BuylWL7.png",
               ingredients: "Pour-over brewing method",
               calories: 5,
               status: "Available" as const,
@@ -4212,8 +4302,18 @@ const RAW_BRANCH_MENUS: BranchMenuDirectory = {
             {
               id: "fil_colombia_strawberry",
               name: "Colombia Strawberry",
-              tastingNotes: "A luscious blend of sweet strawberry jam, golden honey, and smooth milk chocolate.",
+              tastingNotes: "Strawberry Jam, Honey, Milk Chocolates.",
               price: "41",
+              image: "https://iili.io/qKkcmJa.png",
+              ingredients: "Pour-over brewing method",
+              calories: 5,
+              status: "Available" as const,
+            },
+            {
+              id: "fil_colombia_sidra",
+              name: "Colombia Sidra",
+              tastingNotes: "Red Grapes, Watermelon, Hard Candy, Raspberry.",
+              price: "57",
               image: "https://iili.io/qLf9mXt.jpg",
               ingredients: "Pour-over brewing method",
               calories: 5,
@@ -4222,7 +4322,7 @@ const RAW_BRANCH_MENUS: BranchMenuDirectory = {
             {
               id: "fil_mish_mish",
               name: "Mish Mish",
-              tastingNotes: "Delicate notes of apricot jam and bright raspberry, rounded out by exotic lychee.",
+              tastingNotes: "Apricot Jam, Raspberry, Lychee.",
               price: "57",
               image: "https://iili.io/qLf9mXt.jpg",
               ingredients: "Pour-over brewing method",
@@ -4232,18 +4332,8 @@ const RAW_BRANCH_MENUS: BranchMenuDirectory = {
             {
               id: "fil_costa_rica",
               name: "Costa Rica",
-              tastingNotes: "Deep, comforting layers of cacao and fig compote with a honey-cherry sweetness.",
+              tastingNotes: "Cacao, Fig Compote, Honey, Cherry.",
               price: "57",
-              image: "https://iili.io/qLf9mXt.jpg",
-              ingredients: "Pour-over brewing method",
-              calories: 5,
-              status: "Available" as const,
-            },
-            {
-              id: "fil_kenya_kiramara",
-              name: "Kenya Kiramara {TAP FILTER}",
-              tastingNotes: "Rich brown sugar and sun-dried raisins balanced by the tartness of wild cherry.",
-              price: "46",
               image: "https://iili.io/qLf9mXt.jpg",
               ingredients: "Pour-over brewing method",
               calories: 5,
@@ -4252,7 +4342,7 @@ const RAW_BRANCH_MENUS: BranchMenuDirectory = {
             {
               id: "fil_panama_gesha",
               name: "Panama Gesha",
-              tastingNotes: "An elegant, floral profile of cantaloupe and honey with whispers of lemongrass and berries.",
+              tastingNotes: "Cantaloupe, Honey, Berries, Lemongrass.",
               price: "65",
               image: "https://iili.io/qLf9mXt.jpg",
               ingredients: "Pour-over brewing method",
@@ -4262,7 +4352,7 @@ const RAW_BRANCH_MENUS: BranchMenuDirectory = {
             {
               id: "fil_sweet_dream_decaf",
               name: "Sweet Dream Decaf",
-              tastingNotes: "A cozy, full-bodied cup featuring dried apricot, dark molasses, and toasted pecan nuts.",
+              tastingNotes: "Dried Apricot, Molasses, Pecan Nuts.",
               price: "36",
               image: "https://iili.io/qLf9mXt.jpg",
               ingredients: "Pour-over brewing method",
@@ -4290,7 +4380,7 @@ const RAW_BRANCH_MENUS: BranchMenuDirectory = {
             {
               id: "tap_ethiopia_rojicha",
               name: "ETHIOPIA ROJICHA",
-              tastingNotes: "Apricot, Pear, Honey",
+              tastingNotes: "Apricot, Pear, Honey.",
               price: "36",
               image: "https://iili.io/qKka1vj.png",
               ingredients: "{TAPS FILTERED}",
@@ -4298,22 +4388,22 @@ const RAW_BRANCH_MENUS: BranchMenuDirectory = {
               status: "Available" as const,
             },
             {
-              id: "tap_kenya_kiramara",
-              name: "Kenya Kiramara",
-              tastingNotes: "Brown Sugar – Wild Cherry- Raisins",
+              id: "tap_kenya_kirimara",
+              name: "KENYA KIRIMARA",
+              tastingNotes: "Brown Sugar, Wild Cherry, Raisins.",
               price: "46",
               image: "https://iili.io/BuylWL7.png",
-              ingredients: "Available for Manual Pouring",
+              ingredients: "{TAPS FILTERED}",
               calories: 5,
               status: "Available" as const,
             },
             {
               id: "tap_colombia_strawberry",
-              name: "Colombia Strawberry",
-              tastingNotes: "Strawberry Jam – Honey - Milk Chocolates",
-              price: "57",
+              name: "COLOMBIA STRAWBERRY",
+              tastingNotes: "Strawberry Jam, Honey, Milk Chocolates.",
+              price: "41",
               image: "https://iili.io/qKkcmJa.png",
-              ingredients: "Available for Manual Pouring",
+              ingredients: "{TAPS FILTERED}",
               calories: 5,
               status: "Available" as const,
             }
@@ -4326,11 +4416,11 @@ const RAW_BRANCH_MENUS: BranchMenuDirectory = {
           title: "MANUALLY POURING",
           items: [
             {
-              id: "man_colombia_sidra",
-              name: "COLOMBIA SIDRA",
-              tastingNotes: "Vibrant red grapes and juicy watermelon with a nostalgic hard candy and raspberry finish.",
-              price: "57",
-              image: "https://iili.io/qLf9mXt.jpg",
+              id: "man_kenya_kirimara",
+              name: "KENYA KIRIMARA",
+              tastingNotes: "Brown Sugar, Wild Cherry, Raisins.",
+              price: "46",
+              image: "https://iili.io/BuylWL7.png",
               ingredients: "Manual Pouring",
               calories: 5,
               status: "Available" as const,
@@ -4338,8 +4428,18 @@ const RAW_BRANCH_MENUS: BranchMenuDirectory = {
             {
               id: "man_colombia_strawberry",
               name: "COLOMBIA STRAWBERRY",
-              tastingNotes: "A luscious blend of sweet strawberry jam, golden honey, and smooth milk chocolate.",
+              tastingNotes: "Strawberry Jam, Honey, Milk Chocolates.",
               price: "41",
+              image: "https://iili.io/qKkcmJa.png",
+              ingredients: "Manual Pouring",
+              calories: 5,
+              status: "Available" as const,
+            },
+            {
+              id: "man_colombia_sidra",
+              name: "COLOMBIA SIDRA",
+              tastingNotes: "Red Grapes, Watermelon, Hard Candy, Raspberry.",
+              price: "57",
               image: "https://iili.io/qLf9mXt.jpg",
               ingredients: "Manual Pouring",
               calories: 5,
@@ -4348,7 +4448,7 @@ const RAW_BRANCH_MENUS: BranchMenuDirectory = {
             {
               id: "man_mish_mish",
               name: "MISH MISH",
-              tastingNotes: "Delicate notes of apricot jam and bright raspberry, rounded out by exotic lychee.",
+              tastingNotes: "Apricot Jam, Raspberry, Lychee.",
               price: "57",
               image: "https://iili.io/qLf9mXt.jpg",
               ingredients: "Manual Pouring",
@@ -4358,18 +4458,8 @@ const RAW_BRANCH_MENUS: BranchMenuDirectory = {
             {
               id: "man_costa_rica",
               name: "COSTA RICA",
-              tastingNotes: "Deep, comforting layers of cacao and fig compote with a honey-cherry sweetness.",
+              tastingNotes: "Cacao, Fig Compote, Honey, Cherry.",
               price: "57",
-              image: "https://iili.io/qLf9mXt.jpg",
-              ingredients: "Manual Pouring",
-              calories: 5,
-              status: "Available" as const,
-            },
-            {
-              id: "man_kenya_kiramara",
-              name: "KENYA KIRAMARA",
-              tastingNotes: "Rich brown sugar and sun-dried raisins balanced by the tartness of wild cherry.",
-              price: "46",
               image: "https://iili.io/qLf9mXt.jpg",
               ingredients: "Manual Pouring",
               calories: 5,
@@ -4378,7 +4468,7 @@ const RAW_BRANCH_MENUS: BranchMenuDirectory = {
             {
               id: "man_panama_gesha",
               name: "PANAMA GESHA",
-              tastingNotes: "An elegant, floral profile of cantaloupe and honey with whispers of lemongrass and berries.",
+              tastingNotes: "Cantaloupe, Honey, Berries, Lemongrass.",
               price: "65",
               image: "https://iili.io/qLf9mXt.jpg",
               ingredients: "Manual Pouring",
@@ -4388,7 +4478,7 @@ const RAW_BRANCH_MENUS: BranchMenuDirectory = {
             {
               id: "man_sweet_dream_decaf",
               name: "SWEET DREAM DECAF",
-              tastingNotes: "A cozy, full-bodied cup featuring dried apricot, dark molasses, and toasted pecan nuts.",
+              tastingNotes: "Dried Apricot, Molasses, Pecan Nuts.",
               price: "36",
               image: "https://iili.io/qLf9mXt.jpg",
               ingredients: "Manual Pouring",
@@ -4397,8 +4487,7 @@ const RAW_BRANCH_MENUS: BranchMenuDirectory = {
             }
           ]
         };
-        
-        const hotIdx = specialty.subCategories.findIndex(sc => sc.id === 'filtered-hot');
+                const hotIdx = specialty.subCategories.findIndex(sc => sc.id === 'filtered-hot');
         if (hotIdx !== -1) {
           specialty.subCategories.splice(hotIdx + 1, 0, tapsFilteredCategory, manuallyPouringCategory);
         } else {

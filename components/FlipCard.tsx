@@ -107,7 +107,7 @@ const FlipCard: React.FC<FlipCardProps> = ({ item, index = 0 }) => {
           {/* Content */}
           <div className={`flex-1 flex flex-col p-6 relative -mt-8 bg-[var(--card-bg)] rounded-t-2xl border-t ${isColdBrew ? 'border-blue-500/30' : 'border-[var(--border-color)]'}`}>
               <div className="flex justify-between items-start mb-2">
-                 <h3 className={`text-lg font-bold text-[var(--text-primary)] tracking-wide leading-tight pr-2 flex items-center gap-2 ${isFilterTap ? 'font-sans uppercase text-sm tracking-widest' : 'font-didone'}`}>
+                 <h3 className={`text-lg font-bold text-[var(--text-primary)] tracking-wide leading-tight pr-2 flex items-center gap-2 font-didone`}>
                    {item.name}
                  </h3>
                  <div className="flex items-center gap-1 pt-1 shrink-0 text-[var(--text-primary)]">
@@ -137,7 +137,7 @@ const FlipCard: React.FC<FlipCardProps> = ({ item, index = 0 }) => {
 
                    {/* Tasting Notes */}
                    {item.tastingNotes && (
-                     <p className="text-sm text-[var(--text-primary)] font-didone italic leading-relaxed">
+                     <p className="text-sm text-[var(--text-primary)] font-sans italic leading-relaxed">
                        "{item.tastingNotes}"
                      </p>
                    )}
@@ -200,7 +200,7 @@ const FlipCard: React.FC<FlipCardProps> = ({ item, index = 0 }) => {
             >
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
             </button>
-            <h3 className={`text-xl font-bold text-[var(--text-primary)] mb-4 pr-6 ${isFilterTap ? 'font-sans uppercase tracking-widest' : 'font-didone'}`}>
+            <h3 className={`text-xl font-bold text-[var(--text-primary)] mb-4 pr-6 font-didone`}>
               {item.name}
             </h3>
             <div className="text-sm text-[var(--text-secondary)] font-sans leading-relaxed max-h-[60vh] overflow-y-auto pr-2">
@@ -219,7 +219,7 @@ const FlipCard: React.FC<FlipCardProps> = ({ item, index = 0 }) => {
                       {item.origin} {item.farm && <span className="text-[var(--text-secondary)]">• {item.farm}</span>}
                    </div>
                    {item.tastingNotes && (
-                     <p className="text-sm text-[var(--text-primary)] font-didone italic leading-relaxed">
+                     <p className="text-sm text-[var(--text-primary)] font-sans italic leading-relaxed">
                        "{item.tastingNotes}"
                      </p>
                    )}

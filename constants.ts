@@ -181,16 +181,6 @@ const BASE_MENU: MenuCategory[] = [
         status: "Coming Soon" as const,
         calories: 0,
       },
-
-      {
-        id: "MUHALABIYA",
-        name: "Muhalabiya",
-        ingredients:
-          "Our silky-smooth Muhalabiya is infused with delicate floral notes and topped with a cloud of premium Ghazl el Banat (Arabic cotton candy). Finished with a vibrant sprinkle of crushed pistachios and dried rose petals, every spoonful offers a perfect balance of creamy, airy, and crunchy textures.",
-        price: "39.20",
-        image: "https://iili.io/qttIcV2.jpg",
-        calories: 260,
-      },
       {
         id: "d_rasp_mad",
         name: "Raspberry Madeleine (1 Piece)",
@@ -206,14 +196,6 @@ const BASE_MENU: MenuCategory[] = [
         price: "16",
         image: "https://iili.io/qqMwcbf.png",
         calories: 320,
-      },
-      {
-        id: "d_snickers",
-        name: "Snickers",
-        ingredients: "Peanuts, caramel, and nougat coated in milk chocolate",
-        price: "39.20",
-        image: "https://iili.io/q2hTJNj.png",
-        calories: 450,
       },
       {
         id: "d_aseeda",
@@ -3320,6 +3302,31 @@ const createMarinaMenu = (): MenuCategory[] => {
             ingredients: "Pour-over brewing method",
             calories: 5,
             status: "Available" as const,
+          },
+          {
+            id: "d_1000_marina",
+            name: "1000 Layers( Mille Fuille)",
+            ingredients: "Crispy layers of puff pastry with caramels sauce and  vanilla cream",
+            price: "39.20",
+            image: "https://iili.io/q2ATUt2.png",
+            calories: 440,
+          },
+          {
+            id: "d_vanilla_pud_marina",
+            name: "Vanilla Pudding",
+            ingredients: "Silky smooth vanilla custard, Madagascar vanilla bean, sweet cream",
+            price: "39.20",
+            image: "https://i.postimg.cc/d0kYq6S8/vanilla_pudding.jpg",
+            calories: 380,
+          },
+          {
+            id: "hb_acai_smoothie_marina_bs",
+            name: "Acai Smoothie",
+            price: "42",
+            image: "https://iili.io/BBBfCDN.jpg",
+            ingredients: "Acai berry, banana, strawberry, peanut butter, coconut water, oat milk, and apple juice.",
+            calories: 320,
+            status: "Available" as const,
           }
         ]
       };
@@ -4371,12 +4378,12 @@ const RAW_BRANCH_MENUS: BranchMenuDirectory = {
               status: "Available" as const,
             },
             {
-              id: "fil_sweet_dream_decaf",
-              name: "Sweet Dream Decaf",
-              tastingNotes: "Dried Apricot, Molasses, Pecan Nuts.",
-              price: "36",
+              id: "fil_decaf",
+              name: "Colombia Sweet Dreams (Decaf)",
+              tastingNotes: "Passion fruit cheesecake, Milk chocolate, Molasses",
+              price: "38",
               image: "https://iili.io/qLf9mXt.jpg",
-              ingredients: "Pour-over brewing method",
+              ingredients: "Passion fruit cheesecake, Milk chocolate, Molasses",
               calories: 5,
               status: "Available" as const,
             }
@@ -4441,7 +4448,7 @@ const RAW_BRANCH_MENUS: BranchMenuDirectory = {
               name: "KENYA KIRIMARA",
               tastingNotes: "Brown Sugar, Wild Cherry, Raisins.",
               price: "46",
-              image: "https://iili.io/BuylWL7.png",
+              image: "https://iili.io/qLf9mXt.jpg",
               ingredients: "Manual Pouring",
               calories: 5,
               status: "Available" as const,
@@ -4451,7 +4458,7 @@ const RAW_BRANCH_MENUS: BranchMenuDirectory = {
               name: "COLOMBIA STRAWBERRY",
               tastingNotes: "Strawberry Jam, Honey, Milk Chocolates.",
               price: "41",
-              image: "https://iili.io/qKkcmJa.png",
+              image: "https://iili.io/qLf9mXt.jpg",
               ingredients: "Manual Pouring",
               calories: 5,
               status: "Available" as const,
@@ -4514,9 +4521,6 @@ const RAW_BRANCH_MENUS: BranchMenuDirectory = {
         } else {
           specialty.subCategories.push(tapsFilteredCategory, manuallyPouringCategory);
         }
-      }
-      if (specialty.subCategories) {
-        specialty.subCategories = specialty.subCategories.filter(sc => sc.id !== 'filtered-hot');
       }
     }
     

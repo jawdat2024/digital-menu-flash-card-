@@ -47,7 +47,7 @@ const FlipCard: React.FC<FlipCardProps> = ({ item, index = 0 }) => {
       <div 
         onClick={openModal}
         className={`group relative w-full h-[450px] flex flex-col bg-[var(--card-bg)] rounded-[30px] overflow-hidden transition-all duration-500 ease-luxury border border-[var(--border-color)] cursor-pointer
-        ${(item.isSoldOut || item.status === 'Sold Out' || item.status === 'Coming Soon')
+        ${(item.isSoldOut || item.status === 'sold_out' || item.status === 'coming_soon')
             ? 'grayscale opacity-60 pointer-events-none' 
             : 'hover:border-[var(--text-primary)] hover:-translate-y-1'
         }`}
@@ -89,12 +89,12 @@ const FlipCard: React.FC<FlipCardProps> = ({ item, index = 0 }) => {
               )}
               
               {/* Status Overlays */}
-              {(item.isSoldOut || item.status === 'Sold Out') && (
+              {(item.isSoldOut || item.status === 'sold_out') && (
                  <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px] flex items-center justify-center z-10">
                      <span className="text-white uppercase tracking-[0.3em] font-bold border border-white/30 px-6 py-3 text-xs bg-black/50">Sold Out</span>
                  </div>
               )}
-              {item.status === 'Coming Soon' && (
+              {item.status === 'coming_soon' && (
                  <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px] flex items-center justify-center z-10">
                      <span className="text-white uppercase tracking-[0.3em] font-bold border border-white/30 px-6 py-3 text-xs bg-black/50">Coming Soon</span>
                  </div>

@@ -22,14 +22,31 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({ item }) => {
     setIsAnimating(false);
     setTimeout(() => setIsModalOpen(false), 400);
   };
+
+  if (item.isVisible === false) {
+    return null;
+  }
+
+  const normalizedStatus = item.status?.toString().toLowerCase().replace(' ', '_');
+  const isUnavailable = item.isSoldOut || normalizedStatus === 'sold_out' || normalizedStatus === 'out_of_stock';
+  const isComingSoon = normalizedStatus === 'coming_soon';
+  const isFewStocks = normalizedStatus === 'few_stocks_left' || normalizedStatus === 'few_stocks';
+  const isNew = normalizedStatus === 'new';
+
   return (
     <div 
-      onClick={openModal}
-      className="flex flex-col h-full bg-white rounded-[32px] overflow-hidden relative group hover:shadow-2xl transition-all duration-500 ease-out transform hover:-translate-y-1 p-2 cursor-pointer">
+      onClick={isUnavailable || isComingSoon ? undefined : openModal}
+      className={`flex flex-col h-full bg-white rounded-[32px] overflow-hidden relative group transition-all duration-500 ease-out transform p-2 ${isUnavailable || isComingSoon ? 'cursor-not-allowed opacity-90' : 'hover:shadow-2xl hover:-translate-y-1 cursor-pointer'}`}>
         {/* Badge */}
-        {item.badge && (
+        {item.badge && !isNew && (
             <div className="absolute top-6 right-6 z-20 bg-black/90 backdrop-blur-sm text-white border border-white/10 shadow-xl text-[9px] font-bold uppercase tracking-[0.2em] px-3 py-1.5 rounded-full">
                  {item.badge}
+            </div>
+        )}
+
+        {isNew && (
+            <div className="absolute top-6 right-6 z-20 bg-black text-white shadow-xl text-[9px] font-bold uppercase tracking-[0.2em] px-3 py-1.5 rounded-full">
+                 NEW
             </div>
         )}
 
@@ -39,7 +56,7 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({ item }) => {
                <img 
                  src={item.image} 
                  alt={item.name} 
-                 className="w-full h-full object-cover object-center transition-transform duration-1000 ease-out"
+                 className={`w-full h-full object-cover object-center transition-transform duration-1000 ease-out ${isUnavailable ? 'grayscale opacity-50' : ''}`}
                  style={{ transform: 'scale(1.2)' }}
                  loading="lazy"
                />
@@ -50,15 +67,23 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({ item }) => {
              )}
              
              {/* Overlays */}
-             {(item.isSoldOut || item.status === 'Sold Out') && (
-                 <div className="absolute inset-0 bg-white/60 backdrop-blur-[2px] flex items-center justify-center z-10">
-                     <span className="text-black uppercase tracking-[0.3em] font-bold border border-black/30 px-6 py-3 text-xs bg-white/50 rounded-full">Sold Out</span>
+             {isFewStocks && (
+                 <div className="absolute top-4 left-4 z-10">
+                     <span className="text-black bg-white/90 backdrop-blur-sm shadow-md uppercase tracking-[0.2em] font-bold px-3 py-1.5 text-[10px] rounded-full">Limited Quantity</span>
                  </div>
              )}
 
-             {item.status === 'Coming Soon' && (
-                 <div className="absolute inset-0 bg-white/60 backdrop-blur-[2px] flex items-center justify-center z-10">
-                     <span className="text-black uppercase tracking-[0.3em] font-bold border border-black/30 px-6 py-3 text-xs bg-white/50 rounded-full">Coming Soon</span>
+             {isUnavailable && (
+                 <div className="absolute inset-0 bg-white/40 backdrop-blur-[2px] flex items-center justify-center z-10">
+                     <span className="text-black uppercase tracking-[0.3em] font-bold border border-black/30 px-6 py-3 text-xs bg-white/70 rounded-full">
+                       {normalizedStatus === 'out_of_stock' ? 'Unavailable' : 'Sold Out'}
+                     </span>
+                 </div>
+             )}
+
+             {isComingSoon && (
+                 <div className="absolute inset-0 bg-white/40 backdrop-blur-[2px] flex items-center justify-center z-10">
+                     <span className="text-black uppercase tracking-[0.3em] font-bold border border-black/30 px-6 py-3 text-xs bg-white/70 rounded-full">Available Soon</span>
                  </div>
              )}
         </div>
@@ -70,12 +95,16 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({ item }) => {
                 
                 <div className="w-full h-px bg-neutral-800 mb-5"></div>
                 
-                {item.price && (
+                {isComingSoon ? (
+                    <div className="flex items-center justify-center text-lg font-light tracking-widest text-neutral-400 mb-4 uppercase text-xs">
+                        Available Soon
+                    </div>
+                ) : item.price ? (
                     <div className="flex items-center gap-1 text-lg font-light tracking-widest text-neutral-300 mb-4">
                         <CurrencySymbol className="w-4 h-4" />
                         <span>{item.price}</span>
                     </div>
-                )}
+                ) : null}
                 
                 {item.ingredients && (
                     <p className="text-xs text-neutral-400 font-sans leading-relaxed line-clamp-3 mb-6 max-w-[95%]">

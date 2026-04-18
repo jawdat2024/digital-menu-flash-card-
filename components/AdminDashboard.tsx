@@ -11,8 +11,8 @@ interface AdminItem {
   sku: string;
   category: string;
   price: number;
-  active: boolean;
-  isSoldOut: boolean;
+  isVisible: boolean;
+  status: 'available' | 'sold_out' | 'out_of_stock' | 'coming_soon' | 'few_stocks_left' | 'new';
   image: string;
   publishStatus: 'draft' | 'published' | 'archived';
 }
@@ -43,8 +43,8 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ onBack, initialBranchId
     category: 'Signature drink',
     price: 0,
     image: '',
-    active: true,
-    isSoldOut: false,
+    isVisible: true,
+    status: 'available',
     publishStatus: 'draft'
   });
   
@@ -68,8 +68,8 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ onBack, initialBranchId
         sku: `SKU-${item.id.toUpperCase()}`,
         category: catTitle,
         price: priceNum,
-        active: !item.isSoldOut,
-        isSoldOut: !!item.isSoldOut,
+        isVisible: item.isVisible !== false,
+        status: item.status ? item.status.toString().toLowerCase().replace(' ', '_') : (['sold_out', 'out_of_stock'].includes(item.status) ? 'sold_out' : 'available'),
         image: item.image,
         publishStatus: 'published'
       });
@@ -89,7 +89,12 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ onBack, initialBranchId
       const parsedStored: AdminItem[] = JSON.parse(stored);
       const mergedItems = initialItems.map(item => {
         const storedItem = parsedStored.find(si => si.id === item.id);
-        return storedItem ? { ...item, active: storedItem.active, isSoldOut: storedItem.isSoldOut, price: storedItem.price, publishStatus: storedItem.publishStatus || 'published' } : item;
+        return storedItem ? { ...item, 
+          isVisible: storedItem.isVisible !== undefined ? storedItem.isVisible : (storedItem as any).active !== false,
+          status: storedItem.status || ((storedItem as any).isSoldOut ? 'sold_out' : 'available'), 
+          price: storedItem.price, 
+          publishStatus: storedItem.publishStatus || 'published' 
+        } : item;
       });
       const customItems = parsedStored.filter(si => !initialItems.some(ii => ii.id === si.id));
       setItems([...mergedItems, ...customItems]);
@@ -109,16 +114,16 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ onBack, initialBranchId
   };
 
   // --- Inventory Logic ---
-  const toggleStatus = (id: string | number) => {
+  const toggleVisibility = (id: string | number) => {
     const updated = items.map(item => 
-      item.id === id ? { ...item, active: !item.active } : item
+      item.id === id ? { ...item, isVisible: !item.isVisible } : item
     );
     saveToStorage(updated);
   };
 
-  const toggleSoldOut = (id: string | number) => {
+  const updateStatus = (id: string | number, newStatus: AdminItem['status']) => {
     const updated = items.map(item => 
-      item.id === id ? { ...item, isSoldOut: !item.isSoldOut } : item
+      item.id === id ? { ...item, status: newStatus } : item
     );
     saveToStorage(updated);
     setActiveMenuId(null);
@@ -174,15 +179,15 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ onBack, initialBranchId
       sku: `SKU-${Math.floor(Math.random() * 10000)}`,
       category: newItem.category || 'Uncategorized',
       price: priceNum,
-      active: true,
-      isSoldOut: false,
+      isVisible: newItem.isVisible !== false,
+      status: newItem.status || 'available',
       image: newItem.image || 'https://via.placeholder.com/150',
       publishStatus: newItem.publishStatus || 'draft'
     };
 
     saveToStorage([itemToAdd, ...items]);
     setIsAddModalOpen(false);
-    setNewItem({ name: '', category: selectedCategory || 'Signature drink', price: 0, image: '', publishStatus: 'draft' });
+    setNewItem({ name: '', category: selectedCategory || 'Signature drink', price: 0, image: '', isVisible: true, status: 'available', publishStatus: 'draft' });
   };
 
   // --- Derived State ---
@@ -300,21 +305,21 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ onBack, initialBranchId
                       {filteredItems.map((item) => (
                         <tr 
                           key={item.id} 
-                          className={`transition-colors group ${item.isSoldOut ? 'bg-red-900/10 opacity-75' : 'hover:bg-neutral-800/30'}`}
+                          className={`transition-colors group ${['sold_out', 'out_of_stock'].includes(item.status) ? 'bg-red-900/10 opacity-75' : 'hover:bg-neutral-800/30'}`}
                         >
                           <td className="p-4">
                             <div className="flex items-center gap-4">
                               <div className="w-10 h-10 rounded-lg bg-neutral-800 overflow-hidden relative">
-                                <img src={item.image} alt={item.name} className={`w-full h-full object-cover object-center transition-opacity grayscale ${item.isSoldOut ? 'grayscale' : 'group-hover:grayscale-0'}`} />
-                                {item.isSoldOut && (
+                                <img src={item.image} alt={item.name} className={`w-full h-full object-cover object-center transition-opacity grayscale ${['sold_out', 'out_of_stock'].includes(item.status) ? 'grayscale' : 'group-hover:grayscale-0'}`} />
+                                {['sold_out', 'out_of_stock'].includes(item.status) && (
                                    <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
                                       <Ban size={16} className="text-white" />
                                    </div>
                                 )}
                               </div>
                               <div>
-                                  <span className={`text-sm font-medium ${item.isSoldOut ? 'text-neutral-400 line-through' : 'text-white'}`}>{item.name}</span>
-                                  {item.isSoldOut && <span className="block text-[9px] text-red-400 uppercase tracking-wider font-bold">Sold Out</span>}
+                                  <span className={`text-sm font-medium ${['sold_out', 'out_of_stock'].includes(item.status) ? 'text-neutral-400 line-through' : 'text-white'}`}>{item.name}</span>
+                                  {['sold_out', 'out_of_stock'].includes(item.status) && <span className="block text-[9px] text-red-400 uppercase tracking-wider font-bold">Sold Out</span>}
                               </div>
                             </div>
                           </td>
@@ -335,10 +340,10 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ onBack, initialBranchId
                           </td>
                           <td className="p-4">
                              <button 
-                               onClick={() => toggleStatus(item.id)}
-                               className={`relative inline-flex h-5 w-9 items-center rounded-full transition-colors focus:outline-none ${item.active ? 'bg-[#c5a059]' : 'bg-neutral-700'}`}
+                               onClick={() => toggleVisibility(item.id)}
+                               className={`relative inline-flex h-5 w-9 items-center rounded-full transition-colors focus:outline-none ${item.isVisible ? 'bg-[#c5a059]' : 'bg-neutral-700'}`}
                              >
-                               <span className={`inline-block h-3 w-3 transform rounded-full bg-black transition-transform ${item.active ? 'translate-x-5' : 'translate-x-1'}`} />
+                               <span className={`inline-block h-3 w-3 transform rounded-full bg-black transition-transform ${item.isVisible ? 'translate-x-5' : 'translate-x-1'}`} />
                              </button>
                           </td>
                           <td className="p-4 text-right relative">
@@ -358,13 +363,21 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ onBack, initialBranchId
                                   >
                                      Edit Price
                                  </button>
-                                 <button 
-                                    onClick={() => toggleSoldOut(item.id)}
-                                    className="px-4 py-3 text-left text-xs text-neutral-300 hover:bg-neutral-900 hover:text-white transition-colors border-b border-neutral-800 flex items-center justify-between"
-                                  >
-                                     {item.isSoldOut ? 'Mark In Stock' : 'Mark Sold Out'}
-                                     {item.isSoldOut ? <CheckCircle size={12} /> : <Ban size={12} />}
-                                 </button>
+                                 <div className="px-4 py-2 border-b border-neutral-800">
+                                     <label className="text-[10px] uppercase text-neutral-500 mb-1 block">Status</label>
+                                     <select 
+                                       className="w-full bg-neutral-900 border border-neutral-700 rounded p-1.5 text-xs text-white"
+                                       value={item.status}
+                                       onChange={(e) => updateStatus(item.id, e.target.value as AdminItem['status'])}
+                                     >
+                                        <option value="available">Available</option>
+                                        <option value="sold_out">Sold Out</option>
+                                        <option value="out_of_stock">Out of Stock</option>
+                                        <option value="coming_soon">Coming Soon</option>
+                                        <option value="few_stocks_left">Few Stocks Left</option>
+                                        <option value="new">New</option>
+                                     </select>
+                                 </div>
                                  <button 
                                     onClick={() => {
                                       const updated = items.map(i => i.id === item.id ? { ...i, publishStatus: i.publishStatus === 'published' ? 'draft' : 'published' as any } : i);
@@ -434,7 +447,7 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ onBack, initialBranchId
                           />
                       </div>
                       <div>
-                          <label className="text-[10px] uppercase tracking-widest text-neutral-500 mb-2 block">Status</label>
+                          <label className="text-[10px] uppercase tracking-widest text-neutral-500 mb-2 block">Publish</label>
                           <select 
                             className="w-full bg-neutral-900 border border-neutral-800 rounded-lg p-3 text-white text-sm focus:border-[#c5a059] outline-none"
                             value={newItem.publishStatus}
@@ -442,6 +455,21 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ onBack, initialBranchId
                           >
                               <option value="draft">Draft</option>
                               <option value="published">Published</option>
+                          </select>
+                      </div>
+                      <div className="col-span-2">
+                          <label className="text-[10px] uppercase tracking-widest text-neutral-500 mb-2 block">Status</label>
+                          <select 
+                            className="w-full bg-neutral-900 border border-neutral-800 rounded-lg p-3 text-white text-sm focus:border-[#c5a059] outline-none"
+                            value={newItem.status}
+                            onChange={e => setNewItem({...newItem, status: e.target.value as any})}
+                          >
+                              <option value="available">Available</option>
+                              <option value="sold_out">Sold Out</option>
+                              <option value="out_of_stock">Out of Stock</option>
+                              <option value="coming_soon">Coming Soon</option>
+                              <option value="few_stocks_left">Few Stocks Left</option>
+                              <option value="new">New</option>
                           </select>
                       </div>
                    </div>

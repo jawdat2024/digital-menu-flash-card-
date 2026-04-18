@@ -27,7 +27,7 @@ const SmoothieCard: React.FC<SmoothieCardProps> = ({ item, index = 0 }) => {
     <div 
       onClick={openModal}
       className={`group relative w-full h-[450px] flex flex-col bg-black rounded-[30px] overflow-hidden transition-all duration-500 ease-luxury border border-white/10 cursor-pointer
-      ${(item.isSoldOut || item.status === 'Sold Out' || item.status === 'Coming Soon')
+      ${(item.isSoldOut || item.status === 'sold_out' || item.status === 'coming_soon')
           ? 'grayscale opacity-60 pointer-events-none' 
           : 'hover:border-white/30 hover:-translate-y-1'
       }`}

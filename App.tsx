@@ -203,7 +203,7 @@ const App: React.FC = () => {
                                 <div 
                                   key={bean.id}
                                   className={`bean-card-sm ${
-                                    (bean.status === 'Sold Out' || bean.status === 'Coming Soon') ? 'grayscale opacity-60 pointer-events-none' : ''
+                                    (bean.status === 'sold_out' || bean.status === 'coming_soon') ? 'grayscale opacity-60 pointer-events-none' : ''
                                   }`}
                                 >
                                   <div className="bean-card-title flex items-center justify-center gap-1">

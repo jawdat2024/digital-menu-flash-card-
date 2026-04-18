@@ -1454,7 +1454,7 @@ const createMirdifMenu = (): MenuCategory[] => {
         {
           id: "sig_matcha_latte",
           name: "Matcha Latte",
-          price: "26",
+          price: "33.20",
           image: "https://iili.io/q2utJ3J.jpg",
           ingredients: "",
           calories: 0,
@@ -2678,16 +2678,6 @@ const createAlQanaMenu = (): MenuCategory[] => {
       title: "Filter Coffee",
       items: [
         {
-          id: "fil_cuban_cigar",
-          name: "Cuban Cigar {tap filter}",
-          tastingNotes: "Caramel popcorn, fresh tobacco",
-          price: "41",
-          image: "https://iili.io/qLf9mXt.jpg",
-          ingredients: "Pour-over brewing method",
-          calories: 5,
-          status: "Available" as const,
-        },
-        {
           id: "fil_mish_mish",
           name: "Mish Mish",
           tastingNotes: "Apricot Jam, Raspberry, Lychee.",
@@ -2746,17 +2736,7 @@ const createAlQanaMenu = (): MenuCategory[] => {
           ingredients: "Pour-over brewing method",
           calories: 5,
           status: "Available" as const,
-        },
-        {
-          id: "fil_costa_rica",
-          name: "Costa Rica",
-          tastingNotes: "Cacao, Fig Compote, Honey, Cherry.",
-          price: "57",
-          image: "https://iili.io/qLf9mXt.jpg",
-          ingredients: "Pour-over brewing method",
-          calories: 5,
-          status: "Available" as const,
-        },
+        }
       ],
     },
     {
@@ -2893,7 +2873,7 @@ const createAlQanaMenu = (): MenuCategory[] => {
         findItem("desserts", "d_vanilla_pud")!,
         {
           ...findItem("desserts", "d_choc_chip")!,
-          image: "https://iili.io/fvmyUc7.jpg",
+          image: "https://iili.io/qqMwcbf.png",
         },
         {
           id: "d_choco_fudge_cookie",
@@ -3267,9 +3247,17 @@ const createMarinaMenu = (): MenuCategory[] => {
     if (cat.id === "desserts") {
       return {
         ...cat,
-        items: cat.items.map((item) =>
-          item.id === "d_crepe_rolls" ? { ...item, status: "Available" } : item,
-        ),
+        items: [
+          ...cat.items.map((item) =>
+            item.id === "d_crepe_rolls" ? { ...item, status: "Available" } : item,
+          ),
+          {
+            id: "d_snickers_coffee_bean",
+            name: "Snickers coffee bean",
+            price: "39.20",
+            image: "https://iili.io/q2hTJNj.png",
+          }
+        ],
       };
     }
     if (cat.id === "highly-recommend") {

@@ -118,4 +118,4 @@ const SmoothieCard: React.FC<SmoothieCardProps> = ({ item, index = 0 }) => {
     </div>
   );};
 
-export default SmoothieCard;
+export default React.memo(SmoothieCard);

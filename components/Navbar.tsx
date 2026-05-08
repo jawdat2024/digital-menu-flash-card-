@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Search, MapPin, Instagram, Phone, Globe, X, Sun, Moon } from 'lucide-react';
+import { Search, MapPin, Instagram, Phone, Globe, X, Sun, Moon, RefreshCw } from 'lucide-react';
 import { Branch, MenuCategory } from '../types';
 
 interface NavbarProps {
@@ -45,6 +45,18 @@ const Navbar: React.FC<NavbarProps> = ({
       document.body.classList.remove('dark-theme');
     }
   }, [isDarkMode]);
+
+  const triggerSync = () => {
+    const btn = document.getElementById('global-sync-btn');
+    if (btn) {
+      btn.classList.add('animate-spin');
+      setTimeout(() => btn.classList.remove('animate-spin'), 500);
+    }
+    // Refresh the localStorage via dispatch event
+    setTimeout(() => {
+       window.dispatchEvent(new Event('menu-updated'));
+    }, 100);
+  };
 
   const toggleTheme = () => {
     if (isDarkMode) {
@@ -114,6 +126,14 @@ const Navbar: React.FC<NavbarProps> = ({
                       >
                         <Globe size={18} strokeWidth={1.5} />
                       </a>
+                      <button 
+                        id="global-sync-btn"
+                        onClick={triggerSync}
+                        className="text-[var(--text-primary)] hover:text-[var(--accent-color)] transition-colors p-1 ml-1 cursor-pointer"
+                        title="Sync Menu"
+                      >
+                        <RefreshCw size={18} strokeWidth={1.5} />
+                      </button>
                    </div>
 
                    {/* Search & Location */}

@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useMemo, useEffect, useLayoutEffect } from 'react';
 import Navbar from './components/Navbar';
 import FlipCard from './components/FlipCard';
 import SmoothieCard from './components/SmoothieCard';
@@ -8,16 +8,40 @@ import BranchSelection from './components/BranchSelection';
 import Footer from './components/Footer';
 import { BRANCH_DATA, BRANCH_MENUS } from './constants';
 import { MenuItem, Branch, MenuCategory } from './types';
-import { X } from 'lucide-react';
+import { X, CheckCircle } from 'lucide-react';
+import { useMenuStore, MenuItemEntity } from './store/menuStore';
 
 const App: React.FC = () => {
   const [isAdminMode, setIsAdminMode] = useState(false);
+
+  // --- Real-Time Sync Listener ---
+  useLayoutEffect(() => {
+    const syncChannel = new BroadcastChannel('cartel_global_sync');
+    syncChannel.onmessage = (event) => {
+      console.log("Broadcast received:", event.data);
+      if (event.data && event.data.type === 'SYNC_STATE') {
+         const currentBranch = useMenuStore.getState().branchId;
+         // Ensure the broadcast is for the active branch currently being viewed
+         if (currentBranch && event.data.branchId === currentBranch) {
+            useMenuStore.getState().setItems(event.data);
+         }
+      }
+    };
+    return () => {
+      syncChannel.close();
+    };
+  }, []);
   const [isLegalModalOpen, setIsLegalModalOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   
   // Default to null to show Branch Selection
   const [activeBranch, setActiveBranch] = useState<Branch | null>(null);
-  const [inventoryStatus, setInventoryStatus] = useState<Record<string, boolean>>({});
+  const storeEntities = useMenuStore(state => state.entities);
+  const initializeStore = useMenuStore(state => state.initialize);
+  
+  // --- Global Toast State ---
+  const [toastMessage, setToastMessage] = useState('');
+  const [isToastVisible, setIsToastVisible] = useState(false);
 
   useEffect(() => {
     // Legacy support for URL param if needed
@@ -44,57 +68,108 @@ const App: React.FC = () => {
   }, [activeBranch]);
 
   useEffect(() => {
-    if (!activeBranch) {
-      setInventoryStatus({});
-      return;
+    if (!activeBranch) return;
+
+    // We no longer rely on manual syncing. Initialize the Zustand store which handles local overrides 
+    // and listens to the BroadcastChannel under the hood for < 10ms cross-tab sync.
+    const storageKey = `cartel_inventory_${activeBranch.id}`;
+    const menuSource = BRANCH_MENUS[activeBranch.id] || BRANCH_MENUS['khalifa'];
+    
+    const initialItemsMap = new Map<string, MenuItemEntity>();
+
+    const addItemToMap = (item: any, catTitle: string) => {
+      const existing = initialItemsMap.get(item.id);
+      if (existing) {
+        if (!existing.categories) existing.categories = [existing.category];
+        if (!existing.categories.includes(catTitle)) existing.categories.push(catTitle);
+      } else {
+        initialItemsMap.set(item.id, {
+          ...item,
+          sku: `SKU-${item.id.toUpperCase()}`,
+          category: catTitle,
+          categories: [catTitle],
+          price: parseFloat(item.price?.toString().replace(/[^0-9.]/g, '') || '0') || 0,
+          isVisible: item.isVisible !== false,
+          status: item.status ? item.status.toString().toLowerCase().replace(' ', '_') as any : (['sold_out', 'out_of_stock'].includes(item.status as any) ? 'sold_out' : 'available'),
+          publishStatus: 'published'
+        });
+      }
+    };
+
+    menuSource.forEach(cat => {
+      cat.items.forEach(item => addItemToMap(item, cat.title));
+      if (cat.subCategories) {
+        cat.subCategories.forEach(sub => {
+          sub.items.forEach(item => addItemToMap(item, sub.title));
+        });
+      }
+    });
+
+    const initialItems = Array.from(initialItemsMap.values());
+
+    const stored = localStorage.getItem(storageKey);
+    let finalItems = initialItems;
+    if (stored) {
+      let parsedStored: MenuItemEntity[] = JSON.parse(stored);
+      
+      // Cleanup for branch specific removed items that might be stuck as custom items
+      if (activeBranch.id === 'alqana') {
+          const removedAlQanaIds = ['fil_ethiopia', 'fil_colombia_sweet_decaf', 'fil_blackberry', 'fil_colombia_gesha', 'fil_cuban_cigar', 'fil_costa_rica'];
+          parsedStored = parsedStored.filter(si => !removedAlQanaIds.includes(si.id));
+      }
+
+      finalItems = initialItems.map(item => {
+        const storedItem = parsedStored.find(si => si.id === item.id);
+        return storedItem ? { ...item, ...storedItem } : item;
+      });
+      const customItems = parsedStored.filter(si => !initialItems.some(ii => ii.id === si.id));
+      finalItems = [...finalItems, ...customItems];
     }
+    
+    initializeStore(activeBranch.id, finalItems);
 
-    const syncInventory = () => {
-      try {
-        const storageKey = `cartel_inventory_${activeBranch.id}`;
-        const storedInventory = localStorage.getItem(storageKey);
-        
-        if (storedInventory) {
-          const parsed = JSON.parse(storedInventory);
-          const statusMap: Record<string, boolean> = {};
-          
-          if (Array.isArray(parsed)) {
-            parsed.forEach((item: any) => {
-              if (item && item.id) {
-                statusMap[item.id] = !!item.isSoldOut;
-              }
-            });
-            setInventoryStatus(statusMap);
-          }
-        } else {
-           setInventoryStatus({});
-        }
-      } catch (error) {
-        console.error("Failed to sync inventory", error);
-      }
+    const handleMenuUpdated = () => {
+       setToastMessage('All changes synced');
+       setIsToastVisible(true);
+       setTimeout(() => {
+         setIsToastVisible(false);
+         setTimeout(() => setToastMessage(''), 300);
+       }, 3000);
     };
 
-    syncInventory();
-
-    const handleStorageChange = (e: StorageEvent) => {
-      if (e.key === `cartel_inventory_${activeBranch.id}`) {
-        syncInventory();
-      }
-    };
-
-    window.addEventListener('storage', handleStorageChange);
-    return () => window.removeEventListener('storage', handleStorageChange);
-  }, [isAdminMode, activeBranch]);
+    window.addEventListener('menu-updated', handleMenuUpdated);
+    return () => window.removeEventListener('menu-updated', handleMenuUpdated);
+  }, [activeBranch, initializeStore]);
 
   const filteredCategories = useMemo(() => {
+    // 1. Gather all base IDs to identify custom added items
+    const baseIds = new Set<string>();
+    const gatherIds = (cat: MenuCategory) => {
+       cat.items.forEach(i => baseIds.add(i.id));
+       cat.subCategories?.forEach(gatherIds);
+    };
+    currentBranchMenu.forEach(gatherIds);
+
+    // 2. Identify custom items from the store
+    const customItems = Object.values(storeEntities).filter(item => !baseIds.has(item.id) && item.isVisible !== false);
+
     const processCategory = (cat: MenuCategory): MenuCategory => {
-      const processedItems = cat.items.map(item => ({
-        ...item,
-        isSoldOut: inventoryStatus[item.id] !== undefined 
-          ? inventoryStatus[item.id] 
-          : item.isSoldOut
-      }));
+      let processedItems = cat.items.map(item => {
+        const entity = storeEntities[item.id];
+        return {
+          ...item,
+          isVisible: entity && entity.isVisible !== undefined ? entity.isVisible : item.isVisible,
+          status: entity && entity.status !== undefined ? entity.status : item.status,
+          price: entity && entity.price !== undefined ? entity.price.toString() : item.price,
+        };
+      }).filter(item => item.isVisible !== false);
       
+      // Inject custom items into their matching category
+      const matchingCustoms = customItems.filter(ci => ci.category.toLowerCase() === cat.title.toLowerCase());
+      if (matchingCustoms.length > 0) {
+         processedItems = [...processedItems, ...matchingCustoms as any];
+      }
+
       const processedSubCategories = cat.subCategories?.map(processCategory);
       
       return {
@@ -104,7 +179,26 @@ const App: React.FC = () => {
       };
     };
 
-    const mergedCategories = currentBranchMenu.map(processCategory);
+    let mergedCategories = currentBranchMenu.map(processCategory);
+
+    // Handle custom items that don't match ANY existing category
+    const unmappedCustoms = customItems.filter(ci => {
+       let found = false;
+       const checkCat = (cat: MenuCategory) => {
+          if (cat.title.toLowerCase() === ci.category.toLowerCase()) found = true;
+          cat.subCategories?.forEach(checkCat);
+       };
+       mergedCategories.forEach(checkCat);
+       return !found;
+    });
+
+    if (unmappedCustoms.length > 0) {
+       mergedCategories.push({
+          id: 'new-additions',
+          title: 'New Additions',
+          items: unmappedCustoms as any
+       });
+    }
 
     if (!searchQuery.trim()) return mergedCategories;
 
@@ -134,7 +228,7 @@ const App: React.FC = () => {
     return mergedCategories
       .map(filterCategory)
       .filter((c): c is MenuCategory => c !== null);
-  }, [searchQuery, inventoryStatus, currentBranchMenu]);
+  }, [searchQuery, storeEntities, currentBranchMenu]);
 
   const resetLocation = () => {
      setActiveBranch(null);

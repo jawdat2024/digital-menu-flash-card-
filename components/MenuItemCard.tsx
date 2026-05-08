@@ -107,8 +107,14 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({ item }) => {
                 ) : null}
                 
                 {item.ingredients && (
-                    <p className="text-xs text-neutral-400 font-sans leading-relaxed line-clamp-3 mb-6 max-w-[95%]">
+                    <p className="text-xs text-neutral-400 font-sans leading-relaxed line-clamp-3 mb-2 max-w-[95%]">
                         {item.ingredients}
+                    </p>
+                )}
+                
+                {(item.tastingNotes || item.notes) && (
+                    <p className="text-[10px] text-neutral-500 font-serif italic leading-relaxed line-clamp-2 mb-6 max-w-[95%] tracking-wide">
+                        Notes: {item.tastingNotes || item.notes}
                     </p>
                 )}
             </div>

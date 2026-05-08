@@ -241,4 +241,4 @@ const FlipCard: React.FC<FlipCardProps> = ({ item, index = 0 }) => {
     </>
   );};
 
-export default FlipCard;
+export default React.memo(FlipCard);

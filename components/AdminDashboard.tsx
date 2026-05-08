@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Search, ArrowLeft, MoreHorizontal, Filter, FileText, Plus, X, Save, Trash2, Ban, CheckCircle, MapPin } from 'lucide-react';
+import { Search, ArrowLeft, MoreHorizontal, Filter, FileText, Plus, X, Save, Trash2, Ban, CheckCircle, MapPin, RefreshCw } from 'lucide-react';
 import CurrencySymbol from './CurrencySymbol';
 import { BRANCH_MENUS, BRANCH_DATA } from '../constants';
 import AdminGate from './AdminGate';
+import { useMenuStore, MenuItemEntity } from '../store/menuStore';
+import { AdminProductRow } from './AdminProductRow';
 
 // --- Types ---
 interface AdminItem {
@@ -27,18 +29,18 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ onBack, initialBranchId
   const [selectedBranchId, setSelectedBranchId] = useState<string | null>(initialBranchId || null);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
 
-  // --- Inventory State ---
-  const [items, setItems] = useState<AdminItem[]>([]);
-  const [searchQuery, setSearchQuery] = useState('');
-  
-  // --- UI State ---
-  const [activeMenuId, setActiveMenuId] = useState<string | number | null>(null);
-  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
-  const [isEditPriceModalOpen, setIsEditPriceModalOpen] = useState(false);
-  const [selectedItem, setSelectedItem] = useState<AdminItem | null>(null);
+  // --- Store State ---
+  const storeEntities = useMenuStore(state => state.entities);
+  const storeIds = useMenuStore(state => state.ids);
+  const initializeStore = useMenuStore(state => state.initialize);
+  const addItemStore = useMenuStore(state => state.addItem);
+  const syncStatus = useMenuStore(state => state.syncStatus);
+  const items: MenuItemEntity[] = storeIds.map(id => storeEntities[id]);
 
-  // --- New Item Form State ---
-  const [newItem, setNewItem] = useState<Partial<AdminItem>>({
+  const [searchQuery, setSearchQuery] = useState('');
+  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+
+  const [newItem, setNewItem] = useState<Partial<MenuItemEntity>>({
     name: '',
     category: 'Signature drink',
     price: 0,
@@ -47,12 +49,9 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ onBack, initialBranchId
     status: 'available',
     publishStatus: 'draft'
   });
-  
-  // --- Edit Price State ---
-  const [editPriceValue, setEditPriceValue] = useState<string>('');
 
   // --- Initialization & Switching Logic ---
-  useEffect(() => {
+  const loadInventory = () => {
     if (!selectedBranchId) return;
 
     const storageKey = `cartel_inventory_${selectedBranchId}`;
@@ -85,8 +84,9 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ onBack, initialBranchId
     });
 
     const stored = localStorage.getItem(storageKey);
+    let finalItems: MenuItemEntity[] = [];
     if (stored) {
-      const parsedStored: AdminItem[] = JSON.parse(stored);
+      const parsedStored: MenuItemEntity[] = JSON.parse(stored);
       const mergedItems = initialItems.map(item => {
         const storedItem = parsedStored.find(si => si.id === item.id);
         return storedItem ? { ...item, 
@@ -94,73 +94,20 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ onBack, initialBranchId
           status: storedItem.status || ((storedItem as any).isSoldOut ? 'sold_out' : 'available'), 
           price: storedItem.price, 
           publishStatus: storedItem.publishStatus || 'published' 
-        } : item;
+        } : (item as MenuItemEntity);
       });
       const customItems = parsedStored.filter(si => !initialItems.some(ii => ii.id === si.id));
-      setItems([...mergedItems, ...customItems]);
+      finalItems = [...mergedItems, ...customItems] as MenuItemEntity[];
     } else {
-      setItems(initialItems);
-      localStorage.setItem(storageKey, JSON.stringify(initialItems));
+      finalItems = initialItems as MenuItemEntity[];
+      localStorage.setItem(storageKey, JSON.stringify(finalItems));
     }
+    initializeStore(selectedBranchId, finalItems);
+  };
+
+  useEffect(() => {
+    loadInventory();
   }, [selectedBranchId]);
-
-  // --- Persistence Helper ---
-  const saveToStorage = (updatedItems: AdminItem[]) => {
-    setItems(updatedItems);
-    if (selectedBranchId) {
-      const storageKey = `cartel_inventory_${selectedBranchId}`;
-      localStorage.setItem(storageKey, JSON.stringify(updatedItems));
-    }
-  };
-
-  // --- Inventory Logic ---
-  const toggleVisibility = (id: string | number) => {
-    const updated = items.map(item => 
-      item.id === id ? { ...item, isVisible: !item.isVisible } : item
-    );
-    saveToStorage(updated);
-  };
-
-  const updateStatus = (id: string | number, newStatus: AdminItem['status']) => {
-    const updated = items.map(item => 
-      item.id === id ? { ...item, status: newStatus } : item
-    );
-    saveToStorage(updated);
-    setActiveMenuId(null);
-  };
-
-  const handleDelete = (id: string | number) => {
-    if (window.confirm("Are you sure you want to delete this item?")) {
-      const updated = items.filter(item => item.id !== id);
-      saveToStorage(updated);
-    }
-    setActiveMenuId(null);
-  };
-
-  const openPriceEdit = (item: AdminItem) => {
-    setSelectedItem(item);
-    setEditPriceValue(item.price.toString());
-    setIsEditPriceModalOpen(true);
-    setActiveMenuId(null);
-  };
-
-  const savePrice = () => {
-    if (!selectedItem) return;
-    const newPrice = parseFloat(editPriceValue);
-    
-    // Price Validation Rule
-    if (isNaN(newPrice) || newPrice <= 0) {
-      alert("Price must be a positive number greater than 0.");
-      return;
-    }
-
-    const updated = items.map(item => 
-      item.id === selectedItem.id ? { ...item, price: newPrice } : item
-    );
-    saveToStorage(updated);
-    setIsEditPriceModalOpen(false);
-    setSelectedItem(null);
-  };
 
   const handleAddItem = (e: React.FormEvent) => {
     e.preventDefault();
@@ -173,7 +120,7 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ onBack, initialBranchId
     }
 
     const id = `new_${Date.now()}`;
-    const itemToAdd: AdminItem = {
+    const itemToAdd: MenuItemEntity = {
       id,
       name: newItem.name || 'Untitled',
       sku: `SKU-${Math.floor(Math.random() * 10000)}`,
@@ -185,17 +132,18 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ onBack, initialBranchId
       publishStatus: newItem.publishStatus || 'draft'
     };
 
-    saveToStorage([itemToAdd, ...items]);
+    addItemStore(itemToAdd);
     setIsAddModalOpen(false);
     setNewItem({ name: '', category: selectedCategory || 'Signature drink', price: 0, image: '', isVisible: true, status: 'available', publishStatus: 'draft' });
   };
 
   // --- Derived State ---
-  const distinctCategories = Array.from(new Set(items.map(i => i.category)));
+  const distinctCategories = Array.from(new Set(items.flatMap(i => i.categories || [i.category])));
   
   const filteredItems = items.filter(item => {
     const matchesSearch = item.name.toLowerCase().includes(searchQuery.toLowerCase()) || item.sku.toLowerCase().includes(searchQuery.toLowerCase());
-    const matchesCategory = selectedCategory ? item.category === selectedCategory : true;
+    const itemCats = item.categories || [item.category];
+    const matchesCategory = selectedCategory ? itemCats.includes(selectedCategory) : true;
     return matchesSearch && matchesCategory;
   });
 
@@ -204,8 +152,8 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ onBack, initialBranchId
     <AdminGate>
       <div className="bg-[#0a0a0a] min-h-screen text-white font-sans selection:bg-white selection:text-black">
         
-        {/* Header */}
-        <header className="flex justify-between items-center p-8 border-b border-[#222]">
+        {/* Header (Sticky) */}
+        <header className="sticky top-0 z-40 bg-[#0a0a0a]/90 backdrop-blur-md flex justify-between items-center p-6 px-8 border-b border-[#222]">
           <div className="flex items-center gap-4">
             <button 
               onClick={() => {
@@ -217,9 +165,45 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ onBack, initialBranchId
             >
               <ArrowLeft size={20} />
             </button>
-            <h1 className="text-2xl font-bold tracking-tighter">CARTEL <span className="font-light text-gray-500">| Control Panel</span></h1>
+            <h1 className="text-2xl font-bold tracking-tighter">CARTEL <span className="font-light text-gray-500 hidden sm:inline">| Control Panel</span></h1>
           </div>
-          <button onClick={onBack} className="text-xs text-red-500 hover:underline">Logout</button>
+          <div className="flex items-center gap-3">
+             {selectedBranchId && (
+               <>
+                 <button 
+                    onClick={() => {
+                        loadInventory();
+                        const btn = document.getElementById('admin-sync-btn');
+                        if (btn) {
+                             btn.classList.add('animate-spin');
+                             setTimeout(() => btn.classList.remove('animate-spin'), 500);
+                        }
+                    }}
+                    id="admin-sync-btn"
+                    className="flex items-center justify-center p-2.5 rounded-full border border-neutral-700 hover:bg-neutral-800 text-neutral-300 transition-colors"
+                    title="Sync / Refresh from Source"
+                 >
+                    <RefreshCw size={16} />
+                 </button>
+                 <button 
+                    disabled={true}
+                    className={`flex items-center justify-center px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-widest transition-all min-w-[140px] ${
+                       syncStatus.state === 'saving' ? 'bg-[#c5a059] text-black' : 
+                       syncStatus.state === 'error' ? 'bg-red-500 text-white' : 
+                       syncStatus.state === 'saved' ? 'bg-green-600 text-white' :
+                       'bg-neutral-800 text-neutral-500 cursor-not-allowed'
+                    }`}
+                 >
+                    {syncStatus.state === 'saving' && <span className="flex items-center gap-2 animate-pulse"><div className="w-2 h-2 rounded-full bg-black"></div> Saving</span>}
+                    {syncStatus.state === 'saved' && <span className="flex items-center gap-2"><CheckCircle size={14} /> Saved</span>}
+                    {syncStatus.state === 'error' && <span className="flex items-center gap-1"><X size={14} /> Failed - Retry</span>}
+                    {syncStatus.state === 'idle' && 'Saved'}
+                 </button>
+                 <div className="w-px h-6 bg-neutral-800 mx-2"></div>
+               </>
+             )}
+             <button onClick={onBack} className="text-xs text-red-500 hover:underline hidden sm:block">Logout</button>
+          </div>
         </header>
 
         <div className="p-8 max-w-7xl mx-auto">
@@ -303,109 +287,8 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ onBack, initialBranchId
                     </thead>
                     <tbody className="divide-y divide-neutral-800">
                       {filteredItems.map((item) => (
-                        <tr 
-                          key={item.id} 
-                          className={`transition-colors group ${['sold_out', 'out_of_stock'].includes(item.status) ? 'bg-red-900/10 opacity-75' : 'hover:bg-neutral-800/30'}`}
-                        >
-                          <td className="p-4">
-                            <div className="flex items-center gap-4">
-                              <div className="w-10 h-10 rounded-lg bg-neutral-800 overflow-hidden relative">
-                                <img src={item.image} alt={item.name} className={`w-full h-full object-cover object-center transition-opacity grayscale ${['sold_out', 'out_of_stock'].includes(item.status) ? 'grayscale' : 'group-hover:grayscale-0'}`} />
-                                {['sold_out', 'out_of_stock'].includes(item.status) && (
-                                   <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
-                                      <Ban size={16} className="text-white" />
-                                   </div>
-                                )}
-                              </div>
-                              <div>
-                                  <span className={`text-sm font-medium ${['sold_out', 'out_of_stock'].includes(item.status) ? 'text-neutral-400 line-through' : 'text-white'}`}>{item.name}</span>
-                                  {['sold_out', 'out_of_stock'].includes(item.status) && <span className="block text-[9px] text-red-400 uppercase tracking-wider font-bold">Sold Out</span>}
-                              </div>
-                            </div>
-                          </td>
-                          <td className="p-4 hidden sm:table-cell">
-                            <span className={`px-2 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider ${
-                              item.publishStatus === 'draft' ? 'bg-yellow-900/30 text-yellow-500 border border-yellow-900/50' : 
-                              item.publishStatus === 'archived' ? 'bg-neutral-800 text-neutral-400 border border-neutral-700' :
-                              'bg-green-900/30 text-green-500 border border-green-900/50'
-                            }`}>
-                              {item.publishStatus}
-                            </span>
-                          </td>
-                          <td className="p-4 text-sm font-didone text-white">
-                            <div className="flex items-center gap-1">
-                              <CurrencySymbol className="w-3 h-3" />
-                              <span>{item.price.toFixed(2)}</span>
-                            </div>
-                          </td>
-                          <td className="p-4">
-                             <button 
-                               onClick={() => toggleVisibility(item.id)}
-                               className={`relative inline-flex h-5 w-9 items-center rounded-full transition-colors focus:outline-none ${item.isVisible ? 'bg-[#c5a059]' : 'bg-neutral-700'}`}
-                             >
-                               <span className={`inline-block h-3 w-3 transform rounded-full bg-black transition-transform ${item.isVisible ? 'translate-x-5' : 'translate-x-1'}`} />
-                             </button>
-                          </td>
-                          <td className="p-4 text-right relative">
-                            <button 
-                              onClick={() => setActiveMenuId(activeMenuId === item.id ? null : item.id)}
-                              className="text-neutral-500 hover:text-white transition-colors p-2"
-                            >
-                              <MoreHorizontal size={16} />
-                            </button>
-
-                            {/* Dropdown Action Menu */}
-                            {activeMenuId === item.id && (
-                              <div className="absolute right-8 top-8 w-48 bg-black border border-neutral-700 rounded-xl shadow-2xl z-50 flex flex-col py-1 animate-in fade-in zoom-in-95 duration-200">
-                                 <button 
-                                    onClick={() => openPriceEdit(item)}
-                                    className="px-4 py-3 text-left text-xs text-neutral-300 hover:bg-neutral-900 hover:text-white transition-colors border-b border-neutral-800"
-                                  >
-                                     Edit Price
-                                 </button>
-                                 <div className="px-4 py-2 border-b border-neutral-800">
-                                     <label className="text-[10px] uppercase text-neutral-500 mb-1 block">Status</label>
-                                     <select 
-                                       className="w-full bg-neutral-900 border border-neutral-700 rounded p-1.5 text-xs text-white"
-                                       value={item.status}
-                                       onChange={(e) => updateStatus(item.id, e.target.value as AdminItem['status'])}
-                                     >
-                                        <option value="available">Available</option>
-                                        <option value="sold_out">Sold Out</option>
-                                        <option value="out_of_stock">Out of Stock</option>
-                                        <option value="coming_soon">Coming Soon</option>
-                                        <option value="few_stocks_left">Few Stocks Left</option>
-                                        <option value="new">New</option>
-                                     </select>
-                                 </div>
-                                 <button 
-                                    onClick={() => {
-                                      const updated = items.map(i => i.id === item.id ? { ...i, publishStatus: i.publishStatus === 'published' ? 'draft' : 'published' as any } : i);
-                                      saveToStorage(updated);
-                                      setActiveMenuId(null);
-                                    }}
-                                    className="px-4 py-3 text-left text-xs text-neutral-300 hover:bg-neutral-900 hover:text-white transition-colors border-b border-neutral-800 flex items-center justify-between"
-                                  >
-                                     {item.publishStatus === 'published' ? 'Move to Draft' : 'Publish'}
-                                 </button>
-                                 <button 
-                                    onClick={() => handleDelete(item.id)}
-                                    className="px-4 py-3 text-left text-xs text-red-400 hover:bg-red-900/20 transition-colors flex items-center gap-2"
-                                  >
-                                     <Trash2 size={12} /> Delete Item
-                                 </button>
-                              </div>
-                            )}
-                          </td>
-                        </tr>
+                        <AdminProductRow key={item.id} productId={item.id} />
                       ))}
-                      {filteredItems.length === 0 && (
-                        <tr>
-                          <td colSpan={5} className="p-8 text-center text-neutral-500 text-sm">
-                            No items found in this category.
-                          </td>
-                        </tr>
-                      )}
                     </tbody>
                   </table>
                 </div>
@@ -490,39 +373,7 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ onBack, initialBranchId
           </div>
         )}
 
-        {/* --- Edit Price Modal --- */}
-        {isEditPriceModalOpen && (
-          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
-             <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" onClick={() => setIsEditPriceModalOpen(false)} />
-             <div className="relative bg-black border border-neutral-800 rounded-2xl w-full max-w-sm p-8 shadow-2xl animate-in zoom-in-95">
-                <div className="flex justify-between items-center mb-6">
-                   <h2 className="text-xl font-bold text-white uppercase tracking-wider">Update Price</h2>
-                   <button onClick={() => setIsEditPriceModalOpen(false)}><X size={20} className="text-neutral-500 hover:text-white" /></button>
-                </div>
-                <div className="space-y-4">
-                   <div>
-                      <label className="text-[10px] uppercase tracking-widest text-neutral-500 mb-2 block">New Price</label>
-                      <input 
-                        type="number"
-                        required
-                        min="0.01"
-                        step="0.01"
-                        className="w-full bg-neutral-900 border border-neutral-800 rounded-lg p-3 text-white text-sm focus:border-[#c5a059] outline-none"
-                        value={editPriceValue}
-                        onChange={e => setEditPriceValue(e.target.value)}
-                        autoFocus
-                      />
-                   </div>
-                   <button 
-                      onClick={savePrice}
-                      className="w-full bg-[#c5a059] text-black font-bold uppercase tracking-[0.2em] py-4 rounded-lg hover:bg-white mt-4 flex items-center justify-center gap-2 transition-colors"
-                   >
-                      <Save size={16} /> Save Changes
-                   </button>
-                </div>
-             </div>
-          </div>
-        )}
+
 
       </div>
     </AdminGate>

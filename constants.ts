@@ -4293,7 +4293,16 @@ export const sortFilteredCoffeeByPrice = (
 // Key = Branch ID, Value = Specific Menu Structure
 const RAW_BRANCH_MENUS: BranchMenuDirectory = {
   // Dubai Mirdif
-  mirdif: applyGoldenRuleLayout(createMirdifMenu()),
+  mirdif: (() => {
+    const menu = applyGoldenRuleLayout(createMirdifMenu());
+    const sandwichesIdx = menu.findIndex(c => c.id === 'sandwiches');
+    if (sandwichesIdx !== -1) {
+      menu[sandwichesIdx].items.forEach(item => {
+        item.status = 'available';
+      });
+    }
+    return menu;
+  })(),
 
   // Dubai
   dubai: applyGoldenRuleLayout(createDubaiMenu()),

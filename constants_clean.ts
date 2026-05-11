@@ -1945,7 +1945,6 @@ const createAlBateenMenu = (): MenuCategory[] => {
           status: 'available' as const,
         },
         findItem("desserts", "d_aseeda")!,
-        findItem("desserts", "d_snickers_coffee_bean")!,
         {
           id: "d_honey",
           name: "Honey Cake",
@@ -2373,7 +2372,6 @@ const createKhalifaMenu = (): MenuCategory[] => {
           status: 'coming_soon' as const,
         },
         findItem("desserts", "d_aseeda")!,
-        findItem("desserts", "d_snickers_coffee_bean")!,
         {
           id: "d_honey",
           name: "Honey Cake",
@@ -2916,15 +2914,6 @@ const createAlQanaMenu = (): MenuCategory[] => {
       id: "eggs-more",
       title: "EGG& MORE",
       items: [
-{
-          id: "egg_nduja_alqana",
-          name: "Tornado Chilli Egg",
-          price: "52",
-          image: "https://iili.io/fvpnDhB.jpg",
-          ingredients: "garlic and butter pita bread, creamy mayo, mama’s sauce, smoked yogurt, spicy beef nduja, microgreens, and a drizzle of smoked oil.",
-          calories: 450,
-          status: 'available' as const,
-        },
         {
           id: "sw_bacon",
           name: "Bacon & Egg Cheese Bun",

@@ -11,7 +11,7 @@ export interface ModifierOption {
   name: string;
   price: number; // Additional cost
   description?: string;
-  status?: 'available' | 'sold_out' | 'out_of_stock' | 'coming_soon' | 'few_stocks_left' | 'new';
+  status?: 'available' | 'sold_out' | 'out_of_stock' | 'coming_soon' | 'few_stocks_left' | 'new' | 'active';
 }
 
 export interface ModifierGroup {
@@ -44,9 +44,10 @@ export interface MenuItem {
   process?: string;
   elevation?: string;
   tastingNotes?: string;
+  notes?: string;
   tags?: string[];
   branch?: string;
-  status?: 'available' | 'sold_out' | 'out_of_stock' | 'coming_soon' | 'few_stocks_left' | 'new';
+  status?: 'available' | 'sold_out' | 'out_of_stock' | 'coming_soon' | 'few_stocks_left' | 'new' | 'active';
   isVisible?: boolean;
 }
 
@@ -57,7 +58,7 @@ export interface BeanSelectionItem {
   price?: number;
   isNew?: boolean;
   isDecaf?: boolean;
-  status?: 'available' | 'sold_out' | 'out_of_stock' | 'coming_soon' | 'few_stocks_left' | 'new';
+  status?: 'available' | 'sold_out' | 'out_of_stock' | 'coming_soon' | 'few_stocks_left' | 'new' | 'active';
 }
 
 export interface MenuCategory {

@@ -1734,16 +1734,16 @@ const createAlBateenMenu = (): MenuCategory[] => {
   // Define Custom Beans
   const alBateenBeans = [
     {
-      id: "bean_nicaragua",
-      name: "Nicaragua",
-      notes: "Sugarcane, Candied Peanuts, Milk Chocolate",
-      price: 0,
+      id: "bean_costa_rica",
+      name: "Costa Rica",
+      notes: "Cacao, Fig Compote, Honey, Cherry",
+      price: 5,
       isNew: false,
     },
     {
       id: "bean_latino",
-      name: "Latino Blend",
-      notes: "Milk Chocolate, Hazelnut, Toffee",
+      name: "BRAZIL CHOCOLATE",
+      notes: "Chocolate Biscuit, Condensed Milk, Chestnut",
       price: 1,
       isNew: false,
     },
@@ -1974,6 +1974,7 @@ const createAlBateenMenu = (): MenuCategory[] => {
         findItem("desserts", "d_vanilla_pud")!,
         findItem("desserts", "d_banana_pud")!,
         findItem("desserts", "STICKY DATE")!,
+        findItem("desserts", "d_1000")!,
         findItem("desserts", "d_choc_chip")!,
       ].filter(Boolean),
     },
@@ -2235,15 +2236,15 @@ const createKhalifaMenu = (): MenuCategory[] => {
   const khalifaBeans = [
     {
       id: "bean_brazil_amazonic",
-      name: "Latino Blend",
-      notes: "Dark chocolate, Roasted hazelnut, Caramel",
-      price: 1,
+      name: "COLOMBIA WITCH",
+      notes: "Dried Fig, Jaggery, Orange Zest, Sugarcane Juice",
+      price: 0,
       isNew: false,
     },
 
     {
       id: "bean_colombia_strawberry",
-      name: "Colombia Peach",
+      name: "COLOMBIA PEACH",
       notes: "Strawberry Jam, Honey, Milk Chocolates",
       price: 5,
       isNew: true,
@@ -2256,14 +2257,6 @@ const createKhalifaMenu = (): MenuCategory[] => {
       price: 0,
       isNew: false,
       isDecaf: true,
-    },
-      {
-      id: "bean_colombia_bourbon_sidra",
-      name: "Colombia Bourbon Sidra",
-      notes: "Red Grapes, Watermelon, Hard Candy, Raspberry",
-      price: 5,
-      isNew: true,
-      status: 'coming_soon' as const,
     },
 ];
 
@@ -2402,6 +2395,7 @@ const createKhalifaMenu = (): MenuCategory[] => {
         findItem("desserts", "d_vanilla_pud")!,
         findItem("desserts", "d_banana_pud")!,
         findItem("desserts", "STICKY DATE")!,
+        findItem("desserts", "d_1000")!,
         findItem("desserts", "d_choc_chip")!,
       ].filter(Boolean),
     },
@@ -2889,6 +2883,7 @@ const createAlQanaMenu = (): MenuCategory[] => {
         },
         findItem("desserts", "d_san_seb")!,
         findItem("desserts", "STICKY DATE")!,
+        findItem("desserts", "d_1000")!,
         {
           id: "d_tiramisu",
           name: "Tiramisu Bowl",
@@ -4322,7 +4317,16 @@ const RAW_BRANCH_MENUS: BranchMenuDirectory = {
   alqana: applyGoldenRuleLayout(createAlQanaMenu()),
 
   // Khalifa City
-  khalifa: applyGoldenRuleLayout(createKhalifaMenu()),
+  khalifa: (() => {
+    const menu = applyGoldenRuleLayout(createKhalifaMenu());
+    const sandwichesIdx = menu.findIndex(c => c.id === 'sandwiches');
+    if (sandwichesIdx !== -1) {
+      menu[sandwichesIdx].items.forEach(item => {
+        item.status = 'active';
+      });
+    }
+    return menu;
+  })(),
 
   // Marina
   marina: (() => {
@@ -4464,7 +4468,7 @@ const RAW_BRANCH_MENUS: BranchMenuDirectory = {
     const sandwichesIdx = menu.findIndex(c => c.id === 'sandwiches');
     if (sandwichesIdx !== -1) {
       menu[sandwichesIdx].items.forEach(item => {
-        item.status = 'coming_soon';
+        item.status = 'active';
       });
     }
 

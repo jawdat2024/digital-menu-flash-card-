@@ -45,11 +45,16 @@ const FlipCard: React.FC<FlipCardProps> = ({ item, index = 0 }) => {
         `}
       </style>
       <div 
-        onClick={openModal}
-        className={`group relative w-full h-[450px] flex flex-col bg-[var(--card-bg)] rounded-[30px] overflow-hidden transition-all duration-500 ease-luxury border border-[var(--border-color)] cursor-pointer
-        ${(item.isSoldOut || item.status === 'sold_out' || item.status === 'coming_soon')
-            ? 'grayscale opacity-60 pointer-events-none' 
-            : 'hover:border-[var(--text-primary)] hover:-translate-y-1'
+        onClick={item.status === 'coming_soon' ? undefined : openModal}
+        className={`group relative w-full flex flex-col bg-[#111111] rounded-2xl overflow-hidden transition-all duration-300 ease-out border cursor-pointer
+        ${
+           item.status === 'new'
+            ? 'border-[#DEB887]/50 shadow-[0_0_15px_rgba(255,215,0,0.1)] hover:-translate-y-1'
+          : (item.isSoldOut || item.status === 'sold_out')
+            ? 'border-[#222222]' 
+          : item.status === 'coming_soon'
+            ? 'border-[#222222] grayscale-[50%] pointer-events-none'
+          : 'border-[#222222] hover:-translate-y-1'
         }`}
         style={{
           animation: `fadeUpIn 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards`,
@@ -57,62 +62,73 @@ const FlipCard: React.FC<FlipCardProps> = ({ item, index = 0 }) => {
           animationDelay
         }}
       >
+          {/* Coming Soon Full Card Overlay */}
+          {item.status === 'coming_soon' && (
+            <div className="absolute inset-0 bg-[rgba(0,0,0,0.55)] z-40 flex items-center justify-center">
+                 <span className="text-white text-[14px] uppercase tracking-[0.1em] font-sans">Coming Soon</span>
+            </div>
+          )}
+
+          {/* Sold Out Full Card Overlay */}
+          {(item.isSoldOut || item.status === 'sold_out') && (
+            <div className="absolute inset-0 bg-[rgba(0,0,0,0.65)] z-40 flex items-center justify-center">
+                 <span className="text-white text-[18px] uppercase tracking-[0.1em] font-serif">SOLD OUT</span>
+            </div>
+          )}
+
           {/* Badge */}
-          {item.badge && !item.isSoldOut && (
-             <div className="absolute top-4 left-4 z-20 bg-[var(--text-primary)] text-[var(--bg-primary)] px-3 py-1 rounded-sm shadow-md">
-               <span className="text-[9px] font-bold uppercase tracking-[0.2em] leading-none">{item.badge}</span>
+          {item.badge && !item.isSoldOut && item.status !== 'coming_soon' && (
+             <div className={`absolute top-[12px] left-[12px] z-20 px-[8px] py-[4px] rounded-[4px] shadow-sm ${
+               item.status === 'new' 
+                ? 'bg-[#FFD700] text-black' 
+                : 'bg-[rgba(255,215,0,0.9)] text-black'
+             }`}>
+               <span className="text-[10px] font-bold uppercase tracking-[0.05em] leading-none">{item.badge}</span>
              </div>
           )}
 
           {/* Cartel Icon Interaction */}
           <button 
             onClick={handleIconTap}
-            className="absolute top-4 right-4 z-30 w-8 h-8 rounded-full bg-black/60 backdrop-blur-md border border-white/30 flex items-center justify-center hover:bg-white hover:text-black transition-colors duration-300 group/icon cursor-pointer text-white shadow-sm"
+            className="absolute top-[12px] right-[12px] z-30 w-[28px] h-[28px] rounded-full bg-[rgba(255,255,255,0.15)] flex items-center justify-center hover:bg-white hover:text-black transition-colors duration-300 group/icon cursor-pointer text-white shadow-sm"
           >
-             {triggerSparkle ? <Sparkles size={14} className="animate-spin" /> : <span className="font-didone font-bold text-[10px]">C</span>}
+             {triggerSparkle ? <Sparkles size={14} className="animate-spin" /> : <span className="font-didone font-bold text-[14px]">C</span>}
           </button>
           
           {/* Image Container */}
-          <div className="h-[55%] w-full relative overflow-hidden bg-[var(--bg-secondary)]">
+          <div className="h-[220px] w-full relative overflow-hidden bg-black">
               {item.image ? (
                   <img 
                    src={item.image} 
                    alt={item.name}
-                   className={`w-full h-full ${isFilterTap || isColdBrew ? 'object-contain p-4' : 'object-cover'} object-center transition-transform duration-[1.5s] ease-luxury grayscale-[20%] group-hover:grayscale-0`}
-                   style={{ transform: 'scale(1.2)' }}
+                   className={`w-full h-full ${isFilterTap || isColdBrew ? 'object-contain p-4' : 'object-cover'} object-center transition-transform duration-[1.5s] ease-luxury grayscale-[20%] group-hover:scale-105`}
+                   style={{ filter: item.status === 'sold_out' ? 'grayscale(100%)' : item.status === 'coming_soon' ? 'grayscale(80%) opacity(0.6)' : undefined }}
                    loading="lazy"
                  />
               ) : (
-                  <div className="w-full h-full flex items-center justify-center bg-neutral-900">
+                  <div className="w-full h-full flex items-center justify-center bg-[#111111]">
                       <span className="font-didone text-3xl text-neutral-800 font-bold tracking-widest">CARTEL</span>
                   </div>
               )}
               
-              {/* Status Overlays */}
-              {(item.isSoldOut || item.status === 'sold_out') && (
-                 <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px] flex items-center justify-center z-10">
-                     <span className="text-white uppercase tracking-[0.3em] font-bold border border-white/30 px-6 py-3 text-xs bg-black/50">Sold Out</span>
-                 </div>
-              )}
-              {item.status === 'coming_soon' && (
-                 <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px] flex items-center justify-center z-10">
-                     <span className="text-white uppercase tracking-[0.3em] font-bold border border-white/30 px-6 py-3 text-xs bg-black/50">Coming Soon</span>
-                 </div>
-              )}
-
               {/* Subtle Gradient Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-[var(--card-bg)] via-transparent to-transparent opacity-90" />
+              <div className="absolute bottom-0 w-full h-[60%] bg-gradient-to-t from-black to-transparent pointer-events-none" />
           </div>
 
           {/* Content */}
-          <div className={`flex-1 flex flex-col p-6 relative -mt-8 bg-[var(--card-bg)] rounded-t-2xl border-t ${isColdBrew ? 'border-blue-500/30' : 'border-[var(--border-color)]'}`}>
-              <div className="flex justify-between items-start mb-2">
-                 <h3 className={`text-lg font-bold text-[var(--text-primary)] tracking-wide leading-tight pr-2 flex items-center gap-2 font-didone`}>
+          <div className={`flex flex-col p-[16px] relative bg-[#111111]`} style={{ opacity: (item.isSoldOut || item.status === 'sold_out' || item.status === 'coming_soon') ? 0.6 : 1 }}>
+              <div className="flex justify-between items-center mb-1">
+                 <h3 className={`text-[18px] font-bold text-white leading-tight font-serif`}>
                    {item.name}
                  </h3>
-                 <div className="flex items-center gap-1 pt-1 shrink-0 text-[var(--text-primary)]">
-                    <CurrencySymbol className="w-3.5 h-3.5" strokeWidth={2.5} />
-                    <span className="text-lg font-bold leading-none font-sans">{item.price}</span>
+                 <div className={`flex items-center shrink-0 text-white ${(item.isSoldOut || item.status === 'sold_out') ? 'text-[#666666] line-through' : ''}`}>
+                    {item.status === 'coming_soon' ? (
+                       <span className="text-[18px] font-bold leading-none font-sans text-[#666666]">—</span>
+                    ) : (
+                       <>
+                         <span className="text-[18px] font-bold leading-none font-sans whitespace-nowrap"> {item.price} AED</span>
+                       </>
+                    )}
                  </div>
               </div>
 
@@ -155,18 +171,19 @@ const FlipCard: React.FC<FlipCardProps> = ({ item, index = 0 }) => {
                 </div>
               ) : (
                 /* Standard Description */
-                <p className="text-xs text-[var(--text-secondary)] font-sans font-medium leading-relaxed line-clamp-3 mb-6">
+                <p className="text-[14px] text-[#888888] font-sans leading-snug line-clamp-3 mb-[12px]">
                     {item.ingredients}
                 </p>
               )}
 
               {/* Footer Actions */}
-              <div className="mt-auto pt-4 border-t border-[var(--border-color)] flex items-center justify-between min-h-[50px]">
+              <div className="border-t border-[#222222] my-[12px]" />
+              <div className="flex items-center justify-between pb-1">
                   <div className="flex items-center gap-2">
                      {item.calories && (
-                       <div className="flex items-center gap-1.5 text-[var(--text-secondary)]">
-                          <Flame size={12} />
-                          <span className="text-[10px] font-medium uppercase tracking-widest font-sans">EST. CAL {item.calories}</span>
+                       <div className="flex items-center gap-1 text-[#666666]">
+                          <span>🔥</span>
+                          <span className="text-[12px] font-sans uppercase">EST. CAL {item.calories}</span>
                        </div>
                      )}
                   </div>

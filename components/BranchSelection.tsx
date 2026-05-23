@@ -13,10 +13,11 @@ const DISPLAY_NAMES: Record<string, string> = {
   'alqana': 'AL QANA',
   'khalifa': 'KHALIFA CITY',
   'mirdif': 'DUBAI MIRDIF',
+  'alain': 'AL AIN',
 };
 
 // Define the order of branches for the navigation bar
-const BRANCH_ORDER = ['marina', 'albateen', 'alqana', 'khalifa', 'mirdif'];
+const BRANCH_ORDER = ['marina', 'albateen', 'alqana', 'khalifa', 'mirdif', 'alain'];
 
 const BranchSelection: React.FC<BranchSelectionProps> = ({ onSelectBranch }) => {
   return (
@@ -46,13 +47,6 @@ const BranchSelection: React.FC<BranchSelectionProps> = ({ onSelectBranch }) => 
               </button>
             );
           })}
-
-          {/* AL AIN - Coming Soon */}
-          <div className="branch-pill-btn coming-soon-btn">
-            <MapPin className="btn-icon" strokeWidth={1.5} />
-            <span className="btn-text">AL AIN</span>
-            <span className="coming-soon-badge">COMING SOON</span>
-          </div>
         </div>
       </div>
 

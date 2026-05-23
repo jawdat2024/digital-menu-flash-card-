@@ -8,6 +8,17 @@ import { MenuCategory, Branch, BranchMenuDirectory, MenuItem } from "./types";
 
 export const BRANCH_DATA: Branch[] = [
   {
+    id: "alain",
+    name: "CARTEL Al Ain",
+    address: "Al Ain",
+    coordinates: { lat: 24.2075, lng: 55.7447 },
+    theme: "warm",
+    description: "CARTEL Al Ain.",
+    specialty: "Specialty Coffee",
+    image: "",
+    workingHours: "",
+  },
+  {
     id: "khalifa",
     name: "CARTEL Khalifa City",
     address: "5 Al Almas 2 St, Khalifa City, SW18, Abu Dhabi",
@@ -924,7 +935,7 @@ const BASE_MENU: MenuCategory[] = [
         id: "sig2",
         name: "Matcha Latte",
         ingredients: "Premium Matcha green tea. choose your milk.",
-        price: "28",
+        price: "33.20",
         image: "https://iili.io/q2utJ3J.jpg",
         calories: 180,
         variants: [
@@ -1397,7 +1408,7 @@ const createMirdifMenu = (): MenuCategory[] => {
         {
           id: "egg_nduja",
           name: "Tornado Chilli Egg",
-          price: "52",
+          price: "54",
           image: "https://iili.io/qqGClvR.jpg",
           ingredients:
             "garlic and butter pita bread, creamy mayo, mama’s sauce, smoked yogurt, spicy beef nduja, microgreens, and a drizzle of smoked oil.",
@@ -2112,6 +2123,14 @@ const createAlBateenMenu = (): MenuCategory[] => {
           ingredients:
             "hash brown potatoes, red beans, sautéed portobello mushrooms, wagyu beef sausage, smoked veal bacon, roasted vine tomatoes, two sunny side up eggs on a slice of brioche bread, (eggs your way: scrambled, poached, sunny side up).",
           calories: 850,
+        },
+        {
+          id: "egg_tornado",
+          name: "Tornado Chilli Egg",
+          price: "54",
+          image: "https://iili.io/qqGClvR.jpg",
+          ingredients: "",
+          calories: 0,
         },
       ],
     },
@@ -2914,8 +2933,8 @@ const createAlQanaMenu = (): MenuCategory[] => {
 {
           id: "egg_nduja_alqana",
           name: "Tornado Chilli Egg",
-          price: "52",
-          image: "https://iili.io/fvpnDhB.jpg",
+          price: "54",
+          image: "https://iili.io/qqGClvR.jpg",
           ingredients: "garlic and butter pita bread, creamy mayo, mama’s sauce, smoked yogurt, spicy beef nduja, microgreens, and a drizzle of smoked oil.",
           calories: 450,
           status: 'available' as const,
@@ -3126,9 +3145,9 @@ const createMarinaMenu = (): MenuCategory[] => {
   const marinaBeans = [
 
     {
-      id: "bean_latino_blend",
-      name: "Latino Blend",
-      notes: "Milk Chocolate, Hazelnut, Toffee",
+      id: "bean_brazil_chocolate",
+      name: "Brazil Chocolate",
+      notes: "Chocolate Biscuit, Condensed Milk, Chestnut",
       price: 1,
       isNew: true,
     },
@@ -3148,12 +3167,12 @@ const createMarinaMenu = (): MenuCategory[] => {
       isDecaf: true,
     },
       {
-      id: "bean_colombia_bourbon_sidra",
-      name: "Colombia Bourbon Sidra",
-      notes: "Red Grapes, Watermelon, Hard Candy, Raspberry",
-      price: 5,
+      id: "bean_colombia_witch",
+      name: "Colombia-Witch",
+      notes: "Dried figs - Jaggery - Orange zest - sugarcane juice",
+      price: 0,
       isNew: true,
-      status: 'coming_soon' as const,
+      status: 'active' as const,
     },
 ];
 
@@ -3733,7 +3752,7 @@ const applyGoldenRuleLayout = (menu: MenuCategory[]): MenuCategory[] => {
   if (sandwiches) {
     sandwiches.title = "SANDWICHES & BAGELS";
     sandwiches.items.forEach(item => {
-      item.status = "coming_soon";
+      item.status = "active";
     });
     newMenu.push(sandwiches);
   }
@@ -4298,13 +4317,16 @@ export const sortFilteredCoffeeByPrice = (
 // MULTI-BRANCH DATA DICTIONARY
 // Key = Branch ID, Value = Specific Menu Structure
 const RAW_BRANCH_MENUS: BranchMenuDirectory = {
+  // Al Ain
+  alain: applyGoldenRuleLayout(JSON.parse(JSON.stringify(BASE_MENU))),
+
   // Dubai Mirdif
   mirdif: (() => {
     const menu = applyGoldenRuleLayout(createMirdifMenu());
     const sandwichesIdx = menu.findIndex(c => c.id === 'sandwiches');
     if (sandwichesIdx !== -1) {
       menu[sandwichesIdx].items.forEach(item => {
-        item.status = 'available';
+        item.status = 'active';
       });
     }
     return menu;

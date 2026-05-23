@@ -1,52 +1,38 @@
-:root {
-  /* Cartel Light Mode (Default) */
-  --bg-primary: #FFFFFF;
-  --bg-secondary: #F9F9F9;
-  --text-primary: #111111;
-  --text-secondary: #666666;
-  --border-color: #EEEEEE;
-  --card-bg: #FFFFFF;
-  --accent-color: #000000;
-  --icon-color: #111111;
-  --hover-bg: rgba(0, 0, 0, 0.05);
-}
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import "tailwindcss";
 
-body.dark-theme {
-  /* Cartel Dark Mode */
-  --bg-primary: #000000;
-  --bg-secondary: #0A0A0A;
-  --text-primary: #FFFFFF;
-  --text-secondary: #CCCCCC;
-  --border-color: #222222;
-  --card-bg: #000000;
-  --accent-color: #FFFFFF;
-  --icon-color: #FFFFFF;
-  --hover-bg: rgba(255, 255, 255, 0.1);
+@theme {
+  --color-cartel-matte: #000000;
+  --color-cartel-paper: #FFFFFF;
+  --color-cartel-dark: #050505;
+  --color-cartel-charcoal: #0A0A0A;
+
+  --font-sans: "Poppins", sans-serif;
+  --font-didone: "Bodoni Moda", serif;
 }
 
 body {
-  background-color: var(--bg-primary);
-  color: var(--text-primary);
-  transition: background-color 0.5s ease, color 0.5s ease;
+  background-color: var(--color-cartel-matte);
+  color: var(--color-cartel-paper);
+  font-family: var(--font-sans);
 }
 
-/* Utility classes using variables */
-.bg-theme-primary { background-color: var(--bg-primary); }
-.bg-theme-secondary { background-color: var(--bg-secondary); }
-.text-theme-primary { color: var(--text-primary); }
-.text-theme-secondary { color: var(--text-secondary); }
-.border-theme { border-color: var(--border-color); }
-.bg-theme-card { background-color: var(--card-bg); }
-.text-theme-accent { color: var(--accent-color); }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
-/* Smooth transitions for all theme-affected properties */
-.theme-transition {
-  transition: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease, fill 0.5s ease, stroke 0.5s ease;
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
 }
-
-.menu-heading {
-  font-family: 'Bodoni Moda', serif;
-  font-weight: 700;
+::-webkit-scrollbar-track {
+  background: var(--color-cartel-matte); 
+}
+::-webkit-scrollbar-thumb {
+  background: #333333; 
+  border-radius: 0px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-cartel-paper); 
 }
 
 /* Bean Offering Global Styles */

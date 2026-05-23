@@ -15,6 +15,7 @@ const PIN_POSITIONS: Record<string, { top: string; left: string }> = {
   'alqana': { top: '55%', left: '50%' },
   'khalifa': { top: '75%', left: '70%' },
   'mirdif': { top: '25%', left: '75%' },
+  'alain': { top: '85%', left: '85%' },
 };
 
 const LocationsMap: React.FC<LocationsMapProps> = ({ onBranchSelect, isCompact = false }) => {

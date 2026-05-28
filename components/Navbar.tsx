@@ -101,7 +101,7 @@ const Navbar: React.FC<NavbarProps> = ({
 
   return (
     <>
-      <nav className="fixed top-0 left-0 w-full z-50 bg-[var(--bg-primary)] border-b border-[var(--border-color)] shadow-lg transition-colors duration-500">
+      <nav className="sticky top-0 w-full z-50 bg-[var(--bg-header)] backdrop-blur-md border-b border-[var(--border-color)] shadow-md transition-colors duration-500">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20 gap-2 sm:gap-4">
             
@@ -209,25 +209,26 @@ const Navbar: React.FC<NavbarProps> = ({
 
         {/* Categories Bar - Sticky Extension */}
         {!isSearchOpen && activeBranch && (
-          <div className="border-t border-white/10 bg-black transition-colors duration-500">
+          <div className="border-t border-[var(--border-color)] transition-colors duration-500 shadow-sm relative z-0">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="flex overflow-x-auto no-scrollbar py-3 gap-6 justify-between md:justify-evenly w-full">
+              <div className="flex overflow-x-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] py-4 gap-8 justify-start md:justify-center w-full px-2">
                 {activeMenuCategories.map((category) => (
                   <button
                     key={category.id}
                     onClick={() => scrollToSection(category.id)}
-                    className={`text-[10px] font-bold uppercase tracking-[0.2em] whitespace-nowrap transition-colors relative group py-2 font-sans ${
-                      activeCategoryId === category.id ? 'text-white' : 'text-white/70 hover:text-white'
+                    className={`text-[10px] font-bold uppercase tracking-[0.2em] whitespace-nowrap transition-colors relative group font-sans flex flex-col items-center justify-center ${
+                      activeCategoryId === category.id ? 'text-[var(--text-primary)]' : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
                     }`}
                   >
                     {category.title}
+                    
                     {/* Active Underline */}
                     {activeCategoryId === category.id && (
-                      <span className="absolute bottom-0 left-0 w-full h-[1px] bg-white transition-all duration-300 translate-y-1"></span>
+                      <span className="absolute -bottom-2 left-0 w-full h-[1px] bg-[var(--text-primary)] transition-all duration-300"></span>
                     )}
                     {/* Hover Underline (thinner) */}
                     {activeCategoryId !== category.id && (
-                      <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full translate-y-1"></span>
+                      <span className="absolute -bottom-2 left-0 w-0 h-[1px] bg-[var(--text-primary)] transition-all duration-300 group-hover:w-full"></span>
                     )}
                   </button>
                 ))}

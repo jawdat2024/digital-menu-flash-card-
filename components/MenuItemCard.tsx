@@ -37,6 +37,12 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({ item }) => {
       onClick={isUnavailable || isComingSoon ? undefined : openModal}
       className={`flex flex-col h-full bg-white rounded-[32px] overflow-hidden relative group transition-all duration-500 ease-out transform p-2 ${isUnavailable || isComingSoon ? 'cursor-not-allowed opacity-90' : 'hover:shadow-2xl hover:-translate-y-1 cursor-pointer'}`}>
         
+        {['57', '65', '66'].includes(item.price?.toString() || '') && (
+            <div className="absolute top-3 left-3 sm:top-6 sm:left-6 z-20 bg-black text-white shadow-xl text-[7px] sm:text-[9px] font-bold uppercase tracking-[0.2em] px-2 py-1 sm:px-3 sm:py-1.5 rounded-full border border-white/20">
+                 THE UNIQUE
+            </div>
+        )}
+
         {isNew && (
             <div className="absolute top-3 right-3 sm:top-6 sm:right-6 z-20 bg-black text-white shadow-xl text-[7px] sm:text-[9px] font-bold uppercase tracking-[0.2em] px-2 py-1 sm:px-3 sm:py-1.5 rounded-full">
                  NEW

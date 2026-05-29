@@ -223,7 +223,7 @@ const BASE_MENU: MenuCategory[] = [
         ingredients:
           "Silky smooth vanilla custard, Madagascar vanilla bean, sweet cream",
         price: "39.20",
-        image: "https://i.postimg.cc/d0kYq6S8/vanilla_pudding.jpg",
+        image: "https://iili.io/C27jV9e.jpg",
         calories: 380,
       },
       {
@@ -354,7 +354,7 @@ const BASE_MENU: MenuCategory[] = [
         tastingNotes: "Apricot Jam, Raspberry, Lychee",
         ingredients: "Slow-steeped cold water extraction for 12+ hours.",
         price: "38",
-        image: "https://iili.io/qKYaxff.png",
+        image: "https://iili.io/C27AgUB.jpg",
         calories: 10,
         status: 'available' as const,
       },
@@ -1040,24 +1040,8 @@ const BASE_MENU: MenuCategory[] = [
         image: "https://iili.io/q2A7dsp.png",
         calories: 320,
       },
-      {
-        id: "d_1000",
-        name: "Black Forest",
-        ingredients:
-          "A decadent pastry filled with tart dark cherry compote and a light, whipped white chocolate ganache, finished with chocolate shavings.",
-        price: "28",
-        image: "https://iili.io/q2h5ddP.png",
-        calories: 440,
-      },
-      {
-        id: "fob_cardamom",
-        name: "Cardamom Bun",
-        ingredients:
-          "Cruffin-shaped croissant dough knotted with aromatic cardamom spice, baked to a golden crisp, and tossed in vanilla sugar for a buttery, spiced finish.",
-        price: "22",
-        image: "https://iili.io/q2AKLIn.png",
-        calories: 280,
-      },
+      
+      
     ],
   },
   {
@@ -1513,7 +1497,7 @@ const createMirdifMenu = (): MenuCategory[] => {
           id: "d_tiramisu",
           name: "Tiramisu",
           price: "39.20",
-          image: "https://iili.io/qnnTv0G.png",
+          image: "https://iili.io/C27waOg.jpg",
           ingredients: "Classic Italian dessert with coffee",
           calories: 400,
         }, // Tiramisu
@@ -1978,7 +1962,7 @@ const createAlBateenMenu = (): MenuCategory[] => {
           id: "d_tiramisu",
           name: "Tiramisu Bowl",
           price: "39.20",
-          image: "https://iili.io/qnnTv0G.png",
+          image: "https://iili.io/C27waOg.jpg",
           ingredients: "Classic Italian dessert with coffee",
           calories: 400,
         },
@@ -2407,7 +2391,7 @@ const createKhalifaMenu = (): MenuCategory[] => {
           id: "d_tiramisu",
           name: "Tiramisu Bowl",
           price: "39.20",
-          image: "https://iili.io/qnnTv0G.png",
+          image: "https://iili.io/C27waOg.jpg",
           ingredients: "Classic Italian dessert with coffee",
           calories: 400,
         },
@@ -2907,7 +2891,7 @@ const createAlQanaMenu = (): MenuCategory[] => {
           id: "d_tiramisu",
           name: "Tiramisu Bowl",
           price: "39.20",
-          image: "https://iili.io/qnnTv0G.png",
+          image: "https://iili.io/C27waOg.jpg",
           ingredients: "Classic Italian dessert with coffee",
           calories: 400,
         },
@@ -3217,19 +3201,9 @@ const createMarinaMenu = (): MenuCategory[] => {
     title: "Filter Coffee",
     items: [
       {
-        id: "fil_cuban_cigar",
-        name: "Cuban Cigar {tap filter}",
-        tastingNotes: "Caramel popcorn, fresh tobacco",
-        price: "41",
-        image: "https://iili.io/qLf9mXt.jpg",
-        ingredients: "Pour-over brewing method",
-        calories: 5,
-        status: 'available' as const,
-      },
-      {
-        id: "fil_mish_mish",
-        name: "Mish Mish",
-        tastingNotes: "Apricot Jam, Raspberry, Lychee.",
+        id: "fil_colombia_mish_mish",
+        name: "Colombia Mish Mish",
+        tastingNotes: "Apricot Jam – Raspberry- Lychee",
         price: "57",
         image: "https://iili.io/qLf9mXt.jpg",
         ingredients: "Pour-over brewing method",
@@ -3237,9 +3211,9 @@ const createMarinaMenu = (): MenuCategory[] => {
         status: 'available' as const,
       },
       {
-        id: "fil_kenya_kirimara",
-        name: "Kenya KIRIMARA",
-        tastingNotes: "Brown Sugar, Wild Cherry, Raisins.",
+        id: "fil_colombia_sidra",
+        name: "Colombia Sidra",
+        tastingNotes: "Red Greps – Watermelon – Hard Candy- Raspberry",
         price: "46",
         image: "https://iili.io/qLf9mXt.jpg",
         ingredients: "Pour-over brewing method",
@@ -3247,39 +3221,9 @@ const createMarinaMenu = (): MenuCategory[] => {
         status: 'available' as const,
       },
       {
-        id: "fil_blackberry",
-        name: "Blackberry {tap filter}",
-        tastingNotes: "Blackberry soda, cacao nibs, karkade",
-        price: "57",
-        image: "https://iili.io/qLf9mXt.jpg",
-        ingredients: "Pour-over brewing method",
-        calories: 5,
-        status: 'available' as const,
-      },
-      {
-        id: "fil_ethiopia",
-        name: "Ethiopia",
-        tastingNotes: "Apricot, Pear, Honey.",
-        price: "36",
-        image: "https://iili.io/qLf9mXt.jpg",
-        ingredients: "Pour-over brewing method",
-        calories: 5,
-        status: 'available' as const,
-      },
-      {
-        id: "fil_colombia_sweet_decaf",
-        name: "Colombia Sweet Decaf",
-        tastingNotes: "Passion fruit cheesecake, milk chocolate, molasses",
-        price: "36",
-        image: "https://iili.io/qLf9mXt.jpg",
-        ingredients: "Pour-over brewing method",
-        calories: 5,
-        status: 'available' as const,
-      },
-      {
-        id: "fil_colombia_gesha",
-        name: "Colombia Gesha",
-        tastingNotes: "Orange blossom, lemon grass, condensed milk",
+        id: "fil_colombia_gesha_key_lime_pie",
+        name: "Colombia Gesha Key Lime Pie",
+        tastingNotes: "Orange Blossom- Lemon Grass - Condensed Milk",
         price: "65",
         image: "https://iili.io/qLf9mXt.jpg",
         ingredients: "Pour-over brewing method",
@@ -3287,10 +3231,40 @@ const createMarinaMenu = (): MenuCategory[] => {
         status: 'available' as const,
       },
       {
-        id: "fil_costa_rica",
-        name: "Costa Rica",
-        tastingNotes: "Cacao, Fig Compote, Honey, Cherry.",
+        id: "fil_colombia_strawberry",
+        name: "Colombia Strawberry",
+        tastingNotes: "Strawberry Jam – Honey - Milk Chocolates",
         price: "57",
+        image: "https://iili.io/qLf9mXt.jpg",
+        ingredients: "Pour-over brewing method",
+        calories: 5,
+        status: 'available' as const,
+      },
+      {
+        id: "fil_kenya_kiramara",
+        name: "Kenya kiramara",
+        tastingNotes: "Brown Sugar – Wild Cherry- Raisins",
+        price: "46",
+        image: "https://iili.io/qLf9mXt.jpg",
+        ingredients: "Pour-over brewing method",
+        calories: 5,
+        status: 'available' as const,
+      },
+      {
+        id: "fil_ethiopia_rogicha",
+        name: "Ethiopia Rogicha",
+        tastingNotes: "Apricot, Pear, Honey",
+        price: "36",
+        image: "https://iili.io/qLf9mXt.jpg",
+        ingredients: "Pour-over brewing method",
+        calories: 5,
+        status: 'available' as const,
+      },
+      {
+        id: "fil_sweet_dreams_decaf",
+        name: "Sweet Dreams Decaf",
+        tastingNotes: "Passion Fruit , Cheesecake, Milk Chocolate .",
+        price: "38",
         image: "https://iili.io/qLf9mXt.jpg",
         ingredients: "Pour-over brewing method",
         calories: 5,
@@ -3358,7 +3332,7 @@ const createMarinaMenu = (): MenuCategory[] => {
             name: "Vanilla Pudding",
             ingredients: "Silky smooth vanilla custard, Madagascar vanilla bean, sweet cream",
             price: "39.20",
-            image: "https://i.postimg.cc/d0kYq6S8/vanilla_pudding.jpg",
+            image: "https://iili.io/C27jV9e.jpg",
             calories: 380,
           },
           {
@@ -3430,6 +3404,85 @@ const createMarinaMenu = (): MenuCategory[] => {
         image: "https://iili.io/BBBfCDN.jpg",
         ingredients: "Acai berry, banana, strawberry, peanut butter, coconut water, oat milk, and apple juice.",
         calories: 320,
+        status: 'available' as const,
+      }
+    ]
+  });
+
+  marinaMenu.push({
+    id: "baked-goods",
+    title: "BAKE GOODS",
+    items: [
+      {
+        id: "bg_marina_1",
+        name: "Zaatar & Labneh Cruffin",
+        price: "22",
+        image: "https://iili.io/C2hgaJR.jpg",
+        ingredients: "Muffin-shaped croissant dough filled with labneh drizzled with organic olive oil, sprinkled with zaatar & sea salt.",
+        calories: 380,
+        status: 'available' as const,
+      },
+      {
+        id: "bg_marina_2",
+        name: "Burrata Pizza",
+        price: "26",
+        image: "https://iili.io/C2hgDLF.jpg",
+        ingredients: "Flaky round croissant dough with tomato pizza sauce, creamy burrata, fresh basil, chili flakes, smoked salt, and a drizzle of organic olive oil.",
+        calories: 420,
+        status: 'available' as const,
+      },
+      {
+        id: "bg_marina_3",
+        name: "Turkey & Cheese Danish",
+        price: "20",
+        image: "https://iili.io/C2hrcrb.png",
+        ingredients: "Buttery Danish croissant dough with smoked turkey, cheddar cheese, mixed sesame seeds.",
+        calories: 340,
+        status: 'available' as const,
+      },
+      {
+        id: "bg_marina_4",
+        name: "Potato Truffle Croissant",
+        price: "26",
+        image: "https://iili.io/q2u4YAX.jpg",
+        ingredients: "Flaky round croissant dough filled with caramelized onions, creamy potato dauphinois (sliced potatoes slow cooked in cream & parmesan), topped with Comté cheese, truffle oil, smoked salt, and chives.",
+        calories: 460,
+        status: 'available' as const,
+      },
+      {
+        id: "bg_marina_5",
+        name: "Almond Croissant",
+        price: "22",
+        image: "https://iili.io/C2h6oOl.jpg",
+        ingredients: "Plain butter croissant filled with almond frangipane, topped with almond flakes and a dusting of icing sugar.",
+        calories: 490,
+        status: 'available' as const,
+      },
+      {
+        id: "bg_marina_6",
+        name: "Chocolate Croissant",
+        price: "17",
+        image: "https://iili.io/C2hsr11.jpg",
+        ingredients: "Flaky croissant pastry filled with smooth dark chocolate for a perfectly balanced buttery and indulgent bite.",
+        calories: 390,
+        status: 'available' as const,
+      },
+      {
+        id: "bg_marina_7",
+        name: "Three Cheese Croissant",
+        price: "17",
+        image: "https://iili.io/C2hLRhQ.jpg",
+        ingredients: "Buttery Croissant layered with Gruyère, 12-month aged Comté, and matured white cheddar.",
+        calories: 410,
+        status: 'available' as const,
+      },
+      {
+        id: "bg_marina_8",
+        name: "Plain Croissant",
+        price: "15",
+        image: "https://iili.io/C2hZsku.jpg",
+        ingredients: "Pure, all-butter viennoiserie. Flaky, featherlight layers. No fillings, no distractions—just exceptional pastry.",
+        calories: 280,
         status: 'available' as const,
       }
     ]
@@ -3623,7 +3676,7 @@ const applyGoldenRuleLayout = (menu: MenuCategory[]): MenuCategory[] => {
           name: "Colombia",
           tastingNotes: "hazelnut, orange, molasses",
           price: "38",
-          image: "https://iili.io/qKYaxff.png",
+          image: "https://iili.io/C27AgUB.jpg",
           ingredients: "Cold Brew",
           calories: 5,
           status: 'available' as const,
@@ -3659,38 +3712,52 @@ const applyGoldenRuleLayout = (menu: MenuCategory[]): MenuCategory[] => {
     });
   }
 
-  // 4. SIGNATURE DRINKS + TEA
+  // 4. SIGNATURES DRINKS
   const sigTeaItems = extractAll((c) =>
     ["signature-drinks", "tea", "juices", "smoothies"].includes(c.id),
   );
   if (sigTeaItems.length > 0) {
     newMenu.push({
       id: "signature-tea",
-      title: "SIGNATURE DRINKS + TEA",
+      title: "SIGNATURES DRINKS",
       items: [],
       subCategories: sigTeaItems,
     });
   }
 
-  // 5. Healthy Bowls
+  // 5. FRUIT & GRINDS
   const healthyBowls = extractAll((c) =>
     ["healthy-bowls", "fruits-grains", "fruits-gangs"].includes(c.id),
   );
   if (healthyBowls.length > 0) {
-    // Merge items if multiple categories exist
     const allItems = healthyBowls.flatMap((c) => c.items || []);
-    // Deduplicate by id
     const uniqueItems = Array.from(
       new Map(allItems.map((item) => [item.id, item])).values(),
     );
     newMenu.push({
       id: "healthy-bowls",
-      title: "FRUITS SEEDS & GRAINS.",
+      title: "FRUIT & GRINDS",
       items: uniqueItems,
     });
   }
 
-  // 5.5 Eggs & More
+  // 6. BAKE GOODS
+  const bakedItems = extractAll((c) =>
+    ["baked-goods", "baked-items", "from-our-bakery"].includes(c.id),
+  );
+  if (bakedItems.length > 0) {
+    const allItems = bakedItems.flatMap((c) => c.items || []);
+    const uniqueItems = Array.from(
+      new Map(allItems.map((item) => [item.id, item])).values(),
+    );
+    newMenu.push({
+      id: "baked-goods",
+      title: "BAKE GOODS",
+      items: uniqueItems,
+    });
+  }
+
+  // 7. EGG & MORE
   const eggsMore = extractAll((c) => ["eggs-more", "breakfast"].includes(c.id));
   if (eggsMore.length > 0) {
     const allItems = eggsMore.flatMap((c) => c.items || []);
@@ -3699,28 +3766,29 @@ const applyGoldenRuleLayout = (menu: MenuCategory[]): MenuCategory[] => {
     );
     newMenu.push({
       id: "eggs-more",
-      title: "EGG& MORE",
+      title: "EGG & MORE",
       items: uniqueItems,
     });
   }
 
-  // 5.6 Salads & Greens
-  const salads = extractAll((c) =>
-    ["salads", "greens", "green-salad"].includes(c.id),
-  );
-  if (salads.length > 0) {
-    const allItems = salads.flatMap((c) => c.items || []);
-    const uniqueItems = Array.from(
-      new Map(allItems.map((item) => [item.id, item])).values(),
-    );
-    newMenu.push({
-      id: "salads",
-      title: "Salads & Greens",
-      items: uniqueItems,
+  // 8. SANDWICHES & BAGEL'S
+  const sandwiches = extract((c) => c.id === "sandwiches");
+  if (sandwiches) {
+    sandwiches.title = "SANDWICHES & BAGEL'S";
+    sandwiches.items.forEach(item => {
+      item.status = "active";
     });
+    newMenu.push(sandwiches);
   }
 
-  // 5.7 Healthy Bar (Smoothies)
+  // 9. DESSERTS
+  const dessert = extract((c) => c.id === "desserts");
+  if (dessert) {
+    dessert.title = "DESSERTS";
+    newMenu.push(dessert);
+  }
+
+  // 10. HEALTH BAR
   const healthyBar = extractAll((c) => ["healthy-bar"].includes(c.id));
   if (healthyBar.length > 0) {
     const allItems = healthyBar.flatMap((c) => c.items || []);
@@ -3729,39 +3797,9 @@ const applyGoldenRuleLayout = (menu: MenuCategory[]): MenuCategory[] => {
     );
     newMenu.push({
       id: "healthy-bar",
-      title: "Healthy Bar",
+      title: "HEALTH BAR",
       items: uniqueItems,
     });
-  }
-
-  // 6. BAKED GOODS
-  const bakedItems = extractAll((c) =>
-    ["baked-goods", "baked-items", "from-our-bakery"].includes(c.id),
-  );
-  if (bakedItems.length > 0) {
-    newMenu.push({
-      id: "baked-goods-group",
-      title: "BAKED GOODS",
-      items: [],
-      subCategories: bakedItems,
-    });
-  }
-
-  // 7. SANDWICHES & BAGELS
-  const sandwiches = extract((c) => c.id === "sandwiches");
-  if (sandwiches) {
-    sandwiches.title = "SANDWICHES & BAGELS";
-    sandwiches.items.forEach(item => {
-      item.status = "active";
-    });
-    newMenu.push(sandwiches);
-  }
-
-  // 8. DESSERTS
-  const dessert = extract((c) => c.id === "desserts");
-  if (dessert) {
-    dessert.title = "DESSERTS";
-    newMenu.push(dessert);
   }
 
   // Append any remaining categories just in case, to avoid losing data
@@ -3870,85 +3908,75 @@ const createDubaiMenu = (): MenuCategory[] => {
       title: "Filter Coffee",
       items: [
         {
-          id: "fil_cuban_cigar",
-          name: "Cuban Cigar {tap filter}",
-          tastingNotes: "Caramel popcorn, fresh tobacco",
-          price: "41",
-          image: "https://iili.io/qLf9mXt.jpg",
-          ingredients: "Pour-over brewing method",
-          calories: 5,
-          status: 'available' as const,
-        },
-        {
-          id: "fil_mish_mish",
-          name: "Mish Mish",
-          tastingNotes: "Apricot Jam, Raspberry, Lychee.",
+          id: "m_fil_mish_mish",
+          name: "Colombia Mish Mish",
           price: "57",
           image: "https://iili.io/qLf9mXt.jpg",
-          ingredients: "Pour-over brewing method",
+          tastingNotes: "Apricot Jam, Raspberry, Lychee",
+          ingredients: "Filtered Coffee",
           calories: 5,
-          status: 'available' as const,
+          status: 'available'
         },
         {
-          id: "fil_kenya_kirimara",
-          name: "Kenya KIRIMARA",
-          tastingNotes: "Brown Sugar, Wild Cherry, Raisins.",
+          id: "m_fil_colombia_sidra",
+          name: "Colombia Sidra",
           price: "46",
           image: "https://iili.io/qLf9mXt.jpg",
-          ingredients: "Pour-over brewing method",
+          tastingNotes: "Red Grapes, Watermelon, Hard Candy, Raspberry",
+          ingredients: "Filtered Coffee",
           calories: 5,
-          status: 'available' as const,
+          status: 'available'
         },
         {
-          id: "fil_blackberry",
-          name: "Blackberry {tap filter}",
-          tastingNotes: "Blackberry soda, cacao nibs, karkade",
-          price: "57",
-          image: "https://iili.io/qLf9mXt.jpg",
-          ingredients: "Pour-over brewing method",
-          calories: 5,
-          status: 'available' as const,
-        },
-        {
-          id: "fil_ethiopia",
-          name: "Ethiopia",
-          tastingNotes: "Apricot, Pear, Honey.",
-          price: "36",
-          image: "https://iili.io/qLf9mXt.jpg",
-          ingredients: "Pour-over brewing method",
-          calories: 5,
-          status: 'available' as const,
-        },
-        {
-          id: "fil_colombia_sweet_decaf",
-          name: "Colombia Sweet Decaf",
-          tastingNotes: "Passion fruit cheesecake, milk chocolate, molasses",
-          price: "36",
-          image: "https://iili.io/qLf9mXt.jpg",
-          ingredients: "Pour-over brewing method",
-          calories: 5,
-          status: 'available' as const,
-        },
-        {
-          id: "fil_colombia_gesha",
-          name: "Colombia Gesha",
-          tastingNotes: "Orange blossom, lemon grass, condensed milk",
+          id: "m_fil_gesha_lime_pie",
+          name: "Colombia Gesha Key Lime Pie",
           price: "65",
           image: "https://iili.io/qLf9mXt.jpg",
-          ingredients: "Pour-over brewing method",
+          tastingNotes: "Orange Blossom, Lemon Grass, Condensed Milk",
+          ingredients: "Filtered Coffee",
           calories: 5,
-          status: 'available' as const,
+          status: 'available'
         },
         {
-          id: "fil_costa_rica",
-          name: "Costa Rica",
-          tastingNotes: "Cacao, Fig Compote, Honey, Cherry.",
+          id: "m_fil_colombia_strawberry",
+          name: "Colombia Strawberry",
           price: "57",
           image: "https://iili.io/qLf9mXt.jpg",
-          ingredients: "Pour-over brewing method",
+          tastingNotes: "Strawberry Jam, Honey, Milk Chocolates",
+          ingredients: "Filtered Coffee",
           calories: 5,
-          status: 'available' as const,
+          status: 'available'
         },
+        {
+          id: "m_fil_kenya_kiramara",
+          name: "Kenya Kiramara",
+          price: "46",
+          image: "https://iili.io/qLf9mXt.jpg",
+          tastingNotes: "Brown Sugar, Wild Cherry, Raisins",
+          ingredients: "Filtered Coffee",
+          calories: 5,
+          status: 'available'
+        },
+        {
+          id: "m_fil_ethiopia_rogicha",
+          name: "Ethiopia Rogicha",
+          price: "36",
+          image: "https://iili.io/qLf9mXt.jpg",
+          tastingNotes: "Apricot, Pear, Honey",
+          ingredients: "Filtered Coffee",
+          calories: 5,
+          status: 'available'
+        },
+        {
+          id: "m_fil_sweet_dreams_decaf",
+          name: "Sweet Dreams Decaf",
+          price: "38",
+          image: "https://iili.io/qLf9mXt.jpg",
+          tastingNotes: "Passion Fruit, Cheesecake, Milk Chocolate",
+          ingredients: "Filtered Coffee",
+          calories: 5,
+          status: 'available'
+        }
       ],
     },
     {
@@ -4016,7 +4044,7 @@ const createDubaiMenu = (): MenuCategory[] => {
           id: "d_tiramisu",
           name: "Tiramisu Bowl",
           price: "39.20",
-          image: "https://iili.io/qnnTv0G.png",
+          image: "https://iili.io/C27waOg.jpg",
           ingredients: "Classic Italian dessert with coffee",
           calories: 400,
         }, // Tiramisu Bowl
@@ -4333,7 +4361,90 @@ const RAW_BRANCH_MENUS: BranchMenuDirectory = {
   })(),
 
   // Dubai
-  dubai: applyGoldenRuleLayout(createDubaiMenu()),
+  dubai: (() => {
+    const menu = applyGoldenRuleLayout(createDubaiMenu());
+    
+    // Completely overwrite FILTERED coffee category for Dubai Branch
+    const idx = menu.findIndex(c => c.id === "specialty-coffee" || c.id === "filtered" || c.title === "FILTERED");
+    if (idx !== -1) {
+      menu.splice(idx, 1);
+    }
+    
+    // Inject the exact category right after "ESPRESSO BASED"
+    const espressoIdx = menu.findIndex(c => c.id === "espresso");
+    
+    const filteredCategory = {
+      id: "filtered",
+      title: "FILTERED",
+      items: [
+        {
+          id: "db_fil_mish_mish",
+          name: "Colombia Mish Mish",
+          price: "57",
+          image: "https://iili.io/qLf9mXt.jpg",
+          tastingNotes: "Apricot Jam, Raspberry, Lychee",
+          status: "active" as const,
+        },
+        {
+          id: "db_fil_sidra",
+          name: "Colombia Sidra",
+          price: "46",
+          image: "https://iili.io/qLf9mXt.jpg",
+          tastingNotes: "Red Grapes, Watermelon, Hard Candy, Raspberry",
+          status: "active" as const,
+        },
+        {
+          id: "db_fil_gesha_key_lime",
+          name: "Colombia Gesha Key Lime Pie",
+          price: "65",
+          image: "https://iili.io/qLf9mXt.jpg",
+          tastingNotes: "Orange Blossom, Lemon Grass, Condensed Milk",
+          status: "active" as const,
+        },
+        {
+          id: "db_fil_colombia_strawberry",
+          name: "Colombia Strawberry",
+          price: "57",
+          image: "https://iili.io/qLf9mXt.jpg",
+          tastingNotes: "Strawberry Jam, Honey, Milk Chocolates",
+          status: "active" as const,
+        },
+        {
+          id: "db_fil_kenya_kiramara",
+          name: "Kenya Kiramara",
+          price: "46",
+          image: "https://iili.io/qLf9mXt.jpg",
+          tastingNotes: "Brown Sugar, Wild Cherry, Raisins",
+          status: "active" as const,
+        },
+        {
+          id: "db_fil_ethiopia_rogicha",
+          name: "Ethiopia Rogicha",
+          price: "36",
+          image: "https://iili.io/qLf9mXt.jpg",
+          tastingNotes: "Apricot, Pear, Honey",
+          status: "active" as const,
+        },
+        {
+          id: "db_fil_decaf",
+          name: "Sweet Dreams Decaf",
+          price: "38",
+          image: "https://iili.io/qLf9mXt.jpg",
+          tastingNotes: "Passion Fruit, Cheesecake, Milk Chocolate",
+          status: "active" as const,
+        }
+      ]
+    };
+    
+    if (espressoIdx !== -1) {
+      // Insert after espresso based
+      menu.splice(espressoIdx + 1, 0, filteredCategory as any);
+    } else {
+      menu.push(filteredCategory as any);
+    }
+    
+    return menu;
+  })(),
 
   // Al Qana
   alqana: applyGoldenRuleLayout(createAlQanaMenu()),
@@ -4355,108 +4466,7 @@ const RAW_BRANCH_MENUS: BranchMenuDirectory = {
     const menu = applyGoldenRuleLayout(createMarinaMenu());
     const specialtyIdx = menu.findIndex(c => c.id === 'specialty-coffee');
     if (specialtyIdx !== -1) {
-      const specialty = menu[specialtyIdx];
-      if (specialty.subCategories) {
-        specialty.subCategories = specialty.subCategories.filter(
-          sc => sc.id !== 'filtered-hot' && sc.id !== 'taps-filtered' && sc.id !== 'manually-pouring'
-        );
-        
-        const tapsCategory: MenuCategory = {
-          id: 'taps-filtered',
-          title: 'TAPS',
-          items: [
-            {
-              id: 'tap_rogicha',
-              name: 'Ethiopia ROGICHA',
-              tastingNotes: 'Apricot, Pear, Honey',
-              price: '36',
-              image: 'https://iili.io/qKka1vj.png',
-              ingredients: '{TAPS FILTERED}',
-              calories: 5,
-              status: 'available' as const
-            },
-            {
-              id: 'tap_colombia',
-              name: 'Colombia Strawberry (Taps/Manual Hot)',
-              tastingNotes: 'Strawberry Jam, Honey, Milk Chocolate',
-              price: '57',
-              image: 'https://iili.io/qKkcmJa.png',
-              ingredients: '{TAPS FILTERED}',
-              calories: 5,
-              status: 'available' as const
-            },
-            {
-              id: 'tap_kenya',
-              name: 'Kenya Kirimara (Taps/Manual Hot)',
-              tastingNotes: 'Brown Sugar, Wild Cherry, Raisins',
-              price: '46',
-              image: 'https://iili.io/BuylWL7.png',
-              ingredients: '{TAPS FILTERED}',
-              calories: 5,
-              status: 'available' as const
-            }
-          ]
-        };
-
-        const manuallyPouringCategory: MenuCategory = {
-          id: 'manually-pouring',
-          title: 'MANUAL POURING',
-          items: [
-            {
-              id: 'mp_mish_mish',
-              name: 'Colombia Mish Mish',
-              tastingNotes: 'Apricot Jam, Raspberry, Lychee',
-              price: '57',
-              image: 'https://iili.io/qLf9mXt.jpg',
-              ingredients: 'Manual Pouring',
-              calories: 5,
-              status: 'available' as const
-            },
-            {
-              id: 'mp_sidra',
-              name: 'Colombia Bourbon Sidra',
-              tastingNotes: 'Red Grapes, Watermelon, Hard Candy, Raspberry',
-              price: '46',
-              image: 'https://iili.io/qLf9mXt.jpg',
-              ingredients: 'Manual Pouring',
-              calories: 5,
-              status: 'available' as const
-            },
-            {
-              id: 'mp_decaf',
-              name: 'Decaf Sweet Dreams',
-              tastingNotes: 'Dried Apricot, Molasses, Pecan Nuts',
-              price: '36',
-              image: 'https://iili.io/qLf9mXt.jpg',
-              ingredients: 'Manual Pouring',
-              calories: 5,
-              status: 'available' as const
-            },
-            {
-              id: 'mp_gesha_lime_pie',
-              name: 'Colombia Gesha Key Lime Pie',
-              tastingNotes: 'Orange Blossom, Lemon Grass, Condensed Milk',
-              price: '65',
-              image: 'https://iili.io/qLf9mXt.jpg',
-              ingredients: 'Manual Pouring',
-              calories: 5,
-              status: 'available' as const
-            },
-            {
-              id: 'mp_panama_gesha',
-              name: 'Panamá Cordillera Gesha',
-              tastingNotes: 'Cantaloupe, Honey, Berries, Lemongrass',
-              price: '65',
-              image: 'https://iili.io/qLf9mXt.jpg',
-              ingredients: 'Manual Pouring',
-              calories: 5,
-              status: 'available' as const
-            }
-          ]
-        };
-
-        specialty.subCategories.push(tapsCategory, manuallyPouringCategory);
-      }
+      menu.splice(specialtyIdx, 1);
     }
     
     // 1. Best Seller Modification
@@ -4507,6 +4517,91 @@ const RAW_BRANCH_MENUS: BranchMenuDirectory = {
     if (sigTeaIdx !== -1 && menu[sigTeaIdx].subCategories) {
       menu[sigTeaIdx].subCategories = menu[sigTeaIdx].subCategories.filter(sc => sc.id !== 'juices');
     }
+
+    const filteredCategory = {
+      id: "filtered-coffee-marina",
+      title: "FILTERED",
+      items: [
+        {
+          id: "m_fil_mish_mish",
+          name: "Colombia Mish Mish",
+          price: "57",
+          image: "https://iili.io/qLf9mXt.jpg",
+          tastingNotes: "Apricot Jam, Raspberry, Lychee",
+          ingredients: "Filtered Coffee",
+          calories: 5,
+          status: 'available'
+        },
+        {
+          id: "m_fil_colombia_sidra",
+          name: "Colombia Sidra",
+          price: "46",
+          image: "https://iili.io/qLf9mXt.jpg",
+          tastingNotes: "Red Grapes, Watermelon, Hard Candy, Raspberry",
+          ingredients: "Filtered Coffee",
+          calories: 5,
+          status: 'available'
+        },
+        {
+          id: "m_fil_gesha_lime_pie",
+          name: "Colombia Gesha Key Lime Pie",
+          price: "65",
+          image: "https://iili.io/qLf9mXt.jpg",
+          tastingNotes: "Orange Blossom, Lemon Grass, Condensed Milk",
+          ingredients: "Filtered Coffee",
+          calories: 5,
+          status: 'available'
+        },
+        {
+          id: "m_fil_colombia_strawberry",
+          name: "Colombia Strawberry",
+          price: "57",
+          image: "https://iili.io/qLf9mXt.jpg",
+          tastingNotes: "Strawberry Jam, Honey, Milk Chocolates",
+          ingredients: "Filtered Coffee",
+          calories: 5,
+          status: 'available'
+        },
+        {
+          id: "m_fil_kenya_kiramara",
+          name: "Kenya Kiramara",
+          price: "46",
+          image: "https://iili.io/qLf9mXt.jpg",
+          tastingNotes: "Brown Sugar, Wild Cherry, Raisins",
+          ingredients: "Filtered Coffee",
+          calories: 5,
+          status: 'available'
+        },
+        {
+          id: "m_fil_ethiopia_rogicha",
+          name: "Ethiopia Rogicha",
+          price: "36",
+          image: "https://iili.io/qLf9mXt.jpg",
+          tastingNotes: "Apricot, Pear, Honey",
+          ingredients: "Filtered Coffee",
+          calories: 5,
+          status: 'available'
+        },
+        {
+          id: "m_fil_sweet_dreams_decaf",
+          name: "Sweet Dreams Decaf",
+          price: "38",
+          image: "https://iili.io/qLf9mXt.jpg",
+          tastingNotes: "Passion Fruit, Cheesecake, Milk Chocolate",
+          ingredients: "Filtered Coffee",
+          calories: 5,
+          status: 'available'
+        }
+      ]
+    };
+
+    const espressoIdx = menu.findIndex(c => c.id === 'espresso');
+    if (espressoIdx !== -1) {
+      menu.splice(espressoIdx + 1, 0, filteredCategory as any);
+    } else {
+      menu.push(filteredCategory as any);
+    }
+
     return menu;
   })(),
 

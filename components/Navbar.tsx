@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Search, MapPin, Instagram, Phone, Globe, X, Sun, Moon, RefreshCw } from 'lucide-react';
 import { Branch, MenuCategory } from '../types';
+import FeedbackModal from './FeedbackModal';
 
 interface NavbarProps {
   searchQuery: string;
@@ -18,6 +19,7 @@ const Navbar: React.FC<NavbarProps> = ({
   activeMenuCategories
 }) => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [isFeedbackOpen, setIsFeedbackOpen] = useState(false);
   const [isInstaModalOpen, setIsInstaModalOpen] = useState(false);
   const [activeCategoryId, setActiveCategoryId] = useState('filter-taps');
   const [isDarkMode, setIsDarkMode] = useState(() => {
@@ -195,6 +197,14 @@ const Navbar: React.FC<NavbarProps> = ({
 
             {/* Right: Theme Toggle */}
             <div className="flex-1 flex justify-end items-center gap-2 sm:gap-4">
+               {/* Hotline Feedback Button */}
+               <button
+                 onClick={() => setIsFeedbackOpen(true)}
+                 className="hidden sm:inline text-[10px] font-sans uppercase tracking-[0.2em] px-2 py-1 border-b border-transparent hover:border-[var(--text-primary)] text-[var(--text-primary)] transition-all whitespace-nowrap"
+               >
+                 HOT LINE FEEDBACK
+               </button>
+
                {/* Theme Toggle */}
                <button
                  onClick={toggleTheme}
@@ -273,6 +283,12 @@ const Navbar: React.FC<NavbarProps> = ({
           </div>
         </div>
       )}
+
+      {/* Feedback Modal */}
+      <FeedbackModal 
+        isOpen={isFeedbackOpen}
+        onClose={() => setIsFeedbackOpen(false)}
+      />
     </>
   );
 };

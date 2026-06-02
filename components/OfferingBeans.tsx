@@ -1,29 +1,25 @@
 import React from 'react';
+import { BRANCH_ESPRESSO_BEANS } from '../constants';
+import { Branch } from '../types';
 
-const offeringBeansData = [
-  {
-    name: "Brazil Chocolate",
-    notes: "Chocolate Biscuit, Condensed Milk, Chestnut",
-    price: "+1 AED"
-  },
-  {
-    name: "Costa Rica",
-    notes: "Cacao, Fig Compote, Honey, Cherry",
-    price: "+5 AED"
-  },
-  {
-    name: "Decaf - Sweet Dreams",
-    notes: "Dried Apricot, Molasses, Pecan Nuts",
-    price: "+0 AED"
-  },
-  {
-    name: "Colombia-Witch",
-    notes: "Dried Figs, Jaggery, Orange Zest, Sugarcane Juice.",
-    price: "+0 AED"
-  }
-];
+interface OfferingBeansProps {
+  activeBranch?: Branch | null;
+}
 
-const OfferingBeans: React.FC = () => {
+const OfferingBeans: React.FC<OfferingBeansProps> = ({ activeBranch }) => {
+  // Determine which beans to show based on the active branch
+  const branchId = activeBranch?.id || 'dubai';
+  // Fallback to dubai if branch not found in BRANCH_ESPRESSO_BEANS
+  const rawOfferingBeansData = BRANCH_ESPRESSO_BEANS[branchId] || BRANCH_ESPRESSO_BEANS['dubai'] || [];
+  
+  const offeringBeansData = [...rawOfferingBeansData].sort((a, b) => {
+    const priceA = parseFloat(a.price) || 0;
+    const priceB = parseFloat(b.price) || 0;
+    return priceA - priceB;
+  });
+
+  if (!offeringBeansData || offeringBeansData.length === 0) return null;
+
   return (
     <div className="w-full mb-12">
       <div className="-mx-4 px-4 sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8 overflow-hidden">

@@ -94,7 +94,12 @@ const DigitalMenu: React.FC = () => {
             return false;
         });
 
-        if (cat.id.toLowerCase().includes('filter') || cat.title.toLowerCase().includes('filter')) {
+        if (
+            cat.id.toLowerCase().includes('filter') || 
+            cat.title.toLowerCase().includes('filter') ||
+            cat.id.toLowerCase().includes('espresso') || 
+            cat.title.toLowerCase().includes('espresso')
+        ) {
             items.sort((a, b) => Number(a.price) - Number(b.price));
         }
 
@@ -113,7 +118,16 @@ const DigitalMenu: React.FC = () => {
                 return false;
             });
 
-            if (cat.id.toLowerCase().includes('filter') || cat.title.toLowerCase().includes('filter') || subCat.id.toLowerCase().includes('filter') || subCat.title.toLowerCase().includes('filter')) {
+            if (
+                cat.id.toLowerCase().includes('filter') || 
+                cat.title.toLowerCase().includes('filter') || 
+                subCat.id.toLowerCase().includes('filter') || 
+                subCat.title.toLowerCase().includes('filter') ||
+                cat.id.toLowerCase().includes('espresso') || 
+                cat.title.toLowerCase().includes('espresso') || 
+                subCat.id.toLowerCase().includes('espresso') || 
+                subCat.title.toLowerCase().includes('espresso')
+            ) {
                 subItems.sort((a, b) => Number(a.price) - Number(b.price));
             }
 
@@ -156,7 +170,7 @@ const DigitalMenu: React.FC = () => {
                                     <div className="w-12 h-px bg-[var(--text-primary)] opacity-40"></div>
                                 </div>
                                 
-                                {cat.title === "ESPRESSO BASED" && <OfferingBeans />}
+                                {cat.title === "ESPRESSO BASED" && <OfferingBeans activeBranch={selectedBranch} />}
 
                                 <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-6">
                                     {cat.items.map(item => (

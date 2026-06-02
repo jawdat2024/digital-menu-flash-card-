@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { X, UploadCloud, Loader2, CheckCircle2, AlertCircle } from 'lucide-react';
+import { submitCustomerFeedback } from '../firebaseUtils';
 
 interface FeedbackModalProps {
   isOpen: boolean;
@@ -7,10 +8,14 @@ interface FeedbackModalProps {
 }
 
 type FeedbackType = "Dish Problem" | "Sweet" | "Drink" | "Positive Feedback";
+type BranchOption = "Marina" | "Al Qana" | "Al Bateen" | "Al Ain";
 
 const FeedbackModal: React.FC<FeedbackModalProps> = ({ isOpen, onClose }) => {
   const [selectedType, setSelectedType] = useState<FeedbackType | null>(null);
   const [description, setDescription] = useState('');
+  const [customerName, setCustomerName] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [branch, setBranch] = useState<BranchOption | ''>('');
   const [image, setImage] = useState<File | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
@@ -18,6 +23,9 @@ const FeedbackModal: React.FC<FeedbackModalProps> = ({ isOpen, onClose }) => {
   const handleClose = () => {
     setSelectedType(null);
     setDescription('');
+    setCustomerName('');
+    setPhoneNumber('');
+    setBranch('');
     setImage(null);
     setSubmitStatus('idle');
     setIsSubmitting(false);
@@ -28,46 +36,33 @@ const FeedbackModal: React.FC<FeedbackModalProps> = ({ isOpen, onClose }) => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!selectedType || !description) return;
+    if (!selectedType || !description || !customerName || !phoneNumber || !branch) return;
     
     setIsSubmitting(true);
     setSubmitStatus('idle');
 
     try {
-      const formData = new FormData();
-      formData.append('Category', selectedType);
-      formData.append('Description', description);
-      formData.append('_subject', `Hot Line Feedback: ${selectedType}`);
-      formData.append('_captcha', 'false'); // Disable recaptcha for formsubmit
-      formData.append('_template', 'box');
+      await submitCustomerFeedback({
+        category: selectedType,
+        description,
+        customerName,
+        phoneNumber,
+        branch
+      }, image);
+
+      setSubmitStatus('success');
+      // Clear fields on success
+      setSelectedType(null);
+      setDescription('');
+      setCustomerName('');
+      setPhoneNumber('');
+      setBranch('');
+      setImage(null);
       
-      if (image) {
-        formData.append('Attachment', image);
-      }
-
-      // Using FormSubmit exactly as specified to direct email
-      const response = await fetch("https://formsubmit.co/ajax/JAWDATGHANNAM29@GMAIL.COM", {
-        method: "POST",
-        body: formData,
-        headers: {
-          'Accept': 'application/json'
-        }
-      });
-
-      if (response.ok) {
-        setSubmitStatus('success');
-        // Clear fields on success
-        setSelectedType(null);
-        setDescription('');
-        setImage(null);
-        
-        // Auto close after 3 seconds
-        setTimeout(() => {
-          handleClose();
-        }, 3000);
-      } else {
-        throw new Error('Failed to submit');
-      }
+      // Auto close after 3 seconds
+      setTimeout(() => {
+        handleClose();
+      }, 3000);
     } catch (error) {
       console.error('Submission error:', error);
       setSubmitStatus('error');
@@ -174,6 +169,58 @@ const FeedbackModal: React.FC<FeedbackModalProps> = ({ isOpen, onClose }) => {
                 className="w-full h-24 bg-transparent border border-[var(--border-color)] rounded-xl p-4 text-sm text-[var(--text-primary)] focus:outline-none focus:border-[var(--text-primary)] resize-none transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               />
             </div>
+
+            {/* Customer Name */}
+            <div className="space-y-3">
+              <label className="block text-[10px] font-sans uppercase tracking-[0.2em] text-[var(--text-secondary)]">
+                Customer Name
+              </label>
+              <input
+                type="text"
+                required
+                disabled={isSubmitting}
+                value={customerName}
+                onChange={(e) => setCustomerName(e.target.value)}
+                placeholder="Your Name"
+                className="w-full bg-transparent border border-[var(--border-color)] rounded-xl p-4 text-sm text-[var(--text-primary)] focus:outline-none focus:border-[var(--text-primary)] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              />
+            </div>
+
+            {/* Phone Number */}
+            <div className="space-y-3">
+              <label className="block text-[10px] font-sans uppercase tracking-[0.2em] text-[var(--text-secondary)]">
+                Phone Number
+              </label>
+              <input
+                type="tel"
+                required
+                disabled={isSubmitting}
+                value={phoneNumber}
+                onChange={(e) => setPhoneNumber(e.target.value)}
+                placeholder="+971 XX XXX XXXX"
+                className="w-full bg-transparent border border-[var(--border-color)] rounded-xl p-4 text-sm text-[var(--text-primary)] focus:outline-none focus:border-[var(--text-primary)] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              />
+            </div>
+
+            {/* Branch Selection */}
+            <div className="space-y-3">
+              <label className="block text-[10px] font-sans uppercase tracking-[0.2em] text-[var(--text-secondary)]">
+                Branch
+              </label>
+              <select
+                required
+                disabled={isSubmitting}
+                value={branch}
+                onChange={(e) => setBranch(e.target.value as BranchOption)}
+                className="w-full bg-transparent border border-[var(--border-color)] rounded-xl p-4 text-sm text-[var(--text-primary)] focus:outline-none focus:border-[var(--text-primary)] transition-colors disabled:opacity-50 disabled:cursor-not-allowed appearance-none"
+              >
+                <option value="" disabled className="text-gray-500">Select a branch</option>
+                <option value="Marina" className="bg-[var(--bg-primary)]">Marina</option>
+                <option value="Al Qana" className="bg-[var(--bg-primary)]">Al Qana</option>
+                <option value="Al Bateen" className="bg-[var(--bg-primary)]">Al Bateen</option>
+                <option value="Al Ain" className="bg-[var(--bg-primary)]">Al Ain</option>
+              </select>
+            </div>
             
             {/* Error Message */}
             {submitStatus === 'error' && (
@@ -186,7 +233,7 @@ const FeedbackModal: React.FC<FeedbackModalProps> = ({ isOpen, onClose }) => {
             {/* Submit Button */}
             <button
               type="submit"
-              disabled={!selectedType || !description || isSubmitting}
+              disabled={!selectedType || !description || !customerName || !phoneNumber || !branch || isSubmitting}
               className="w-full bg-[var(--text-primary)] text-[var(--bg-primary)] rounded-full py-4 text-xs font-sans uppercase tracking-[0.2em] font-medium hover:opacity-80 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
             >
               {isSubmitting ? (

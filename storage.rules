@@ -1,0 +1,29 @@
+rules_version = '2';
+
+// Craft rules based on https://firebase.google.com/docs/storage/security
+service firebase.storage {
+  match /b/{bucket}/o {
+    
+    // Explicitly target the feedback_uploads folder
+    match /feedback_uploads/{imageId} {
+      
+      // Allow PUBLIC uploads (no auth required) ONLY IF:
+      // 1. the file is less than 10MB
+      // 2. the file is an image
+      allow create: if request.resource.size <= 10 * 1024 * 1024 
+                    && request.resource.contentType.matches('image/.*');
+                    
+      // Allow public read so the submitter can get the download URL (getDownloadURL)
+      // and so the recipient of the email can view the image by clicking the link!
+      allow read: if true;
+      
+      // Prevent public updates or deletes.
+      allow update, delete: if request.auth != null; 
+    }
+
+    // Default deny for all other paths
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+  }
+}

@@ -21,6 +21,7 @@ const Navbar: React.FC<NavbarProps> = ({
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isFeedbackOpen, setIsFeedbackOpen] = useState(false);
   const [isInstaModalOpen, setIsInstaModalOpen] = useState(false);
+  const [logoFailed, setLogoFailed] = useState(false);
   const [activeCategoryId, setActiveCategoryId] = useState('filter-taps');
   const [isDarkMode, setIsDarkMode] = useState(() => {
     if (typeof window !== 'undefined') {
@@ -103,9 +104,9 @@ const Navbar: React.FC<NavbarProps> = ({
 
   return (
     <>
-      <nav className="sticky top-0 w-full z-50 bg-[var(--bg-header)] backdrop-blur-md border-b border-[var(--border-color)] shadow-md transition-colors duration-500">
+      <nav className="sticky top-0 w-full z-50 bg-[var(--bg-primary)]/80 backdrop-blur-xl border-b border-[var(--border-color)] shadow-sm transition-all duration-500">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-20 gap-2 sm:gap-4">
+          <div className="flex items-center justify-between h-24 gap-2 sm:gap-4">
             
             {/* Left: Navigation Icons */}
             <div className="flex-1 flex items-center gap-2 sm:gap-4 min-w-0">
@@ -187,11 +188,26 @@ const Navbar: React.FC<NavbarProps> = ({
             </div>
 
             {/* Center: Brand Logo */}
-            <div className="flex-none flex flex-col items-center justify-center cursor-pointer group px-2" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-               <div className="flex items-center gap-2">
-                 <span className="text-lg sm:text-2xl menu-heading text-[var(--text-primary)] tracking-[0.15em] sm:tracking-[0.2em] group-hover:tracking-[0.25em] transition-all duration-500 whitespace-nowrap">
-                   CARTEL
-                 </span>
+            <div className="flex-none flex flex-col items-center justify-center cursor-pointer group px-4 py-2" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+               <div className="flex items-center justify-center">
+                 {!logoFailed ? (
+                   <img 
+                     src="/cartel.avif" 
+                     alt="CARTEL" 
+                     width={360} 
+                     height={100}
+                     className="w-[120px] sm:w-[140px] md:w-[180px] h-auto object-contain transition-transform duration-500 group-hover:scale-[1.03]"
+                     style={{
+                       filter: isDarkMode ? 'invert(1) contrast(1.2)' : 'invert(0) contrast(1.2)',
+                       transformOrigin: 'center'
+                     }}
+                     onError={() => setLogoFailed(true)}
+                   />
+                 ) : (
+                   <h1 className="text-xl md:text-2xl font-bold tracking-[0.2em] text-[var(--text-primary)]">
+                     CARTEL
+                   </h1>
+                 )}
                </div>
             </div>
 

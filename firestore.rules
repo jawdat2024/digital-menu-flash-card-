@@ -1,0 +1,25 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Feedback collection rules
+    match /hotline_feedback/{feedbackId} {
+      
+      // Allow public creation but enforce basic data types and required fields
+      // Prevents malicious payloads from polluting your database
+      allow create: if request.resource.data.category is string
+                    && request.resource.data.customerName is string
+                    && request.resource.data.phoneNumber is string
+                    && request.resource.data.branch is string;
+                    
+      // Only authenticated users (e.g., your admins) can read, update, or delete feedback
+      allow read, update, delete: if request.auth != null;
+    }
+
+    // Default deny for everything else
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

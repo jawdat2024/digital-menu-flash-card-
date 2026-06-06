@@ -58,6 +58,7 @@ export interface BeanSelectionItem {
   price?: number;
   isNew?: boolean;
   isDecaf?: boolean;
+  isUnique?: boolean;
   status?: 'available' | 'sold_out' | 'out_of_stock' | 'coming_soon' | 'few_stocks_left' | 'new' | 'active';
 }
 

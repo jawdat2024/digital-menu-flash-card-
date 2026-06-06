@@ -19,6 +19,7 @@ const FeedbackModal: React.FC<FeedbackModalProps> = ({ isOpen, onClose }) => {
   const [image, setImage] = useState<File | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const handleClose = () => {
     setSelectedType(null);
@@ -28,6 +29,7 @@ const FeedbackModal: React.FC<FeedbackModalProps> = ({ isOpen, onClose }) => {
     setBranch('');
     setImage(null);
     setSubmitStatus('idle');
+    setErrorMessage(null);
     setIsSubmitting(false);
     onClose();
   };
@@ -40,6 +42,7 @@ const FeedbackModal: React.FC<FeedbackModalProps> = ({ isOpen, onClose }) => {
     
     setIsSubmitting(true);
     setSubmitStatus('idle');
+    setErrorMessage(null);
 
     try {
       await submitCustomerFeedback({
@@ -63,8 +66,10 @@ const FeedbackModal: React.FC<FeedbackModalProps> = ({ isOpen, onClose }) => {
       setTimeout(() => {
         handleClose();
       }, 3000);
-    } catch (error) {
-      console.error('Submission error:', error);
+    } catch (error: any) {
+      console.error('Submission Error:', error);
+      const exactError = error instanceof Error ? error.message : JSON.stringify(error) || 'Unknown error occurred';
+      setErrorMessage(exactError);
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
@@ -224,9 +229,14 @@ const FeedbackModal: React.FC<FeedbackModalProps> = ({ isOpen, onClose }) => {
             
             {/* Error Message */}
             {submitStatus === 'error' && (
-              <div className="flex items-center gap-2 text-red-500 text-xs px-2 animate-in fade-in">
-                <AlertCircle size={14} />
-                <span>Unable to send feedback. Please try again.</span>
+              <div className="flex flex-col items-center gap-1 text-red-500 text-xs px-2 animate-in fade-in">
+                <div className="flex items-center gap-2">
+                  <AlertCircle size={14} />
+                  <span className="font-semibold uppercase tracking-wider">Transmission Failed</span>
+                </div>
+                <span className="text-center mt-1 break-words opacity-80 max-w-full">
+                  {errorMessage}
+                </span>
               </div>
             )}
 

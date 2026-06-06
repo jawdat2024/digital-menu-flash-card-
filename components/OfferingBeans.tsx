@@ -33,9 +33,16 @@ const OfferingBeans: React.FC<OfferingBeansProps> = ({ activeBranch }) => {
               <h3 className="text-xs sm:text-sm font-sans tracking-[0.1em] font-medium text-[var(--text-primary)] uppercase leading-tight">
                 {bean.name}
               </h3>
-              <span className="text-[10px] sm:text-xs font-mono tracking-wider whitespace-nowrap text-[var(--text-secondary)] bg-neutral-100 dark:bg-neutral-900 px-2 py-1 rounded-sm">
-                {bean.price}
-              </span>
+              <div className="flex items-center gap-2">
+                {bean.isUnique && (
+                  <span className="text-[9px] font-bold text-white bg-amber-500 px-1.5 py-0.5 rounded-sm uppercase tracking-wider">
+                    UNIQUE
+                  </span>
+                )}
+                <span className="text-[10px] sm:text-xs font-mono tracking-wider whitespace-nowrap text-[var(--text-secondary)] bg-neutral-100 dark:bg-neutral-900 px-2 py-1 rounded-sm">
+                  {bean.price}
+                </span>
+              </div>
             </div>
             <p className="text-[10px] sm:text-xs text-[var(--text-secondary)] leading-relaxed font-sans">
               {bean.notes}

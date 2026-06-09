@@ -4756,7 +4756,7 @@ const RAW_BRANCH_MENUS: BranchMenuDirectory = {
        menu[dessertsMarinaIdx] = { ...menu[dessertsMarinaIdx] }; // Shallow clone category
        menu[dessertsMarinaIdx].items = menu[dessertsMarinaIdx].items.map(i => {
            if (i.id === 'd_banana_pud') {
-               return { ...i, isSoldOut: true, status: 'out_of_stock' }; // Clone item and modify status
+               return { ...i, isSoldOut: false, status: 'active' }; // Clone item and modify status
            }
            return i;
        });

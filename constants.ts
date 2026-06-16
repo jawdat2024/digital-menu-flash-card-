@@ -75,13 +75,6 @@ export const BRANCH_DATA: Branch[] = [
     image: "",
     workingHours: "",
   },
-
-  {
-    id: "bean_yemen",
-    name: "Yemen - Sharki Haraz",
-    price: 10,
-    description: "",
-  },
 ];
 
 // Base menu used to populate branches (simulating database seed)
@@ -3350,22 +3343,6 @@ const createMarinaMenu = (): MenuCategory[] => {
   });
 
   marinaMenu.push({
-    id: "health-bar-marina",
-    title: "HEALTH BAR",
-    items: [
-      {
-        id: "hb_acai_smoothie_marina",
-        name: "Acai Smoothie",
-        price: "42",
-        image: "https://iili.io/BBBfCDN.jpg",
-        ingredients: "Acai berry, banana, strawberry, peanut butter, coconut water, oat milk, and apple juice.",
-        calories: 320,
-        status: 'available' as const,
-      }
-    ]
-  });
-
-  marinaMenu.push({
     id: "baked-goods",
     title: "BAKE GOODS",
     items: [
@@ -5245,6 +5222,418 @@ Object.keys(RAW_BRANCH_MENUS).forEach(branch => {
         });
       }
     });
+  });
+})();
+
+
+(() => {
+  // 1. Add Acaí Smoothie to Khalifa Smoothies
+  const khalifaMenu = RAW_BRANCH_MENUS['khalifa'];
+  if (khalifaMenu) {
+    const sigTea = khalifaMenu.find(c => c.id === 'signature-tea');
+    if (sigTea && sigTea.subCategories) {
+      const smoothies = sigTea.subCategories.find(sub => sub.id === 'smoothies');
+      if (smoothies) {
+        const newItem = {
+          id: "sm_acai",
+          name: "Açaí Smoothie",
+          price: "42",
+          image: "https://iili.io/BBBfCDN.jpg",
+          description: "Acai berry, banana, strawberry, peanut butter, coconut water, oat milk, and apple juice.",
+          ingredients: "Acai berry, banana, strawberry, peanut butter, coconut water, oat milk, and apple juice.",
+          calories: 350
+        };
+        const existingIdx = smoothies.items.findIndex(i => i.name === 'Açaí Smoothie');
+        if (existingIdx !== -1) {
+            smoothies.items[existingIdx] = { ...smoothies.items[existingIdx], ...newItem };
+        } else {
+            smoothies.items.push(newItem);
+        }
+      }
+    }
+  }
+
+  // 2. Filter the Juices Category (Global)
+  Object.values(RAW_BRANCH_MENUS).forEach(branchMenu => {
+    branchMenu.forEach(cat => {
+      if (cat.id === 'juices' || cat.title?.toUpperCase() === 'JUICES') {
+         if (cat.items) {
+           cat.items = cat.items.filter(i => i.name.toLowerCase().includes('orange'));
+         }
+      }
+      if (cat.subCategories) {
+         cat.subCategories.forEach(sub => {
+           if (sub.id === 'juices' || sub.title?.toUpperCase() === 'JUICES') {
+             if (sub.items) {
+               sub.items = sub.items.filter(i => i.name.toLowerCase().includes('orange'));
+             }
+           }
+         });
+      }
+    });
+  });
+
+  // 3. Append Missing Sandwiches globally
+  const newSandwiches = [
+    {
+      id: "sw_tuna",
+      name: "Tunacado",
+      price: "38",
+      image: "https://iili.io/qqEgPdN.jpg",
+      ingredients: "Joe's bread, pesto mayo, tuna mix, tomato slice, avocado slice.",
+      calories: 480
+    },
+    {
+      id: "sw_italian",
+      name: "Cold Cut Italian",
+      price: "38",
+      image: "https://iili.io/qqEieVe.png",
+      ingredients: "White slice bread with pesto oil, fresh mozzarella, tomato slice, tartufo salami, chorizo, baby Rocca, sun-dried tomatoes, balsamic glaze, organic olive oil.",
+      calories: 580
+    }
+  ];
+
+  Object.values(RAW_BRANCH_MENUS).forEach(branchMenu => {
+    const swCat = branchMenu.find(c => c.id === 'sandwiches' || c.title?.toUpperCase() === 'SANDWICHES & BAGEL\'S' || c.title?.toUpperCase() === 'SANDWICHES');
+    if (swCat && swCat.items) {
+       newSandwiches.forEach(sw => {
+          if (!swCat.items.find(i => i.name === sw.name)) {
+             swCat.items.push(JSON.parse(JSON.stringify(sw)));
+          }
+       });
+    }
+  });
+
+})();
+
+
+(() => {
+  // TASK 1: Khalifa Category Renaming
+  const khalifaMenu = RAW_BRANCH_MENUS['khalifa'];
+  if (khalifaMenu) {
+     const eggsMoreCat = khalifaMenu.find(c => c.id === 'eggs-more' || c.title === 'Fruits, Seeds & Grains');
+     if (eggsMoreCat) {
+         eggsMoreCat.title = 'EGG&MORE';
+     }
+  }
+
+  // TASK 2: Tunacado to Sandwiches Globally
+  Object.values(RAW_BRANCH_MENUS).forEach(branchMenu => {
+     let bestSellers = null;
+     const highlyRec = branchMenu.find(c => c.id === 'highly-recommend' || c.title === 'BEST SELLER');
+     if (highlyRec) bestSellers = highlyRec;
+
+     let tunacado = null;
+     if (bestSellers && bestSellers.items) {
+         tunacado = bestSellers.items.find(i => i.name === 'Tunacado');
+     }
+
+     if (!tunacado) {
+        // Find globally if not in best seller
+        for (const cat of branchMenu) {
+           if (cat.items) {
+               const found = cat.items.find(i => i.name === 'Tunacado');
+               if (found) tunacado = found;
+           }
+        }
+     }
+
+     if (tunacado) {
+         let swCat = branchMenu.find(c => c.id === 'sandwiches' || c.title?.toUpperCase().includes('SANDWICHES'));
+         if (swCat && swCat.items) {
+             const existing = swCat.items.find(i => i.name === 'Tunacado');
+             if (!existing) {
+                 swCat.items.push(JSON.parse(JSON.stringify(tunacado)));
+             }
+         }
+     }
+  });
+
+  // TASK 3: Smoothies into Signature drink
+  const newAcai = {
+      id: "sm_acai",
+      name: "Açaí Smoothie",
+      price: "42",
+      image: "https://iili.io/BBBfCDN.jpg",
+      description: "Acai berry, banana, strawberry, peanut butter, coconut water, oat milk, and apple juice.",
+      ingredients: "Acai berry, banana, strawberry, peanut butter, coconut water, oat milk, and apple juice.",
+      calories: 350,
+      publishStatus: "published",
+      status: "active",
+      isVisible: true
+  };
+
+  Object.values(RAW_BRANCH_MENUS).forEach(branchMenu => {
+      // Find smoothies globally
+      const knownSmoothies = ["Strawberry Glaze Smoothie", "Blue Cloud Smoothie", "Pitaya Smoothie"];
+      const matchingSmoothies = [];
+      branchMenu.forEach(cat => {
+         // Pull out smoothies from their old place and then hide or remove old category
+         const processContainer = (container) => {
+             if (container.items) {
+                knownSmoothies.forEach(name => {
+                    const idx = container.items.findIndex(i => i.name === name);
+                    if (idx !== -1) {
+                       matchingSmoothies.push(JSON.parse(JSON.stringify(container.items[idx])));
+                       container.items.splice(idx, 1); // remove from old place
+                    }
+                });
+             }
+         };
+
+         processContainer(cat);
+         if (cat.subCategories) {
+             cat.subCategories.forEach(sub => processContainer(sub));
+             // if subCategory "smoothies" is now empty, delete it
+             cat.subCategories = cat.subCategories.filter(sub => sub.id !== 'smoothies' || (sub.items && sub.items.length > 0));
+         }
+      });
+      // also remove smoothies category if it's empty
+      const isSmoothieCat = (c) => c.id === 'smoothies' || c.title === 'SMOOTHIES' || c.title === 'Smoothies';
+      for (let i = branchMenu.length - 1; i >= 0; i--) {
+          if (isSmoothieCat(branchMenu[i])) {
+              if (!branchMenu[i].items || branchMenu[i].items.length === 0) {
+                  branchMenu.splice(i, 1);
+              }
+          }
+      }
+
+      // Add to "Signature drink"
+      // Wait, there might be a "Signature drink" category or we need to add it or it's a sub of signature-tea.
+      let sigTeaCat = branchMenu.find(c => c.id === 'signature-tea');
+      let sigDrinkContainer = null;
+      if (sigTeaCat) {
+          if (sigTeaCat.subCategories) {
+              sigDrinkContainer = sigTeaCat.subCategories.find(s => s.id === 'signature-drinks' || s.title?.toUpperCase() === 'SIGNATURE DRINK' || s.title === 'Signature drink');
+          }
+      }
+      if (!sigDrinkContainer) {
+          sigDrinkContainer = branchMenu.find(c => c.id === 'signature-drinks' || c.title?.toUpperCase() === 'SIGNATURE DRINK' || c.title === 'Signature drink');
+      }
+
+      if (sigDrinkContainer && sigDrinkContainer.items) {
+          // Push Acai
+          let acaiFound = sigDrinkContainer.items.find(i => i.name === 'Açaí Smoothie');
+          if (!acaiFound) {
+              sigDrinkContainer.items.push(JSON.parse(JSON.stringify(newAcai)));
+          } else {
+              Object.assign(acaiFound, newAcai);
+          }
+
+          // Push the other 3
+          matchingSmoothies.forEach(sm => {
+             if (!sigDrinkContainer.items.find(i => i.name === sm.name)) {
+                 sigDrinkContainer.items.push(sm);
+             }
+          });
+      }
+  });
+
+})();
+
+
+(() => {
+  // Ensure Tunacado is globally in Sandwiches
+  let tunacadoRef = null;
+  const anyBranchWithTuna = Object.values(RAW_BRANCH_MENUS).find(b => {
+     for (const cat of b) {
+        if (cat.items) {
+           const found = cat.items.find(i => i.name === 'Tunacado');
+           if (found) { tunacadoRef = JSON.parse(JSON.stringify(found)); return true; }
+        }
+     }
+     return false;
+  });
+
+  if (tunacadoRef) {
+      Object.values(RAW_BRANCH_MENUS).forEach(branchMenu => {
+          let swCat = branchMenu.find(c => c.id === 'sandwiches' || c.title?.toUpperCase().includes('SANDWICHES'));
+          if (!swCat) {
+              // Create it
+              swCat = {
+                  id: "sandwiches",
+                  title: "SANDWICHES & BAGEL'S",
+                  items: []
+              };
+              // Add it before desserts
+              const dessertsIdx = branchMenu.findIndex(c => c.id === 'desserts');
+              if (dessertsIdx !== -1) {
+                  branchMenu.splice(dessertsIdx, 0, swCat);
+              } else {
+                  branchMenu.push(swCat);
+              }
+          }
+          if (swCat.items) {
+             if (!swCat.items.find(i => i.name === 'Tunacado')) {
+                 swCat.items.push(JSON.parse(JSON.stringify(tunacadoRef)));
+             }
+          }
+      });
+  }
+
+  // Ensure Acaí Smoothie is correct
+})();
+
+
+(() => {
+  // Acaí Smoothie strictly mapped to Khalifa branch ID
+  Object.keys(RAW_BRANCH_MENUS).forEach(branchId => {
+      if (branchId !== 'khalifa') {
+         RAW_BRANCH_MENUS[branchId].forEach(cat => {
+            if (cat.items) {
+               cat.items = cat.items.filter(i => i.name !== 'Açaí Smoothie');
+            }
+            if (cat.subCategories) {
+               cat.subCategories.forEach(sub => {
+                  if (sub.items) {
+                     sub.items = sub.items.filter(i => i.name !== 'Açaí Smoothie');
+                  }
+               });
+            }
+         });
+      }
+  });
+
+  // Ensure Acaí Smoothie is in Khalifa's Signature drink
+  const khalifaMenu = RAW_BRANCH_MENUS['khalifa'];
+  let sigDrinkKhalifa = null;
+  if(khalifaMenu) {
+     const sigTea = khalifaMenu.find(c => c.id === 'signature-tea');
+     if (sigTea && sigTea.subCategories) {
+        sigDrinkKhalifa = sigTea.subCategories.find(s => s.id === 'signature-drinks' || s.title?.toUpperCase().includes('SIGNATURE DRINK'));
+     }
+     if (!sigDrinkKhalifa) {
+        sigDrinkKhalifa = khalifaMenu.find(c => c.id === 'signature-drinks' || c.title?.toUpperCase().includes('SIGNATURE DRINK'));
+     }
+  }
+
+  if (sigDrinkKhalifa && sigDrinkKhalifa.items) {
+     if (!sigDrinkKhalifa.items.find(i => i.name === 'Açaí Smoothie')) {
+         sigDrinkKhalifa.items.push({
+            id: "sm_acai",
+            name: "Açaí Smoothie",
+            price: "42",
+            image: "https://iili.io/BBBfCDN.jpg",
+            description: "Acai berry, banana, strawberry, peanut butter, coconut water, oat milk, and apple juice.",
+            ingredients: "Acai berry, banana, strawberry, peanut butter, coconut water, oat milk, and apple juice.",
+            calories: 350,
+            publishStatus: "published",
+            status: "active",
+            isVisible: true
+         });
+     }
+  }
+
+  // Ensure Tunacado is also existing in BEST SELLER globally
+  Object.values(RAW_BRANCH_MENUS).forEach(branchMenu => {
+      const bestSeller = branchMenu.find(c => c.id === 'highly-recommend' || c.title === 'BEST SELLER');
+      if (bestSeller && bestSeller.items) {
+          if (!bestSeller.items.find(i => i.name === 'Tunacado')) {
+             // Find tunacado
+             let tunacado = null;
+             branchMenu.forEach(c => {
+                if (c.items && !tunacado) tunacado = c.items.find(i => i.name === 'Tunacado');
+             });
+             if (tunacado) bestSeller.items.push(JSON.parse(JSON.stringify(tunacado)));
+          }
+      }
+  });
+
+})();
+
+
+(() => {
+  // Clear out the obsolete "Smoothies" category/subcategory
+  Object.keys(RAW_BRANCH_MENUS).forEach(branchId => {
+     RAW_BRANCH_MENUS[branchId].forEach(cat => {
+         // If a top-level category is smoothies, and it has these items, clear it if it's just the smoothies
+         if (cat.subCategories) {
+             cat.subCategories = cat.subCategories.filter(s => s.id !== 'smoothies' || s.title?.toUpperCase() !== 'SMOOTHIES');
+         }
+     });
+     RAW_BRANCH_MENUS[branchId] = RAW_BRANCH_MENUS[branchId].filter(cat => cat.id !== 'smoothies' || cat.title?.toUpperCase() !== 'SMOOTHIES');
+     
+     // Remove duplicates within 'signature-drinks'
+     RAW_BRANCH_MENUS[branchId].forEach(cat => {
+        const processDeDup = (container) => {
+           if (container.items) {
+               const seen = new Set();
+               container.items = container.items.filter(i => {
+                   if (seen.has(i.name)) return false;
+                   seen.add(i.name);
+                   return true;
+               });
+           }
+        };
+        processDeDup(cat);
+        if (cat.subCategories) cat.subCategories.forEach(s => processDeDup(s));
+     });
+  });
+})();
+
+(() => {
+  const newItems = [
+    {
+      id: "hb_strawberry_glaze",
+      name: "Strawberry Glaze Smoothie",
+      ingredients: "Almond milk, frozen strawberries, bananas, dates, maple syrup, collagen, vanilla stevia, sea moss gel, strawberry sauce, and coconut cloud cream.",
+      image: "https://iili.io/qq1mS5b.jpg",
+      price: "42 AED"
+    },
+    {
+      id: "hb_blue_cloud",
+      name: "Blue Cloud Smoothie",
+      ingredients: "Coconut milk, pineapple, banana, avocado, vanilla stevia, collagen, peanut butter, blue spirulina, and on top coconut cloud cream.",
+      image: "https://iili.io/qqE9JUX.jpg",
+      price: "42 AED"
+    },
+    {
+      id: "hb_pitaya",
+      name: "Pitaya Smoothiec",
+      ingredients: "Apple juice, lemon juice, pitaya, frozen pineapple, banana, and lemon electrolytes.",
+      image: "https://iili.io/qqEH3rP.jpg",
+      price: "42 AED"
+    },
+    {
+      id: "hb_acai",
+      name: "Açaí Smoothie",
+      ingredients: "Acai berry, banana, strawberry, peanut butter, coconut water, oat milk, and apple juice.",
+      image: "https://iili.io/BBBfCDN.jpg",
+      price: "42 AED"
+    }
+  ];
+
+  const itemNames = [...newItems.map(i => i.name), "Pitaya Smoothie"];
+  const menusToFix = [BASE_MENU, ...Object.values(RAW_BRANCH_MENUS)];
+
+  menusToFix.forEach(menu => {
+    menu.forEach(cat => {
+      // Skip the designated "Health Bar" category
+      if (cat.title === "Health Bar") return;
+
+      if (cat.items) {
+          cat.items = cat.items.filter(item => !itemNames.includes(item.name));
+      }
+      if (cat.subCategories) {
+          cat.subCategories.forEach(sub => {
+              if (sub.items) {
+                  sub.items = sub.items.filter(item => !itemNames.includes(item.name));
+              }
+          });
+      }
+    });
+
+    // Ensure Health Bar category exactly matches the latest specs
+    let healthBarIndex = menu.findIndex(c => c.title === 'Health Bar');
+    if (healthBarIndex !== -1) {
+        menu[healthBarIndex].items = JSON.parse(JSON.stringify(newItems));
+    } else {
+        menu.push({
+          id: "health-bar",
+          title: "Health Bar",
+          items: JSON.parse(JSON.stringify(newItems))
+        });
+    }
   });
 })();
 

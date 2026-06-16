@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 
-const CACHE_VERSION = 'v3'; // Increment this to clear cache
+const CACHE_VERSION = 'v1781420199878'; // Increment this to clear cache
 const currentVersion = localStorage.getItem('cartel_cache_version');
 if (currentVersion !== CACHE_VERSION) {
   const keysToRemove: string[] = [];

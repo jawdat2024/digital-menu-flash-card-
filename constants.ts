@@ -142,8 +142,8 @@ const BASE_MENU: MenuCategory[] = [
       },
       {
         id: "fg_chia_bowl",
-        name: "Chia Bowl",
-        price: "42",
+        name: "CHIA PUDDING",
+        price: "38",
         image: "https://iili.io/qttcGUl.jpg",
         ingredients: "Coconut chia pudding, Greek yogurt, strawberries, blackberries, raspberries, blueberries, mixed-berry compote, sesame toil, whipped chocolate, and shaved dark chocolate with an organic honey drizzle.",
       },
@@ -3052,30 +3052,15 @@ const createMarinaMenu = (): MenuCategory[] => {
 
   // Define Custom Beans for Marina
   const marinaBeans = [
-
-    {
-      id: "bean_brazil_chocolate",
-      name: "Brazil Chocolate",
-      notes: "Chocolate Biscuit, Condensed Milk, Chestnut",
-      price: 1,
-      isNew: true,
-    },
-    {
-      id: "bean_colombia_peach",
-      name: "Colombia Peach (The Tropical Refresh)",
-      notes: "Peach, Vanilla Ice Cream, Lychee",
-      price: 5,
-      isNew: false,
-    },
     {
       id: "bean_colombia_decaf",
-      name: "Colombia Sweet Dreams (Decaf)",
-      notes: "Passion fruit cheesecake, Milk chocolate, Molasses",
+      name: "sweet dream decaf",
+      notes: "Passion Fruit, Cheesecake, Milk Chocolate",
       price: 0,
       isNew: false,
       isDecaf: true,
     },
-      {
+    {
       id: "bean_colombia_witch",
       name: "Colombia-Witch",
       notes: "Dried figs - Jaggery - Orange zest - sugarcane juice",
@@ -3083,7 +3068,14 @@ const createMarinaMenu = (): MenuCategory[] => {
       isNew: true,
       status: 'active' as const,
     },
-];
+    {
+      id: "bean_coconutella",
+      name: "coconutella",
+      notes: "Coconut Cream, Milk Chocolate, Toffee Caramel",
+      price: 6,
+      isNew: true,
+    },
+  ];
 
   marinaEspresso.beanSelection = marinaBeans;
   marinaEspresso.description = ""; // Clear description to use custom bean selection view
@@ -4880,12 +4872,11 @@ Object.keys(RAW_BRANCH_MENUS).forEach(branch => {
 
 
 (() => {
-  // We need to set the highly-recommend category for every branch to EXACTLY 6 items:
-  // Tunacado, Sicky Date (or Sticky date), Banana, Dates & Yogurt, Matcha Cloud, Burrata Pizza, Açaí Smoothie
+  // We need to set the highly-recommend category for every branch:
+  // Sicky Date (or Sticky date), Banana, Dates & Yogurt, Matcha Cloud, Burrata Pizza, Açaí Smoothie
   
   // Let's find one instance of each across all menus to clone:
   const targetNames = [
-     'tunacado',
      'icky date', 
      'banana, dates',
      'matcha cloud',
@@ -4915,7 +4906,6 @@ Object.keys(RAW_BRANCH_MENUS).forEach(branch => {
   });
 
   const bestSellerItemsArray = [
-     itemsFound['tunacado'],
      itemsFound['icky date'],
      itemsFound['banana, dates'],
      itemsFound['matcha cloud'],
@@ -5135,7 +5125,7 @@ Object.keys(RAW_BRANCH_MENUS).forEach(branch => {
       name: "Cold Brew - cinnamon",
       price: "38",
       image: "https://iili.io/C27AgUB.jpg",
-      status: "coming_soon" as const
+      status: "active" as const
     },
     {
       id: "cb_rogicha",
@@ -5275,14 +5265,6 @@ Object.keys(RAW_BRANCH_MENUS).forEach(branch => {
 
   // 3. Append Missing Sandwiches globally
   const newSandwiches = [
-    {
-      id: "sw_tuna",
-      name: "Tunacado",
-      price: "38",
-      image: "https://iili.io/qqEgPdN.jpg",
-      ingredients: "Joe's bread, pesto mayo, tuna mix, tomato slice, avocado slice.",
-      calories: 480
-    },
     {
       id: "sw_italian",
       name: "Cold Cut Italian",
@@ -5637,12 +5619,135 @@ Object.keys(RAW_BRANCH_MENUS).forEach(branch => {
   });
 })();
 
+(() => {
+  const menusToFix = [BASE_MENU, ...Object.values(RAW_BRANCH_MENUS)];
+
+  menusToFix.forEach(menu => {
+      const swCat = menu.find(c => c.id === 'sandwiches' || c.title?.toUpperCase().includes('SANDWICHES'));
+      if (swCat) {
+          swCat.title = "SANDWICHES & BAGEL'S";
+          
+          // The allowed names from the prompt exactly:
+          const allowedNames = ["Club Sandwich", "Brisket Blaze", "Cold Cut Italian"];
+          const newItems = [];
+          
+          // Add the sandwich items if they exist
+          allowedNames.forEach(name => {
+              let item = null;
+              if (swCat.items) {
+                  item = swCat.items.find(i => i.name === name);
+              }
+              if (!item) {
+                  // Fallback: finding it somewhere else globally
+                  for (let m of menusToFix) {
+                      for (let c of m) {
+                          if (c.items) {
+                              let found = c.items.find(i => i.name === name);
+                              if (found) { item = found; break; }
+                          }
+                      }
+                      if (item) break;
+                  }
+              }
+              if (item) newItems.push(JSON.parse(JSON.stringify(item)));
+          });
+
+          // Append Tunacado to the end representing OPERATION 1
+          newItems.push({
+              id: "sw_tuna_global",
+              name: "Tunacado",
+              price: "38",
+              image: "https://iili.io/qqEgPdN.jpg",
+              ingredients: "Toasted Brown slice bread with pesto oil, avocado, tuna mix, tomato, and jalapeños.",
+              description: "Toasted Brown slice bread with pesto oil, avocado, tuna mix, tomato, and jalapeños.",
+              calories: 480,
+              status: "active"
+          });
+          
+          swCat.items = newItems;
+      }
+  });
+})();
+
+(() => {
+  // Post-processing execution block for exact task updates:
+  
+  // 1. Target ALL branches to ensure "cold brew cinnamon" status is "active" globally
+  Object.values(RAW_BRANCH_MENUS).forEach((branchMenu) => {
+    branchMenu.forEach((cat) => {
+      if (cat.items) {
+        cat.items.forEach((item) => {
+          const processedName = item.name ? item.name.toLowerCase().replace(/\s*-\s*/g, " ") : "";
+          if (processedName === "cold brew cinnamon" || processedName === "cold brew  cinnamon") {
+            item.status = "active" as const;
+          }
+        });
+      }
+      if (cat.subCategories) {
+        cat.subCategories.forEach((sub) => {
+          if (sub.items) {
+            sub.items.forEach((item) => {
+              const processedName = item.name ? item.name.toLowerCase().replace(/\s*-\s*/g, " ") : "";
+              if (processedName === "cold brew cinnamon" || processedName === "cold brew  cinnamon") {
+                item.status = "active" as const;
+              }
+            });
+          }
+        });
+      }
+    });
+  });
+
+  // 2. Marina Branch Updates: Keep only Colombia-Witch, sweet dream decaf, and coconutella in Marina Espresso Based.
+  const marinaMenu = RAW_BRANCH_MENUS["marina"];
+  if (marinaMenu) {
+    const espressoCat = marinaMenu.find((c) => c.id === "espresso" || c.title === "Espresso Based" || c.title === "ESPRESSO BASED");
+    if (espressoCat) {
+      const allowedNames = ["colombia-witch", "sweet dream decaf", "coconutella"];
+      if (espressoCat.beanSelection) {
+        espressoCat.beanSelection = espressoCat.beanSelection.filter(
+          (b) => b.name && allowedNames.includes(b.name.toLowerCase().trim())
+        );
+      }
+
+      // Propagate beanSelection to all items customizations
+      if (espressoCat.items && espressoCat.beanSelection) {
+        espressoCat.items.forEach((item) => {
+          const beanCustomization = item.customizations?.find((c) => c.id === "bean_choice");
+          if (beanCustomization) {
+            beanCustomization.options = beanCustomization.options.filter(
+              (o) => o.name && allowedNames.includes(o.name.toLowerCase().trim())
+            );
+          }
+        });
+      }
+    }
+  }
+})();
+
 export const BRANCH_MENUS = sortFilteredCoffeeByPrice(RAW_BRANCH_MENUS);
 
 // DEFAULT EXPORT FOR BACKWARD COMPATIBILITY & TYPES
 export const MENU_DATA = BASE_MENU;
 
 export const BRANCH_ESPRESSO_BEANS: Record<string, any[]> = {
+  'marina': [
+    {
+      "name": "Colombia-Witch",
+      "notes": "Dried figs - Jaggery - Orange zest - sugarcane juice",
+      "price": "+0 AED"
+    },
+    {
+      "name": "sweet dream decaf",
+      "notes": "Passion Fruit, Cheesecake, Milk Chocolate",
+      "price": "+0 AED"
+    },
+    {
+      "name": "coconutella",
+      "notes": "Coconut Cream, Milk Chocolate, Toffee Caramel",
+      "price": "+6 AED"
+    }
+  ],
   'khalifa': [
   {
     "name": "Costa Rica",

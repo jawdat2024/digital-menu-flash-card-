@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Search, MapPin, Instagram, Phone, Globe, X, Sun, Moon, RefreshCw } from 'lucide-react';
 import { Branch, MenuCategory } from '../types';
 import FeedbackModal from './FeedbackModal';
+import { useLanguage } from './LanguageContext';
 
 interface NavbarProps {
   searchQuery: string;
@@ -18,6 +19,7 @@ const Navbar: React.FC<NavbarProps> = ({
   onSwitchLocation,
   activeMenuCategories
 }) => {
+  const { language, t } = useLanguage();
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isFeedbackOpen, setIsFeedbackOpen] = useState(false);
   const [isInstaModalOpen, setIsInstaModalOpen] = useState(false);
@@ -152,11 +154,11 @@ const Navbar: React.FC<NavbarProps> = ({
                       <>
                         <button
                           onClick={onSwitchLocation}
-                          className="flex items-center gap-1 sm:gap-2 text-[var(--text-primary)] hover:text-[var(--text-secondary)] transition-colors group p-1"
+                          className="flex items-center gap-1 sm:gap-2 text-[var(--text-primary)] hover:text-[var(--text-secondary)] transition-colors group p-1 animate-fade-in"
                         >
                           <MapPin size={18} strokeWidth={1.5} />
-                          <span className="hidden lg:inline text-[10px] font-sans uppercase tracking-widest border-b border-transparent group-hover:border-[var(--border-color)] transition-all whitespace-nowrap">
-                            {activeBranch.name.replace('CARTEL ', '')}
+                          <span className={`${language === 'ar' ? 'font-sans text-[11px] font-semibold' : 'font-sans text-[10px]'} hidden lg:inline uppercase tracking-widest border-b border-transparent group-hover:border-[var(--border-color)] transition-all whitespace-nowrap`}>
+                            {t(activeBranch.name.replace('CARTEL ', ''))}
                           </span>
                         </button>
                         
@@ -175,10 +177,10 @@ const Navbar: React.FC<NavbarProps> = ({
                   {isSearchOpen && (
                     <input
                       type="text"
-                      placeholder="Search..."
+                      placeholder={t("Search...")}
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
-                      className="bg-transparent border-b border-[var(--border-color)] text-[var(--text-primary)] text-sm focus:outline-none placeholder-[var(--text-secondary)] w-full max-w-[60px] sm:max-w-[120px] transition-all font-sans"
+                      className={`bg-transparent border-b border-[var(--border-color)] text-[var(--text-primary)] text-sm focus:outline-none placeholder-[var(--text-secondary)] w-full max-w-[80px] sm:max-w-[140px] transition-all ${language === 'ar' ? 'font-sans' : 'font-sans'}`}
                       autoFocus
                       onBlur={() => !searchQuery && setIsSearchOpen(false)}
                     />
@@ -216,9 +218,11 @@ const Navbar: React.FC<NavbarProps> = ({
                {/* Hotline Feedback Button */}
                <button
                  onClick={() => setIsFeedbackOpen(true)}
-                 className="hidden sm:inline text-[10px] font-sans uppercase tracking-[0.2em] px-2 py-1 border-b border-transparent hover:border-[var(--text-primary)] text-[var(--text-primary)] transition-all whitespace-nowrap"
+                 className={`hidden sm:inline text-[10px] uppercase tracking-[0.2em] px-2 py-1 border-b border-transparent hover:border-[var(--text-primary)] text-[var(--text-primary)] transition-all whitespace-nowrap ${
+                   language === 'ar' ? 'font-sans text-[11px] font-medium tracking-normal' : 'font-sans'
+                 }`}
                >
-                 HOT LINE FEEDBACK
+                 {t('HOT LINE FEEDBACK')}
                </button>
 
                {/* Theme Toggle */}
@@ -242,11 +246,13 @@ const Navbar: React.FC<NavbarProps> = ({
                   <button
                     key={category.id}
                     onClick={() => scrollToSection(category.id)}
-                    className={`text-[10px] font-bold uppercase tracking-[0.2em] whitespace-nowrap transition-colors relative group font-sans flex flex-col items-center justify-center ${
+                    className={`text-[10px] uppercase whitespace-nowrap transition-all duration-300 relative group flex flex-col items-center justify-center ${
+                      language === 'ar' ? 'font-sans text-[11px] font-semibold tracking-normal' : 'font-sans font-bold tracking-[0.2em]'
+                    } ${
                       activeCategoryId === category.id ? 'text-[var(--text-primary)]' : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
                     }`}
                   >
-                    {category.title}
+                    {t(category.title)}
                     
                     {/* Active Underline */}
                     {activeCategoryId === category.id && (
@@ -293,8 +299,8 @@ const Navbar: React.FC<NavbarProps> = ({
               />
             </div>
 
-            <p className="text-xs text-[var(--text-secondary)] font-light">
-              Scan to follow our journey.
+            <p className={`text-xs text-[var(--text-secondary)] ${language === 'ar' ? 'font-sans font-medium' : 'font-light'}`}>
+              {t('Scan to follow our journey.')}
             </p>
           </div>
         </div>

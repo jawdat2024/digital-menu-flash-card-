@@ -8,8 +8,10 @@ import AdminDashboard from './AdminDashboard';
 import OfferingBeans from './OfferingBeans';
 import { Branch, MenuCategory } from '../types';
 import { BRANCH_MENUS } from '../constants';
+import { useLanguage } from './LanguageContext';
 
 const DigitalMenu: React.FC = () => {
+    const { language, t } = useLanguage();
     const [selectedBranch, setSelectedBranch] = useState<Branch | null>(null);
     const [searchQuery, setSearchQuery] = useState('');
     const [isAdminOpen, setIsAdminOpen] = useState(false);
@@ -157,15 +159,17 @@ const DigitalMenu: React.FC = () => {
             <div className="pt-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 {filteredCategories.length === 0 ? (
                     <div className="text-center py-20">
-                        <p className="text-neutral-500 text-sm uppercase tracking-widest">No items found</p>
+                        <p className={`text-neutral-500 text-sm uppercase tracking-widest ${language === 'ar' ? 'font-sans font-medium' : ''}`}>{t("No items found")}</p>
                     </div>
                 ) : (
                     <div className="flex flex-col gap-16">
                         {filteredCategories.map((cat) => (
                             <div key={cat.id} id={cat.id} className="scroll-mt-40">
                                 <div className="flex flex-col items-center mb-8 px-4">
-                                    <h2 className="text-xl md:text-2xl font-didone tracking-widest text-[var(--text-primary)] uppercase text-center mb-2">
-                                        {cat.title}
+                                    <h2 className={`text-xl md:text-2xl text-[var(--text-primary)] uppercase text-center mb-2 ${
+                                        language === 'ar' ? 'font-sans font-bold py-1 tracking-normal' : 'font-didone tracking-widest'
+                                    }`}>
+                                        {t(cat.title)}
                                     </h2>
                                     <div className="w-12 h-px bg-[var(--text-primary)] opacity-40"></div>
                                 </div>
@@ -182,8 +186,10 @@ const DigitalMenu: React.FC = () => {
                                         {cat.subCategories.map(subCat => (
                                             <div key={subCat.id} className="flex flex-col">
                                                 <div className="flex flex-col items-center mb-6 px-4">
-                                                    <h3 className="text-lg md:text-xl font-didone tracking-widest text-[var(--text-primary)] uppercase text-center mb-2">
-                                                        {subCat.title}
+                                                    <h3 className={`text-lg md:text-xl text-[var(--text-primary)] uppercase text-center mb-2 ${
+                                                        language === 'ar' ? 'font-sans font-bold py-1 tracking-normal' : 'font-didone tracking-widest'
+                                                    }`}>
+                                                        {t(subCat.title)}
                                                     </h3>
                                                     <div className="w-8 h-px bg-[var(--text-primary)] opacity-40"></div>
                                                 </div>
@@ -199,8 +205,10 @@ const DigitalMenu: React.FC = () => {
                                 {selectedBranch?.id === 'marina' && cat.id === 'filter' && (
                                     <div className="mt-16">
                                         <div className="flex flex-col items-center mb-8 px-4">
-                                            <h3 className="text-lg md:text-xl font-didone tracking-widest text-[var(--text-primary)] uppercase text-center mb-2">
-                                                New Additions
+                                            <h3 className={`text-lg md:text-xl text-[var(--text-primary)] uppercase text-center mb-2 ${
+                                                language === 'ar' ? 'font-sans font-bold py-1 tracking-normal' : 'font-didone tracking-widest'
+                                            }`}>
+                                                {t("New Additions")}
                                             </h3>
                                             <div className="w-8 h-px bg-[var(--text-primary)] opacity-40"></div>
                                         </div>

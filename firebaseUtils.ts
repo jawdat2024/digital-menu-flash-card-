@@ -76,54 +76,72 @@ export async function submitCustomerFeedback(
 
     const docRef = await addDoc(collection(db, 'hotline_feedback'), payload);
 
-    // 3. Send email notification using EmailJS (Lightweight Serverless Alternative)
-    // We use fetch to call the EmailJS REST API safely from the frontend.
-    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
-    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
-    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+    // 3. Structure the professional HTML layout matching luxury aesthetic
+    const emailHtml = `
+      <div style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; max-width: 600px; margin: 0 auto; border: 1px solid #e4e4e4; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+        <!-- Header banner matching luxury aesthetic -->
+        <div style="background-color: #1a1a1a; padding: 25px; text-align: center;">
+          <h2 style="color: #ffffff; margin: 0; font-size: 20px; letter-spacing: 2px; text-transform: uppercase;">Hotline Feedback Alert</h2>
+        </div>
+        
+        <!-- Main content area -->
+        <div style="padding: 30px; background-color: #ffffff;">
+          <p style="font-size: 16px; color: #333333; margin-top: 0;">A new customer feedback submission has been recorded. Details are below:</p>
+          
+          <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
+            <tr>
+              <td style="padding: 10px 0; border-bottom: 1px solid #eeeeee; font-weight: bold; color: #666666; width: 35%;">Customer Name:</td>
+              <td style="padding: 10px 0; border-bottom: 1px solid #eeeeee; color: #111111;">${data.customerName || 'Anonymous'}</td>
+            </tr>
+            <tr>
+              <td style="padding: 10px 0; border-bottom: 1px solid #eeeeee; font-weight: bold; color: #666666;">Phone Number:</td>
+              <td style="padding: 10px 0; border-bottom: 1px solid #eeeeee; color: #111111;">
+                <a href="tel:${data.phoneNumber}" style="color: #4A90E2; text-decoration: none;">${data.phoneNumber || 'Not Provided'}</a>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding: 10px 0; border-bottom: 1px solid #eeeeee; font-weight: bold; color: #666666;">Branch Location:</td>
+              <td style="padding: 10px 0; border-bottom: 1px solid #eeeeee; color: #111111; font-weight: bold;">${data.branch}</td>
+            </tr>
+            <tr>
+              <td style="padding: 10px 0; border-bottom: 1px solid #eeeeee; font-weight: bold; color: #666666;">Feedback Category:</td>
+              <td style="padding: 10px 0; border-bottom: 1px solid #eeeeee; color: #111111;">
+                <span style="background-color: #f0f0f0; padding: 4px 10px; border-radius: 12px; font-size: 13px; font-weight: 500;">${data.category}</span>
+              </td>
+            </tr>
+          </table>
 
-    if (serviceId && templateId && publicKey) {
-      await fetch('https://api.emailjs.com/api/v1.0/email/send', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          service_id: serviceId,
-          template_id: templateId,
-          user_id: publicKey,
-          template_params: {
-            category: data.category,
-            description: data.description,
-            customer_name: data.customerName,
-            phone_number: data.phoneNumber,
-            branch: data.branch,
-            image_url: imageUrl || 'No image provided'
-          }
-        })
-      });
-    } else {
-      // Fallback zero-config alternative using FormSubmit to specific email
-      // This sends a cleanly formatted email array of data
-      await fetch("https://formsubmit.co/ajax/JAWDATGHANNAM29@GMAIL.COM", {
-        method: "POST",
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify({
-          _subject: `New Hot Line Feedback: ${data.category} - ${data.branch}`,
-          _template: 'box',
-          Category: data.category,
-          Customer_Name: data.customerName,
-          Phone_Number: data.phoneNumber,
-          Branch: data.branch,
-          Description: data.description,
-          Image_Attachment: imageUrl || 'No image uploaded'
-        })
-      });
-    }
+          <!-- Additional Comments Box -->
+          <div style="margin-top: 25px; padding: 20px; background-color: #f9f9f9; border-left: 4px solid #1a1a1a; border-radius: 4px;">
+            <h4 style="margin: 0 0 8px 0; color: #333333; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px;">Customer Comments:</h4>
+            <p style="margin: 0; color: #555555; line-height: 1.6; font-size: 15px; font-style: italic;">"${data.description || 'No additional details provided.'}"</p>
+          </div>
 
+          <!-- Conditional Photo Attachment Link -->
+          ${imageUrl ? `
+          <div style="margin-top: 25px; text-align: center;">
+            <a href="${imageUrl}" target="_blank" style="display: inline-block; background-color: #1a1a1a; color: #ffffff; padding: 12px 25px; text-decoration: none; font-size: 14px; font-weight: bold; border-radius: 4px; letter-spacing: 1px; text-transform: uppercase;">View Uploaded Photo</a>
+          </div>
+          ` : ''}
+        </div>
+
+        <!-- Footer -->
+        <div style="background-color: #f5f5f5; padding: 15px; text-align: center; border-top: 1px solid #eeeeee;">
+          <p style="margin: 0; font-size: 12px; color: #999999;">Automated notification via Firebase Hotline System.</p>
+        </div>
+      </div>
+    `;
+
+    // 4. Add the document to the collection the extension listens to
+    await addDoc(collection(db, 'mail'), {
+      to: ['jawdatghannam29@gmail.com'],
+      message: {
+        subject: `🚨 Hotline Feedback [${data.branch}] - ${data.category}`,
+        html: emailHtml,
+      }
+    });
+
+    console.log("Feedback logged and email scheduled successfully!");
     return docRef.id;
   } catch (error) {
     console.error('Error submitting feedback:', error);

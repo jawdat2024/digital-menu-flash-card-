@@ -2324,31 +2324,7 @@ const createKhalifaMenu = (): MenuCategory[] => {
           status: 'coming_soon' as const,
         },
         findItem("desserts", "d_aseeda")!,
-        {
-          id: "d_honey",
-          name: "Honey Cake",
-          price: "39.20",
-          image: "https://iili.io/qqXWIea.png",
-          ingredients: "Layers of honey sponge and cream",
-          calories: 450,
-        },
-        {
-          id: "d_peanut",
-          name: "Peanut Choco Tart",
-          price: "39.20",
-          image: "https://iili.io/qqXGUIR.png",
-          ingredients: "Rich chocolate tart with peanut butter",
-          calories: 480,
-        },
         findItem("desserts", "d_san_seb")!,
-        {
-          id: "d_tiramisu",
-          name: "Tiramisu Bowl",
-          price: "39.20",
-          image: "https://iili.io/C27waOg.jpg",
-          ingredients: "Classic Italian dessert with coffee",
-          calories: 400,
-        },
         findItem("desserts", "d_vanilla_pud")!,
         findItem("desserts", "d_banana_pud")!,
         findItem("desserts", "STICKY DATE")!,
@@ -3074,6 +3050,13 @@ const createMarinaMenu = (): MenuCategory[] => {
       notes: "Coconut Cream, Milk Chocolate, Toffee Caramel",
       price: 6,
       isNew: true,
+    },
+    {
+      id: "bean_nicaragua",
+      name: "Nicaragua",
+      notes: "Milk Chocolate, Sugar Cane, Candied Peanuts",
+      price: 0,
+      isNew: false,
     },
   ];
 
@@ -5698,12 +5681,12 @@ Object.keys(RAW_BRANCH_MENUS).forEach(branch => {
     });
   });
 
-  // 2. Marina Branch Updates: Keep only Colombia-Witch, sweet dream decaf, and coconutella in Marina Espresso Based.
+  // 2. Marina Branch Updates: Keep only Colombia-Witch, sweet dream decaf, coconutella, and Nicaragua in Marina Espresso Based.
   const marinaMenu = RAW_BRANCH_MENUS["marina"];
   if (marinaMenu) {
     const espressoCat = marinaMenu.find((c) => c.id === "espresso" || c.title === "Espresso Based" || c.title === "ESPRESSO BASED");
     if (espressoCat) {
-      const allowedNames = ["colombia-witch", "sweet dream decaf", "coconutella"];
+      const allowedNames = ["colombia-witch", "sweet dream decaf", "coconutella", "nicaragua"];
       if (espressoCat.beanSelection) {
         espressoCat.beanSelection = espressoCat.beanSelection.filter(
           (b) => b.name && allowedNames.includes(b.name.toLowerCase().trim())
@@ -5721,6 +5704,18 @@ Object.keys(RAW_BRANCH_MENUS).forEach(branch => {
           }
         });
       }
+    }
+  }
+
+  // 3. Khalifa City Branch Updates: From the "khalifa" branch, remove "Peanut Choco Tart", "Honey Cake", and "Tiramisu Bowl" from the DESSERTS category
+  const khalifaMenu = RAW_BRANCH_MENUS["khalifa"];
+  if (khalifaMenu) {
+    const dessertsCat = khalifaMenu.find((c) => c.id === "desserts" || c.title?.toLowerCase() === "desserts" || c.title?.toLowerCase() === "dessert");
+    if (dessertsCat && dessertsCat.items) {
+      const disallowedDessertNames = ["peanut choco tart", "honey cake", "tiramisu bowl"];
+      dessertsCat.items = dessertsCat.items.filter(
+        (item) => !item.name || !disallowedDessertNames.includes(item.name.toLowerCase().trim())
+      );
     }
   }
 })();
@@ -5746,6 +5741,11 @@ export const BRANCH_ESPRESSO_BEANS: Record<string, any[]> = {
       "name": "coconutella",
       "notes": "Coconut Cream, Milk Chocolate, Toffee Caramel",
       "price": "+6 AED"
+    },
+    {
+      "name": "Nicaragua",
+      "notes": "Milk Chocolate, Sugar Cane, Candied Peanuts",
+      "price": "+0 AED"
     }
   ],
   'khalifa': [

@@ -3,12 +3,14 @@ import React, { useState } from 'react';
 import { MenuItem } from '../types';
 import { Flame } from 'lucide-react';
 import CurrencySymbol from './CurrencySymbol';
+import { useLanguage } from './LanguageContext';
 
 interface MenuItemCardProps {
   item: MenuItem;
 }
 
 const MenuItemCard: React.FC<MenuItemCardProps> = ({ item }) => {
+  const { language, t } = useLanguage();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
 
@@ -38,14 +40,14 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({ item }) => {
       className={`flex flex-col h-full bg-white rounded-[32px] overflow-hidden relative group transition-all duration-500 ease-out transform p-2 ${isUnavailable || isComingSoon ? 'cursor-not-allowed opacity-90' : 'hover:shadow-2xl hover:-translate-y-1 cursor-pointer'}`}>
         
         {['57', '65', '66'].includes(item.price?.toString() || '') && (
-            <div className="absolute top-3 left-3 sm:top-6 sm:left-6 z-20 bg-black text-white shadow-xl text-[7px] sm:text-[9px] font-bold uppercase tracking-[0.2em] px-2 py-1 sm:px-3 sm:py-1.5 rounded-full border border-white/20">
-                 THE UNIQUE
+            <div className={`absolute top-3 left-3 sm:top-6 sm:left-6 z-20 bg-black text-white shadow-xl text-[7px] sm:text-[9px] font-bold uppercase tracking-[0.2em] px-2 py-1 sm:px-3 sm:py-1.5 rounded-full border border-white/20 ${language === 'ar' ? 'font-sans' : ''}`}>
+                 {t("THE UNIQUE")}
             </div>
         )}
 
         {isNew && (
-            <div className="absolute top-3 right-3 sm:top-6 sm:right-6 z-20 bg-black text-white shadow-xl text-[7px] sm:text-[9px] font-bold uppercase tracking-[0.2em] px-2 py-1 sm:px-3 sm:py-1.5 rounded-full">
-                 NEW
+            <div className={`absolute top-3 right-3 sm:top-6 sm:right-6 z-20 bg-black text-white shadow-xl text-[7px] sm:text-[9px] font-bold uppercase tracking-[0.2em] px-2 py-1 sm:px-3 sm:py-1.5 rounded-full ${language === 'ar' ? 'font-sans' : ''}`}>
+                 {t("NEW")}
             </div>
         )}
 
@@ -54,7 +56,7 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({ item }) => {
              {item.image ? (
                <img 
                  src={item.image} 
-                 alt={item.name} 
+                 alt={t(item.name)} 
                  className={`w-full h-full object-cover object-center transition-transform duration-1000 ease-out ${isUnavailable ? 'grayscale opacity-50' : ''}`}
                  style={{ transform: 'scale(1.2)' }}
                  loading="lazy"
@@ -68,15 +70,15 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({ item }) => {
              {/* Overlays */}
              {isUnavailable && (
                  <div className="absolute inset-0 bg-white/40 backdrop-blur-[2px] flex items-center justify-center z-10">
-                     <span className="text-black uppercase tracking-[0.3em] font-bold border border-black/30 px-3 py-1.5 sm:px-6 sm:py-3 text-[8px] sm:text-xs bg-white/70 rounded-full">
-                       {normalizedStatus === 'out_of_stock' ? 'Unavailable' : 'Sold Out'}
+                     <span className={`text-black uppercase tracking-[0.3em] font-bold border border-black/30 px-3 py-1.5 sm:px-6 sm:py-3 text-[8px] sm:text-xs bg-white/70 rounded-full ${language === 'ar' ? 'font-sans' : ''}`}>
+                       {t(normalizedStatus === 'out_of_stock' ? 'Unavailable' : 'Sold Out')}
                      </span>
                  </div>
              )}
 
              {isComingSoon && (
                  <div className="absolute inset-0 bg-white/40 backdrop-blur-[2px] flex items-center justify-center z-10">
-                     <span className="text-black uppercase tracking-[0.3em] font-bold border border-black/30 px-3 py-1.5 sm:px-6 sm:py-3 text-[8px] sm:text-xs bg-white/70 rounded-full">Available Soon</span>
+                     <span className={`text-black uppercase tracking-[0.3em] font-bold border border-black/30 px-3 py-1.5 sm:px-6 sm:py-3 text-[8px] sm:text-xs bg-white/70 rounded-full ${language === 'ar' ? 'font-sans' : ''}`}>{t("Available Soon")}</span>
                  </div>
              )}
         </div>
@@ -84,38 +86,49 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({ item }) => {
         {/* Bottom Half: Black Container */}
         <div className="bg-black flex-1 flex flex-col p-3 sm:p-5 md:p-8 relative z-10 rounded-[24px] mt-1 sm:mt-2">
             <div className="flex flex-col items-center justify-center text-center w-full flex-1">
-                <h3 className="font-didone text-[13px] sm:text-lg md:text-2xl font-bold tracking-wide text-white mb-2 sm:mb-5 line-clamp-2">{item.name}</h3>
+                <h3 className={`text-[13px] sm:text-lg md:text-2xl font-bold tracking-wide text-white mb-2 sm:mb-5 line-clamp-2 ${
+                    language === 'ar' ? 'font-sans font-semibold py-1 leading-normal' : 'font-didone'
+                }`}>{t(item.name)}</h3>
                 
                 <div className="w-full h-px bg-neutral-800 mb-2 sm:mb-5 hidden sm:block"></div>
                 
                 {isComingSoon ? (
-                    <div className="flex items-center justify-center text-[9px] sm:text-xs font-light tracking-widest text-neutral-400 mb-2 sm:mb-4 uppercase">
-                        Available Soon
+                    <div className={`flex items-center justify-center text-[9px] sm:text-xs font-light tracking-widest text-neutral-400 mb-2 sm:mb-4 uppercase ${language === 'ar' ? 'font-sans' : ''}`}>
+                        {t("Available Soon")}
                     </div>
                 ) : item.price ? (
                     <div className="flex items-center justify-center gap-1 text-[11px] sm:text-sm md:text-lg font-light tracking-widest text-neutral-300 mb-2 sm:mb-4">
-                        <CurrencySymbol className="w-3 h-3 sm:w-4 sm:h-4" />
-                        <span>{item.price}</span>
+                        {language === 'ar' ? (
+                          <>
+                            <span>{item.price}</span>
+                            <CurrencySymbol className="w-3 h-3 sm:w-4 sm:h-4" />
+                          </>
+                        ) : (
+                          <>
+                            <CurrencySymbol className="w-3 h-3 sm:w-4 sm:h-4" />
+                            <span>{item.price}</span>
+                          </>
+                        )}
                     </div>
                 ) : null}
                 
                 {item.ingredients && (
-                    <p className="text-[9px] sm:text-xs text-neutral-400 font-sans leading-relaxed line-clamp-2 sm:line-clamp-3 mb-1 sm:mb-2 max-w-[95%]">
-                        {item.ingredients}
+                    <p className={`text-[9px] sm:text-xs text-neutral-400 leading-relaxed line-clamp-2 sm:line-clamp-3 mb-1 sm:mb-2 max-w-[95%] ${language === 'ar' ? 'font-sans font-medium' : 'font-sans'}`}>
+                        {t(item.ingredients)}
                     </p>
                 )}
                 
                 {(item.tastingNotes || item.notes) && (
-                    <p className="text-[8px] sm:text-[10px] text-neutral-500 font-serif italic leading-relaxed line-clamp-1 sm:line-clamp-2 mb-2 sm:mb-6 max-w-[95%] tracking-wide">
-                        Notes: {item.tastingNotes || item.notes}
+                    <p className={`text-[8px] sm:text-[10px] text-neutral-500 leading-relaxed line-clamp-1 sm:line-clamp-2 mb-2 sm:mb-6 max-w-[95%] tracking-wide ${language === 'ar' ? 'font-sans font-medium' : 'font-serif italic'}`}>
+                        {t("Notes")}: {t(item.tastingNotes || item.notes || '')}
                     </p>
                 )}
             </div>
             
             <div className="mt-auto pt-2 flex items-center justify-center gap-1 sm:gap-2 text-neutral-400">
                 <Flame size={12} className="text-neutral-500 sm:w-[14px]" />
-                <span className="text-[8px] sm:text-[10px] font-medium uppercase tracking-widest">
-                    EST. {item.calories || 0}
+                <span className={`text-[8px] sm:text-[10px] font-medium uppercase tracking-widest ${language === 'ar' ? 'font-sans' : ''}`}>
+                    {t("EST.")} {item.calories || 0}
                 </span>
             </div>
         </div>
@@ -146,11 +159,15 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({ item }) => {
             >
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
             </button>
-            <h3 className="text-xl font-bold text-black mb-4 pr-6 font-didone uppercase tracking-wide">
-              {item.name}
+            <h3 className={`text-xl font-bold text-black mb-4 pr-6 uppercase tracking-wide ${
+              language === 'ar' ? 'font-sans font-bold py-1' : 'font-didone'
+            }`}>
+              {t(item.name)}
             </h3>
-            <div className="text-sm text-neutral-600 font-sans leading-relaxed max-h-[60vh] overflow-y-auto pr-2">
-              {item.ingredients}
+            <div className={`text-sm text-neutral-600 leading-relaxed max-h-[60vh] overflow-y-auto ${
+              language === 'ar' ? 'font-sans font-medium pl-2' : 'font-sans pr-2'
+            }`}>
+              {t(item.ingredients)}
             </div>
           </div>
         </div>

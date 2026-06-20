@@ -1710,12 +1710,12 @@ const createAlBateenMenu = (): MenuCategory[] => {
       isNew: false,
     },
     {
-      id: "bean_colombia_strawberry",
-      name: "Colombia Peach",
-      notes: "Strawberry Jam, Honey, Milk Chocolates",
-      price: 5,
+      id: "bean_coconutella",
+      name: "coconutella",
+      notes: "Coconut Cream, Milk Chocolate, Toffee Caramel",
+      price: 10,
       isNew: true,
-      status: 'available' as const,
+      status: 'active' as const,
     },
     {
       id: "bean_colombia_decaf",
@@ -4814,6 +4814,16 @@ const RAW_BRANCH_MENUS: BranchMenuDirectory = {
                 "ingredients": "Filtered Coffee",
                 "calories": 5,
                 "status": "available"
+              },
+        {
+                "id": "albateen_fil_8",
+                "name": "Costa Rica Canet Chopin",
+                "price": "57",
+                "image": "https://iili.io/qLf9mXt.jpg",
+                "tastingNotes": "Cacao, Fig Compote, Honey, Cherry",
+                "ingredients": "Filtered Coffee",
+                "calories": 5,
+                "status": "active"
               }
 ]
     };
@@ -5782,9 +5792,10 @@ export const BRANCH_ESPRESSO_BEANS: Record<string, any[]> = {
     "price": "+0 AED"
   },
   {
-    "name": "Colombia Peach",
-    "notes": "Peach, Vanilla Ice Cream, Lychee",
-    "price": "+5 AED"
+    "name": "coconutella",
+    "notes": "Coconut Cream, Milk Chocolate, Toffee Caramel",
+    "price": "+10 AED",
+    "status": "active"
   }
 ],
   'dubai': [

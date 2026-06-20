@@ -108,9 +108,10 @@
         "price": "+0 AED"
       },
       {
-        "name": "Colombia Peach",
-        "notes": "Peach, Vanilla Ice Cream, Lychee",
-        "price": "+5 AED"
+        "name": "coconutella",
+        "notes": "Coconut Cream, Milk Chocolate, Toffee Caramel",
+        "price": "+10 AED",
+        "status": "active"
       }
     ],
     "filtered": [
@@ -183,6 +184,16 @@
         "ingredients": "Filtered Coffee",
         "calories": 5,
         "status": "available"
+      },
+      {
+        "id": "albateen_fil_8",
+        "name": "Costa Rica Canet Chopin",
+        "price": "57",
+        "image": "https://iili.io/qLf9mXt.jpg",
+        "tastingNotes": "Cacao, Fig Compote, Honey, Cherry",
+        "ingredients": "Filtered Coffee",
+        "calories": 5,
+        "status": "active"
       }
     ]
   },

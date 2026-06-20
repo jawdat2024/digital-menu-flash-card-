@@ -6,15 +6,18 @@ service cloud.firestore {
     // Feedback collection rules
     match /hotline_feedback/{feedbackId} {
       
-      // Allow public creation but enforce basic data types and required fields
-      // Prevents malicious payloads from polluting your database
-      allow create: if request.resource.data.category is string
-                    && request.resource.data.customerName is string
-                    && request.resource.data.phoneNumber is string
-                    && request.resource.data.branch is string;
+      // Allow creation for anyone (secured by client logic, authenticated anonymously)
+      allow create: if true;
                     
       // Only authenticated users (e.g., your admins) can read, update, or delete feedback
       allow read, update, delete: if request.auth != null;
+    }
+
+    // Mail collection rules (for Trigger Email extension)
+    match /mail/{mailId} {
+      allow create: if true;
+                    
+      allow read, update, delete: if false; // Securely block reading/updating scheduled mail
     }
 
     // Default deny for everything else

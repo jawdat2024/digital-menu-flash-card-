@@ -131,14 +131,6 @@ const Navbar: React.FC<NavbarProps> = ({
                       >
                         <Globe size={18} strokeWidth={1.5} />
                       </a>
-                      <button 
-                        id="global-sync-btn"
-                        onClick={triggerSync}
-                        className="text-[var(--text-primary)] hover:text-[var(--accent-color)] transition-colors p-1 ml-1 cursor-pointer"
-                        title="Sync Menu"
-                      >
-                        <RefreshCw size={18} strokeWidth={1.5} />
-                      </button>
                    </div>
 
                    {/* Search & Location */}
@@ -192,24 +184,19 @@ const Navbar: React.FC<NavbarProps> = ({
             {/* Center: Brand Logo */}
             <div className="flex-none flex flex-col items-center justify-center cursor-pointer group px-4 py-2" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
                <div className="flex items-center justify-center">
-                 {!logoFailed ? (
-                   <img 
-                     src="/cartel.avif" 
-                     alt="CARTEL" 
-                     width={360} 
-                     height={100}
-                     className="w-[120px] sm:w-[140px] md:w-[180px] h-auto object-contain transition-transform duration-500 group-hover:scale-[1.03]"
-                     style={{
-                       filter: isDarkMode ? 'invert(1) contrast(1.2)' : 'invert(0) contrast(1.2)',
-                       transformOrigin: 'center'
-                     }}
-                     onError={() => setLogoFailed(true)}
-                   />
-                 ) : (
-                   <h1 className="text-xl md:text-2xl font-bold tracking-[0.2em] text-[var(--text-primary)]">
+                 <div className="flex items-center gap-2 select-none transition-transform duration-500 group-hover:scale-[1.03]">
+                   <span className="text-[26px] sm:text-[32px] md:text-[36px] font-semibold text-[var(--text-primary)] tracking-normal leading-none" style={{ fontFamily: "'Bodoni Moda', serif" }}>
                      CARTEL
-                   </h1>
-                 )}
+                   </span>
+                   <div className="flex flex-col justify-center leading-none">
+                     <span className="text-[8px] sm:text-[10px] md:text-[11px] font-extrabold tracking-[0.14em] text-[var(--text-primary)] leading-[1.0]" style={{ fontFamily: "'Poppins', sans-serif" }}>
+                       COFFEE
+                     </span>
+                     <span className="text-[8px] sm:text-[10px] md:text-[11px] font-extrabold tracking-[0.08em] text-[var(--text-primary)] leading-[1.0]" style={{ fontFamily: "'Poppins', sans-serif" }}>
+                       ROASTERS
+                     </span>
+                   </div>
+                 </div>
                </div>
             </div>
 

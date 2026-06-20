@@ -4316,10 +4316,10 @@ const RAW_BRANCH_MENUS: BranchMenuDirectory = {
               },
         {
                 "id": "dubai_fil_3",
-                "name": "Colombia strawberry",
+                "name": "Colombia strawberry v60",
                 "price": "57",
                 "image": "https://iili.io/qLf9mXt.jpg",
-                "tastingNotes": "Strawberry Jam – Honey – Milk Chocolates",
+                "tastingNotes": "Strawberry jam – honey - milk chocolates",
                 "ingredients": "Filtered Coffee",
                 "calories": 5,
                 "status": "available"
@@ -4346,10 +4346,10 @@ const RAW_BRANCH_MENUS: BranchMenuDirectory = {
               },
         {
                 "id": "dubai_fil_6",
-                "name": "Colombia - Bourbon Sidra",
+                "name": "Bourbon sidra v60",
                 "price": "46",
                 "image": "https://iili.io/qLf9mXt.jpg",
-                "tastingNotes": "Red Grapes – Watermelon – Hard Candy – Raspberry",
+                "tastingNotes": "Red grips – watermelon – hard candy- raspberry",
                 "ingredients": "Filtered Coffee",
                 "calories": 5,
                 "status": "available"
@@ -5715,6 +5715,31 @@ Object.keys(RAW_BRANCH_MENUS).forEach(branch => {
         });
       }
     }
+
+    // Remove individual requested smoothies from Marina:
+    // 1- Pitaya Smoothiec, 2- Blue Cloud Smoothie, 3- Strawberry Glaze Smoothie
+    const forbiddenMarinaSmoothies = [
+      "pitaya smoothiec",
+      "pitaya smoothie",
+      "blue cloud smoothie",
+      "strawberry glaze smoothie"
+    ];
+    marinaMenu.forEach((cat) => {
+      if (cat.items) {
+        cat.items = cat.items.filter(
+          (item) => !item.name || !forbiddenMarinaSmoothies.includes(item.name.toLowerCase().trim())
+        );
+      }
+      if (cat.subCategories) {
+        cat.subCategories.forEach((sub) => {
+          if (sub.items) {
+            sub.items = sub.items.filter(
+              (item) => !item.name || !forbiddenMarinaSmoothies.includes(item.name.toLowerCase().trim())
+            );
+          }
+        });
+      }
+    });
   }
 
   // 3. Khalifa City Branch Updates: From the "khalifa" branch, remove "Peanut Choco Tart", "Honey Cake", and "Tiramisu Bowl" from the DESSERTS category
@@ -5727,6 +5752,89 @@ Object.keys(RAW_BRANCH_MENUS).forEach(branch => {
         (item) => !item.name || !disallowedDessertNames.includes(item.name.toLowerCase().trim())
       );
     }
+  }
+
+  // 4. Al Qana Branch Updates based on user request:
+  // Remove: 1- Peanut Choco Tart, 2- Tiramisu Bowl, 3- Deconstructed cheesecake, 4- Watermelon juice
+  const alQanaBranchMenu = RAW_BRANCH_MENUS["alqana"];
+  if (alQanaBranchMenu) {
+    const dessertsCat = alQanaBranchMenu.find((c) => c.id === "desserts" || c.title?.toLowerCase() === "desserts" || c.title?.toLowerCase() === "dessert");
+    if (dessertsCat && dessertsCat.items) {
+      const disallowedDessertNames = [
+        "peanut choco tart", 
+        "peanut butter chocolate tart", 
+        "peanut butter tart",
+        "tiramisu bowl", 
+        "tiramisu", 
+        "deconstructed cheesecake"
+      ];
+      dessertsCat.items = dessertsCat.items.filter(
+        (item) => !item.name || !disallowedDessertNames.includes(item.name.toLowerCase().trim())
+      );
+    }
+
+    // Remove Watermelon juice globally from Al Qana
+    alQanaBranchMenu.forEach((cat) => {
+      if (cat.items) {
+        cat.items = cat.items.filter(
+          (item) => !item.name || !item.name.toLowerCase().includes("watermelon")
+        );
+      }
+      if (cat.subCategories) {
+        cat.subCategories.forEach((sub) => {
+          if (sub.items) {
+            sub.items = sub.items.filter(
+              (item) => !item.name || !item.name.toLowerCase().includes("watermelon")
+            );
+          }
+        });
+      }
+    });
+  }
+
+  // 5. Dubai Branch Updates based on user request:
+  // Remove: 1- Tiramisu, 2- peanut butter tart, 3- watermelon juice, 4- Pitaya Smoothie, 5- costa rica v60, 6- Colombia blackberry v60
+  const dubaiBranchMenu = RAW_BRANCH_MENUS["dubai"];
+  if (dubaiBranchMenu) {
+    const dessertsCat = dubaiBranchMenu.find((c) => c.id === "desserts" || c.title?.toLowerCase() === "desserts" || c.title?.toLowerCase() === "dessert");
+    if (dessertsCat && dessertsCat.items) {
+      const disallowedDessertNames = [
+        "tiramisu", 
+        "tiramisu bowl", 
+        "peanut butter chocolate tart",
+        "peanut butter tart", 
+        "peanut choco tart"
+      ];
+      dessertsCat.items = dessertsCat.items.filter(
+        (item) => !item.name || !disallowedDessertNames.includes(item.name.toLowerCase().trim())
+      );
+    }
+
+    // Remove Watermelon juice, Pitaya Smoothie, Costa Rica V60, Colombia blackberry V60 globally from Dubai
+    dubaiBranchMenu.forEach((cat) => {
+      const filterItem = (item: any) => {
+        if (!item.name) return true;
+        const nameLower = item.name.toLowerCase();
+        
+        if (nameLower.includes("watermelon")) return false;
+        if (nameLower.includes("pitaya")) return false;
+        if (nameLower.includes("costa rica")) return false;
+        if (nameLower.includes("blackberry")) return false;
+        
+        return true;
+      };
+
+      if (cat.items) {
+        cat.items = cat.items.filter(filterItem);
+      }
+      if (cat.subCategories) {
+        cat.subCategories.forEach((sub) => {
+          if (sub.items) {
+            sub.items = sub.items.filter(filterItem);
+          }
+        });
+      }
+    });
   }
 })();
 

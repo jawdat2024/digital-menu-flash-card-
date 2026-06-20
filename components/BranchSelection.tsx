@@ -25,7 +25,19 @@ const BranchSelection: React.FC<BranchSelectionProps> = ({ onSelectBranch }) => 
       
       {/* Main Content Area */}
       <div className="content-wrapper">
-        <h1 className="brand-title">CARTEL</h1>
+        <div className="flex items-center gap-3 sm:gap-4 md:gap-5 select-none mb-2">
+          <span className="text-[42px] sm:text-[60px] md:text-[76px] lg:text-[88px] font-semibold text-white tracking-tight leading-none" style={{ fontFamily: "'Bodoni Moda', serif" }}>
+            CARTEL
+          </span>
+          <div className="flex flex-col justify-center leading-none">
+            <span className="text-[12px] sm:text-[17px] md:text-[21px] lg:text-[24px] font-black tracking-[0.14em] text-white leading-[1.0]" style={{ fontFamily: "'Poppins', sans-serif" }}>
+              COFFEE
+            </span>
+            <span className="text-[12px] sm:text-[17px] md:text-[21px] lg:text-[24px] font-black tracking-[0.08em] text-white leading-[1.0]" style={{ fontFamily: "'Poppins', sans-serif" }}>
+              ROASTERS
+            </span>
+          </div>
+        </div>
         <p className="brand-subtitle"> A NEW FREQUENCY </p>
         
         {/* Branch Navigation Buttons */}

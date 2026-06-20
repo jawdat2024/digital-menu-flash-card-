@@ -3,8 +3,6 @@ import BranchSelection from './BranchSelection';
 import Navbar from './Navbar';
 import MenuItemCard from './MenuItemCard';
 import Footer from './Footer';
-import AdminGate from './AdminGate';
-import AdminDashboard from './AdminDashboard';
 import OfferingBeans from './OfferingBeans';
 import { Branch, MenuCategory } from '../types';
 import { BRANCH_MENUS } from '../constants';
@@ -14,7 +12,6 @@ const DigitalMenu: React.FC = () => {
     const { language, t } = useLanguage();
     const [selectedBranch, setSelectedBranch] = useState<Branch | null>(null);
     const [searchQuery, setSearchQuery] = useState('');
-    const [isAdminOpen, setIsAdminOpen] = useState(false);
     
     // Add logic to refresh the menu if the admin makes changes
     const [lastSync, setLastSync] = useState(Date.now());
@@ -31,14 +28,6 @@ const DigitalMenu: React.FC = () => {
             localStorage.removeItem(`cartel_inventory_marina`);
         }
     }, [selectedBranch?.id]);
-
-    if (isAdminOpen) {
-        return (
-            <AdminGate>
-                <AdminDashboard onBack={() => setIsAdminOpen(false)} />
-            </AdminGate>
-        );
-    }
 
     if (!selectedBranch) {
         return <BranchSelection onSelectBranch={setSelectedBranch} />;
@@ -259,7 +248,7 @@ const DigitalMenu: React.FC = () => {
                 )}
             </div>
             
-            <Footer onAdminAccess={() => setIsAdminOpen(true)} />
+            <Footer />
         </div>
     );
 };

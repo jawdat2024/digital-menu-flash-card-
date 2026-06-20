@@ -7,7 +7,7 @@ import appletConfig from './firebase-applet-config.json';
 
 // Initialize Firebase only if it hasn't been initialized yet
 const firebaseConfig = {
-  apiKey: import.meta.env.VITE_FIREBASE_API_KEY || appletConfig.apiKey || "AIzaSyAQsSytCAVWhRkOSW0Gc51aK4YRLvllWwc",
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY || appletConfig.apiKey || "AIzaSyDY6h7AOVbU5AyhHGB5VEStRO25K9BGclM",
   authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN || appletConfig.authDomain || "gen-lang-client-0669796641.firebaseapp.com",
   projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID || appletConfig.projectId || "gen-lang-client-0669796641",
   storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET || appletConfig.storageBucket || "gen-lang-client-0669796641.firebasestorage.app",

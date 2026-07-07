@@ -113,13 +113,13 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({ item }) => {
                 ) : null}
                 
                 {item.ingredients && (
-                    <p className={`text-[9px] sm:text-xs text-neutral-400 leading-relaxed line-clamp-2 sm:line-clamp-3 mb-1 sm:mb-2 max-w-[95%] ${language === 'ar' ? 'font-sans font-medium' : 'font-sans'}`}>
+                    <p className={`text-xs sm:text-[15px] text-neutral-400 leading-relaxed line-clamp-2 sm:line-clamp-3 mb-1 sm:mb-2 max-w-[95%] ${language === 'ar' ? 'font-sans font-medium' : 'font-sans'}`}>
                         {t(item.ingredients)}
                     </p>
                 )}
                 
                 {(item.tastingNotes || item.notes) && (
-                    <p className={`text-[8px] sm:text-[10px] text-neutral-500 leading-relaxed line-clamp-1 sm:line-clamp-2 mb-2 sm:mb-6 max-w-[95%] tracking-wide ${language === 'ar' ? 'font-sans font-medium' : 'font-serif italic'}`}>
+                    <p className={`text-[10px] sm:text-xs text-neutral-500 leading-relaxed line-clamp-1 sm:line-clamp-2 mb-2 sm:mb-6 max-w-[95%] tracking-wide ${language === 'ar' ? 'font-sans font-medium' : 'font-serif italic'}`}>
                         {t("Notes")}: {t(item.tastingNotes || item.notes || '')}
                     </p>
                 )}

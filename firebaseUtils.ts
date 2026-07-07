@@ -1,6 +1,6 @@
 /// <reference types="vite/client" />
 import { initializeApp, getApps, getApp } from 'firebase/app';
-import { getFirestore, collection, addDoc, serverTimestamp } from 'firebase/firestore';
+import { getFirestore, collection, addDoc, serverTimestamp, getDocs, query, where } from 'firebase/firestore';
 import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { getAuth, signInAnonymously } from 'firebase/auth';
 import appletConfig from './firebase-applet-config.json';
@@ -94,7 +94,7 @@ export async function submitCustomerFeedback(
 
   const auth = getAuth(app);
 
-  // 1. Authentication: Ensure signInAnonymously(auth) is fully awaited and resolved before any Storage or Firestore operations begin.
+  // 1. Authentication: Try to sign in anonymously. If it fails, log a warning but do not crash the submission, as the Security Rules permit public creation (allow create: if true).
   try {
     if (!auth.currentUser) {
       console.log('Initiating Firebase Anonymous Authentication...');
@@ -104,8 +104,8 @@ export async function submitCustomerFeedback(
       console.log(`Already authenticated with Firebase. UID: ${auth.currentUser.uid}`);
     }
   } catch (authErr: any) {
-    console.error('🔴 FIREBASE AUTH FAILURE: Failed to authenticate anonymously:', authErr);
-    throw new Error(`Firebase Auth Error: ${authErr.message || authErr}`);
+    console.warn('⚠️ FIREBASE AUTH WARNING: Failed to authenticate anonymously (Sign-in provider might be disabled in Firebase Console):', authErr);
+    console.log('Proceeding with submission anonymously as security rules permit public creation...');
   }
 
   let imageUrl = '';
@@ -220,3 +220,37 @@ export async function submitCustomerFeedback(
 
   return docRef.id;
 }
+
+// تعريف شكل البيانات (إذا كنت تستخدم TypeScript)
+export interface Category {
+  id: string;
+  name: string;
+  foodics_id: string;
+  image_url: string;
+  is_active: boolean;
+}
+
+export const fetchActiveCategories = async (): Promise<Category[]> => {
+  try {
+    // الإشارة إلى مجموعة "categories"
+    const categoriesRef = collection(db, "categories");
+    
+    // استعلام لجلب الأقسام الفعالة فقط
+    const q = query(categoriesRef, where("is_active", "==", true));
+    
+    const querySnapshot = await getDocs(q);
+    const categoriesList: Category[] = [];
+    
+    querySnapshot.forEach((doc) => {
+      categoriesList.push({
+        id: doc.id, // سيجلب المعرف مثل "c-10"
+        ...(doc.data() as Omit<Category, 'id'>)
+      });
+    });
+    
+    return categoriesList;
+  } catch (error) {
+    console.error("Error fetching categories: ", error);
+    return [];
+  }
+};

@@ -171,7 +171,7 @@ const FlipCard: React.FC<FlipCardProps> = ({ item, index = 0 }) => {
                 </div>
               ) : (
                 /* Standard Description */
-                <p className="text-[14px] text-[#888888] font-sans leading-snug line-clamp-3 mb-[12px]">
+                <p className="text-[16px] text-[#888888] font-sans leading-snug line-clamp-3 mb-[12px]">
                     {item.ingredients}
                 </p>
               )}

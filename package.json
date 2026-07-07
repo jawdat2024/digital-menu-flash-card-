@@ -14,7 +14,7 @@
     "@react-three/drei": "9.99.0",
     "@react-three/fiber": "8.15.16",
     "@types/lodash.debounce": "^4.0.9",
-    "firebase": "^12.13.0",
+    "firebase": "^12.15.0",
     "framer-motion": "10.16.4",
     "lodash.debounce": "^4.0.8",
     "lucide-react": "0.263.1",

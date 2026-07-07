@@ -66,7 +66,7 @@ const SmoothieCard: React.FC<SmoothieCardProps> = ({ item, index = 0 }) => {
           <h3 className="font-didone text-2xl font-bold text-white uppercase tracking-wide leading-tight mb-2">
             {item.name}
           </h3>
-          <p className="text-xs text-neutral-400 font-sans leading-relaxed line-clamp-3">
+          <p className="text-sm sm:text-[15px] text-neutral-400 font-sans leading-relaxed line-clamp-3">
             {item.ingredients}
           </p>
         </div>

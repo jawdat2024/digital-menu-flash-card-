@@ -116,12 +116,14 @@ const Navbar: React.FC<NavbarProps> = ({
                 <>
                    {/* Social & Contact Icons - Hidden on mobile to prevent overlap */}
                    <div className="hidden md:flex items-center gap-3 border-r border-[var(--border-color)] pr-3">
-                      <button 
-                        onClick={() => setIsInstaModalOpen(true)}
-                        className="text-[var(--text-primary)] hover:text-[var(--accent-color)] transition-colors p-1"
-                      >
-                        <Instagram size={18} strokeWidth={1.5} />
-                      </button>
+                      <a 
+                         href="https://www.instagram.com/cartelcoffeeroasters/?utm_source=ig_web_button_share_sheet"
+                         target="_blank"
+                         rel="noopener noreferrer"
+                         className="text-[var(--text-primary)] hover:text-[var(--accent-color)] transition-colors p-1"
+                       >
+                         <Instagram size={18} strokeWidth={1.5} />
+                       </a>
 
                       <a 
                         href="https://cartel.coffee/" 

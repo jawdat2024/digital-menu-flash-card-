@@ -157,7 +157,7 @@ const DigitalMenu: React.FC = () => {
                                 <div className="flex flex-col items-center mb-8 px-4">
                                     <h2 className={`text-xl md:text-2xl text-[var(--text-primary)] uppercase text-center mb-2 ${
                                         language === 'ar' ? 'font-sans font-bold py-1 tracking-normal' : 'font-didone tracking-widest'
-                                    }`}>
+                                    }`} style={cat.headerStyle || (cat.title === "ESPRESSO BASED" ? { color: "white" } : undefined)}>
                                         {t(cat.title)}
                                     </h2>
                                     <div className="w-12 h-px bg-[var(--text-primary)] opacity-40"></div>

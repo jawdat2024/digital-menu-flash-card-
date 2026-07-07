@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { fetchActiveCategories, Category } from '../../firebaseUtils';
 
 const MenuCategories = () => {

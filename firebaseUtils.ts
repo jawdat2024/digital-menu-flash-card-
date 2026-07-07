@@ -218,7 +218,7 @@ export async function submitCustomerFeedback(
     handleFirestoreError(mailErr, OperationType.CREATE, 'mail');
   }
 
-  return docRef.id;
+  return docRef?.id || '';
 }
 
 // تعريف شكل البيانات (إذا كنت تستخدم TypeScript)

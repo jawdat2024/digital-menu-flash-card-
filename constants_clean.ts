@@ -1120,7 +1120,7 @@ const BASE_MENU: MenuCategory[] = [
 ];
 
 // Standard Menu Order as requested
-const createStandardMenu = (): MenuCategory[] => {
+export const createStandardMenu = (): MenuCategory[] => {
   const order = [
     "desserts",
     "filter",

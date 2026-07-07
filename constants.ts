@@ -219,14 +219,6 @@ const BASE_MENU: MenuCategory[] = [
     id: "desserts",
     title: "Dessert",
     items: [
-      {
-        id: "d_deconstructed_cheesecake",
-        name: "Deconstructed Cheesecake",
-        ingredients: "A light and creamy eggless vanilla cheesecake served deconstructed, layered with crunchy almond crumble with mixed berries.",
-        price: "39.20",
-        image: "https://iili.io/q2hets4.png",
-        calories: 0,
-      },
 
       {
         id: "d_san_seb",
@@ -246,14 +238,6 @@ const BASE_MENU: MenuCategory[] = [
         image: "https://iili.io/qxFnyvt.png",
         status: 'coming_soon' as const,
         calories: 0,
-      },
-      {
-        id: "d_rasp_mad",
-        name: "Raspberry Madeleine (1 Piece)",
-        ingredients: "Classic French butter cake with fresh raspberries",
-        price: "15",
-        image: "https://iili.io/q2hjx4t.jpg",
-        calories: 180,
       },
       {
         id: "d_choc_chip",
@@ -1094,7 +1078,7 @@ const BASE_MENU: MenuCategory[] = [
 ];
 
 // Standard Menu Order as requested
-const createStandardMenu = (): MenuCategory[] => {
+export const createStandardMenu = (): MenuCategory[] => {
   const order = [
     "desserts",
     "filter",
@@ -1310,17 +1294,6 @@ const createMirdifMenu = (): MenuCategory[] => {
           tastingNotes: "Red grips – watermelon – hard candy- raspberry",
           notes: "Red grips – watermelon – hard candy- raspberry",
           ingredients: "Filtered Coffee",
-          calories: 5,
-          status: 'available' as const,
-        },
-        {
-          id: "mirdif_cb_cinnamon",
-          name: "Cold Brew - cinnamon",
-          price: "38",
-          image: "https://iili.io/C27AgUB.jpg",
-          tastingNotes: "",
-          notes: "",
-          ingredients: "Cold Brew Coffee",
           calories: 5,
           status: 'available' as const,
         },
@@ -3091,11 +3064,11 @@ const createMarinaMenu = (): MenuCategory[] => {
       isNew: true,
     },
     {
-      id: "bean_nicaragua",
-      name: "Nicaragua",
-      notes: "Milk Chocolate, Sugar Cane, Candied Peanuts",
-      price: 0,
-      isNew: false,
+      id: "bean_el_salvador",
+      name: "El Salvador",
+      notes: "Butterscotch, Almond, Dried Apricot",
+      price: 1,
+      isNew: true,
     },
   ];
 
@@ -3239,14 +3212,6 @@ const createMarinaMenu = (): MenuCategory[] => {
                image: "https://iili.io/q2j9Vwu.png",
                ingredients: "Earl Grey Chia, fresh banana, sweet dates, creamy yogurt.",
                branch: "Marina"
-             },
-             {
-               id: "fg_matcha_chia",
-               name: "Matcha Chia Pudding",
-               price: "38",
-               image: "https://iili.io/q2hpnov.png",
-               ingredients: "Premium Matcha-infused chia pudding, coconut milk, seasonal toppings.",
-               branch: "Marina"
              }
           ]
        };
@@ -3263,14 +3228,6 @@ const createMarinaMenu = (): MenuCategory[] => {
             price: "38",
             image: "https://iili.io/q2j9Vwu.png",
             calories: 350,
-          },
-          {
-            id: "bw7_marina",
-            name: "Matcha Chia Pudding",
-            ingredients: "Premium Matcha infused chia pudding, coconut milk, seasonal toppings.",
-            price: "38",
-            image: "https://iili.io/q2hpnov.png",
-            calories: 330,
           },
           {
             id: "fil_colombia_sidra_marina",
@@ -3932,17 +3889,6 @@ const createDubaiMenu = (): MenuCategory[] => {
           status: 'available'
         },
         {
-          id: "dubai_cb_cinnamon",
-          name: "Cold Brew - cinnamon",
-          price: "38",
-          image: "https://iili.io/C27AgUB.jpg",
-          tastingNotes: "",
-          notes: "",
-          ingredients: "Cold Brew Coffee",
-          calories: 5,
-          status: 'available'
-        },
-        {
           id: "dubai_cb_ethiopia",
           name: "Cold Brew Ethiopia.",
           price: "38",
@@ -4369,7 +4315,7 @@ const RAW_BRANCH_MENUS: BranchMenuDirectory = {
     if (false /* if ('dubai' === 'marina' || 'dubai' === 'albateen') */) {
       const sigTeaIdx = menu.findIndex(c => c.id === 'signature-tea');
       if (sigTeaIdx !== -1 && menu[sigTeaIdx].subCategories) {
-        menu[sigTeaIdx].subCategories = menu[sigTeaIdx].subCategories.filter(sc => sc.id !== 'juices');
+        menu[sigTeaIdx].subCategories = menu[sigTeaIdx].subCategories!.filter(sc => sc.id !== 'juices');
       }
     }
     
@@ -4396,7 +4342,7 @@ const RAW_BRANCH_MENUS: BranchMenuDirectory = {
     if (false /* if ('alqana' === 'marina' || 'alqana' === 'albateen') */) {
       const sigTeaIdx = menu.findIndex(c => c.id === 'signature-tea');
       if (sigTeaIdx !== -1 && menu[sigTeaIdx].subCategories) {
-        menu[sigTeaIdx].subCategories = menu[sigTeaIdx].subCategories.filter(sc => sc.id !== 'juices');
+        menu[sigTeaIdx].subCategories = menu[sigTeaIdx].subCategories!.filter(sc => sc.id !== 'juices');
       }
     }
     
@@ -4496,7 +4442,7 @@ const RAW_BRANCH_MENUS: BranchMenuDirectory = {
     if (false /* if ('khalifa' === 'marina' || 'khalifa' === 'albateen') */) {
       const sigTeaIdx = menu.findIndex(c => c.id === 'signature-tea');
       if (sigTeaIdx !== -1 && menu[sigTeaIdx].subCategories) {
-        menu[sigTeaIdx].subCategories = menu[sigTeaIdx].subCategories.filter(sc => sc.id !== 'juices');
+        menu[sigTeaIdx].subCategories = menu[sigTeaIdx].subCategories!.filter(sc => sc.id !== 'juices');
       }
     }
     
@@ -4897,7 +4843,7 @@ Object.keys(RAW_BRANCH_MENUS).forEach(branch => {
      'açaí smoothie'
   ];
 
-  let itemsFound = {};
+  let itemsFound: Record<string, any> = {};
   
   // First pass: scan all branches to find these objects
   Object.values(RAW_BRANCH_MENUS).forEach(branchMenu => {
@@ -4977,7 +4923,7 @@ Object.keys(RAW_BRANCH_MENUS).forEach(branch => {
 (() => {
   // Task 1: Propagate Fresh Juices from ALQANA to all EXCEPT Marina
   const alqanaMenu = RAW_BRANCH_MENUS['alqana'];
-  let alqanaJuices = [];
+  let alqanaJuices: any[] = [];
 
   // find ALQANA juices
   for (const cat of alqanaMenu) {
@@ -5134,13 +5080,6 @@ Object.keys(RAW_BRANCH_MENUS).forEach(branch => {
   // Task: Global Addition to "FILTERED" Category
   const newColdBrews = [
     {
-      id: "cb_cinn",
-      name: "Cold Brew - cinnamon",
-      price: "38",
-      image: "https://iili.io/C27AgUB.jpg",
-      status: "active" as const
-    },
-    {
       id: "cb_rogicha",
       name: "Cold Brew Ethiopia Rogicha",
       price: "38",
@@ -5195,7 +5134,7 @@ Object.keys(RAW_BRANCH_MENUS).forEach(branch => {
       }
       
       // Helper function to fix string fields
-      const fixStrings = (obj) => {
+      const fixStrings = (obj: any) => {
         if (!obj) return;
         ['name', 'tastingNotes', 'ingredients', 'notes', 'description', 'title'].forEach(field => {
           if (typeof obj[field] === 'string') {
@@ -5361,13 +5300,13 @@ Object.keys(RAW_BRANCH_MENUS).forEach(branch => {
   Object.values(RAW_BRANCH_MENUS).forEach(branchMenu => {
       // Find smoothies globally
       const knownSmoothies = ["Strawberry Glaze Smoothie", "Blue Cloud Smoothie", "Pitaya Smoothie"];
-      const matchingSmoothies = [];
+      const matchingSmoothies: any[] = [];
       branchMenu.forEach(cat => {
          // Pull out smoothies from their old place and then hide or remove old category
-         const processContainer = (container) => {
+         const processContainer = (container: any) => {
              if (container.items) {
                 knownSmoothies.forEach(name => {
-                    const idx = container.items.findIndex(i => i.name === name);
+                    const idx = container.items.findIndex((i: any) => i.name === name);
                     if (idx !== -1) {
                        matchingSmoothies.push(JSON.parse(JSON.stringify(container.items[idx])));
                        container.items.splice(idx, 1); // remove from old place
@@ -5384,7 +5323,7 @@ Object.keys(RAW_BRANCH_MENUS).forEach(branch => {
          }
       });
       // also remove smoothies category if it's empty
-      const isSmoothieCat = (c) => c.id === 'smoothies' || c.title === 'SMOOTHIES' || c.title === 'Smoothies';
+      const isSmoothieCat = (c: any) => c.id === 'smoothies' || c.title === 'SMOOTHIES' || c.title === 'Smoothies';
       for (let i = branchMenu.length - 1; i >= 0; i--) {
           if (isSmoothieCat(branchMenu[i])) {
               if (!branchMenu[i].items || branchMenu[i].items.length === 0) {
@@ -5429,8 +5368,8 @@ Object.keys(RAW_BRANCH_MENUS).forEach(branch => {
 
 (() => {
   // Ensure Tunacado is globally in Sandwiches
-  let tunacadoRef = null;
-  const anyBranchWithTuna = Object.values(RAW_BRANCH_MENUS).find(b => {
+  let tunacadoRef: any = null;
+  Object.values(RAW_BRANCH_MENUS).find(b => {
      for (const cat of b) {
         if (cat.items) {
            const found = cat.items.find(i => i.name === 'Tunacado');
@@ -5509,12 +5448,9 @@ Object.keys(RAW_BRANCH_MENUS).forEach(branch => {
             name: "Açaí Smoothie",
             price: "42",
             image: "https://iili.io/BBBfCDN.jpg",
-            description: "Acai berry, banana, strawberry, peanut butter, coconut water, oat milk, and apple juice.",
             ingredients: "Acai berry, banana, strawberry, peanut butter, coconut water, oat milk, and apple juice.",
             calories: 350,
-            publishStatus: "published",
-            status: "active",
-            isVisible: true
+            status: "available"
          });
      }
   }
@@ -5525,7 +5461,7 @@ Object.keys(RAW_BRANCH_MENUS).forEach(branch => {
       if (bestSeller && bestSeller.items) {
           if (!bestSeller.items.find(i => i.name === 'Tunacado')) {
              // Find tunacado
-             let tunacado = null;
+             let tunacado: any = null;
              branchMenu.forEach(c => {
                 if (c.items && !tunacado) tunacado = c.items.find(i => i.name === 'Tunacado');
              });
@@ -5550,10 +5486,10 @@ Object.keys(RAW_BRANCH_MENUS).forEach(branch => {
      
      // Remove duplicates within 'signature-drinks'
      RAW_BRANCH_MENUS[branchId].forEach(cat => {
-        const processDeDup = (container) => {
+        const processDeDup = (container: any) => {
            if (container.items) {
                const seen = new Set();
-               container.items = container.items.filter(i => {
+               container.items = container.items.filter((i: any) => {
                    if (seen.has(i.name)) return false;
                    seen.add(i.name);
                    return true;
@@ -5672,9 +5608,8 @@ Object.keys(RAW_BRANCH_MENUS).forEach(branch => {
               price: "38",
               image: "https://iili.io/qqEgPdN.jpg",
               ingredients: "Toasted Brown slice bread with pesto oil, avocado, tuna mix, tomato, and jalapeños.",
-              description: "Toasted Brown slice bread with pesto oil, avocado, tuna mix, tomato, and jalapeños.",
               calories: 480,
-              status: "active"
+              status: "available" as const
           });
           
           swCat.items = newItems;
@@ -5711,12 +5646,12 @@ Object.keys(RAW_BRANCH_MENUS).forEach(branch => {
     });
   });
 
-  // 2. Marina Branch Updates: Keep only Colombia-Witch, sweet dream decaf, coconutella, and Nicaragua in Marina Espresso Based.
+  // 2. Marina Branch Updates: Keep only Colombia-Witch, sweet dream decaf, coconutella, and El Salvador in Marina Espresso Based.
   const marinaMenu = RAW_BRANCH_MENUS["marina"];
   if (marinaMenu) {
     const espressoCat = marinaMenu.find((c) => c.id === "espresso" || c.title === "Espresso Based" || c.title === "ESPRESSO BASED");
     if (espressoCat) {
-      const allowedNames = ["colombia-witch", "sweet dream decaf", "coconutella", "nicaragua"];
+      const allowedNames = ["colombia-witch", "sweet dream decaf", "coconutella", "el salvador"];
       if (espressoCat.beanSelection) {
         espressoCat.beanSelection = espressoCat.beanSelection.filter(
           (b) => b.name && allowedNames.includes(b.name.toLowerCase().trim())
@@ -6173,9 +6108,9 @@ export const BRANCH_ESPRESSO_BEANS: Record<string, any[]> = {
       "price": "+10 AED"
     },
     {
-      "name": "Nicaragua",
-      "notes": "Milk Chocolate, Sugar Cane, Candied Peanuts",
-      "price": "+0 AED"
+      "name": "El Salvador",
+      "notes": "Butterscotch, Almond, Dried Apricot",
+      "price": "+1 AED"
     }
   ],
   'khalifa': [

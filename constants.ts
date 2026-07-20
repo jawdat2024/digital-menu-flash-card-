@@ -2750,6 +2750,14 @@ const createAlQanaMenu = (): MenuCategory[] => {
             "Crispy milk bread topped with house-made shrimp paste, drizzled with dynamite sauce, garnished with salmon caviar, and finished with mixed sesame seeds.",
           calories: 420,
         },
+        {
+          id: "sw_chick_avo_croissant_new",
+          name: "Chicken & Avocado Croissant",
+          price: "35",
+          image: "https://iili.io/qqG2qR1.png",
+          ingredients: "Buttery croissant filled with grilled chicken and fresh avocado",
+          calories: 520,
+        },
       ],
     },
     {
@@ -2803,14 +2811,6 @@ const createAlQanaMenu = (): MenuCategory[] => {
           image: "https://iili.io/qqXGUIR.png",
           ingredients: "Rich chocolate tart with peanut butter",
           calories: 480,
-        },
-        {
-          id: "d_honey",
-          name: "Honey Cake",
-          price: "39.20",
-          image: "https://iili.io/qqXWIea.png",
-          ingredients: "Layers of honey sponge and cream",
-          calories: 450,
         },
         findItem("desserts", "d_san_seb")!,
         findItem("desserts", "STICKY DATE")!,
@@ -2998,7 +2998,44 @@ const createAlQanaMenu = (): MenuCategory[] => {
         },
       ],
     },
-    BASE_MENU.find((c) => c.id === "juices")!,
+    {
+      id: "juices",
+      title: "Juices",
+      items: [
+        {
+          id: "juice_orange",
+          name: "Orange",
+          price: "24",
+          image: "https://iili.io/qv5W3mv.jpg",
+          ingredients: "Freshly squeezed orange juice",
+          calories: 110,
+        },
+        {
+          id: "juice_watermelon_alqana",
+          name: "Watermelon",
+          price: "24",
+          image: "https://iili.io/qv5Tqc7.jpg",
+          ingredients: "Freshly squeezed watermelon juice",
+          calories: 70,
+        },
+        {
+          id: "juice_apple_alqana",
+          name: "Apple",
+          price: "24",
+          image: "https://iili.io/qv5Opwu.jpg",
+          ingredients: "Freshly squeezed apple juice",
+          calories: 110,
+        },
+        {
+          id: "juice_carrot_alqana",
+          name: "Carrot",
+          price: "24",
+          image: "https://iili.io/qv5h6gt.jpg",
+          ingredients: "Freshly squeezed carrot juice",
+          calories: 95,
+        },
+      ],
+    },
     {
       id: "salads",
       title: "Green Salad",
@@ -4413,6 +4450,26 @@ const RAW_BRANCH_MENUS: BranchMenuDirectory = {
                 "price": "38",
                 "image": "https://iili.io/qLf9mXt.jpg",
                 "tastingNotes": "Passion Fruit, Cheesecake, Milk Chocolate",
+                "ingredients": "Filtered Coffee",
+                "calories": 5,
+                "status": "available"
+              },
+        {
+                "id": "alqana_fil_7",
+                "name": "Colombia blackberry",
+                "price": "58",
+                "image": "https://iili.io/qLf9mXt.jpg",
+                "tastingNotes": "Blackberry Soda, Cacao Nibs, Karkade",
+                "ingredients": "Filtered Coffee",
+                "calories": 5,
+                "status": "available"
+              },
+        {
+                "id": "alqana_fil_8",
+                "name": "Costa Rica",
+                "price": "58",
+                "image": "https://iili.io/qLf9mXt.jpg",
+                "tastingNotes": "Cacao, Fig Compote, Honey, Cherry",
                 "ingredients": "Filtered Coffee",
                 "calories": 5,
                 "status": "available"
@@ -6079,6 +6136,248 @@ Object.keys(RAW_BRANCH_MENUS).forEach(branch => {
       bestSeller.subCategories = []; // remove any subCategories from best seller
     }
   });
+})();
+// --- END AI STUDIO FIX ---
+
+// --- AI STUDIO FIX: ADD JUICES TO ALQANA SIGNATURE DRINKS ---
+(() => {
+  const alqanaMenu = RAW_BRANCH_MENUS['alqana'];
+  if (alqanaMenu) {
+    const sigTea = alqanaMenu.find(c => c.id === 'signature-tea' || c.title?.toUpperCase().includes('SIGNATURE'));
+    if (sigTea) {
+      if (!sigTea.subCategories) sigTea.subCategories = [];
+      
+      // Remove any existing juices to avoid duplicates
+      sigTea.subCategories = sigTea.subCategories.filter(sc => sc.id !== 'juices' && !sc.title?.toUpperCase().includes('JUICE'));
+      
+      // Add the new Juices subcategory
+      sigTea.subCategories.push({
+        id: "juices",
+        title: "Juices",
+        items: [
+          {
+            id: "juice_orange",
+            name: "Orange",
+            price: "24",
+            image: "https://iili.io/qv5W3mv.jpg",
+            ingredients: "Freshly squeezed orange juice",
+            calories: 110,
+          },
+          {
+            id: "juice_watermelon_alqana",
+            name: "Watermelon",
+            price: "24",
+            image: "https://iili.io/qv5Tqc7.jpg",
+            ingredients: "Freshly squeezed watermelon juice",
+            calories: 70,
+          },
+          {
+            id: "juice_apple_alqana",
+            name: "Apple",
+            price: "24",
+            image: "https://iili.io/qv5Opwu.jpg",
+            ingredients: "Freshly squeezed apple juice",
+            calories: 110,
+          },
+          {
+            id: "juice_carrot_alqana",
+            name: "Carrot",
+            price: "24",
+            image: "https://iili.io/qv5h6gt.jpg",
+            ingredients: "Freshly squeezed carrot juice",
+            calories: 95,
+          },
+        ],
+      });
+    }
+
+    // Also remove if it's at the root level for Alqana just in case
+    const rootJuicesIdx = alqanaMenu.findIndex(c => c.id === 'juices' || c.title?.toUpperCase().includes('JUICE'));
+    if (rootJuicesIdx !== -1) {
+      alqanaMenu.splice(rootJuicesIdx, 1);
+    }
+  }
+})();
+// --- END AI STUDIO FIX ---
+
+// --- AI STUDIO FIX: TASK SPECIFIC REMOVALS ---
+(() => {
+  // Global Honey Cake Removal
+  Object.values(RAW_BRANCH_MENUS).forEach(branchMenu => {
+    branchMenu.forEach(cat => {
+      if (cat.items) {
+        cat.items = cat.items.filter(item => !item.name.toLowerCase().includes('honey cake') && !item.name.toLowerCase().includes('honeycake'));
+      }
+      if (cat.subCategories) {
+        cat.subCategories.forEach(sub => {
+          if (sub.items) {
+            sub.items = sub.items.filter(item => !item.name.toLowerCase().includes('honey cake') && !item.name.toLowerCase().includes('honeycake'));
+          }
+        });
+      }
+    });
+  });
+
+  // Dubai specific removals
+  const dubaiMenu = RAW_BRANCH_MENUS['dubai'];
+  if (dubaiMenu) {
+    dubaiMenu.forEach(cat => {
+      if (cat.items) {
+        cat.items = cat.items.filter(item => 
+          item.name !== 'Mish Mish' && 
+          item.id !== 'dubai_fil_mish_mish' &&
+          item.name !== 'Cold Brew - Colombian EXOTIC' &&
+          item.id !== 'dubai_cb_colombian_exotic'
+        );
+      }
+      if (cat.subCategories) {
+        cat.subCategories.forEach(sub => {
+          if (sub.items) {
+            sub.items = sub.items.filter(item => 
+              item.name !== 'Mish Mish' && 
+              item.id !== 'dubai_fil_mish_mish' &&
+              item.name !== 'Cold Brew - Colombian EXOTIC' &&
+              item.id !== 'dubai_cb_colombian_exotic'
+            );
+          }
+        });
+      }
+    });
+  }
+})();
+// --- END AI STUDIO FIX ---
+
+// --- AI STUDIO FIX: ADD JUICES TO MIRDIF ---
+(() => {
+  const mirdifMenu = RAW_BRANCH_MENUS['mirdif'];
+  if (mirdifMenu) {
+    const sigTea = mirdifMenu.find(c => c.id === 'signature-tea' || c.title?.toUpperCase().includes('SIGNATURE'));
+    if (sigTea) {
+      if (!sigTea.subCategories) sigTea.subCategories = [];
+      let juicesCat = sigTea.subCategories.find(sc => sc.id === 'juices' || sc.title?.toUpperCase().includes('JUICE'));
+      
+      if (!juicesCat) {
+        juicesCat = { id: 'juices', title: 'Juices', items: [] };
+        sigTea.subCategories.push(juicesCat);
+      }
+      
+      const newJuices = [
+          {
+            id: "juice_apple_alqana",
+            name: "Apple",
+            price: "24",
+            image: "https://iili.io/qv5Opwu.jpg",
+            ingredients: "Freshly squeezed apple juice",
+            calories: 110,
+          },
+          {
+            id: "juice_carrot_alqana",
+            name: "Carrot",
+            price: "24",
+            image: "https://iili.io/qv5h6gt.jpg",
+            ingredients: "Freshly squeezed carrot juice",
+            calories: 95,
+          },
+      ];
+      
+      newJuices.forEach(nj => {
+        if (!juicesCat!.items.some((i: any) => i.name.toLowerCase() === nj.name.toLowerCase())) {
+          juicesCat!.items.push(nj);
+        }
+      });
+    }
+  }
+})();
+// --- END AI STUDIO FIX ---
+
+// --- AI STUDIO FIX: ADD CHICKEN AVOCADO CROISSANT TO MIRDIF & ALQANA ---
+(() => {
+  const branches = ['mirdif', 'alqana'];
+  branches.forEach(branchId => {
+    const menu = RAW_BRANCH_MENUS[branchId];
+    if (menu) {
+      const sandwichesCat = menu.find(c => c.id === 'sandwiches' || c.title?.toUpperCase().includes('SANDWICHES'));
+      if (sandwichesCat) {
+        if (!sandwichesCat.items) sandwichesCat.items = [];
+        
+        // Ensure we don't add duplicates based on the new ID or same name
+        if (!sandwichesCat.items.some((i: any) => i.id === 'sw_chick_avo_croissant_new' || i.name.toLowerCase() === 'chicken & avocado croissant')) {
+          sandwichesCat.items.push({
+            id: "sw_chick_avo_croissant_new",
+            name: "Chicken & Avocado Croissant",
+            price: "35",
+            image: "https://iili.io/qqG2qR1.png",
+            ingredients: "Buttery croissant filled with grilled chicken and fresh avocado",
+            calories: 520,
+          });
+        }
+      }
+    }
+  });
+})();
+// --- END AI STUDIO FIX ---
+
+// --- AI STUDIO FIX: ADD MIRDIF COSTA RICA & PICK MATCHA CLOUD ---
+(() => {
+  const mirdifMenu = RAW_BRANCH_MENUS['mirdif'];
+  if (mirdifMenu) {
+    // 1. Filtered:
+    const filteredCat = mirdifMenu.find(c => c.id === 'filtered-cold-brew' || c.id === 'filtered' || c.title?.toUpperCase().includes('FILTERED'));
+    if (filteredCat) {
+      if (!filteredCat.items) filteredCat.items = [];
+      if (!filteredCat.items.some((i: any) => i.id === 'mirdif_fil_costa_rica' || i.name.toLowerCase() === 'costa rica')) {
+        filteredCat.items.push({
+          id: "mirdif_fil_costa_rica",
+          name: "Costa Rica",
+          price: "58",
+          image: "https://iili.io/qLf9mXt.jpg",
+          tastingNotes: "Cacao, Fig Compote, Honey, Cherry",
+          ingredients: "Filtered Coffee",
+          calories: 5,
+          status: 'available'
+        });
+      }
+    }
+
+    // 2. Signature Drinks
+    let addedMatcha = false;
+    const sigTea = mirdifMenu.find(c => c.id === 'signature-tea' || c.title?.toUpperCase().includes('SIGNATURE'));
+    if (sigTea) {
+      if (sigTea.subCategories) {
+        const sigDrinks = sigTea.subCategories.find(s => s.id === 'signature-drinks' || s.title?.toUpperCase().includes('SIGNATURE DRINK'));
+        if (sigDrinks) {
+          if (!sigDrinks.items) sigDrinks.items = [];
+          if (!sigDrinks.items.some((i: any) => i.name.toLowerCase() === 'pick matcha cloud')) {
+            sigDrinks.items.push({
+              id: "mirdif_sig_pick_matcha_cloud",
+              name: "PICK MATCHA CLOUD",
+              price: "38",
+              image: "https://iili.io/CwA7STJ.jpg",
+              ingredients: "",
+              calories: 0,
+              status: 'available'
+            });
+          }
+          addedMatcha = true;
+        }
+      } 
+      
+      if (!addedMatcha && sigTea.items) {
+         // Fallback if no subCategories exist
+         if (!sigTea.items.some((i: any) => i.name.toLowerCase() === 'pick matcha cloud')) {
+            sigTea.items.push({
+              id: "mirdif_sig_pick_matcha_cloud",
+              name: "PICK MATCHA CLOUD",
+              price: "38",
+              image: "https://iili.io/CwA7STJ.jpg",
+              ingredients: "",
+              calories: 0,
+              status: 'available'
+            });
+         }
+      }
+    }
+  }
 })();
 // --- END AI STUDIO FIX ---
 

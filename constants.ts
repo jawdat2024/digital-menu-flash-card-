@@ -6381,6 +6381,125 @@ Object.keys(RAW_BRANCH_MENUS).forEach(branch => {
 })();
 // --- END AI STUDIO FIX ---
 
+// --- AI STUDIO FIX: MARINA BRANCH UPDATES ---
+(() => {
+  const marinaMenu = RAW_BRANCH_MENUS['marina'];
+  if (marinaMenu) {
+    // 1. Remove Colombia Mish Mish & Colombia Strawberry globally in marina
+    marinaMenu.forEach(cat => {
+      if (cat.items) {
+        cat.items = cat.items.filter(item => 
+          !item.name.toLowerCase().includes('mish mish') &&
+          !item.name.toLowerCase().includes('colombia strawberry')
+        );
+      }
+      if (cat.subCategories) {
+        cat.subCategories.forEach(sub => {
+          if (sub.items) {
+            sub.items = sub.items.filter(item => 
+              !item.name.toLowerCase().includes('mish mish') &&
+              !item.name.toLowerCase().includes('colombia strawberry')
+            );
+          }
+        });
+      }
+    });
+
+    // 2. Espresso Based -> Replace El Salvador with Ecuador - La Chacana
+    const espressoCat = marinaMenu.find(c => c.id === 'espresso' || c.title?.toUpperCase().includes('ESPRESSO BASED'));
+    if (espressoCat) {
+      if (espressoCat.beanSelection) {
+        const elSalvadorIdx = espressoCat.beanSelection.findIndex((b: any) => b.name.toLowerCase().includes('el salvador'));
+        if (elSalvadorIdx !== -1) {
+          espressoCat.beanSelection[elSalvadorIdx] = {
+            id: "bean_ecuador_la_chacana",
+            name: "Ecuador - La Chacana",
+            notes: "Brown Sugar, Cocoa, and Grapefruit",
+            price: 1,
+            isNew: true
+          };
+        }
+      }
+      
+      // Also update bean customizations inside items
+      if (espressoCat.items) {
+        espressoCat.items.forEach((item: any) => {
+          const beanCustomization = item.customizations?.find((c: any) => c.id === "bean_choice");
+          if (beanCustomization && beanCustomization.options) {
+             const elSalOptIdx = beanCustomization.options.findIndex((opt: any) => opt.name.toLowerCase().includes('el salvador'));
+             if (elSalOptIdx !== -1) {
+                beanCustomization.options[elSalOptIdx] = {
+                  id: "bean_ecuador_la_chacana",
+                  name: "Ecuador - La Chacana",
+                  price: 1,
+                  description: "Brown Sugar, Cocoa, and Grapefruit",
+                  status: 'available'
+                };
+             }
+          }
+        });
+      }
+    }
+  }
+})();
+// --- END AI STUDIO FIX ---
+
+// --- AI STUDIO FIX: ADD COLOMBIA WATERMELON TO MARINA FILTERED ---
+(() => {
+  const marinaMenu = RAW_BRANCH_MENUS['marina'];
+  if (marinaMenu) {
+    const filteredCat = marinaMenu.find(c => c.id === 'filter-coffee' || c.id === 'filtered' || c.title?.toUpperCase().includes('FILTER'));
+    if (filteredCat) {
+      if (!filteredCat.items) filteredCat.items = [];
+      if (!filteredCat.items.some((i: any) => i.name.toLowerCase() === 'colombia - watermelon' || i.id === 'marina_fil_colombia_watermelon')) {
+        filteredCat.items.push({
+          id: "marina_fil_colombia_watermelon",
+          name: "Colombia - Watermelon",
+          price: "57",
+          image: "https://iili.io/qLf9mXt.jpg",
+          tastingNotes: "JOLLY RANCHERS - MELON - SUGAR - TART",
+          ingredients: "Pour-over brewing method",
+          calories: 5,
+          status: 'available'
+        });
+      }
+    }
+  }
+})();
+// --- END AI STUDIO FIX ---
+
+// --- AI STUDIO FIX: ADD COLOMBIA WATERMELON GLOBALLY ---
+(() => {
+  Object.keys(RAW_BRANCH_MENUS).forEach(branchId => {
+    const menu = RAW_BRANCH_MENUS[branchId];
+    if (menu) {
+      const filteredCat = menu.find((c: any) => 
+        c.id === 'filter-coffee' || 
+        c.id === 'filtered' || 
+        c.id === 'filtered-coffee-marina' ||
+        c.id === 'filtered-cold-brew' ||
+        c.title?.toUpperCase().includes('FILTER')
+      );
+      if (filteredCat) {
+        if (!filteredCat.items) filteredCat.items = [];
+        if (!filteredCat.items.some((i: any) => i.name.toLowerCase() === 'colombia - watermelon' || i.id === `${branchId}_fil_colombia_watermelon` || i.id === 'marina_fil_colombia_watermelon')) {
+          filteredCat.items.push({
+            id: `${branchId}_fil_colombia_watermelon`,
+            name: "Colombia - Watermelon",
+            price: "57",
+            image: "https://iili.io/qLf9mXt.jpg",
+            tastingNotes: "JOLLY RANCHERS - MELON - SUGAR - TART",
+            ingredients: "Pour-over brewing method",
+            calories: 5,
+            status: 'available'
+          });
+        }
+      }
+    }
+  });
+})();
+// --- END AI STUDIO FIX ---
+
 export const BRANCH_MENUS = sortFilteredCoffeeByPrice(RAW_BRANCH_MENUS);
 
 // DEFAULT EXPORT FOR BACKWARD COMPATIBILITY & TYPES
@@ -6404,8 +6523,8 @@ export const BRANCH_ESPRESSO_BEANS: Record<string, any[]> = {
       "price": "+10 AED"
     },
     {
-      "name": "El Salvador",
-      "notes": "Butterscotch, Almond, Dried Apricot",
+      "name": "Ecuador - La Chacana",
+      "notes": "Brown Sugar, Cocoa, and Grapefruit",
       "price": "+1 AED"
     }
   ],

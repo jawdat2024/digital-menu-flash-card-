@@ -6500,6 +6500,68 @@ Object.keys(RAW_BRANCH_MENUS).forEach(branch => {
 })();
 // --- END AI STUDIO FIX ---
 
+// --- AI STUDIO FIX: UPDATE ACAI SMOOTHIE GLOBALLY ---
+(() => {
+  Object.keys(RAW_BRANCH_MENUS).forEach(branchId => {
+    const menu = RAW_BRANCH_MENUS[branchId];
+    if (menu) {
+      menu.forEach(cat => {
+        if (cat.items) {
+          cat.items.forEach(item => {
+            if (item.name.toLowerCase() === 'açaí smoothie' || item.name.toLowerCase() === 'acai smoothie') {
+              item.name = "Tropical Amazonian Açaí Smoothie";
+              item.price = "42";
+              item.image = "https://iili.io/BBBfCDN.jpg";
+              item.ingredients = "Pure açaí puree, fresh strawberry, and banana, blended smoothly with creamy peanut butter, almond milk, and coconut water.";
+            }
+          });
+        }
+        if (cat.subCategories) {
+          cat.subCategories.forEach(sub => {
+            if (sub.items) {
+              sub.items.forEach(item => {
+                if (item.name.toLowerCase() === 'açaí smoothie' || item.name.toLowerCase() === 'acai smoothie') {
+                  item.name = "Tropical Amazonian Açaí Smoothie";
+                  item.price = "42";
+                  item.image = "https://iili.io/BBBfCDN.jpg";
+                  item.ingredients = "Pure açaí puree, fresh strawberry, and banana, blended smoothly with creamy peanut butter, almond milk, and coconut water.";
+                }
+              });
+            }
+          });
+        }
+      });
+    }
+  });
+})();
+// --- END AI STUDIO FIX ---
+
+// --- AI STUDIO FIX: REMOVE COLD BREW COLOMBIAN EXOTIC GLOBALLY ---
+(() => {
+  Object.keys(RAW_BRANCH_MENUS).forEach(branchId => {
+    const menu = RAW_BRANCH_MENUS[branchId];
+    if (menu) {
+      menu.forEach(cat => {
+        if (cat.items) {
+          cat.items = cat.items.filter(item => 
+            item.name?.toLowerCase() !== 'cold brew - colombian exotic'
+          );
+        }
+        if (cat.subCategories) {
+          cat.subCategories.forEach(sub => {
+            if (sub.items) {
+              sub.items = sub.items.filter(item => 
+                item.name?.toLowerCase() !== 'cold brew - colombian exotic'
+              );
+            }
+          });
+        }
+      });
+    }
+  });
+})();
+// --- END AI STUDIO FIX ---
+
 export const BRANCH_MENUS = sortFilteredCoffeeByPrice(RAW_BRANCH_MENUS);
 
 // DEFAULT EXPORT FOR BACKWARD COMPATIBILITY & TYPES

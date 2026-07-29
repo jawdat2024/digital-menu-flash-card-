@@ -180,12 +180,6 @@ const FlipCard: React.FC<FlipCardProps> = ({ item, index = 0 }) => {
               <div className="border-t border-[#222222] my-[12px]" />
               <div className="flex items-center justify-between pb-1">
                   <div className="flex items-center gap-2">
-                     {item.calories && (
-                       <div className="flex items-center gap-1 text-[#666666]">
-                          <span>🔥</span>
-                          <span className="text-[12px] font-sans uppercase">EST. CAL {item.calories}</span>
-                       </div>
-                     )}
                   </div>
               </div>
           </div>

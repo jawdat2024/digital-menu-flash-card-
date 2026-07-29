@@ -124,13 +124,6 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({ item }) => {
                     </p>
                 )}
             </div>
-            
-            <div className="mt-auto pt-2 flex items-center justify-center gap-1 sm:gap-2 text-neutral-400">
-                <Flame size={12} className="text-neutral-500 sm:w-[14px]" />
-                <span className={`text-[8px] sm:text-[10px] font-medium uppercase tracking-widest ${language === 'ar' ? 'font-sans' : ''}`}>
-                    {t("EST.")} {item.calories || 0}
-                </span>
-            </div>
         </div>
 
       {/* Modal Overlay */}
